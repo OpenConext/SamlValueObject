@@ -10,10 +10,10 @@
         }
     ],
     "require": {
-        "php": ">=5.3.9,<8.0-dev",
-        "ibuildings/qa-tools": "^1.1"
+        "php": ">=5.3.9,<8.0-dev"
     },
     "require-dev": {
+        "ibuildings/qa-tools": "^1.1",
         "liip/rmt": "~1.2"
     },
     "autoload": {
