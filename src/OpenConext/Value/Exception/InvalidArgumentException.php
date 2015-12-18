@@ -11,7 +11,7 @@ class InvalidArgumentException extends CoreInvalidArgumentException implements O
      * @param string $parameterName
      * @param mixed  $parameter the parameter that is not of the expected type.
      *
-     * @return static
+     * @return self
      */
     public static function invalidType($expected, $parameterName, $parameter)
     {
@@ -22,6 +22,6 @@ class InvalidArgumentException extends CoreInvalidArgumentException implements O
             $parameterName
         );
 
-        return new static($message);
+        return new self($message);
     }
 }
