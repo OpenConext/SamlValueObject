@@ -1,0 +1,29 @@
+{
+    "name": "openconext/saml-value-object",
+    "description": "Set of value objects for usage with SAML2",
+    "type": "library",
+    "license": "Apache-2.0",
+    "authors": [
+        {
+            "name": "DRvanR",
+            "email": "dvrenterghem@ibuildings.nl"
+        }
+    ],
+    "require": {
+        "php": ">=5.3.9,<8.0-dev"
+    },
+    "require-dev": {
+        "ibuildings/qa-tools": "^1.1",
+        "liip/rmt": "~1.2"
+    },
+    "autoload": {
+        "psr-4": {
+            "OpenConext\\Value\\": "src/OpenConext/Value"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "OpenConext\\Value\\": "tests/OpenConext/Value"
+        }
+    }
+}
