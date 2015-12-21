@@ -1,0 +1,29 @@
+_default:
+
+    vcs: git
+
+    prerequisites:
+        working-copy-check: ~
+        display-last-changes: ~
+        composer-stability-check: ~
+        tests-check: {command: ant}
+
+    version-generator: semantic
+    version-persister:
+        vcs-tag:
+            tag-prefix: "{branch-name}_"
+            dump-commits: true
+    pre-release-actions:
+        changelog-update:
+            format: semantic
+        vcs-commit: ~
+    post-release-actions:
+        vcs-publish:
+            ask-confirmation: true
+
+# BRANCH SPECIFIC CONFIG
+#  On master, we override the general config
+master:
+    version-persister:
+        vcs-tag:
+            tag-prefix: ''         # No more prefix for tags
