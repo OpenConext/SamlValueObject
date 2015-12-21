@@ -63,7 +63,7 @@ final class ShibbolethMetadataScope
             throw InvalidArgumentException::invalidType('string', 'string', $string);
         }
 
-        if ($this->literal) {
+        if ($this->literal !== null) {
             return $this->literal === $string;
         }
 
@@ -76,7 +76,7 @@ final class ShibbolethMetadataScope
      */
     public function equals(ShibbolethMetadataScope $other)
     {
-        return ($this->literal && $this->literal === $other->literal)
+        return ($this->literal !== null && $this->literal === $other->literal)
                 || ($this->regexp && $other->regexp && $this->regexp->equals($other->regexp));
     }
 

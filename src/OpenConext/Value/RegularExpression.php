@@ -11,6 +11,20 @@ final class RegularExpression
      */
     private $pattern;
 
+    public static function isValidRegularExpression($regularExpression)
+    {
+        $pregMatchErrored = false;
+        set_error_handler(function () use (&$pregMatchErrored) {
+            $pregMatchErrored = true;
+        });
+
+        preg_match($regularExpression, 'some test string');
+
+        restore_error_handler();
+
+        return !$pregMatchErrored && !preg_last_error();
+    }
+
     /**
      * @param string $pattern
      */
@@ -20,7 +34,7 @@ final class RegularExpression
             throw InvalidArgumentException::invalidType('non-blank string', 'pattern', $pattern);
         }
 
-        if (!$this->isValidRegularExpression($pattern)) {
+        if (!self::isValidRegularExpression($pattern)) {
             throw new InvalidArgumentException(sprintf(
                 'The pattern "%s" is not a valid regular expression',
                 $pattern
@@ -55,19 +69,5 @@ final class RegularExpression
     public function __toString()
     {
         return $this->pattern;
-    }
-
-    private function isValidRegularExpression($regularExpression)
-    {
-        $pregMatchErrored = false;
-        set_error_handler(function () use (&$pregMatchErrored) {
-            $pregMatchErrored = true;
-        });
-
-        preg_match($regularExpression, 'some test string');
-
-        restore_error_handler();
-
-        return !$pregMatchErrored && !preg_last_error();
     }
 }
