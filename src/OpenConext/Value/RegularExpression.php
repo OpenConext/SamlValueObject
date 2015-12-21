@@ -14,11 +14,9 @@ final class RegularExpression
     public static function isValidRegularExpression($regularExpression)
     {
         $pregMatchErrored = false;
-        set_error_handler(
-            function () use (&$pregMatchErrored) {
-                $pregMatchErrored = true;
-            }
-        );
+        set_error_handler(function () use (&$pregMatchErrored) {
+            $pregMatchErrored = true;
+        });
 
         preg_match($regularExpression, 'some test string');
 
