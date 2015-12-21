@@ -19,7 +19,7 @@ class EntitySetTest extends TestCase
         $base  = new EntitySet($firstSet);
         $other = new EntitySet($secondSet);
 
-        $this->assertFalse($base->equals($other), "Different entity sets must not be equal");
+        $this->assertFalse($base->equals($other));
     }
 
     public function unequalSets()
@@ -61,7 +61,7 @@ class EntitySetTest extends TestCase
         $base  = new EntitySet($firstSet);
         $other = new EntitySet($secondSet);
 
-        $this->assertTrue($base->equals($other), "Entity sets should be equal, but they're not");
+        $this->assertTrue($base->equals($other));
     }
 
     public function equalSets()
