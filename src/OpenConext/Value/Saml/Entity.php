@@ -10,6 +10,7 @@ final class Entity
      * @var EntityId
      */
     private $entityId;
+
     /**
      * @var EntityType
      */
