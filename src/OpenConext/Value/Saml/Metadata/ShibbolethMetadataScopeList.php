@@ -12,12 +12,12 @@ final class ShibbolethMetadataScopeList implements IteratorAggregate, Countable
     /**
      * @var ShibbolethMetadataScope[]
      */
-    private $scopes = [];
+    private $scopes = array();
 
     /**
      * @param ShibbolethMetadataScope[] $scopes
      */
-    public function __construct(array $scopes = [])
+    public function __construct(array $scopes = array())
     {
         foreach ($scopes as $scope) {
             $this->initializeWith($scope);
@@ -30,7 +30,7 @@ final class ShibbolethMetadataScopeList implements IteratorAggregate, Countable
      */
     public function add(ShibbolethMetadataScope $scope)
     {
-        return new ShibbolethMetadataScopeList(array_merge($this->scopes, [$scope]));
+        return new ShibbolethMetadataScopeList(array_merge($this->scopes, array($scope)));
     }
 
     /**
