@@ -23,6 +23,16 @@ class RegularExpressionTest extends UnitTest
      * @test
      * @group        value
      * @dataProvider \OpenConext\Value\TestDataProvider::invalidRegularExpressionProvider
+     */
+    public function a_regex_can_be_tested_for_being_valid($invalidExpression)
+    {
+       $this->assertFalse(RegularExpression::isValidRegularExpression($invalidExpression));
+    }
+
+    /**
+     * @test
+     * @group        value
+     * @dataProvider \OpenConext\Value\TestDataProvider::invalidRegularExpressionProvider
      *
      * @expectedException InvalidArgumentException
      */
