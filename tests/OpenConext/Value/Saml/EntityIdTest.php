@@ -33,4 +33,17 @@ class EntityIdTest extends UnitTest
         $this->assertTrue($base->equals($theSame));
         $this->assertFalse($base->equals($different));
     }
+
+    /**
+     * @test
+     * @group saml
+     */
+    public function the_given_entity_id_value_can_be_retrieved()
+    {
+        $entityIdValue = 'A';
+
+        $entityId = new EntityId($entityIdValue);
+
+        $this->assertSame($entityIdValue, $entityId->getEntityId());
+    }
 }
