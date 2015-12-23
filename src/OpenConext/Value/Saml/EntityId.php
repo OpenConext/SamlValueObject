@@ -32,6 +32,14 @@ final class EntityId
         return $this->entityId === $other->entityId;
     }
 
+    /**
+     * @return string
+     */
+    public function getEntityId()
+    {
+        return $this->entityId;
+    }
+
     public function __toString()
     {
         return $this->entityId;
