@@ -2,5 +2,8 @@
 VERSION 1  FIRST RELEASE
 ========================
 
+   Version 1.1 - Adds accessor to EntityId
+      23/12/2015 11:58  1.1.0  initial release
+
    Version 1.0 - First release
       21/12/2015 17:27  1.0.0  initial release
