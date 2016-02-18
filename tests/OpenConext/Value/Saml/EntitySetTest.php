@@ -7,12 +7,13 @@ use PHPUnit_Framework_TestCase as TestCase;
 class EntitySetTest extends TestCase
 {
     /**
+     * @test
+     * @group entity
+     *
+     * @dataProvider unequalSets
+     *
      * @param array $firstSet
      * @param array $secondSet
-     *
-     * @test
-     * @group        saml
-     * @dataProvider unequalSets
      */
     public function set_with_different_elements_are_not_considered_equal(array $firstSet, array $secondSet)
     {
@@ -49,12 +50,13 @@ class EntitySetTest extends TestCase
     }
 
     /**
+     * @test
+     * @group entity
+     *
+     * @dataProvider equalSets
+     *
      * @param array $firstSet
      * @param array $secondSet
-     *
-     * @test
-     * @group        saml
-     * @dataProvider equalSets
      */
     public function set_with_equal_elements_are_considered_equal(array $firstSet, array $secondSet)
     {
@@ -88,7 +90,7 @@ class EntitySetTest extends TestCase
 
     /**
      * @test
-     * @group saml
+     * @group entity
      */
     public function elements_in_a_set_can_be_tested_for_presence_based_on_equality()
     {
@@ -105,7 +107,7 @@ class EntitySetTest extends TestCase
 
     /**
      * @test
-     * @group saml
+     * @group entity
      */
     public function entity_set_deduplicates_equal_elements()
     {

@@ -8,7 +8,6 @@ class ShibbolethMetadataScopeListTest extends UnitTest
 {
     /**
      * @test
-     * @group saml
      * @group metadata
      */
     public function adding_scope_to_a_list_creates_a_new_list()
@@ -22,7 +21,6 @@ class ShibbolethMetadataScopeListTest extends UnitTest
 
     /**
      * @test
-     * @group saml
      * @group metadata
      */
     public function a_string_is_in_scope_if_it_matches_at_least_one_scope_in_the_list()
@@ -38,14 +36,13 @@ class ShibbolethMetadataScopeListTest extends UnitTest
     }
 
     /**
-     * @param mixed $invalidScope
-     *
      * @test
-     * @group saml
      * @group metadata
-     * @dataProvider \OpenConext\Value\TestDataProvider::notString
      *
+     * @dataProvider \OpenConext\Value\TestDataProvider::notString
      * @expectedException \OpenConext\Value\Exception\InvalidArgumentException
+     *
+     * @param mixed $invalidScope
      */
     public function a_list_can_only_determine_if_strings_are_in_scope($invalidScope)
     {

@@ -8,7 +8,6 @@ class EntityTypeTest extends UnitTest
 {
     /**
      * @test
-     * @group saml
      */
     public function the_same_entity_types_are_considered_equal()
     {
@@ -22,7 +21,6 @@ class EntityTypeTest extends UnitTest
 
     /**
      * @test
-     * @group saml
      *
      * @expectedException \OpenConext\Value\Exception\InvalidArgumentException
      */

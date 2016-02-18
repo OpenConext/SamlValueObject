@@ -11,17 +11,21 @@ class TestDataProvider
         return array(
             'integer' => array(1),
             'float'   => array(1.234),
+            'true'    => array(true),
+            'false'   => array(false),
             'array'   => array(array()),
-            'object'  => array(new stdClass())
+            'object'  => array(new stdClass()),
+            'null'    => array(null)
         );
     }
 
-    public static function notEmptyString()
+    public static function notStringOrEmptyString()
     {
         return array_merge(
             self::notString(),
             array(
                 'empty string'    => array(''),
+                'new line only'   => array("\n"),
                 'only whitespace' => array('   '),
                 'nullbyte'        => array(chr(0)),
             )
@@ -31,7 +35,7 @@ class TestDataProvider
     public static function notSingleCharacter()
     {
         return array_merge(
-            self::notEmptyString(),
+            self::notStringOrEmptyString(),
             array(
                 'multiple characters' => array('ab')
             )

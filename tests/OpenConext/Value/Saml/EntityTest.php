@@ -8,7 +8,7 @@ class EntityTest extends UnitTest
 {
     /**
      * @test
-     * @group saml
+     * @group entity
      */
     public function two_entities_with_the_same_entity_id_and_entity_type_are_equal()
     {
@@ -31,13 +31,13 @@ class EntityTest extends UnitTest
     }
 
     /**
-     * @param $invalidDescriptor
-     *
      * @test
-     * @group        saml
-     * @dataProvider invalidDescriptorProvider
+     * @group entity
      *
+     * @dataProvider invalidDescriptorProvider
      * @expectedException \OpenConext\Value\Exception\InvalidArgumentException
+     *
+     * @param $invalidDescriptor
      */
     public function a_descriptor_must_have_exactly_two_elements_with_the_second_being_sp_or_idp($invalidDescriptor)
     {
@@ -56,7 +56,7 @@ class EntityTest extends UnitTest
 
     /**
      * @test
-     * @group saml
+     * @group entity
      */
     public function a_valid_descriptor_creates_an_entity()
     {

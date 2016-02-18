@@ -7,13 +7,13 @@ use PHPUnit_Framework_TestCase as UnitTest;
 class EntityIdTest extends UnitTest
 {
     /**
-     * @param mixed $invalidValue
-     *
      * @test
-     * @group        saml
-     * @dataProvider \OpenConext\Value\TestDataProvider::notEmptyString
+     * @group entity
      *
+     * @dataProvider \OpenConext\Value\TestDataProvider::notStringOrEmptyString
      * @expectedException \OpenConext\Value\Exception\InvalidArgumentException
+     *
+     * @param mixed $invalidValue
      */
     public function only_non_empty_strings_are_valid_entity_ids($invalidValue)
     {
@@ -22,7 +22,7 @@ class EntityIdTest extends UnitTest
 
     /**
      * @test
-     * @group saml
+     * @group entity
      */
     public function the_same_entity_ids_are_considered_equal()
     {
@@ -36,7 +36,7 @@ class EntityIdTest extends UnitTest
 
     /**
      * @test
-     * @group saml
+     * @group entity
      */
     public function the_given_entity_id_value_can_be_retrieved()
     {

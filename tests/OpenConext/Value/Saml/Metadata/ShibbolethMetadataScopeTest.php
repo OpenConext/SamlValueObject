@@ -7,14 +7,13 @@ use PHPUnit_Framework_TestCase as UnitTest;
 class ShibbolethMetadataScopeTest extends UnitTest
 {
     /**
-     * @param mixed $literal
-     *
      * @test
-     * @group saml
      * @group metadata
      *
      * @expectedException \OpenConext\Value\Exception\InvalidArgumentException
-     * @dataProvider \OpenConext\Value\TestDataProvider::notEmptyString
+     * @dataProvider \OpenConext\Value\TestDataProvider::notStringOrEmptyString
+     *
+     * @param mixed $literal
      */
     public function a_literal_scope_only_accepts_a_non_empty_string($literal)
     {
@@ -22,14 +21,13 @@ class ShibbolethMetadataScopeTest extends UnitTest
     }
 
     /**
-     * @param mixed $regexp
-     *
      * @test
-     * @group saml
      * @group metadata
      *
      * @expectedException \OpenConext\Value\Exception\InvalidArgumentException
-     * @dataProvider \OpenConext\Value\TestDataProvider::notEmptyString
+     * @dataProvider \OpenConext\Value\TestDataProvider::notStringOrEmptyString
+     *
+     * @param mixed $regexp
      */
     public function a_regex_scope_only_accepts_a_non_empty_string($regexp)
     {
@@ -38,7 +36,6 @@ class ShibbolethMetadataScopeTest extends UnitTest
 
     /**
      * @test
-     * @group saml
      * @group metadata
      */
     public function a_literal_scope_is_not_equal_to_a_regexp_scope()
@@ -51,7 +48,6 @@ class ShibbolethMetadataScopeTest extends UnitTest
 
     /**
      * @test
-     * @group saml
      * @group metadata
      */
     public function literal_scopes_are_compared_based_on_the_literal()
@@ -73,7 +69,6 @@ class ShibbolethMetadataScopeTest extends UnitTest
 
     /**
      * @test
-     * @group saml
      * @group metadata
      */
     public function regex_scopes_are_compared_based_on_the_regexp_given()
@@ -95,7 +90,6 @@ class ShibbolethMetadataScopeTest extends UnitTest
 
     /**
      * @test
-     * @group saml
      * @group metadata
      */
     public function a_literal_scopes_allows_only_exact_matches()
@@ -109,7 +103,6 @@ class ShibbolethMetadataScopeTest extends UnitTest
 
     /**
      * @test
-     * @group saml
      * @group metadata
      */
     public function a_regex_scope_allows_matches()
