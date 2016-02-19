@@ -49,7 +49,7 @@ class EntityTest extends UnitTest
         return array (
             'no elements'    => array(array()),
             'one element'    => array(array('UM')),
-            'three elements' => array(array('UM', 'sp', 'ermagerd')),
+            'three elements' => array(array('UM', 'sp', 'third element')),
             'not sp or idp'  => array(array('UM', 'foobar'))
         );
     }
@@ -67,5 +67,76 @@ class EntityTest extends UnitTest
         $this->assertTrue($entity->isServiceProvider());
         $this->assertTrue($entity->equals($same));
         $this->assertFalse($entity->equals($otherType));
+    }
+
+    /**
+     * @test
+     * @group entity
+     */
+    public function the_entity_id_of_an_entity_can_be_compared()
+    {
+        $entityId = new EntityId('OpenConext');
+        $sameEntityId = new EntityId('OpenConext');
+        $otherEntityId = new EntityId('Some Other Org');
+
+        $entity = new Entity($entityId, EntityType::SP());
+
+        $this->assertTrue($entity->hasEntityId($sameEntityId));
+        $this->assertFalse($entity->hasEntityId($otherEntityId));
+    }
+
+    /**
+     * @test
+     * @group entity
+     */
+    public function an_entity_can_assert_which_type_it_is()
+    {
+        $sp = new Entity(new EntityId('OpenConext'), EntityType::SP());
+        $idp = new Entity(new EntityId('OpenConext'), EntityType::IdP());
+
+        $this->assertTrue($sp->isServiceProvider());
+        $this->assertFalse($sp->isIdentityProvider());
+
+        $this->assertTrue($idp->isIdentityProvider());
+        $this->assertFalse($idp->isServiceProvider());
+    }
+
+    /**
+     * @test
+     * @group entity
+     */
+    public function the_entity_id_can_be_retrieved()
+    {
+        $entityId = new EntityId('OpenConext');
+        $entity = new Entity($entityId, EntityType::SP());
+
+        $this->assertTrue($entity->getEntityId()->equals($entityId));
+    }
+
+    /**
+     * @test
+     * @group entity
+     */
+    public function the_entity_type_can_be_retrieved()
+    {
+        $entityType = EntityType::SP();
+        $entity = new Entity(new EntityId('OpenConext'), $entityType);
+
+        $this->assertTrue($entity->getEntityType()->equals($entityType));
+    }
+
+    /**
+     * @test
+     * @group entity
+     */
+    public function an_entity_can_be_cast_to_a_known_format_string()
+    {
+        $entityId = new EntityId('OpenConext');
+        $entityType = EntityType::SP();
+
+        $entity = new Entity($entityId, $entityType);
+        $expected = sprintf('%s (%s)', $entityId, $entityType);
+
+        $this->assertEquals($expected, (string) $entity);
     }
 }

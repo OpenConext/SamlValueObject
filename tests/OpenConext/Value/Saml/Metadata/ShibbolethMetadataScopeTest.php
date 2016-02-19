@@ -2,6 +2,7 @@
 
 namespace OpenConext\Value\Saml\Metadata;
 
+use OpenConext\Value\Exception\InvalidArgumentException;
 use PHPUnit_Framework_TestCase as UnitTest;
 
 class ShibbolethMetadataScopeTest extends UnitTest
@@ -70,6 +71,35 @@ class ShibbolethMetadataScopeTest extends UnitTest
     /**
      * @test
      * @group metadata
+     *
+     * @dataProvider \OpenConext\Value\TestDataProvider::notStringOrEmptyString
+     * @expectedException InvalidArgumentException
+     *
+     * @param mixed $invalidValue
+     */
+    public function a_regex_scope_can_only_be_created_using_a_non_empty_string($invalidValue)
+    {
+        ShibbolethMetadataScope::regexp($invalidValue);
+    }
+
+    /**
+     * @test
+     * @group        metadata
+     *
+     * @dataProvider \OpenConext\Value\TestDataProvider::notString
+     * @expectedException InvalidArgumentException
+     *
+     * @param mixed $notString
+     */
+    public function the_value_to_verify_if_allowed_must_be_a_string($notString)
+    {
+        $scope = ShibbolethMetadataScope::literal('foo');
+        $scope->allows($notString);
+    }
+
+    /**
+     * @test
+     * @group metadata
      */
     public function regex_scopes_are_compared_based_on_the_regexp_given()
     {
@@ -113,5 +143,18 @@ class ShibbolethMetadataScopeTest extends UnitTest
         $this->assertTrue($scope->allows('aAAa'));
         $this->assertFalse($scope->allows('aaba'));
         $this->assertFalse($scope->allows('1231'));
+    }
+
+    /**
+     * @test
+     * @group metadata
+     */
+    public function a_scope_can_be_cast_to_a_known_format_string()
+    {
+        $literal = ShibbolethMetadataScope::literal('foo');
+        $regex = ShibbolethMetadataScope::regexp('/abc/');
+
+        $this->assertEquals('ShibbolethMetadataScope(literal=foo)', (string) $literal);
+        $this->assertEquals('ShibbolethMetadataScope(regexp=/abc/)', (string) $regex);
     }
 }

@@ -57,4 +57,61 @@ class ShibbolethMetadataScopeListTest extends UnitTest
 
         $list->inScope($invalidScope);
     }
+
+    /**
+     * @test
+     * @group metadata
+     */
+    public function a_list_can_be_iterated_over()
+    {
+        $literal = ShibbolethMetadataScope::literal('foo');
+        $regexp = ShibbolethMetadataScope::regexp('/a{3,4}/i');
+
+        $list = new ShibbolethMetadataScopeList(array($literal, $regexp));
+
+        $unknownScopeSeen = false;
+        $literalSeen = $regexpSeen = false;
+
+        foreach ($list as $scope) {
+            if (!$literalSeen && $scope === $literal) {
+                $literalSeen = true;
+            } elseif (!$regexpSeen && $scope === $regexp) {
+                $regexpSeen = true;
+            } else {
+                $unknownScopeSeen = true;
+            }
+        }
+
+        $this->assertFalse($unknownScopeSeen, 'Unknown scope seen when iterating over ScopeList with known elements');
+        $this->assertTrue($literalSeen, 'Missing literal scope when iterating over ScopeList with literal scope');
+        $this->assertTrue($regexpSeen, 'Missing regexp scope when iterating over ScopeList with regexp scope');
+    }
+
+    /**
+     * @test
+     * @group metadata
+     */
+    public function a_list_can_be_counted()
+    {
+        $literal = ShibbolethMetadataScope::literal('foo');
+        $regexp  = ShibbolethMetadataScope::regexp('/a{3,4}/i');
+
+        $list = new ShibbolethMetadataScopeList(array($literal, $regexp));
+
+        $this->assertEquals(2, count($list));
+    }
+
+    /**
+     * @test
+     * @group metadata
+     */
+    public function a_list_can_be_cast_to_string()
+    {
+        $literal = ShibbolethMetadataScope::literal('foo');
+        $regexp  = ShibbolethMetadataScope::regexp('/a{3,4}/i');
+
+        $list = new ShibbolethMetadataScopeList(array($literal, $regexp));
+
+        $this->assertStringStartsWith('ShibbolethMetadataScopeList', (string) $list);
+    }
 }

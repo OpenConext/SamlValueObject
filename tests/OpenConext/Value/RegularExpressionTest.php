@@ -22,7 +22,7 @@ class RegularExpressionTest extends UnitTest
 
     /**
      * @test
-     * @group        value
+     * @group value
      *
      * @dataProvider \OpenConext\Value\TestDataProvider::invalidRegularExpressionProvider
      */
@@ -33,7 +33,7 @@ class RegularExpressionTest extends UnitTest
 
     /**
      * @test
-     * @group        value
+     * @group value
      *
      * @dataProvider \OpenConext\Value\TestDataProvider::invalidRegularExpressionProvider
      *
@@ -47,11 +47,39 @@ class RegularExpressionTest extends UnitTest
     /**
      * @test
      * @group value
+     *
+     * @dataProvider \OpenConext\Value\TestDataProvider::notString
+     * @expectedException InvalidArgumentException
+     *
+     * @param mixed $invalidArgument
+     */
+    public function matches_requires_a_string_argument($invalidArgument)
+    {
+        $regularExpression = new RegularExpression('/abc/i');
+        $regularExpression->matches($invalidArgument);
+    }
+
+    /**
+     * @test
+     * @group value
+     */
+    public function matches_tests_the_regular_expression_against_the_string()
+    {
+        $regularExpression = new RegularExpression('/abc/i');
+
+        $this->assertTrue($regularExpression->matches('abc'));
+        $this->assertTrue($regularExpression->matches('aBC'));
+        $this->assertFalse($regularExpression->matches('bde'));
+    }
+
+    /**
+     * @test
+     * @group value
      */
     public function regexes_with_the_same_pattern_are_equal()
     {
-        $base                 = new RegularExpression('/abc/i');
-        $theSame              = new RegularExpression('/abc/i');
+        $base    = new RegularExpression('/abc/i');
+        $theSame = new RegularExpression('/abc/i');
 
         $this->assertTrue($base->equals($theSame), 'Expected regular expressions to equal each other');
     }
@@ -75,5 +103,19 @@ class RegularExpressionTest extends UnitTest
             $base->equals($differentByDelimiter),
             'Regular expressions with different delimiters must not be equal'
         );
+    }
+
+    /**
+     * @test
+     * @group value
+     */
+    public function a_regular_expression_can_be_cast_to_string()
+    {
+        $pattern = '/abc/i';
+        $regularExpression = new RegularExpression($pattern);
+
+        $string = (string) $regularExpression;
+
+        $this->assertEquals($pattern, $string);
     }
 }

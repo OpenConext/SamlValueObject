@@ -46,4 +46,17 @@ class EntityIdTest extends UnitTest
 
         $this->assertSame($entityIdValue, $entityId->getEntityId());
     }
+
+    /**
+     * @test
+     * @group entity
+     */
+    public function an_entity_id_can_be_cast_to_string()
+    {
+        $entityIdValue = 'OpenContextEntityID';
+
+        $entityId = new EntityId($entityIdValue);
+
+        $this->assertEquals($entityIdValue, (string) $entityId);
+    }
 }

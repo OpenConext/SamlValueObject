@@ -118,4 +118,34 @@ class EntitySetTest extends TestCase
 
         $this->assertCount(1, $entitySet);
     }
+
+    /**
+     * @test
+     * @group entity
+     */
+    public function an_entity_set_can_be_iterated_over()
+    {
+        $entityInSetOne = new Entity(new EntityId('RUG'), EntityType::SP());
+        $entityInSetTwo = new Entity(new EntityId('HU'), EntityType::IdP());
+
+        $entitySet = new EntitySet(array($entityInSetOne, $entityInSetTwo));
+
+        $unknownEntityFound = false;
+        $entityOneSeen = false;
+        $entityTwoSeen = false;
+
+        foreach ($entitySet as $entity) {
+            if (!$entityOneSeen && $entity === $entityInSetOne) {
+                $entityOneSeen = true;
+            } elseif (!$entityTwoSeen && $entity === $entityInSetTwo) {
+                $entityTwoSeen = true;
+            } else {
+                $unknownEntityFound = true;
+            }
+        }
+
+        $this->assertFalse($unknownEntityFound, 'Unknown entity discovered when iterating over set');
+        $this->assertTrue($entityOneSeen, 'Expected to see defined entityInSetOne when iterating over set');
+        $this->assertTrue($entityTwoSeen, 'Expected to see defined entityInSetTwo when iterating over set');
+    }
 }
