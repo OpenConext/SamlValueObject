@@ -52,4 +52,17 @@ class TestDataProvider
             'unknown modifier'      => array('/abc/d'),
         );
     }
+
+    public static function notRfc822CompliantEmail()
+    {
+        return array_merge(
+            self::notStringOrEmptyString(),
+            array(
+                'no @-sign'       => array('mailboxexample.invalid'),
+                'no tld'          => array('mailbox@example'),
+                'no mailbox'      => array('@example.invalid'),
+                'invalid mailbox' => array('(｡◕‿◕｡)@example.invalid'),
+            )
+        );
+    }
 }
