@@ -47,10 +47,12 @@ class EntityTest extends UnitTest
     public function invalidDescriptorProvider()
     {
         return array (
-            'no elements'    => array(array()),
-            'one element'    => array(array('UM')),
-            'three elements' => array(array('UM', 'sp', 'third element')),
-            'not sp or idp'  => array(array('UM', 'foobar'))
+            'no elements'           => array(array()),
+            'one element'           => array(array('UM')),
+            'three elements'        => array(array('UM', 'sp', 'third element')),
+            'not sp or idp'         => array(array('UM', 'foobar')),
+            'non-string entityId'   => array(array(1, 'sp')),
+            'non-string entitytype' => array(array('UM', 1))
         );
     }
 
