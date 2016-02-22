@@ -15,6 +15,9 @@ final class EmailAddressList implements Countable, IteratorAggregate
      */
     private $emailAddresses;
 
+    /**
+     * @param EmailAddress[] $emailAddresses
+     */
     public function __construct(array $emailAddresses)
     {
         foreach ($emailAddresses as $index => $emailAddress) {

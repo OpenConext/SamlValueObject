@@ -12,7 +12,7 @@ final class GivenName
     private $givenName;
 
     /**
-     ** @param string $givenName
+     * @param string $givenName
      */
     public function __construct($givenName)
     {

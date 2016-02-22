@@ -15,6 +15,9 @@ final class TelephoneNumberList implements Countable, IteratorAggregate
      */
     private $telephoneNumbers;
 
+    /**
+     * @param TelephoneNumber[] $telephoneNumbers
+     */
     public function __construct(array $telephoneNumbers)
     {
         foreach ($telephoneNumbers as $index => $telephoneNumber) {

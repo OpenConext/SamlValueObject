@@ -17,8 +17,8 @@ final class OrganizationDisplayName
     private $language;
 
     /**
-     * @param $displayName
-     * @param $language
+     * @param string $displayName
+     * @param string $language
      */
     public function __construct($displayName, $language)
     {
