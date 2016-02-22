@@ -6,6 +6,22 @@ use stdClass;
 
 class TestDataProvider
 {
+    public static function notInteger()
+    {
+        return array_merge(
+            self::emtpyString(),
+            array(
+                'float'   => array(1.234),
+                'true'    => array(true),
+                'false'   => array(false),
+                'array'   => array(array()),
+                'object'  => array(new stdClass()),
+                'null'    => array(null),
+                'string'  => array('string')
+            )
+        );
+    }
+
     public static function notString()
     {
         return array(
@@ -23,12 +39,17 @@ class TestDataProvider
     {
         return array_merge(
             self::notString(),
-            array(
-                'empty string'    => array(''),
-                'new line only'   => array("\n"),
-                'only whitespace' => array('   '),
-                'nullbyte'        => array(chr(0)),
-            )
+            self::emtpyString()
+        );
+    }
+
+    public static function emtpyString()
+    {
+        return array(
+            'empty string'    => array(''),
+            'new line only'   => array("\n"),
+            'only whitespace' => array('   '),
+            'nullbyte'        => array(chr(0)),
         );
     }
 
