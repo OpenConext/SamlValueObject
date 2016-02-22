@@ -97,6 +97,6 @@ final class Entity
 
     public function __toString()
     {
-        return $this->entityId . ' (' . $this->entityType . ')';
+        return sprintf('%s (%s)', $this->entityId, $this->entityType);
     }
 }
