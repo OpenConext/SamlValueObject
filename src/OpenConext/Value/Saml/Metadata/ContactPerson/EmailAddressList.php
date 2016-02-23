@@ -5,8 +5,8 @@ namespace OpenConext\Value\Saml\Metadata\ContactPerson;
 use ArrayIterator;
 use Countable;
 use IteratorAggregate;
+use OpenConext\Value\Assert\Assertion;
 use OpenConext\Value\Exception\IndexOutOfBoundsException;
-use OpenConext\Value\Exception\InvalidArgumentException;
 
 final class EmailAddressList implements Countable, IteratorAggregate
 {
@@ -20,17 +20,9 @@ final class EmailAddressList implements Countable, IteratorAggregate
      */
     public function __construct(array $emailAddresses)
     {
-        foreach ($emailAddresses as $index => $emailAddress) {
-            if (!$emailAddress instanceof EmailAddress) {
-                throw new InvalidArgumentException(sprintf(
-                    'Unexpected value found when creating EmailAddressList at index "%d": "%s"',
-                    $index,
-                    (is_object($emailAddress) ? get_class($emailAddress) : gettype($emailAddress))
-                ));
-            }
+        Assertion::allIsInstanceOf($emailAddresses, '\OpenConext\Value\Saml\Metadata\ContactPerson\EmailAddress');
 
-            $this->emailAddresses[] = $emailAddress;
-        }
+        $this->emailAddresses = array_values($emailAddresses);
     }
 
     /**
@@ -78,9 +70,7 @@ final class EmailAddressList implements Countable, IteratorAggregate
      */
     public function get($index)
     {
-        if (!is_int($index)) {
-            throw InvalidArgumentException::invalidType('integer', 'index', $index);
-        }
+        Assertion::integer($index);
 
         if ($index < 0) {
             throw IndexOutOfBoundsException::tooLow($index, 0);

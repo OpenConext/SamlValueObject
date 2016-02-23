@@ -2,6 +2,7 @@
 
 namespace OpenConext\Value;
 
+use OpenConext\Value\Assert\Assertion;
 use OpenConext\Value\Exception\InvalidArgumentException;
 
 final class RegularExpression
@@ -11,18 +12,19 @@ final class RegularExpression
      */
     private $pattern;
 
+    /**
+     * @param $regularExpression
+     * @return bool
+     */
     public static function isValidRegularExpression($regularExpression)
     {
-        $pregMatchErrored = false;
-        set_error_handler(function () use (&$pregMatchErrored) {
-            $pregMatchErrored = true;
-        });
+        try {
+            Assertion::validRegularExpression($regularExpression, 'regularExpression');
+        } catch (InvalidArgumentException $exception) {
+            return false;
+        }
 
-        preg_match($regularExpression, 'some test string');
-
-        restore_error_handler();
-
-        return !$pregMatchErrored && !preg_last_error();
+        return true;
     }
 
     /**
@@ -30,16 +32,8 @@ final class RegularExpression
      */
     public function __construct($pattern)
     {
-        if (!is_string($pattern) || trim($pattern) === '') {
-            throw InvalidArgumentException::invalidType('non-blank string', 'pattern', $pattern);
-        }
-
-        if (!self::isValidRegularExpression($pattern)) {
-            throw new InvalidArgumentException(sprintf(
-                'The pattern "%s" is not a valid regular expression',
-                $pattern
-            ));
-        }
+        Assertion::nonEmptyString($pattern, 'pattern');
+        Assertion::validRegularExpression($pattern, 'pattern');
 
         $this->pattern = $pattern;
     }
@@ -50,9 +44,7 @@ final class RegularExpression
      */
     public function matches($string)
     {
-        if (!is_string($string)) {
-            throw InvalidArgumentException::invalidType('string', 'string', $string);
-        }
+        Assertion::string($string, 'String to match pattern against is not a string, "%s" given');
 
         return preg_match($this->pattern, $string) === 1;
     }

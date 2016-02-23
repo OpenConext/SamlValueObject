@@ -2,6 +2,7 @@
 
 namespace OpenConext\Value\Saml\Metadata\Organization;
 
+use OpenConext\Value\Assert\Assertion;
 use OpenConext\Value\Exception\InvalidArgumentException;
 
 final class OrganizationDisplayName
@@ -22,13 +23,8 @@ final class OrganizationDisplayName
      */
     public function __construct($displayName, $language)
     {
-        if (!is_string($displayName) || trim($displayName) === '') {
-            throw InvalidArgumentException::invalidType('non-empty string', 'displayName', $displayName);
-        }
-
-        if (!is_string($language) || trim($language) === '') {
-            throw InvalidArgumentException::invalidType('non-empty string', 'language', $language);
-        }
+        Assertion::nonEmptyString($displayName, 'displayName');
+        Assertion::nonEmptyString($language, 'language');
 
         $this->displayName = $displayName;
         $this->language = $language;

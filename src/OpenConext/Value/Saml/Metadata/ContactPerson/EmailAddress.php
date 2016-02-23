@@ -2,7 +2,7 @@
 
 namespace OpenConext\Value\Saml\Metadata\ContactPerson;
 
-use OpenConext\Value\Exception\InvalidArgumentException;
+use OpenConext\Value\Assert\Assertion;
 
 final class EmailAddress
 {
@@ -16,13 +16,7 @@ final class EmailAddress
      */
     public function __construct($emailAddress)
     {
-        if (!filter_var($emailAddress, FILTER_VALIDATE_EMAIL)) {
-            throw InvalidArgumentException::invalidType(
-                'RFC 822 compliant email address',
-                'emailAddress',
-                $emailAddress
-            );
-        }
+        Assertion::email($emailAddress);
 
         $this->emailAddress = $emailAddress;
     }

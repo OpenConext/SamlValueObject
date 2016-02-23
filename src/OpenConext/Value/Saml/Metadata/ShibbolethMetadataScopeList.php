@@ -5,7 +5,7 @@ namespace OpenConext\Value\Saml\Metadata;
 use ArrayIterator;
 use Countable;
 use IteratorAggregate;
-use OpenConext\Value\Exception\InvalidArgumentException;
+use OpenConext\Value\Assert\Assertion;
 
 final class ShibbolethMetadataScopeList implements IteratorAggregate, Countable
 {
@@ -39,9 +39,7 @@ final class ShibbolethMetadataScopeList implements IteratorAggregate, Countable
      */
     public function inScope($string)
     {
-        if (!is_string($string)) {
-            throw InvalidArgumentException::invalidType('string', 'string', $string);
-        }
+        Assertion::string($string, 'Scope to check must be a string, "%s" given', 'string');
 
         foreach ($this->scopes as $scope) {
             if ($scope->allows($string)) {

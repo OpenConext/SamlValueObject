@@ -2,7 +2,7 @@
 
 namespace OpenConext\Value\Saml\Metadata\ContactPerson;
 
-use OpenConext\Value\Exception\InvalidArgumentException;
+use OpenConext\Value\Assert\Assertion;
 
 final class Company
 {
@@ -16,9 +16,7 @@ final class Company
      */
     public function __construct($company)
     {
-        if (!is_string($company) || trim($company) === '') {
-            throw InvalidArgumentException::invalidType('non-blank string', 'company', $company);
-        }
+        Assertion::nonEmptyString($company, 'company');
 
         $this->company = $company;
     }

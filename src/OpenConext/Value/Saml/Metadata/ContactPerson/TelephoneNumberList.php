@@ -5,6 +5,7 @@ namespace OpenConext\Value\Saml\Metadata\ContactPerson;
 use ArrayIterator;
 use Countable;
 use IteratorAggregate;
+use OpenConext\Value\Assert\Assertion;
 use OpenConext\Value\Exception\IndexOutOfBoundsException;
 use OpenConext\Value\Exception\InvalidArgumentException;
 
@@ -20,17 +21,9 @@ final class TelephoneNumberList implements Countable, IteratorAggregate
      */
     public function __construct(array $telephoneNumbers)
     {
-        foreach ($telephoneNumbers as $index => $telephoneNumber) {
-            if (!$telephoneNumber instanceof TelephoneNumber) {
-                throw new InvalidArgumentException(sprintf(
-                    'Unexpected value found when creating TelephoneNumberList at index "%d": "%s"',
-                    $index,
-                    (is_object($telephoneNumber) ? get_class($telephoneNumber) : gettype($telephoneNumber))
-                ));
-            }
+        Assertion::allIsInstanceOf($telephoneNumbers, '\OpenConext\Value\Saml\Metadata\ContactPerson\TelephoneNumber');
 
-            $this->telephoneNumbers[] = $telephoneNumber;
-        }
+        $this->telephoneNumbers = array_values($telephoneNumbers);
     }
 
     /**
@@ -78,9 +71,7 @@ final class TelephoneNumberList implements Countable, IteratorAggregate
      */
     public function get($index)
     {
-        if (!is_int($index)) {
-            throw InvalidArgumentException::invalidType('integer', 'index', $index);
-        }
+        Assertion::integer($index);
 
         if ($index < 0) {
             throw IndexOutOfBoundsException::tooLow($index, 0);

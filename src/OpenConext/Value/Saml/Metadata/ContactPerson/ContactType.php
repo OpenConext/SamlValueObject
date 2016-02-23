@@ -2,7 +2,7 @@
 
 namespace OpenConext\Value\Saml\Metadata\ContactPerson;
 
-use OpenConext\Value\Exception\InvalidArgumentException;
+use OpenConext\Value\Assert\Assertion;
 
 final class ContactType
 {
@@ -30,10 +30,8 @@ final class ContactType
      */
     public function __construct($type)
     {
-        if (!in_array($type, self::$validTypes)) {
-            $validMessage = 'one of "ContactType::' . implode(', ContactType::', self::$validTypes) . '"';
-            throw InvalidArgumentException::invalidType($validMessage, 'type', $type);
-        }
+        $validMessage = 'one of "ContactType::' . implode(', ContactType::', self::$validTypes) . '"';
+        Assertion::inArray($type, self::$validTypes, $validMessage);
 
         $this->type = $type;
     }

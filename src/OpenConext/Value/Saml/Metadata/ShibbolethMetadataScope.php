@@ -2,7 +2,7 @@
 
 namespace OpenConext\Value\Saml\Metadata;
 
-use OpenConext\Value\Exception\InvalidArgumentException;
+use OpenConext\Value\Assert\Assertion;
 use OpenConext\Value\RegularExpression;
 
 final class ShibbolethMetadataScope
@@ -23,9 +23,7 @@ final class ShibbolethMetadataScope
      */
     public static function literal($literal)
     {
-        if (!is_string($literal) || trim($literal) === '') {
-            throw InvalidArgumentException::invalidType('not-blank string', 'literal', $literal);
-        }
+        Assertion::nonEmptyString($literal, 'literal');
 
         $scope          = new ShibbolethMetadataScope();
         $scope->literal = $literal;
@@ -39,9 +37,7 @@ final class ShibbolethMetadataScope
      */
     public static function regexp($regexp)
     {
-        if (!is_string($regexp) || trim($regexp) === '') {
-            throw InvalidArgumentException::invalidType('non-blank string', 'regexp', $regexp);
-        }
+        Assertion::nonEmptyString($regexp, 'regexp');
 
         $scope         = new ShibbolethMetadataScope();
         $scope->regexp = new RegularExpression($regexp);
@@ -59,9 +55,7 @@ final class ShibbolethMetadataScope
      */
     public function allows($string)
     {
-        if (!is_string($string)) {
-            throw InvalidArgumentException::invalidType('string', 'string', $string);
-        }
+        Assertion::string($string, 'Scope to check should be a string, "%s" given');
 
         if ($this->literal !== null) {
             return $this->literal === $string;

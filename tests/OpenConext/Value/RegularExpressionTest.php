@@ -34,6 +34,15 @@ class RegularExpressionTest extends UnitTest
     /**
      * @test
      * @group value
+     */
+    public function a_valid_regular_expression_can_be_tested_for_being_valid()
+    {
+        $this->assertTrue(RegularExpression::isValidRegularExpression('/abc/i'));
+    }
+
+    /**
+     * @test
+     * @group value
      *
      * @dataProvider \OpenConext\Value\TestDataProvider::invalidRegularExpressionProvider
      *

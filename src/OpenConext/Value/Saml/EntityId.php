@@ -2,7 +2,7 @@
 
 namespace OpenConext\Value\Saml;
 
-use OpenConext\Value\Exception\InvalidArgumentException;
+use OpenConext\Value\Assert\Assertion;
 
 final class EntityId
 {
@@ -16,9 +16,7 @@ final class EntityId
      */
     public function __construct($entityId)
     {
-        if (!is_string($entityId) || trim($entityId) === '') {
-            throw InvalidArgumentException::invalidType('non-blank string', 'entityId', $entityId);
-        }
+        Assertion::nonEmptyString($entityId, 'entityId');
 
         $this->entityId = $entityId;
     }

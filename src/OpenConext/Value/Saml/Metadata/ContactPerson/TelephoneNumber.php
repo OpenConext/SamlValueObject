@@ -2,7 +2,7 @@
 
 namespace OpenConext\Value\Saml\Metadata\ContactPerson;
 
-use OpenConext\Value\Exception\InvalidArgumentException;
+use OpenConext\Value\Assert\Assertion;
 
 final class TelephoneNumber
 {
@@ -16,9 +16,7 @@ final class TelephoneNumber
      */
     public function __construct($telephoneNumber)
     {
-        if (!is_string($telephoneNumber) || trim($telephoneNumber) === '') {
-            throw InvalidArgumentException::invalidType('non-empty string', 'telephoneNumber', $telephoneNumber);
-        }
+        Assertion::nonEmptyString($telephoneNumber, 'telephoneNumber');
 
         $this->telephoneNumber = $telephoneNumber;
     }
