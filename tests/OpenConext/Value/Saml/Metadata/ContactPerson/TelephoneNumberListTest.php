@@ -245,6 +245,37 @@ class TelephoneNumberListTest extends UnitTest
      * @group metadata
      * @group contactperson
      */
+    public function deserializing_a_serialized_telephone_number_list_results_in_an_equal_value_object()
+    {
+        $numberOne = new TelephoneNumber('123');
+        $numberTwo = new TelephoneNumber('456');
+
+        $original     = new TelephoneNumberList(array($numberTwo, $numberOne, $numberTwo));
+        $deserialized = TelephoneNumberList::deserialize($original->serialize());
+
+        $this->assertTrue($original->equals($deserialized));
+    }
+
+    /**
+     * @test
+     * @group        metadata
+     * @group        contactperson
+     *
+     * @dataProvider \OpenConext\Value\TestDataProvider::notArray
+     * @expectedException InvalidArgumentException
+     *
+     * @param mixed $notArray
+     */
+    public function deserialization_requires_an_array($notArray)
+    {
+        TelephoneNumberList::deserialize($notArray);
+    }
+
+    /**
+     * @test
+     * @group metadata
+     * @group contactperson
+     */
     public function a_telephone_number_list_can_be_cast_to_string()
     {
         $numberOne = new TelephoneNumber('123');

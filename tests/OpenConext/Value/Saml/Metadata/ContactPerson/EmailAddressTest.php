@@ -56,6 +56,37 @@ class EmailAddressTest extends UnitTest
      * @group metadata
      * @group contactperson
      */
+    public function deserializing_an_email_address_results_in_an_equal_value_object()
+    {
+        $emailAddress = 'homer@domain.invalid';
+
+        $original     = new EmailAddress($emailAddress);
+        $deserialized = EmailAddress::deserialize($original->serialize());
+
+        $this->assertTrue($original->equals($deserialized));
+        $this->assertEquals($emailAddress, $deserialized->getEmailAddress());
+    }
+
+    /**
+     * @test
+     * @group        metadata
+     * @group        contactperson
+     *
+     * @dataProvider \OpenConext\Value\TestDataProvider::notRfc822CompliantEmail()
+     * @expectedException InvalidArgumentException
+     *
+     * @param mixed $invalidData
+     */
+    public function deserialization_requires_valid_data($invalidData)
+    {
+        EmailAddress::deserialize($invalidData);
+    }
+
+    /**
+     * @test
+     * @group metadata
+     * @group contactperson
+     */
     public function email_address_can_be_cast_to_string()
     {
         $email = 'OpenConext@domain.invalid';

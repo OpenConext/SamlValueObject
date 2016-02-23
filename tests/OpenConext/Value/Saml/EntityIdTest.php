@@ -2,6 +2,7 @@
 
 namespace OpenConext\Value\Saml;
 
+use OpenConext\Value\Exception\InvalidArgumentException;
 use PHPUnit_Framework_TestCase as UnitTest;
 
 class EntityIdTest extends UnitTest
@@ -11,7 +12,7 @@ class EntityIdTest extends UnitTest
      * @group entity
      *
      * @dataProvider \OpenConext\Value\TestDataProvider::notStringOrEmptyString
-     * @expectedException \OpenConext\Value\Exception\InvalidArgumentException
+     * @expectedException InvalidArgumentException
      *
      * @param mixed $invalidValue
      */
@@ -45,6 +46,34 @@ class EntityIdTest extends UnitTest
         $entityId = new EntityId($entityIdValue);
 
         $this->assertSame($entityIdValue, $entityId->getEntityId());
+    }
+
+    /**
+     * @test
+     * @group metadata
+     * @group entity
+     */
+    public function deserializing_a_serialized_entity_id_results_in_an_equal_value_object()
+    {
+        $original     = new EntityId('OpenConext.org');
+        $deserialized = EntityId::deserialize($original->serialize());
+
+        $this->assertTrue($original->equals($deserialized));
+    }
+
+    /**
+     * @test
+     * @group metadata
+     * @group entity
+     *
+     * @dataProvider \OpenConext\Value\TestDataProvider::notStringOrEmptyString
+     * @expectedException InvalidArgumentException
+     *
+     * @param mixed $invalidData
+     */
+    public function deserialization_requires_valid_data($invalidData)
+    {
+        EntityId::deserialize($invalidData);
     }
 
     /**

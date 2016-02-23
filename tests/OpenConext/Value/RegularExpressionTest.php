@@ -97,6 +97,19 @@ class RegularExpressionTest extends UnitTest
      * @test
      * @group value
      */
+    public function the_pattern_can_be_retrieved()
+    {
+        $pattern = '/a{3,4}/i';
+
+        $regularExpression = new RegularExpression($pattern);
+
+        $this->assertEquals($pattern, $regularExpression->getPattern());
+    }
+
+    /**
+     * @test
+     * @group value
+     */
     public function regexes_with_a_different_pattern_are_not_equal()
     {
         $base                 = new RegularExpression('/abc/');
@@ -112,6 +125,36 @@ class RegularExpressionTest extends UnitTest
             $base->equals($differentByDelimiter),
             'Regular expressions with different delimiters must not be equal'
         );
+    }
+
+    /**
+     * @test
+     * @group value
+     */
+    public function deserializing_a_serialized_regular_expression_results_in_an_equal_value_object()
+    {
+        $regularExpression = '/abc/i';
+
+        $original     = new RegularExpression($regularExpression);
+        $deserialized = RegularExpression::deserialize($original->serialize());
+
+        $this->assertTrue($original->equals($deserialized));
+        $this->assertEquals($regularExpression, $deserialized->getPattern());
+    }
+
+    /**
+     * @test
+     * @group        metadata
+     * @group        contactperson
+     *
+     * @dataProvider \OpenConext\Value\TestDataProvider::invalidRegularExpressionProvider
+     * @expectedException InvalidArgumentException
+     *
+     * @param string $invalidPattern
+     */
+    public function deserialization_requires_valid_data($invalidPattern)
+    {
+        RegularExpression::deserialize($invalidPattern);
     }
 
     /**

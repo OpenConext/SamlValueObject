@@ -56,6 +56,37 @@ class CompanyTest extends UnitTest
      * @group metadata
      * @group contactperson
      */
+    public function deserializing_a_serialized_company_results_in_an_equal_value_object()
+    {
+        $companyName = 'OpenConext.org';
+
+        $original = new Company($companyName);
+        $deserialized = Company::deserialize($original->serialize());
+
+        $this->assertTrue($original->equals($deserialized));
+        $this->assertEquals($companyName, $deserialized->getCompany());
+    }
+
+    /**
+     * @test
+     * @group        metadata
+     * @group        contactperson
+     *
+     * @dataProvider \OpenConext\Value\TestDataProvider::notStringOrEmptyString
+     * @expectedException InvalidArgumentException
+     *
+     * @param mixed $invalidData
+     */
+    public function deserialization_requires_valid_data($invalidData)
+    {
+        Company::deserialize($invalidData);
+    }
+
+    /**
+     * @test
+     * @group metadata
+     * @group contactperson
+     */
     public function a_company_can_be_cast_to_string()
     {
         $companyName = 'OpenConext.org';

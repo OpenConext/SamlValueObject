@@ -98,6 +98,50 @@ class OrganizationDisplayNameTest extends UnitTest
      * @group metadata
      * @group organization
      */
+    public function deserializing_a_serialized_organization_display_name_results_in_an_equal_value_object()
+    {
+        $displayName = 'OpenConext.org';
+        $language    = 'en_US';
+
+        $original     = new OrganizationDisplayName($displayName, $language);
+        $deserialized = OrganizationDisplayName::deserialize($original->serialize());
+
+        $this->assertTrue($original->equals($deserialized));
+    }
+
+    /**
+     * @test
+     * @group        metadata
+     * @group        organization
+     *
+     * @dataProvider invalidDeserializationDataProvider
+     * @expectedException InvalidArgumentException
+     *
+     * @param mixed $invalidData
+     */
+    public function deserialization_requires_valid_data($invalidData)
+    {
+        OrganizationDisplayName::deserialize($invalidData);
+    }
+
+    /**
+     * @return array
+     */
+    public function invalidDeserializationDataProvider()
+    {
+        return array(
+            'data is not an array'     => array('foobar'),
+            'missing both keys'        => array(array('a')),
+            'missing display_name key' => array('a' => 'foobar', 'language' => 'en_US'),
+            'missing language key'     => array('display_name' => 'OpenConext.org')
+        );
+    }
+
+    /**
+     * @test
+     * @group metadata
+     * @group organization
+     */
     public function an_organization_display_name_can_be_cast_to_string()
     {
         $displayName = 'OpenConext';

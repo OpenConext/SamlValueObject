@@ -5,7 +5,7 @@ namespace OpenConext\Value;
 use OpenConext\Value\Assert\Assertion;
 use OpenConext\Value\Exception\InvalidArgumentException;
 
-final class RegularExpression
+final class RegularExpression implements Serializable
 {
     /**
      * @var string
@@ -50,12 +50,30 @@ final class RegularExpression
     }
 
     /**
+     * @return string
+     */
+    public function getPattern()
+    {
+        return $this->pattern;
+    }
+
+    /**
      * @param RegularExpression $other
      * @return bool
      */
     public function equals(RegularExpression $other)
     {
         return $this->pattern === $other->pattern;
+    }
+
+    public static function deserialize($data)
+    {
+        return new self($data);
+    }
+
+    public function serialize()
+    {
+        return $this->pattern;
     }
 
     public function __toString()

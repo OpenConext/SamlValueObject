@@ -3,8 +3,9 @@
 namespace OpenConext\Value\Saml;
 
 use OpenConext\Value\Assert\Assertion;
+use OpenConext\Value\Serializable;
 
-final class EntityId
+final class EntityId implements Serializable
 {
     /**
      * @var string
@@ -34,6 +35,16 @@ final class EntityId
      * @return string
      */
     public function getEntityId()
+    {
+        return $this->entityId;
+    }
+
+    public static function deserialize($data)
+    {
+        return new self($data);
+    }
+
+    public function serialize()
     {
         return $this->entityId;
     }

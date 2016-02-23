@@ -8,6 +8,7 @@ use Assert\Assertion as BaseAssertion;
  * @method static void nullOrNonEmptyString($value, $message = null, $propertyPath = null)
  * @method static void allNonEmptyString($value, $message = null, $propertyPath = null)
  * @method static void allValidRegularExpression($value, $message = null, $propertyPath = null)
+ * @method static void allKeysExist($value, $data, $message = null, $propertyPath = null)
  */
 class Assertion extends BaseAssertion
 {
@@ -60,6 +61,20 @@ class Assertion extends BaseAssertion
                 static::INVALID_REGULAR_EXPRESSION,
                 $propertyPath
             );
+        }
+    }
+
+    /**
+     * @param array       $requiredKeys
+     * @param array       $value
+     * @param null|string $message
+     * @param null|string $propertyPath
+     * @return void
+     */
+    public static function keysExist(array $value, array $requiredKeys, $message = null, $propertyPath = null)
+    {
+        foreach ($requiredKeys as $requiredKey) {
+            self::keyExists($value, $requiredKey, $message, $propertyPath);
         }
     }
 }

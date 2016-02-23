@@ -75,7 +75,36 @@ class ContactTypeTest extends UnitTest
     {
         $type = ContactType::technical();
 
-        $this->assertEquals(ContactType::TYPE_TECHNICAL, $type->getType());
+        $this->assertEquals(ContactType::TYPE_TECHNICAL, $type->getContactType());
+    }
+
+    /**
+     * @test
+     * @group metadata
+     * @group contactperson
+     */
+    public function deserializing_a_serialized_contact_type_results_in_an_equal_value_object()
+    {
+        $original     = ContactType::administrative();
+        $deserialized = ContactType::deserialize($original->serialize());
+
+        $this->assertTrue($original->equals($deserialized));
+        $this->assertEquals(ContactType::TYPE_ADMINISTRATIVE, $deserialized->getContactType());
+    }
+
+    /**
+     * @test
+     * @group        metadata
+     * @group        contactperson
+     *
+     * @dataProvider \OpenConext\Value\TestDataProvider::notStringOrEmptyString
+     * @expectedException InvalidArgumentException
+     *
+     * @param mixed $invalidData
+     */
+    public function deserialization_requires_valid_data($invalidData)
+    {
+        ContactType::deserialize($invalidData);
     }
 
     /**

@@ -4,8 +4,9 @@ namespace OpenConext\Value\Saml\Metadata;
 
 use OpenConext\Value\Assert\Assertion;
 use OpenConext\Value\RegularExpression;
+use OpenConext\Value\Serializable;
 
-final class ShibbolethMetadataScope
+final class ShibbolethMetadataScope implements Serializable
 {
     /**
      * @var string|null
@@ -72,6 +73,25 @@ final class ShibbolethMetadataScope
     {
         return ($this->literal !== null && $this->literal === $other->literal)
                 || ($this->regexp && $other->regexp && $this->regexp->equals($other->regexp));
+    }
+
+    public static function deserialize($data)
+    {
+        Assertion::isArray($data);
+        Assertion::keysExist($data, array('type', 'scope'));
+        Assertion::choice($data['type'], array('literal', 'regexp'));
+
+        $type = $data['type'];
+
+        return self::$type($data['scope']);
+    }
+
+    public function serialize()
+    {
+        return array(
+            'type' => ($this->literal !== null ? 'literal' : 'regexp'),
+            'scope' => ($this->literal ?: $this->regexp->serialize())
+        );
     }
 
     public function __toString()

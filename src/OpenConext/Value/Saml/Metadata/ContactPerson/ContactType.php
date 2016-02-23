@@ -3,8 +3,9 @@
 namespace OpenConext\Value\Saml\Metadata\ContactPerson;
 
 use OpenConext\Value\Assert\Assertion;
+use OpenConext\Value\Serializable;
 
-final class ContactType
+final class ContactType implements Serializable
 {
     const TYPE_ADMINISTRATIVE = 'administrative';
     const TYPE_BILLING        = 'billing';
@@ -23,7 +24,7 @@ final class ContactType
     /**
      * @var string
      */
-    private $type;
+    private $contactType;
 
     /**
      ** @param string $type one of the ContactType::TYPE_* constants
@@ -33,7 +34,7 @@ final class ContactType
         $validMessage = 'one of "ContactType::' . implode(', ContactType::', self::$validTypes) . '"';
         Assertion::inArray($type, self::$validTypes, $validMessage);
 
-        $this->type = $type;
+        $this->contactType = $type;
     }
 
     /**
@@ -79,9 +80,9 @@ final class ContactType
     /**
      * @return string
      */
-    public function getType()
+    public function getContactType()
     {
-        return $this->type;
+        return $this->contactType;
     }
 
     /**
@@ -90,11 +91,21 @@ final class ContactType
      */
     public function equals(ContactType $other)
     {
-        return $this->type === $other->type;
+        return $this->contactType === $other->contactType;
+    }
+
+    public static function deserialize($data)
+    {
+        return new self($data);
+    }
+
+    public function serialize()
+    {
+        return $this->contactType;
     }
 
     public function __toString()
     {
-        return $this->type;
+        return $this->contactType;
     }
 }

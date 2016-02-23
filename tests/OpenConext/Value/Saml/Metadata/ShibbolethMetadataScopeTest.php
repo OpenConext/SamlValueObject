@@ -149,6 +149,56 @@ class ShibbolethMetadataScopeTest extends UnitTest
      * @test
      * @group metadata
      */
+    public function deserializing_a_serialized_shibmd_scope_results_in_an_equal_value_object()
+    {
+        $literal = ShibbolethMetadataScope::literal('foobar');
+        $regexp  = ShibbolethMetadataScope::regexp('/abc/i');
+
+        $deserializedLiteral = ShibbolethMetadataScope::deserialize($literal->serialize());
+        $deserializedRegexp  = ShibbolethMetadataScope::deserialize($regexp->serialize());
+
+        $this->assertTrue(
+            $deserializedLiteral->equals($literal),
+            'Deserialized literal scope must equal the literal scope that was serialized'
+        );
+        $this->assertTrue(
+            $deserializedRegexp->equals($regexp),
+            'Deserialized regexp scope must equal the regexp scope that was serialized'
+        );
+    }
+
+    /**
+     * @test
+     * @group        metadata
+     *
+     * @dataProvider invalidDeserializationDataProvider
+     * @expectedException InvalidArgumentException
+     *
+     * @param mixed $invalidData
+     */
+    public function deserialization_requires_valid_data($invalidData)
+    {
+        ShibbolethMetadataScope::deserialize($invalidData);
+    }
+
+    /**
+     * @return array
+     */
+    public function invalidDeserializationDataProvider()
+    {
+        return array(
+            'data is not an array' => array('foobar'),
+            'missing both keys'    => array(array('a')),
+            'missing type key'     => array('a' => 'foobar', 'scope' => 'foobar'),
+            'missing scope key'    => array('type' => 'literal'),
+            'unknown type value'   => array('type' => 'invalid', 'scope' => 'foobar'),
+        );
+    }
+
+    /**
+     * @test
+     * @group metadata
+     */
     public function a_scope_can_be_cast_to_a_known_format_string()
     {
         $literal = ShibbolethMetadataScope::literal('foo');

@@ -250,6 +250,37 @@ class EmailAddressListTest extends UnitTest
      * @group metadata
      * @group contactperson
      */
+    public function deserializing_a_serialized_email_address_list_results_in_an_equal_value_object()
+    {
+        $emailOne = new EmailAddress('homer@domain.invalid');
+        $emailTwo = new EmailAddress('marge@domain.invalid');
+
+        $original     = new EmailAddressList(array($emailOne, $emailTwo));
+        $deserialized = EmailAddressList::deserialize($original->serialize());
+
+        $this->assertTrue($original->equals($deserialized));
+    }
+
+    /**
+     * @test
+     * @group        metadata
+     * @group        contactperson
+     *
+     * @dataProvider \OpenConext\Value\TestDataProvider::notArray
+     * @expectedException InvalidArgumentException
+     *
+     * @param mixed $notArray
+     */
+    public function deserialization_requires_an_array($notArray)
+    {
+        EmailAddressList::deserialize($notArray);
+    }
+
+    /**
+     * @test
+     * @group metadata
+     * @group contactperson
+     */
     public function an_email_address_list_can_be_cast_to_string()
     {
         $numberOne = new EmailAddress('homer@domain.invalid');

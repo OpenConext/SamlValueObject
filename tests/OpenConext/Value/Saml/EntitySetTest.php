@@ -2,6 +2,7 @@
 
 namespace OpenConext\Value\Saml;
 
+use OpenConext\Value\Exception\InvalidArgumentException;
 use PHPUnit_Framework_TestCase as TestCase;
 
 class EntitySetTest extends TestCase
@@ -147,5 +148,49 @@ class EntitySetTest extends TestCase
         $this->assertFalse($unknownEntityFound, 'Unknown entity discovered when iterating over set');
         $this->assertTrue($entityOneSeen, 'Expected to see defined entityInSetOne when iterating over set');
         $this->assertTrue($entityTwoSeen, 'Expected to see defined entityInSetTwo when iterating over set');
+    }
+
+    /**
+     * @test
+     * @group entity
+     */
+    public function deserializing_a_serialized_entity_set_results_in_an_equal_value_object()
+    {
+        $entityInSetOne = new Entity(new EntityId('RUG'), EntityType::SP());
+        $entityInSetTwo = new Entity(new EntityId('HU'), EntityType::IdP());
+
+        $original     = new EntitySet(array($entityInSetOne, $entityInSetTwo));
+        $deserialized = EntitySet::deserialize($original->serialize());
+
+        $this->assertTrue($original->equals($deserialized));
+    }
+
+    /**
+     * @test
+     * @group entity
+     *
+     * @dataProvider \OpenConext\Value\TestDataProvider::notArray
+     * @expectedException InvalidArgumentException
+     *
+     * @param mixed $notArray
+     */
+    public function deserialization_requires_an_array($notArray)
+    {
+        EntitySet::deserialize($notArray);
+    }
+
+    /**
+     * @test
+     * @group entity
+     */
+    public function an_entity_set_can_be_cast_to_a_known_format_string()
+    {
+        $entityOne = new Entity(new EntityId('RUG'), EntityType::SP());
+        $entityTwo = new Entity(new EntityId('HU'), EntityType::IdP());
+        $entities  = array($entityOne, $entityTwo);
+
+        $entitySet = new EntitySet($entities);
+
+        $this->assertEquals(sprintf('EntitySet["%s"]', implode('", "', $entities)), (string) $entitySet);
     }
 }

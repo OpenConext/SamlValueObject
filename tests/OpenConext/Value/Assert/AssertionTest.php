@@ -42,4 +42,37 @@ class AssertionTest extends UnitTest
     {
         Assertion::validRegularExpression($invalidPattern, 'invalidPattern');
     }
+
+    /**
+     * @test
+     *
+     * @expectedException InvalidArgumentException
+     */
+    public function a_missing_key_makes_the_assertion_fail()
+    {
+        $requiredKeys = array('a', 'b');
+        $actualData   = array('a' => 1, 'c' => 2);
+
+        Assertion::keysExist($actualData, $requiredKeys);
+    }
+
+    /**
+     * @test
+     */
+    public function keys_exists_assertion_succeeds_if_all_required_keys_are_present_()
+    {
+        $requiredKeys = array('a', 'b', 'c');
+        $match        = array('c' => 1, 'a' => 2, 'b' => 'foo');
+        $superfluous  = array('d' => 1, 'a' => 2, 'c' => 3, 'b' => 4);
+
+        $exceptionCaught = false;
+        try {
+            Assertion::keysExist($match, $requiredKeys);
+            Assertion::keysExist($superfluous, $requiredKeys);
+        } catch (InvalidArgumentException $exception) {
+            $exceptionCaught = true;
+        }
+
+        $this->assertFalse($exceptionCaught, 'When all required keys are present, no exception should be thrown');
+    }
 }

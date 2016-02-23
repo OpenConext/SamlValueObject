@@ -56,6 +56,37 @@ class GivenNameTest extends UnitTest
      * @group metadata
      * @group contactperson
      */
+    public function deserializing_a_serialized_given_name_results_in_an_equal_value_object()
+    {
+        $givenName = 'Homer';
+
+        $original     = new GivenName($givenName);
+        $deserialized = GivenName::deserialize($original->serialize());
+
+        $this->assertTrue($original->equals($deserialized));
+        $this->assertEquals($givenName, $deserialized->getGivenName());
+    }
+
+    /**
+     * @test
+     * @group        metadata
+     * @group        contactperson
+     *
+     * @dataProvider \OpenConext\Value\TestDataProvider::notStringOrEmptyString
+     * @expectedException InvalidArgumentException
+     *
+     * @param mixed $invalidData
+     */
+    public function deserialization_requires_the_presence_of_the_correct_data($invalidData)
+    {
+        GivenName::deserialize($invalidData);
+    }
+
+    /**
+     * @test
+     * @group metadata
+     * @group contactperson
+     */
     public function a_given_name_can_be_cast_to_string()
     {
         $name = 'Homer';

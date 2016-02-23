@@ -3,9 +3,9 @@
 namespace OpenConext\Value\Saml\Metadata\Organization;
 
 use OpenConext\Value\Assert\Assertion;
-use OpenConext\Value\Exception\InvalidArgumentException;
+use OpenConext\Value\Serializable;
 
-final class OrganizationDisplayName
+final class OrganizationDisplayName implements Serializable
 {
     /**
      * @var string
@@ -53,6 +53,22 @@ final class OrganizationDisplayName
     public function getLanguage()
     {
         return $this->language;
+    }
+
+    public static function deserialize($data)
+    {
+        Assertion::isArray($data);
+        Assertion::keysExist($data, array('display_name', 'language'));
+
+        return new self($data['display_name'], $data['language']);
+    }
+
+    public function serialize()
+    {
+        return array(
+            'display_name' => $this->displayName,
+            'language' => $this->language
+        );
     }
 
     public function __toString()

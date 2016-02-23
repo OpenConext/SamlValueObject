@@ -3,10 +3,12 @@
 namespace OpenConext\Value\Saml;
 
 use ArrayIterator;
+use Assert\Assertion;
 use Countable;
 use IteratorAggregate;
+use OpenConext\Value\Serializable;
 
-final class EntitySet implements Countable, IteratorAggregate
+final class EntitySet implements Countable, IteratorAggregate, Serializable
 {
     /**
      * @var Entity[]
@@ -18,8 +20,14 @@ final class EntitySet implements Countable, IteratorAggregate
      */
     public function __construct(array $entities = array())
     {
+        Assertion::allIsInstanceOf($entities, '\OpenConext\Value\Saml\Entity');
+
         foreach ($entities as $entity) {
-            $this->initializeWith($entity);
+            if ($this->contains($entity)) {
+                continue;
+            }
+
+            $this->entities[] = $entity;
         }
     }
 
@@ -67,15 +75,26 @@ final class EntitySet implements Countable, IteratorAggregate
         return count($this->entities);
     }
 
-    /**
-     * @param Entity $entity
-     */
-    private function initializeWith(Entity $entity)
+    public static function deserialize($data)
     {
-        if ($this->contains($entity)) {
-            return;
-        }
+        Assertion::isArray($data);
 
-        $this->entities[] = $entity;
+        $entities = array_map(function ($entity) {
+            return Entity::deserialize($entity);
+        }, $data);
+
+        return new self($entities);
+    }
+
+    public function serialize()
+    {
+        return array_map(function (Entity $entity) {
+            return $entity->serialize();
+        }, $this->entities);
+    }
+
+    public function __toString()
+    {
+        return sprintf('EntitySet["%s"]', implode('", "', $this->entities));
     }
 }

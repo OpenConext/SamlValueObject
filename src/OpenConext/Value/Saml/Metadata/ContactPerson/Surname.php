@@ -3,8 +3,9 @@
 namespace OpenConext\Value\Saml\Metadata\ContactPerson;
 
 use OpenConext\Value\Assert\Assertion;
+use OpenConext\Value\Serializable;
 
-final class Surname
+final class Surname implements Serializable
 {
     /**
      * @var string
@@ -34,6 +35,16 @@ final class Surname
      * @return string
      */
     public function getSurname()
+    {
+        return $this->surname;
+    }
+
+    public static function deserialize($data)
+    {
+        return new self($data);
+    }
+
+    public function serialize()
     {
         return $this->surname;
     }

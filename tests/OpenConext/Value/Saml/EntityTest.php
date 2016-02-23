@@ -2,6 +2,7 @@
 
 namespace OpenConext\Value\Saml;
 
+use OpenConext\Value\Exception\InvalidArgumentException;
 use PHPUnit_Framework_TestCase as UnitTest;
 
 class EntityTest extends UnitTest
@@ -125,6 +126,46 @@ class EntityTest extends UnitTest
         $entity = new Entity(new EntityId('OpenConext'), $entityType);
 
         $this->assertTrue($entity->getEntityType()->equals($entityType));
+    }
+
+    /**
+     * @test
+     * @group entity
+     */
+    public function deserializing_a_serialized_entity_results_in_an_equal_value_object()
+    {
+        $original     = new Entity(new EntityId('OpenConext.org'), EntityType::IdP());
+        $deserialized = Entity::deserialize($original->serialize());
+
+        $this->assertTrue($deserialized->equals($original));
+    }
+
+    /**
+     * @test
+     * @group        metadata
+     *
+     * @dataProvider invalidDeserializationDataProvider
+     * @expectedException InvalidArgumentException
+     *
+     * @param mixed $invalidData
+     */
+    public function deserialization_requires_valid_data($invalidData)
+    {
+        Entity::deserialize($invalidData);
+    }
+
+    /**
+     * @return array
+     */
+    public function invalidDeserializationDataProvider()
+    {
+        return array(
+            'data is not an array'      => array('foobar'),
+            'missing both keys'         => array(array('a')),
+            'missing entity_id key'     => array('a' => 'foobar', 'entity_type' => 'saml20-sp'),
+            'missing entity_type key'   => array('entity_id' => 'OpenConext.org'),
+            'unknown entity_type value' => array('entity_id' => 'OpenConext.org', 'entity_type' => 'invalid'),
+        );
     }
 
     /**

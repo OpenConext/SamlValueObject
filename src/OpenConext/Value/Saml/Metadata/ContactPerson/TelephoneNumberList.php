@@ -7,9 +7,9 @@ use Countable;
 use IteratorAggregate;
 use OpenConext\Value\Assert\Assertion;
 use OpenConext\Value\Exception\IndexOutOfBoundsException;
-use OpenConext\Value\Exception\InvalidArgumentException;
+use OpenConext\Value\Serializable;
 
-final class TelephoneNumberList implements Countable, IteratorAggregate
+final class TelephoneNumberList implements Countable, IteratorAggregate, Serializable
 {
     /**
      * @var TelephoneNumber[]
@@ -119,6 +119,24 @@ final class TelephoneNumberList implements Countable, IteratorAggregate
     public function count()
     {
         return count($this->telephoneNumbers);
+    }
+
+    public static function deserialize($data)
+    {
+        Assertion::isArray($data);
+
+        $telephoneNumbers = array_map(function ($telephoneNumber) {
+            return TelephoneNumber::deserialize($telephoneNumber);
+        }, $data);
+
+        return new self($telephoneNumbers);
+    }
+
+    public function serialize()
+    {
+        return array_map(function (TelephoneNumber $telephoneNumber) {
+            return $telephoneNumber->serialize();
+        }, $this->telephoneNumbers);
     }
 
     public function __toString()

@@ -7,8 +7,9 @@ use Countable;
 use IteratorAggregate;
 use OpenConext\Value\Assert\Assertion;
 use OpenConext\Value\Exception\IndexOutOfBoundsException;
+use OpenConext\Value\Serializable;
 
-final class EmailAddressList implements Countable, IteratorAggregate
+final class EmailAddressList implements Countable, IteratorAggregate, Serializable
 {
     /**
      * @var EmailAddress[]
@@ -118,6 +119,24 @@ final class EmailAddressList implements Countable, IteratorAggregate
     public function count()
     {
         return count($this->emailAddresses);
+    }
+
+    public static function deserialize($data)
+    {
+        Assertion::isArray($data);
+
+        $emailAddresses = array_map(function ($emailAddress) {
+            return EmailAddress::deserialize($emailAddress);
+        }, $data);
+
+        return new self($emailAddresses);
+    }
+
+    public function serialize()
+    {
+        return array_map(function (EmailAddress $emailAddress) {
+            return $emailAddress->serialize();
+        }, $this->emailAddresses);
     }
 
     public function __toString()

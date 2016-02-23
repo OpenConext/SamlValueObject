@@ -3,8 +3,9 @@
 namespace OpenConext\Value\Saml;
 
 use OpenConext\Value\Assert\Assertion;
+use OpenConext\Value\Serializable;
 
-final class Entity
+final class Entity implements Serializable
 {
     /**
      * @var EntityId
@@ -93,6 +94,22 @@ final class Entity
     public function equals(Entity $other)
     {
         return $this->entityId->equals($other->entityId) && $this->entityType->equals($other->entityType);
+    }
+
+    public static function deserialize($data)
+    {
+        Assertion::isArray($data);
+        Assertion::keysExist($data, array('entity_id', 'entity_type'));
+
+        return new self(EntityId::deserialize($data['entity_id']), EntityType::deserialize($data['entity_type']));
+    }
+
+    public function serialize()
+    {
+        return array(
+            'entity_id' => $this->entityId->serialize(),
+            'entity_type' => $this->entityType->serialize()
+        );
     }
 
     public function __toString()
