@@ -9,6 +9,9 @@ use OpenConext\Value\Assert\Assertion;
 use OpenConext\Value\Exception\IndexOutOfBoundsException;
 use OpenConext\Value\Serializable;
 
+/**
+ * @SuppressWarnings(PHPMD.TooManyPublicMethods) consistent list interface dictates quite a few
+ */
 final class ShibbolethMetadataScopeList implements Countable, IteratorAggregate, Serializable
 {
     /**
