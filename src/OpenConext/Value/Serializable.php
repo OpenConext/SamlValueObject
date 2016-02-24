@@ -9,7 +9,7 @@ interface Serializable
 {
     /**
      * @param mixed $data the data required to deserialize the data into a new object
-     * @return mixed The object instance
+     * @return static The object instance
      */
     public static function deserialize($data);
 
