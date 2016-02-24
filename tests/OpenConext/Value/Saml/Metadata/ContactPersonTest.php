@@ -55,8 +55,11 @@ class ContactPersonTest extends UnitTest
             'different email'      => array(new ContactPerson($type, new EmailAddressList(array()), $telephone, $givenName, $surname, $company)),
             'different telephone'  => array(new ContactPerson($type, $email, new TelephoneNumberList(array()), $givenName, $surname, $company)),
             'different given name' => array(new ContactPerson($type, $email, $telephone, new GivenName('John'), $surname, $company)),
+            'no given name'        => array(new ContactPerson($type, $email, $telephone, null, $surname, $company)),
             'different surname'    => array(new ContactPerson($type, $email, $telephone, $givenName, new Surname('Doe'), $company)),
+            'no surname'           => array(new ContactPerson($type, $email, $telephone, $givenName, null, $company)),
             'different company'    => array(new ContactPerson($type, $email, $telephone, $givenName, $surname, new Company('Babelfish Inc.'))),
+            'no company'           => array(new ContactPerson($type, $email, $telephone, $givenName, $surname, null)),
         );
     }
 
