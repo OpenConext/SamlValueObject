@@ -11,12 +11,12 @@ final class ShibbolethMetadataScope implements Serializable
     /**
      * @var string|null
      */
-    private $literal;
+    private $scope;
 
     /**
      * @var RegularExpression|null
      */
-    private $regexp;
+    private $isRegexp;
 
     /**
      * @param string $literal
@@ -26,10 +26,7 @@ final class ShibbolethMetadataScope implements Serializable
     {
         Assertion::nonEmptyString($literal, 'literal');
 
-        $scope          = new ShibbolethMetadataScope();
-        $scope->literal = $literal;
-
-        return $scope;
+        return new self($literal);
     }
 
     /**
@@ -40,14 +37,24 @@ final class ShibbolethMetadataScope implements Serializable
     {
         Assertion::nonEmptyString($regexp, 'regexp');
 
-        $scope         = new ShibbolethMetadataScope();
-        $scope->regexp = new RegularExpression($regexp);
-
-        return $scope;
+        return new self($regexp, true);
     }
 
-    private function __construct()
+    /**
+     * @param string $scope    the scope as defined
+     * @param bool   $isRegexp whether or not the scope is a regular expression as identified by the regexp attribute
+     */
+    public function __construct($scope, $isRegexp = false)
     {
+        Assertion::nonEmptyString($scope, 'scope');
+        Assertion::boolean($isRegexp);
+
+        if ($isRegexp) {
+            Assertion::validRegularExpression($scope, 'scope');
+        }
+
+        $this->scope    = $scope;
+        $this->isRegexp = $isRegexp;
     }
 
     /**
@@ -58,11 +65,12 @@ final class ShibbolethMetadataScope implements Serializable
     {
         Assertion::string($string, 'Scope to check should be a string, "%s" given');
 
-        if ($this->literal !== null) {
-            return $this->literal === $string;
+        if (!$this->isRegexp) {
+            return $this->scope === $string;
         }
 
-        return $this->regexp->matches($string);
+        $regexp = new RegularExpression($this->scope);
+        return $regexp->matches($string);
     }
 
     /**
@@ -71,35 +79,31 @@ final class ShibbolethMetadataScope implements Serializable
      */
     public function equals(ShibbolethMetadataScope $other)
     {
-        return ($this->literal !== null && $this->literal === $other->literal)
-                || ($this->regexp && $other->regexp && $this->regexp->equals($other->regexp));
+        return ($this->scope === $other->scope && $this->isRegexp === $other->isRegexp);
     }
 
     public static function deserialize($data)
     {
         Assertion::isArray($data);
-        Assertion::keysExist($data, array('type', 'scope'));
-        Assertion::choice($data['type'], array('literal', 'regexp'));
+        Assertion::keysExist($data, array('is_regexp', 'scope'));
 
-        $type = $data['type'];
-
-        return self::$type($data['scope']);
+        return new self($data['scope'], $data['is_regexp']);
     }
 
     public function serialize()
     {
         return array(
-            'type' => ($this->literal !== null ? 'literal' : 'regexp'),
-            'scope' => ($this->literal ?: $this->regexp->serialize())
+            'scope'     => $this->scope,
+            'is_regexp' => $this->isRegexp
         );
     }
 
     public function __toString()
     {
-        if ($this->literal !== null) {
-            return sprintf('ShibbolethMetadataScope(literal=%s)', $this->literal);
-        } else {
-            return sprintf('ShibbolethMetadataScope(regexp=%s)', $this->regexp);
-        }
+        return sprintf(
+            'ShibbolethMetadataScope(scope=%s, regexp=%s)',
+            $this->scope,
+            $this->isRegexp ? 'true' : 'false'
+        );
     }
 }
