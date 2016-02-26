@@ -66,6 +66,23 @@ class TestDataProvider
         );
     }
 
+    public static function notCallable()
+    {
+        return array_merge(
+            self::emtpyString(),
+            array(
+                'integer' => array(1),
+                'float'   => array(1.234),
+                'array'   => array(array()),
+                'true'    => array(true),
+                'false'   => array(false),
+                'object'  => array(new stdClass()),
+                'null'    => array(null),
+                'string'  => array('string')
+            )
+        );
+    }
+
     public static function notStringOrEmptyString()
     {
         return array_merge(

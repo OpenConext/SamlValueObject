@@ -14,6 +14,7 @@ class Assertion extends BaseAssertion
 {
     const INVALID_NON_EMPTY_STRING   = 501;
     const INVALID_REGULAR_EXPRESSION = 502;
+    const INVALID_CALLABLE           = 503;
 
     protected static $exceptionClass = 'OpenConext\Value\Exception\InvalidArgumentException';
 
@@ -75,6 +76,24 @@ class Assertion extends BaseAssertion
     {
         foreach ($requiredKeys as $requiredKey) {
             self::keyExists($value, $requiredKey, $message, $propertyPath);
+        }
+    }
+
+    /**
+     * @param mixed       $value
+     * @param null|string $message
+     * @param string      $propertyPath
+     */
+    public static function isCallable($value, $propertyPath, $message = null)
+    {
+        $message = $message ?: 'Expected a callable for "%s", got a "%s"';
+        if (!is_callable($value)) {
+            throw static::createException(
+                $value,
+                sprintf($message, $propertyPath, static::stringify($value)),
+                static::INVALID_CALLABLE,
+                $propertyPath
+            );
         }
     }
 }

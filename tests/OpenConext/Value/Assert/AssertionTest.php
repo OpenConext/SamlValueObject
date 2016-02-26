@@ -75,4 +75,62 @@ class AssertionTest extends UnitTest
 
         $this->assertFalse($exceptionCaught, 'When all required keys are present, no exception should be thrown');
     }
+
+    /**
+     * @test
+     *
+     * @dataProvider \OpenConext\Value\TestDataProvider::notCallable
+     * @expectedException InvalidArgumentException
+     *
+     * @param mixed $notCallable
+     */
+    public function invalid_callables_fail_the_is_callable_assertion($notCallable)
+    {
+        Assertion::isCallable($notCallable, 'callable');
+    }
+
+    /**
+     * @test
+     *
+     * @dataProvider validCallableProvider
+     *
+     * @param Callable $callable
+     */
+    public function valid_callables_assertion_succeeds_if_value_is_a_callable($callable)
+    {
+        $exceptionCaught = false;
+
+        try {
+            Assertion::isCallable($callable, 'callable');
+        } catch (InvalidArgumentException $exception) {
+            $exceptionCaught = true;
+        }
+
+        $this->assertFalse($exceptionCaught, 'A valid callable should not cause an exception to be thrown');
+    }
+
+    public function validCallableProvider()
+    {
+        $closure = function () {};
+
+        return array(
+            'closure'           => array($closure),
+            'static callable'   => array(array('OpenConext\Value\Assert\AssertionTest', 'staticCallable')),
+            'instance callable' => array(array($this, 'staticCallable')),
+        );
+    }
+
+    /**
+     * Stub method
+     */
+    public function instanceCallable()
+    {
+    }
+
+    /**
+     * Stub method
+     */
+    public static function staticCallable()
+    {
+    }
 }
