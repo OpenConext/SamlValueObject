@@ -9,12 +9,12 @@ use OpenConext\Value\Serializable;
 final class ShibbolethMetadataScope implements Serializable
 {
     /**
-     * @var string|null
+     * @var string
      */
     private $scope;
 
     /**
-     * @var RegularExpression|null
+     * @var bool
      */
     private $isRegexp;
 
