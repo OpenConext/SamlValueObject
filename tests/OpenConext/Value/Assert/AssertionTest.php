@@ -2,6 +2,7 @@
 
 namespace OpenConext\Value\Assert;
 
+use OpenConext\Value\Assert\Stub\CallMe;
 use OpenConext\Value\Exception\InvalidArgumentException;
 use PHPUnit_Framework_TestCase as UnitTest;
 
@@ -114,9 +115,12 @@ class AssertionTest extends UnitTest
         $closure = function () {};
 
         return array(
-            'closure'           => array($closure),
-            'static callable'   => array(array('OpenConext\Value\Assert\AssertionTest', 'staticCallable')),
-            'instance callable' => array(array($this, 'staticCallable')),
+            'closure'              => array($closure),
+            'instance callable'    => array(array(new CallMe(), 'instanceCallable')),
+            'static callable'      => array(array('OpenConext\Value\Assert\Stub\CallMe', 'staticCallable')),
+            'static class call'    => array('OpenConext\Value\Assert\Stub\CallMe::staticCallable'),
+            'relative static call' => array(array('OpenConext\Value\Assert\Stub\CallMe', 'parent::relativeStaticCall')),
+            'invokable'            => array(new CallMe())
         );
     }
 
