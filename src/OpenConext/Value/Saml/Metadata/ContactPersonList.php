@@ -85,6 +85,23 @@ final class ContactPersonList implements Countable, IteratorAggregate, Serializa
     }
 
     /**
+     * @param Callable $predicate
+     * @return null|ContactPerson
+     */
+    public function find($predicate)
+    {
+        Assertion::isCallable($predicate, 'predicate');
+
+        foreach ($this->contactPersons as $contactPerson) {
+            if (call_user_func($predicate, $contactPerson) === true) {
+                return $contactPerson;
+            }
+        }
+
+        return null;
+    }
+
+    /**
      * @param ContactPersonList $other
      * @return bool
      */

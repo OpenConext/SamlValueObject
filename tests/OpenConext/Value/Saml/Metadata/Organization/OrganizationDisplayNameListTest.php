@@ -151,11 +151,89 @@ class OrganizationDisplayNameListTest extends UnitTest
     public function an_exception_is_thrown_when_attempting_to_get_an_element_with_an_index_larger_than_the_list_size()
     {
         $displayNameOne = new OrganizationDisplayName('OpenConext', 'en');
-        $displayNameTwo = new OrganizationDisplayName('Different', 'en');
+        $displayNameTwo = new OrganizationDisplayName('OpenConext', 'nl');
 
         $list = new OrganizationDisplayNameList(array($displayNameOne, $displayNameTwo));
 
         $list->get(4);
+    }
+
+    /**
+     * @test
+     * @group metadata
+     * @group organization
+     */
+    public function an_organization_display_name_can_be_searched_for()
+    {
+        $predicate = function (OrganizationDisplayName $organizationDisplayName) {
+            return $organizationDisplayName->getLanguage() === 'en_GB';
+        };
+
+        $displayNameOne = new OrganizationDisplayName('OpenConext', 'en_US');
+        $displayNameTwo = new OrganizationDisplayName('OpenConext', 'en_GB');
+
+        $list = new OrganizationDisplayNameList(array($displayNameOne, $displayNameTwo));
+
+        $this->assertSame($displayNameTwo, $list->find($predicate));
+    }
+
+    /**
+     * @test
+     * @group metadata
+     * @group contactperson
+     */
+    public function find_returns_the_first_matching_element()
+    {
+        $predicate = function (OrganizationDisplayName $organizationDisplayName) {
+            return $organizationDisplayName->getLanguage() === 'en_GB';
+        };
+
+        $displayNameOne = new OrganizationDisplayName('OpenConext', 'en_US');
+        $displayNameTwo = new OrganizationDisplayName('OpenConext', 'en_GB');
+        $notReturned    = new OrganizationDisplayName('OpenConext', 'en_GB');
+
+        $list = new OrganizationDisplayNameList(array($displayNameOne, $displayNameTwo, $notReturned));
+
+        $this->assertSame($displayNameTwo, $list->find($predicate));
+    }
+
+    /**
+     * @test
+     * @group metadata
+     * @group contactperson
+     */
+    public function null_is_returned_when_no_match_is_found()
+    {
+        $predicate = function () {
+            return false;
+        };
+
+        $displayNameOne = new OrganizationDisplayName('OpenConext', 'en_US');
+        $displayNameTwo = new OrganizationDisplayName('OpenConext', 'en_GB');
+
+        $list = new OrganizationDisplayNameList(array($displayNameOne, $displayNameTwo));
+
+        $this->assertNull($list->find($predicate));
+    }
+
+    /**
+     * @test
+     * @group        metadata
+     * @group        contactperson
+     *
+     * @dataProvider \OpenConext\Value\TestDataProvider::notCallable
+     * @expectedException InvalidArgumentException
+     *
+     * @param mixed $notCallable
+     */
+    public function find_predicate_must_be_a_callable($notCallable)
+    {
+        $displayNameOne = new OrganizationDisplayName('OpenConext', 'en_US');
+        $displayNameTwo = new OrganizationDisplayName('OpenConext', 'en_GB');
+
+        $list = new OrganizationDisplayNameList(array($displayNameOne, $displayNameTwo));
+
+        $list->find($notCallable);
     }
 
     /**

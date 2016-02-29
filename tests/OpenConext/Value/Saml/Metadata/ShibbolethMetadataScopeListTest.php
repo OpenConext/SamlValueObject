@@ -187,6 +187,80 @@ class ShibbolethMetadataScopeListTest extends UnitTest
      * @test
      * @group metadata
      */
+    public function a_scope_can_be_searched_for()
+    {
+        $predicate = function (ShibbolethMetadataScope $scope) {
+            return $scope->equals(ShibbolethMetadataScope::regexp('/abc/i'));
+        };
+
+        $firstScope  = ShibbolethMetadataScope::literal('in scope');
+        $secondScope = ShibbolethMetadataScope::regexp('/abc/i');
+
+        $list = new ShibbolethMetadataScopeList(array($firstScope, $secondScope));
+
+        $this->assertSame($secondScope, $list->find($predicate));
+    }
+
+    /**
+     * @test
+     * @group metadata
+     */
+    public function find_returns_the_first_matching_element()
+    {
+        $predicate = function (ShibbolethMetadataScope $scope) {
+            return $scope->equals(ShibbolethMetadataScope::regexp('/abc/i'));
+        };
+
+        $firstScope  = ShibbolethMetadataScope::literal('in scope');
+        $secondScope = ShibbolethMetadataScope::regexp('/abc/i');
+        $notReturned = ShibbolethMetadataScope::regexp('/abc/i');
+
+        $list = new ShibbolethMetadataScopeList(array($firstScope, $secondScope, $notReturned));
+
+        $this->assertSame($secondScope, $list->find($predicate));
+    }
+
+    /**
+     * @test
+     * @group metadata
+     */
+    public function null_is_returned_when_no_match_is_found()
+    {
+        $predicate = function () {
+            return false;
+        };
+
+        $firstScope  = ShibbolethMetadataScope::literal('in scope');
+        $secondScope = ShibbolethMetadataScope::regexp('/abc/i');
+
+        $list = new ShibbolethMetadataScopeList(array($firstScope, $secondScope));
+
+        $this->assertNull($list->find($predicate));
+    }
+
+    /**
+     * @test
+     * @group metadata
+     *
+     * @dataProvider \OpenConext\Value\TestDataProvider::notCallable
+     * @expectedException InvalidArgumentException
+     *
+     * @param mixed $notCallable
+     */
+    public function find_predicate_must_be_a_callable($notCallable)
+    {
+        $firstScope  = ShibbolethMetadataScope::literal('in scope');
+        $secondScope = ShibbolethMetadataScope::regexp('/abc/i');
+
+        $list = new ShibbolethMetadataScopeList(array($firstScope, $secondScope));
+
+        $list->find($notCallable);
+    }
+
+    /**
+     * @test
+     * @group metadata
+     */
     public function lists_are_only_equal_when_containing_the_same_elements_in_the_same_order()
     {
         $firstScope  = ShibbolethMetadataScope::literal('in scope');

@@ -85,6 +85,23 @@ final class OrganizationUrlList implements Countable, IteratorAggregate, Seriali
     }
 
     /**
+     * @param Callable $predicate
+     * @return null|OrganizationUrl
+     */
+    public function find($predicate)
+    {
+        Assertion::isCallable($predicate, 'predicate');
+
+        foreach ($this->organizationUrls as $organizationUrl) {
+            if (call_user_func($predicate, $organizationUrl) === true) {
+                return $organizationUrl;
+            }
+        }
+
+        return null;
+    }
+
+    /**
      * @param OrganizationUrlList $other
      * @return bool
      */

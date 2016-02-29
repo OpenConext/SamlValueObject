@@ -85,6 +85,23 @@ final class NameIdFormatList implements Countable, IteratorAggregate, Serializab
     }
 
     /**
+     * @param Callable $predicate
+     * @return null|NameIdFormat
+     */
+    public function find($predicate)
+    {
+        Assertion::isCallable($predicate, 'predicate');
+
+        foreach ($this->nameIdFormats as $nameIdFormat) {
+            if (call_user_func($predicate, $nameIdFormat) === true) {
+                return $nameIdFormat;
+            }
+        }
+
+        return null;
+    }
+
+    /**
      * @param NameIdFormatList $other
      * @return bool
      */

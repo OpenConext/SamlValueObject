@@ -169,6 +169,86 @@ class ContactPersonListTest extends UnitTest
      * @group metadata
      * @group contactperson
      */
+    public function a_contact_person_can_be_searched_for()
+    {
+        $marge     = $this->getMargeContact();
+        $predicate = function (ContactPerson $person) use ($marge) {
+            return $person->equals($marge);
+        };
+
+        $personOne = $this->getHomerContact();
+        $personTwo = $this->getMargeContact();
+
+        $list = new ContactPersonList(array($personOne, $personTwo));
+
+        $this->assertSame($personTwo, $list->find($predicate));
+    }
+
+    /**
+     * @test
+     * @group metadata
+     * @group contactperson
+     */
+    public function find_returns_the_first_matching_element()
+    {
+        $marge = $this->getMargeContact();
+        $predicate = function (ContactPerson $person) use ($marge) {
+            return $person->equals($marge);
+        };
+
+        $personOne   = $this->getHomerContact();
+        $personTwo   = $this->getMargeContact();
+        $notReturned = $this->getMargeContact();
+
+        $list = new ContactPersonList(array($personOne, $personTwo, $notReturned));
+
+        $this->assertSame($personTwo, $list->find($predicate));
+    }
+
+    /**
+     * @test
+     * @group metadata
+     * @group contactperson
+     */
+    public function null_is_returned_when_no_match_is_found()
+    {
+        $predicate = function () {
+            return false;
+        };
+
+        $personOne = $this->getHomerContact();
+        $personTwo = $this->getMargeContact();
+
+        $list = new ContactPersonList(array($personOne, $personTwo));
+
+        $this->assertNull($list->find($predicate));
+    }
+
+    /**
+     * @test
+     * @group        metadata
+     * @group        organization
+     *
+     * @dataProvider \OpenConext\Value\TestDataProvider::notCallable
+     * @expectedException InvalidArgumentException
+     *
+     * @param mixed $notCallable
+     */
+    public function find_predicate_must_be_a_callable($notCallable)
+    {
+        $personOne = $this->getHomerContact();
+        $personTwo = $this->getMargeContact();
+
+        $list = new ContactPersonList(array($personOne, $personTwo));
+
+        $list->find($notCallable);
+    }
+
+    /**
+     * @test
+     * @group metadata
+     * @group contactperson
+     */
     public function lists_are_only_equal_when_containing_the_same_elements_in_the_same_order()
     {
         $personOne   = $this->getHomerContact();

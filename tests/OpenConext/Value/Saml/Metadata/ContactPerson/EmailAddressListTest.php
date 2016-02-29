@@ -161,6 +161,84 @@ class EmailAddressListTest extends UnitTest
      * @group metadata
      * @group contactperson
      */
+    public function an_email_address_can_be_searched_for()
+    {
+        $predicate = function (EmailAddress $address) {
+            return strpos($address, 'marge') === 0;
+        };
+
+        $homer = new EmailAddress('homer@domain.invalid');
+        $marge = new EmailAddress('marge@domain.invalid');
+
+        $list = new EmailAddressList(array($homer, $marge));
+
+        $this->assertSame($marge, $list->find($predicate));
+    }
+
+    /**
+     * @test
+     * @group metadata
+     * @group contactperson
+     */
+    public function find_returns_the_first_matching_element()
+    {
+        $predicate = function (EmailAddress $address) {
+            return strpos($address, 'marge') === 0;
+        };
+
+        $emailOne    = new EmailAddress('homer@domain.invalid');
+        $emailTwo    = new EmailAddress('marge@domain.invalid');
+        $notReturned = new EmailAddress('marge@domain.invalid');
+
+        $list = new EmailAddressList(array($emailOne, $emailTwo, $notReturned));
+
+        $this->assertSame($emailTwo, $list->find($predicate));
+    }
+
+    /**
+     * @test
+     * @group metadata
+     * @group contactperson
+     */
+    public function null_is_returned_when_no_match_is_found()
+    {
+        $predicate = function () {
+            return false;
+        };
+
+        $emailOne = new EmailAddress('homer@domain.invalid');
+        $emailTwo = new EmailAddress('marge@domain.invalid');
+
+        $list = new EmailAddressList(array($emailOne, $emailTwo));
+
+        $this->assertNull($list->find($predicate));
+    }
+
+    /**
+     * @test
+     * @group metadata
+     * @group contactperson
+     *
+     * @dataProvider \OpenConext\Value\TestDataProvider::notCallable
+     * @expectedException InvalidArgumentException
+     *
+     * @param mixed $notCallable
+     */
+    public function find_predicate_must_be_a_callable($notCallable)
+    {
+        $emailOne = new EmailAddress('homer@domain.invalid');
+        $emailTwo = new EmailAddress('marge@domain.invalid');
+
+        $list = new EmailAddressList(array($emailOne, $emailTwo));
+
+        $list->find($notCallable);
+    }
+
+    /**
+     * @test
+     * @group metadata
+     * @group contactperson
+     */
     public function lists_are_only_equal_when_containing_the_same_elements_in_the_same_order()
     {
         $emailOne   = new EmailAddress('homer@domain.invalid');

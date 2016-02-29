@@ -176,6 +176,80 @@ class NameIdFormatListTest extends UnitTest
      * @test
      * @group nameid
      */
+    public function a_name_id_format_can_be_searched_for()
+    {
+        $predicate = function (NameIdFormat $format) {
+            return $format->equals(NameIdFormat::transient());
+        };
+
+        $firstFormat  = NameIdFormat::unspecified();
+        $secondFormat = NameIdFormat::transient();
+
+        $list = new NameIdFormatList(array($firstFormat, $secondFormat));
+
+        $this->assertSame($secondFormat, $list->find($predicate));
+    }
+
+    /**
+     * @test
+     * @group nameid
+     */
+    public function find_returns_the_first_matching_element()
+    {
+        $predicate = function (NameIdFormat $scope) {
+            return $scope->equals(NameIdFormat::windowsDomainQualifiedName());
+        };
+
+        $firstFormat  = NameIdFormat::emailAddress();
+        $secondFormat = NameIdFormat::windowsDomainQualifiedName();
+        $notReturned = NameIdFormat::windowsDomainQualifiedName();
+
+        $list = new NameIdFormatList(array($firstFormat, $secondFormat, $notReturned));
+
+        $this->assertSame($secondFormat, $list->find($predicate));
+    }
+
+    /**
+     * @test
+     * @group metadata
+     */
+    public function null_is_returned_when_no_match_is_found()
+    {
+        $predicate = function () {
+            return false;
+        };
+
+        $firstFormat  = NameIdFormat::kerberosPrincipalName();
+        $secondFormat = NameIdFormat::transient();
+
+        $list = new NameIdFormatList(array($firstFormat, $secondFormat));
+
+        $this->assertNull($list->find($predicate));
+    }
+
+    /**
+     * @test
+     * @group nameid
+     *
+     * @dataProvider \OpenConext\Value\TestDataProvider::notCallable
+     * @expectedException InvalidArgumentException
+     *
+     * @param mixed $notCallable
+     */
+    public function find_predicate_must_be_a_callable($notCallable)
+    {
+        $firstFormat  = NameIdFormat::kerberosPrincipalName();
+        $secondFormat = NameIdFormat::emailAddress();
+
+        $list = new NameIdFormatList(array($firstFormat, $secondFormat));
+
+        $list->find($notCallable);
+    }
+
+    /**
+     * @test
+     * @group nameid
+     */
     public function a_name_id_format_list_can_be_iterated_over()
     {
         $formatOne = NameIdFormat::transient();

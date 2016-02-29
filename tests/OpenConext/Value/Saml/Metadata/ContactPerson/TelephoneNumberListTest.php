@@ -156,6 +156,84 @@ class TelephoneNumberListTest extends UnitTest
      * @group metadata
      * @group contactperson
      */
+    public function a_telephone_number_can_be_searched_for()
+    {
+        $predicate = function (TelephoneNumber $telephoneNumber) {
+            return $telephoneNumber->getTelephoneNumber() === '456';
+        };
+
+        $numberOne = new TelephoneNumber('123');
+        $numberTwo = new TelephoneNumber('456');
+
+        $list = new TelephoneNumberList(array($numberOne, $numberTwo));
+
+        $this->assertSame($numberTwo, $list->find($predicate));
+    }
+
+    /**
+     * @test
+     * @group metadata
+     * @group contactperson
+     */
+    public function find_returns_the_first_matching_element()
+    {
+        $predicate = function (TelephoneNumber $telephoneNumber) {
+            return $telephoneNumber->getTelephoneNumber() === '456';
+        };
+
+        $numberOne   = new TelephoneNumber('123');
+        $numberTwo   = new TelephoneNumber('456');
+        $notReturned = new TelephoneNumber('456');
+
+        $list = new TelephoneNumberList(array($numberOne, $numberTwo, $notReturned));
+
+        $this->assertSame($numberTwo, $list->find($predicate));
+    }
+
+    /**
+     * @test
+     * @group metadata
+     * @group contactperson
+     */
+    public function null_is_returned_when_no_match_is_found()
+    {
+        $predicate = function () {
+            return false;
+        };
+
+        $numberOne = new TelephoneNumber('123');
+        $numberTwo = new TelephoneNumber('456');
+
+        $list = new TelephoneNumberList(array($numberOne, $numberTwo));
+
+        $this->assertNull($list->find($predicate));
+    }
+
+    /**
+     * @test
+     * @group        metadata
+     * @group        contactperson
+     *
+     * @dataProvider \OpenConext\Value\TestDataProvider::notCallable
+     * @expectedException InvalidArgumentException
+     *
+     * @param mixed $notCallable
+     */
+    public function find_predicate_must_be_a_callable($notCallable)
+    {
+        $numberOne = new TelephoneNumber('123');
+        $numberTwo = new TelephoneNumber('456');
+
+        $list = new TelephoneNumberList(array($numberOne, $numberTwo));
+
+        $list->find($notCallable);
+    }
+
+    /**
+     * @test
+     * @group metadata
+     * @group contactperson
+     */
     public function lists_are_only_equal_when_containing_the_same_elements_in_the_same_order()
     {
         $numberOne   = new TelephoneNumber('123');

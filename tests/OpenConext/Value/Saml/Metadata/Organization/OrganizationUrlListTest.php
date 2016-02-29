@@ -162,6 +162,84 @@ class OrganizationUrlListTest extends UnitTest
      * @group metadata
      * @group organization
      */
+    public function an_organization_url_can_be_searched_for()
+    {
+        $predicate = function (OrganizationUrl $organizationUrl) {
+            return $organizationUrl->getLanguage() === 'en_GB';
+        };
+
+        $urlOne = new OrganizationUrl('https://www.openconext.org', 'en_US');
+        $urlTwo = new OrganizationUrl('https://www.openconext.org', 'en_GB');
+
+        $list = new OrganizationUrlList(array($urlOne, $urlTwo));
+
+        $this->assertSame($urlTwo, $list->find($predicate));
+    }
+
+    /**
+     * @test
+     * @group metadata
+     * @group organization
+     */
+    public function find_returns_the_first_matching_element()
+    {
+        $predicate = function (OrganizationUrl $organizationUrl) {
+            return $organizationUrl->getUrl() === 'https://www.domain.invalid';
+        };
+
+        $urlOne      = new OrganizationUrl('https://www.openconext.org', 'en');
+        $urlTwo      = new OrganizationUrl('https://www.domain.invalid', 'en');
+        $notReturned = new OrganizationUrl('https://www.domain.invalid', 'en');
+
+        $list = new OrganizationUrlList(array($urlOne, $urlTwo, $notReturned));
+
+        $this->assertSame($urlTwo, $list->find($predicate));
+    }
+
+    /**
+     * @test
+     * @group metadata
+     * @group organization
+     */
+    public function null_is_returned_when_no_match_is_found()
+    {
+        $predicate = function () {
+            return false;
+        };
+
+        $urlOne = new OrganizationUrl('https://www.openconext.org', 'en');
+        $urlTwo = new OrganizationUrl('https://www.domain.invalid', 'en');
+
+        $list = new OrganizationUrlList(array($urlOne, $urlTwo));
+
+        $this->assertNull($list->find($predicate));
+    }
+
+    /**
+     * @test
+     * @group metadata
+     * @group organization
+     *
+     * @dataProvider \OpenConext\Value\TestDataProvider::notCallable
+     * @expectedException InvalidArgumentException
+     *
+     * @param mixed $notCallable
+     */
+    public function find_predicate_must_be_a_callable($notCallable)
+    {
+        $urlOne = new OrganizationUrl('OpenConext', 'en_US');
+        $urlTwo = new OrganizationUrl('OpenConext', 'en_GB');
+
+        $list = new OrganizationUrlList(array($urlOne, $urlTwo));
+
+        $list->find($notCallable);
+    }
+
+    /**
+     * @test
+     * @group metadata
+     * @group organization
+     */
     public function lists_are_only_equal_when_containing_the_same_elements_in_the_same_order()
     {
         $urlOne   = new OrganizationUrl('https://www.openconext.org', 'en');

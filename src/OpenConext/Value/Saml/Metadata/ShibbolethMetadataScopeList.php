@@ -105,6 +105,23 @@ final class ShibbolethMetadataScopeList implements Countable, IteratorAggregate,
     }
 
     /**
+     * @param Callable $predicate
+     * @return null|ShibbolethMetadataScope
+     */
+    public function find($predicate)
+    {
+        Assertion::isCallable($predicate, 'predicate');
+
+        foreach ($this->scopes as $shibbolethMetadataScope) {
+            if (call_user_func($predicate, $shibbolethMetadataScope) === true) {
+                return $shibbolethMetadataScope;
+            }
+        }
+
+        return null;
+    }
+
+    /**
      * @param ShibbolethMetadataScopeList $other
      * @return bool
      */

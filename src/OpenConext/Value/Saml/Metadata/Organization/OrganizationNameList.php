@@ -85,6 +85,23 @@ final class OrganizationNameList implements Countable, IteratorAggregate, Serial
     }
 
     /**
+     * @param Callable $predicate
+     * @return null|OrganizationName
+     */
+    public function find($predicate)
+    {
+        Assertion::isCallable($predicate, 'predicate');
+
+        foreach ($this->organizationNames as $organizationName) {
+            if (call_user_func($predicate, $organizationName) === true) {
+                return $organizationName;
+            }
+        }
+
+        return null;
+    }
+
+    /**
      * @param OrganizationNameList $other
      * @return bool
      */
