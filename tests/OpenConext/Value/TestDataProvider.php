@@ -91,6 +91,13 @@ class TestDataProvider
         );
     }
 
+    public static function notNullAndNotStringOrEmptyString()
+    {
+        return array_filter(self::notStringOrEmptyString(), function ($value){
+            return reset($value) !== null;
+        });
+    }
+
     public static function emtpyString()
     {
         return array(
