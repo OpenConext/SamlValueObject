@@ -2,9 +2,10 @@
 
 namespace OpenConext\Value\Saml;
 
-use OpenConext\Value\Exception\InvalidArgumentException;
+use OpenConext\Value\Assert\Assertion;
+use OpenConext\Value\Serializable;
 
-final class EntityId
+final class EntityId implements Serializable
 {
     /**
      * @var string
@@ -16,9 +17,7 @@ final class EntityId
      */
     public function __construct($entityId)
     {
-        if (!is_string($entityId) || trim($entityId) === '') {
-            throw InvalidArgumentException::invalidType('non-blank string', 'entityId', $entityId);
-        }
+        Assertion::nonEmptyString($entityId, 'entityId');
 
         $this->entityId = $entityId;
     }
@@ -36,6 +35,16 @@ final class EntityId
      * @return string
      */
     public function getEntityId()
+    {
+        return $this->entityId;
+    }
+
+    public static function deserialize($data)
+    {
+        return new self($data);
+    }
+
+    public function serialize()
     {
         return $this->entityId;
     }

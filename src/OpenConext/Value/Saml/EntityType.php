@@ -2,9 +2,10 @@
 
 namespace OpenConext\Value\Saml;
 
-use OpenConext\Value\Exception\InvalidArgumentException;
+use OpenConext\Value\Assert\Assertion;
+use OpenConext\Value\Serializable;
 
-final class EntityType
+final class EntityType implements Serializable
 {
     const TYPE_SP  = 'saml20-sp';
     const TYPE_IDP = 'saml20-idp';
@@ -19,9 +20,11 @@ final class EntityType
      */
     public function __construct($type)
     {
-        if (!in_array($type, array(self::TYPE_SP, self::TYPE_IDP))) {
-            throw new InvalidArgumentException('EntityType must be one of EntityType::TYPE_SP or EntityType::TYPE_IDP');
-        }
+        Assertion::inArray(
+            $type,
+            array(self::TYPE_SP, self::TYPE_IDP),
+            'EntityType must be one of EntityType::TYPE_SP or EntityType::TYPE_IDP'
+        );
 
         $this->type = $type;
     }
@@ -74,6 +77,16 @@ final class EntityType
     public function equals(EntityType $other)
     {
         return $this->type === $other->type;
+    }
+
+    public static function deserialize($data)
+    {
+        return new self($data);
+    }
+
+    public function serialize()
+    {
+        return $this->type;
     }
 
     public function __toString()
