@@ -2,7 +2,7 @@
 
 <project name="OpenConext_SamlValueObject-ci" default="build">
         <target name="build"
-            depends="prepare,php-lint-ci,phpcs-ci,php-security-checker,phpunit-ci"/>
+            depends="prepare,php-lint-ci,phpmd-ci,phpcs-ci,php-security-checker,phpunit-ci"/>
 
     <target name="clean" description="Cleanup build artifacts">
         <delete dir="build/artifacts/coverage"/>
@@ -59,6 +59,17 @@
             <arg value="security:check"/>
             <arg value="--verbose"/>
             <arg value="composer.lock"/>
+        </exec>
+    </target>
+
+    <target name="phpmd-ci"
+            description="Perform project mess detection using PHPMD creating a log file for the continuous integration server">
+        <exec executable="vendor/bin/phpmd" failonerror="true">
+            <arg path="src"/>
+            <arg value="text"/>
+            <arg value="phpmd.xml"/>
+            <arg value="--exclude"/>
+            <arg value="*/Tests/*"/>
         </exec>
     </target>
 

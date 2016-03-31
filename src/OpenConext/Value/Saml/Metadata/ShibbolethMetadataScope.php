@@ -2,20 +2,21 @@
 
 namespace OpenConext\Value\Saml\Metadata;
 
-use OpenConext\Value\Exception\InvalidArgumentException;
+use OpenConext\Value\Assert\Assertion;
 use OpenConext\Value\RegularExpression;
+use OpenConext\Value\Serializable;
 
-final class ShibbolethMetadataScope
+final class ShibbolethMetadataScope implements Serializable
 {
     /**
-     * @var string|null
+     * @var string
      */
-    private $literal;
+    private $scope;
 
     /**
-     * @var RegularExpression|null
+     * @var bool
      */
-    private $regexp;
+    private $isRegexp;
 
     /**
      * @param string $literal
@@ -23,14 +24,9 @@ final class ShibbolethMetadataScope
      */
     public static function literal($literal)
     {
-        if (!is_string($literal) || trim($literal) === '') {
-            throw InvalidArgumentException::invalidType('not-blank string', 'literal', $literal);
-        }
+        Assertion::nonEmptyString($literal, 'literal');
 
-        $scope          = new ShibbolethMetadataScope();
-        $scope->literal = $literal;
-
-        return $scope;
+        return new self($literal);
     }
 
     /**
@@ -39,18 +35,26 @@ final class ShibbolethMetadataScope
      */
     public static function regexp($regexp)
     {
-        if (!is_string($regexp) || trim($regexp) === '') {
-            throw InvalidArgumentException::invalidType('non-blank string', 'regexp', $regexp);
-        }
+        Assertion::nonEmptyString($regexp, 'regexp');
 
-        $scope         = new ShibbolethMetadataScope();
-        $scope->regexp = new RegularExpression($regexp);
-
-        return $scope;
+        return new self($regexp, true);
     }
 
-    private function __construct()
+    /**
+     * @param string $scope    the scope as defined
+     * @param bool   $isRegexp whether or not the scope is a regular expression as identified by the regexp attribute
+     */
+    public function __construct($scope, $isRegexp = false)
     {
+        Assertion::nonEmptyString($scope, 'scope');
+        Assertion::boolean($isRegexp);
+
+        if ($isRegexp) {
+            Assertion::validRegularExpression($scope, 'scope');
+        }
+
+        $this->scope    = $scope;
+        $this->isRegexp = $isRegexp;
     }
 
     /**
@@ -59,15 +63,14 @@ final class ShibbolethMetadataScope
      */
     public function allows($string)
     {
-        if (!is_string($string)) {
-            throw InvalidArgumentException::invalidType('string', 'string', $string);
+        Assertion::string($string, 'Scope to check should be a string, "%s" given');
+
+        if (!$this->isRegexp) {
+            return $this->scope === $string;
         }
 
-        if ($this->literal !== null) {
-            return $this->literal === $string;
-        }
-
-        return $this->regexp->matches($string);
+        $regexp = new RegularExpression($this->scope);
+        return $regexp->matches($string);
     }
 
     /**
@@ -76,16 +79,31 @@ final class ShibbolethMetadataScope
      */
     public function equals(ShibbolethMetadataScope $other)
     {
-        return ($this->literal !== null && $this->literal === $other->literal)
-                || ($this->regexp && $other->regexp && $this->regexp->equals($other->regexp));
+        return ($this->scope === $other->scope && $this->isRegexp === $other->isRegexp);
+    }
+
+    public static function deserialize($data)
+    {
+        Assertion::isArray($data);
+        Assertion::keysExist($data, array('is_regexp', 'scope'));
+
+        return new self($data['scope'], $data['is_regexp']);
+    }
+
+    public function serialize()
+    {
+        return array(
+            'scope'     => $this->scope,
+            'is_regexp' => $this->isRegexp
+        );
     }
 
     public function __toString()
     {
-        if ($this->literal !== null) {
-            return sprintf('ShibbolethMetadataScope(literal=%s)', $this->literal);
-        } else {
-            return sprintf('ShibbolethMetadataScope(regexp=%s)', $this->regexp);
-        }
+        return sprintf(
+            'ShibbolethMetadataScope(scope=%s, regexp=%s)',
+            $this->scope,
+            $this->isRegexp ? 'true' : 'false'
+        );
     }
 }

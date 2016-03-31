@@ -2,17 +2,19 @@
 
 namespace OpenConext\Value\Saml;
 
+use OpenConext\Value\Exception\InvalidArgumentException;
 use PHPUnit_Framework_TestCase as TestCase;
 
 class EntitySetTest extends TestCase
 {
     /**
+     * @test
+     * @group entity
+     *
+     * @dataProvider unequalSets
+     *
      * @param array $firstSet
      * @param array $secondSet
-     *
-     * @test
-     * @group        saml
-     * @dataProvider unequalSets
      */
     public function set_with_different_elements_are_not_considered_equal(array $firstSet, array $secondSet)
     {
@@ -49,12 +51,13 @@ class EntitySetTest extends TestCase
     }
 
     /**
+     * @test
+     * @group entity
+     *
+     * @dataProvider equalSets
+     *
      * @param array $firstSet
      * @param array $secondSet
-     *
-     * @test
-     * @group        saml
-     * @dataProvider equalSets
      */
     public function set_with_equal_elements_are_considered_equal(array $firstSet, array $secondSet)
     {
@@ -88,7 +91,7 @@ class EntitySetTest extends TestCase
 
     /**
      * @test
-     * @group saml
+     * @group entity
      */
     public function elements_in_a_set_can_be_tested_for_presence_based_on_equality()
     {
@@ -105,7 +108,7 @@ class EntitySetTest extends TestCase
 
     /**
      * @test
-     * @group saml
+     * @group entity
      */
     public function entity_set_deduplicates_equal_elements()
     {
@@ -115,5 +118,79 @@ class EntitySetTest extends TestCase
         $entitySet = new EntitySet(array($entity, $entity, $differentInstance));
 
         $this->assertCount(1, $entitySet);
+    }
+
+    /**
+     * @test
+     * @group entity
+     */
+    public function an_entity_set_can_be_iterated_over()
+    {
+        $entityInSetOne = new Entity(new EntityId('RUG'), EntityType::SP());
+        $entityInSetTwo = new Entity(new EntityId('HU'), EntityType::IdP());
+
+        $entitySet = new EntitySet(array($entityInSetOne, $entityInSetTwo));
+
+        $unknownEntityFound = false;
+        $entityOneSeen = false;
+        $entityTwoSeen = false;
+
+        foreach ($entitySet as $entity) {
+            if (!$entityOneSeen && $entity === $entityInSetOne) {
+                $entityOneSeen = true;
+            } elseif (!$entityTwoSeen && $entity === $entityInSetTwo) {
+                $entityTwoSeen = true;
+            } else {
+                $unknownEntityFound = true;
+            }
+        }
+
+        $this->assertFalse($unknownEntityFound, 'Unknown entity discovered when iterating over set');
+        $this->assertTrue($entityOneSeen, 'Expected to see defined entityInSetOne when iterating over set');
+        $this->assertTrue($entityTwoSeen, 'Expected to see defined entityInSetTwo when iterating over set');
+    }
+
+    /**
+     * @test
+     * @group entity
+     */
+    public function deserializing_a_serialized_entity_set_results_in_an_equal_value_object()
+    {
+        $entityInSetOne = new Entity(new EntityId('RUG'), EntityType::SP());
+        $entityInSetTwo = new Entity(new EntityId('HU'), EntityType::IdP());
+
+        $original     = new EntitySet(array($entityInSetOne, $entityInSetTwo));
+        $deserialized = EntitySet::deserialize($original->serialize());
+
+        $this->assertTrue($original->equals($deserialized));
+    }
+
+    /**
+     * @test
+     * @group entity
+     *
+     * @dataProvider \OpenConext\Value\TestDataProvider::notArray
+     * @expectedException InvalidArgumentException
+     *
+     * @param mixed $notArray
+     */
+    public function deserialization_requires_an_array($notArray)
+    {
+        EntitySet::deserialize($notArray);
+    }
+
+    /**
+     * @test
+     * @group entity
+     */
+    public function an_entity_set_can_be_cast_to_a_known_format_string()
+    {
+        $entityOne = new Entity(new EntityId('RUG'), EntityType::SP());
+        $entityTwo = new Entity(new EntityId('HU'), EntityType::IdP());
+        $entities  = array($entityOne, $entityTwo);
+
+        $entitySet = new EntitySet($entities);
+
+        $this->assertEquals(sprintf('EntitySet["%s"]', implode('", "', $entities)), (string) $entitySet);
     }
 }
