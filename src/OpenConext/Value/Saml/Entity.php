@@ -2,9 +2,10 @@
 
 namespace OpenConext\Value\Saml;
 
-use OpenConext\Value\Exception\InvalidArgumentException;
+use OpenConext\Value\Assert\Assertion;
+use OpenConext\Value\Serializable;
 
-final class Entity
+final class Entity implements Serializable
 {
     /**
      * @var EntityId
@@ -22,21 +23,21 @@ final class Entity
      */
     public static function fromDescriptor(array $descriptor)
     {
-        if (count($descriptor) !== 2) {
-            throw new InvalidArgumentException(
-                'EntityDescriptor must be an array with two elements (both a string), the first must be the EntityId,'
-                . ' the second the EntityType'
-            );
+        Assertion::count(
+            $descriptor,
+            2,
+            'EntityDescriptor must be an array with two elements (both a string), the first must be the EntityId, the '
+            . 'second the EntityType'
+        );
+        Assertion::inArray($descriptor[1], array('sp', 'idp'), 'Entity descriptor type is neither "sp" nor "idp"');
+
+        if ($descriptor[1] === 'sp') {
+            $entityType = EntityType::SP();
+        } else {
+            $entityType = EntityType::IdP();
         }
 
-        switch ($descriptor[1]) {
-            case 'sp':
-                return new Entity(new EntityId($descriptor[0]), EntityType::SP());
-            case 'idp':
-                return new Entity(new EntityId($descriptor[0]), EntityType::IdP());
-            default:
-                throw new InvalidArgumentException('Entity descriptor type is neither "sp" nor "idp"');
-        }
+        return new Entity(new EntityId($descriptor[0]), $entityType);
     }
 
     public function __construct(EntityId $entityId, EntityType $entityType)
@@ -95,8 +96,24 @@ final class Entity
         return $this->entityId->equals($other->entityId) && $this->entityType->equals($other->entityType);
     }
 
+    public static function deserialize($data)
+    {
+        Assertion::isArray($data);
+        Assertion::keysExist($data, array('entity_id', 'entity_type'));
+
+        return new self(EntityId::deserialize($data['entity_id']), EntityType::deserialize($data['entity_type']));
+    }
+
+    public function serialize()
+    {
+        return array(
+            'entity_id' => $this->entityId->serialize(),
+            'entity_type' => $this->entityType->serialize()
+        );
+    }
+
     public function __toString()
     {
-        return $this->entityId . ' (' . $this->entityType . ')';
+        return sprintf('%s (%s)', $this->entityId, $this->entityType);
     }
 }
