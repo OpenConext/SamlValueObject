@@ -11,7 +11,7 @@
     ],
     "require": {
         "php": ">=5.3.9,<8.0-dev",
-        "beberlei/assert": "^2.4"
+        "beberlei/assert": "^2.6"
     },
     "require-dev": {
         "ibuildings/qa-tools": "^1.1",
