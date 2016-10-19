@@ -95,6 +95,19 @@ class ShibbolethMetadataScopeTest extends UnitTest
      * @test
      * @group metadata
      */
+    public function a_literal_scopes_allows_case_insensitive_matches()
+    {
+        $scope = new ShibbolethMetadataScope('abcde');
+        $this->assertTrue($scope->allows('abCde'));
+
+        $scope = new ShibbolethMetadataScope('abcDe');
+        $this->assertTrue($scope->allows('abcde'));
+    }
+
+    /**
+     * @test
+     * @group metadata
+     */
     public function a_regex_scope_allows_matches()
     {
         $scope = new ShibbolethMetadataScope('/a{3,4}/i', true);
