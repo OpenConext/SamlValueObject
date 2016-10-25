@@ -50,7 +50,7 @@ final class ShibbolethMetadataScope implements Serializable
         Assertion::boolean($isRegexp);
 
         if ($isRegexp) {
-            Assertion::validRegularExpression($scope, 'scope');
+            Assertion::validRegularExpression("#$scope#", 'scope');
         }
 
         $this->scope    = $scope;
@@ -69,7 +69,7 @@ final class ShibbolethMetadataScope implements Serializable
             return strcasecmp($this->scope, $string) === 0;
         }
 
-        $regexp = new RegularExpression($this->scope);
+        $regexp = new RegularExpression("#$this->scope#");
         return $regexp->matches($string);
     }
 

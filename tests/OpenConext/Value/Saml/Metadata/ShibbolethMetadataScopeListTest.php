@@ -18,7 +18,7 @@ class ShibbolethMetadataScopeListTest extends UnitTest
     {
         $elements = array(
             ShibbolethMetadataScope::literal('foobar'),
-            ShibbolethMetadataScope::regexp('/abc/i'),
+            ShibbolethMetadataScope::regexp('abc'),
             new stdClass()
         );
 
@@ -33,7 +33,7 @@ class ShibbolethMetadataScopeListTest extends UnitTest
     {
         $list = new ShibbolethMetadataScopeList(array(
             ShibbolethMetadataScope::literal('first'),
-            ShibbolethMetadataScope::regexp('/a{3,4}/i')
+            ShibbolethMetadataScope::regexp('a{3,4}')
         ));
 
         $this->assertTrue($list->inScope('first'));
@@ -57,7 +57,7 @@ class ShibbolethMetadataScopeListTest extends UnitTest
         if (!$list) {
             $list = new ShibbolethMetadataScopeList(array(
                 ShibbolethMetadataScope::literal('first'),
-                ShibbolethMetadataScope::regexp('/a{3,4}/i')
+                ShibbolethMetadataScope::regexp('a{3,4}')
             ));
         }
 
@@ -71,7 +71,7 @@ class ShibbolethMetadataScopeListTest extends UnitTest
     public function adding_scope_to_a_list_creates_a_new_list()
     {
         $firstScope = ShibbolethMetadataScope::literal('first');
-        $secondScope = ShibbolethMetadataScope::regexp('/abc/i');
+        $secondScope = ShibbolethMetadataScope::regexp('abc');
 
         $list = new ShibbolethMetadataScopeList(array($firstScope));
         $newList = $list->add($secondScope);
@@ -92,7 +92,7 @@ class ShibbolethMetadataScopeListTest extends UnitTest
     public function presence_of_a_scope_can_be_tested()
     {
         $firstScope  = ShibbolethMetadataScope::literal('in scope');
-        $secondScope = ShibbolethMetadataScope::regexp('/abc/i');
+        $secondScope = ShibbolethMetadataScope::regexp('abc');
         $notInList   = ShibbolethMetadataScope::literal('not in list');
 
         $list = new ShibbolethMetadataScopeList(array($firstScope, $secondScope));
@@ -109,7 +109,7 @@ class ShibbolethMetadataScopeListTest extends UnitTest
     public function the_index_of_a_scope_can_be_retrieved()
     {
         $firstScope  = ShibbolethMetadataScope::literal('in scope');
-        $secondScope = ShibbolethMetadataScope::regexp('/abc/i');
+        $secondScope = ShibbolethMetadataScope::regexp('abc');
         $notInList   = ShibbolethMetadataScope::literal('not in list');
 
         $list = new ShibbolethMetadataScopeList(array($firstScope, $secondScope));
@@ -126,7 +126,7 @@ class ShibbolethMetadataScopeListTest extends UnitTest
     public function a_scope_can_be_retrieved_by_index()
     {
         $firstScope  = ShibbolethMetadataScope::literal('in scope');
-        $secondScope = ShibbolethMetadataScope::regexp('/abc/i');
+        $secondScope = ShibbolethMetadataScope::regexp('abc');
 
         $list = new ShibbolethMetadataScopeList(array($firstScope, $secondScope));
 
@@ -144,7 +144,7 @@ class ShibbolethMetadataScopeListTest extends UnitTest
     public function index_to_retrieve_the_element_of_must_be_an_integer($invalidArgument)
     {
         $firstScope  = ShibbolethMetadataScope::literal('in scope');
-        $secondScope = ShibbolethMetadataScope::regexp('/abc/i');
+        $secondScope = ShibbolethMetadataScope::regexp('abc');
 
         $list = new ShibbolethMetadataScopeList(array($firstScope, $secondScope));
 
@@ -160,7 +160,7 @@ class ShibbolethMetadataScopeListTest extends UnitTest
     public function an_exception_is_thrown_when_attempting_to_get_an_element_with_a_negative_index()
     {
         $firstScope  = ShibbolethMetadataScope::literal('in scope');
-        $secondScope = ShibbolethMetadataScope::regexp('/abc/i');
+        $secondScope = ShibbolethMetadataScope::regexp('abc');
 
         $list = new ShibbolethMetadataScopeList(array($firstScope, $secondScope));
 
@@ -176,7 +176,7 @@ class ShibbolethMetadataScopeListTest extends UnitTest
     public function an_exception_is_thrown_when_attempting_to_get_an_element_with_an_index_larger_than_the_list_size()
     {
         $firstScope  = ShibbolethMetadataScope::literal('in scope');
-        $secondScope = ShibbolethMetadataScope::regexp('/abc/i');
+        $secondScope = ShibbolethMetadataScope::regexp('abc');
 
         $list = new ShibbolethMetadataScopeList(array($firstScope, $secondScope));
 
@@ -190,11 +190,11 @@ class ShibbolethMetadataScopeListTest extends UnitTest
     public function a_scope_can_be_searched_for()
     {
         $predicate = function (ShibbolethMetadataScope $scope) {
-            return $scope->equals(ShibbolethMetadataScope::regexp('/abc/i'));
+            return $scope->equals(ShibbolethMetadataScope::regexp('abc'));
         };
 
         $firstScope  = ShibbolethMetadataScope::literal('in scope');
-        $secondScope = ShibbolethMetadataScope::regexp('/abc/i');
+        $secondScope = ShibbolethMetadataScope::regexp('abc');
 
         $list = new ShibbolethMetadataScopeList(array($firstScope, $secondScope));
 
@@ -208,12 +208,12 @@ class ShibbolethMetadataScopeListTest extends UnitTest
     public function find_returns_the_first_matching_element()
     {
         $predicate = function (ShibbolethMetadataScope $scope) {
-            return $scope->equals(ShibbolethMetadataScope::regexp('/abc/i'));
+            return $scope->equals(ShibbolethMetadataScope::regexp('abc'));
         };
 
         $firstScope  = ShibbolethMetadataScope::literal('in scope');
-        $secondScope = ShibbolethMetadataScope::regexp('/abc/i');
-        $notReturned = ShibbolethMetadataScope::regexp('/abc/i');
+        $secondScope = ShibbolethMetadataScope::regexp('abc');
+        $notReturned = ShibbolethMetadataScope::regexp('abc');
 
         $list = new ShibbolethMetadataScopeList(array($firstScope, $secondScope, $notReturned));
 
@@ -231,7 +231,7 @@ class ShibbolethMetadataScopeListTest extends UnitTest
         };
 
         $firstScope  = ShibbolethMetadataScope::literal('in scope');
-        $secondScope = ShibbolethMetadataScope::regexp('/abc/i');
+        $secondScope = ShibbolethMetadataScope::regexp('abc');
 
         $list = new ShibbolethMetadataScopeList(array($firstScope, $secondScope));
 
@@ -250,7 +250,7 @@ class ShibbolethMetadataScopeListTest extends UnitTest
     public function find_predicate_must_be_a_callable($notCallable)
     {
         $firstScope  = ShibbolethMetadataScope::literal('in scope');
-        $secondScope = ShibbolethMetadataScope::regexp('/abc/i');
+        $secondScope = ShibbolethMetadataScope::regexp('abc');
 
         $list = new ShibbolethMetadataScopeList(array($firstScope, $secondScope));
 
@@ -264,7 +264,7 @@ class ShibbolethMetadataScopeListTest extends UnitTest
     public function lists_are_only_equal_when_containing_the_same_elements_in_the_same_order()
     {
         $firstScope  = ShibbolethMetadataScope::literal('in scope');
-        $secondScope = ShibbolethMetadataScope::regexp('/abc/i');
+        $secondScope = ShibbolethMetadataScope::regexp('abc');
         $thirdsScope = ShibbolethMetadataScope::literal('also in scope');
 
         $base           = new ShibbolethMetadataScopeList(array($firstScope, $secondScope));
@@ -286,7 +286,7 @@ class ShibbolethMetadataScopeListTest extends UnitTest
     public function a_list_can_be_iterated_over()
     {
         $literal = ShibbolethMetadataScope::literal('foo');
-        $regexp = ShibbolethMetadataScope::regexp('/a{3,4}/i');
+        $regexp = ShibbolethMetadataScope::regexp('a{3,4}');
 
         $list = new ShibbolethMetadataScopeList(array($literal, $regexp));
 
@@ -315,7 +315,7 @@ class ShibbolethMetadataScopeListTest extends UnitTest
     public function a_list_can_be_counted()
     {
         $literal = ShibbolethMetadataScope::literal('foo');
-        $regexp  = ShibbolethMetadataScope::regexp('/a{3,4}/i');
+        $regexp  = ShibbolethMetadataScope::regexp('a{3,4}');
 
         $list = new ShibbolethMetadataScopeList(array($literal, $regexp));
 
@@ -329,7 +329,7 @@ class ShibbolethMetadataScopeListTest extends UnitTest
     public function a_list_exposes_an_array_containing_its_elements()
     {
         $literal = ShibbolethMetadataScope::literal('foo');
-        $regexp  = ShibbolethMetadataScope::regexp('/a{3,4}/i');
+        $regexp  = ShibbolethMetadataScope::regexp('a{3,4}');
 
         $list = new ShibbolethMetadataScopeList(array($literal, $regexp));
 
@@ -347,7 +347,7 @@ class ShibbolethMetadataScopeListTest extends UnitTest
     public function deserializing_a_serialized_shibboleth_metadata_scope_list_results_in_an_equal_value_object()
     {
         $literal = ShibbolethMetadataScope::literal('foo');
-        $regexp  = ShibbolethMetadataScope::regexp('/a{3,4}/i');
+        $regexp  = ShibbolethMetadataScope::regexp('a{3,4}');
 
         $original = new ShibbolethMetadataScopeList(array($literal, $regexp));
         $deserialized = ShibbolethMetadataScopeList::deserialize($original->serialize());
@@ -377,7 +377,7 @@ class ShibbolethMetadataScopeListTest extends UnitTest
     public function a_list_can_be_cast_to_string()
     {
         $literal = ShibbolethMetadataScope::literal('foo');
-        $regexp  = ShibbolethMetadataScope::regexp('/a{3,4}/i');
+        $regexp  = ShibbolethMetadataScope::regexp('a{3,4}');
 
         $list = new ShibbolethMetadataScopeList(array($literal, $regexp));
 

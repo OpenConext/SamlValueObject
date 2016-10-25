@@ -60,7 +60,7 @@ class ShibbolethMetadataScopeTest extends UnitTest
      */
     public function a_regexp_scope_can_only_be_created_with_a_boolean_argument($notBoolean)
     {
-        new ShibbolethMetadataScope('/scope/', $notBoolean);
+        new ShibbolethMetadataScope('scope', $notBoolean);
     }
 
     /**
@@ -110,7 +110,7 @@ class ShibbolethMetadataScopeTest extends UnitTest
      */
     public function a_regex_scope_allows_matches()
     {
-        $scope = new ShibbolethMetadataScope('/a{3,4}/i', true);
+        $scope = new ShibbolethMetadataScope('a{3,4}', true);
 
         $this->assertTrue($scope->allows('aaa'));
         $this->assertTrue($scope->allows('aAAa'));
@@ -124,8 +124,8 @@ class ShibbolethMetadataScopeTest extends UnitTest
      */
     public function a_literal_scope_is_not_equal_to_a_regexp_scope()
     {
-        $literalScope = new ShibbolethMetadataScope('/notEqual/');
-        $regexpScope  = new ShibbolethMetadataScope('/notEqual/', true);
+        $literalScope = new ShibbolethMetadataScope('notEqual');
+        $regexpScope  = new ShibbolethMetadataScope('notEqual', true);
 
         $this->assertFalse($literalScope->equals($regexpScope));
     }
@@ -156,9 +156,9 @@ class ShibbolethMetadataScopeTest extends UnitTest
      */
     public function regex_scopes_are_compared_based_on_the_regexp_given()
     {
-        $base      = new ShibbolethMetadataScope('/[0-9a-z]{8}/', true);
-        $theSame   = new ShibbolethMetadataScope('/[0-9a-z]{8}/', true);
-        $different = new ShibbolethMetadataScope('/different/', true);
+        $base      = new ShibbolethMetadataScope('[0-9a-z]{8}', true);
+        $theSame   = new ShibbolethMetadataScope('[0-9a-z]{8}', true);
+        $different = new ShibbolethMetadataScope('different', true);
 
         $this->assertTrue(
             $base->equals($theSame),
@@ -179,7 +179,7 @@ class ShibbolethMetadataScopeTest extends UnitTest
     public function deserializing_a_serialized_shibmd_scope_results_in_an_equal_value_object()
     {
         $literal = new ShibbolethMetadataScope('foobar');
-        $regexp  = new ShibbolethMetadataScope('/abc/i', true);
+        $regexp  = new ShibbolethMetadataScope('abc', true);
 
         $deserializedLiteral = ShibbolethMetadataScope::deserialize($literal->serialize());
         $deserializedRegexp  = ShibbolethMetadataScope::deserialize($regexp->serialize());
