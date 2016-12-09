@@ -50,7 +50,7 @@ final class ShibbolethMetadataScope implements Serializable
         Assertion::boolean($isRegexp);
 
         if ($isRegexp) {
-            Assertion::validRegularExpression($scope, 'scope');
+            Assertion::validRegularExpression('#' . $scope . '#i', 'scope');
         }
 
         $this->scope    = $scope;
@@ -66,10 +66,10 @@ final class ShibbolethMetadataScope implements Serializable
         Assertion::string($string, 'Scope to check should be a string, "%s" given');
 
         if (!$this->isRegexp) {
-            return $this->scope === $string;
+            return strcasecmp($this->scope, $string) === 0;
         }
 
-        $regexp = new RegularExpression($this->scope);
+        $regexp = new RegularExpression('#' . $this->scope . '#i');
         return $regexp->matches($string);
     }
 
@@ -79,7 +79,7 @@ final class ShibbolethMetadataScope implements Serializable
      */
     public function equals(ShibbolethMetadataScope $other)
     {
-        return ($this->scope === $other->scope && $this->isRegexp === $other->isRegexp);
+        return (strcasecmp($this->scope, $other->scope) === 0 && $this->isRegexp === $other->isRegexp);
     }
 
     public static function deserialize($data)
