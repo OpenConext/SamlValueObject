@@ -84,7 +84,7 @@ class Assertion extends BaseAssertion
      * @param null|string $message
      * @param string      $propertyPath
      */
-    public static function isCallable($value, $propertyPath, $message = null)
+    public static function isCallable($value, $message = null, $propertyPath = null)
     {
         $message = $message ?: 'Expected a callable for "%s", got a "%s"';
         if (!is_callable($value)) {
