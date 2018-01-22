@@ -78,22 +78,4 @@ class Assertion extends BaseAssertion
             self::keyExists($value, $requiredKey, $message, $propertyPath);
         }
     }
-
-    /**
-     * @param mixed       $value
-     * @param null|string $message
-     * @param string      $propertyPath
-     */
-    public static function isCallable($value, $propertyPath, $message = null)
-    {
-        $message = $message ?: 'Expected a callable for "%s", got a "%s"';
-        if (!is_callable($value)) {
-            throw static::createException(
-                $value,
-                sprintf($message, $propertyPath, static::stringify($value)),
-                static::INVALID_CALLABLE,
-                $propertyPath
-            );
-        }
-    }
 }
