@@ -110,7 +110,7 @@ final class ShibbolethMetadataScopeList implements Countable, IteratorAggregate,
      */
     public function find($predicate)
     {
-        Assertion::isCallable($predicate, 'predicate');
+        Assertion::isCallable($predicate, null, 'predicate');
 
         foreach ($this->scopes as $shibbolethMetadataScope) {
             if (call_user_func($predicate, $shibbolethMetadataScope) === true) {
