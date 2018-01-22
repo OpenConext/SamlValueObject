@@ -90,7 +90,7 @@ final class EmailAddressList implements Countable, IteratorAggregate, Serializab
      */
     public function find($predicate)
     {
-        Assertion::isCallable($predicate, 'predicate');
+        Assertion::isCallable($predicate, null, 'predicate');
 
         foreach ($this->emailAddresses as $emailAddress) {
             if (call_user_func($predicate, $emailAddress) === true) {
