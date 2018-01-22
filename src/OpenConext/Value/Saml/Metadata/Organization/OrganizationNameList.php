@@ -90,7 +90,7 @@ final class OrganizationNameList implements Countable, IteratorAggregate, Serial
      */
     public function find($predicate)
     {
-        Assertion::isCallable($predicate, 'predicate');
+        Assertion::isCallable($predicate, null, 'predicate');
 
         foreach ($this->organizationNames as $organizationName) {
             if (call_user_func($predicate, $organizationName) === true) {

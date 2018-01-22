@@ -90,7 +90,7 @@ final class TelephoneNumberList implements Countable, IteratorAggregate, Seriali
      */
     public function find($predicate)
     {
-        Assertion::isCallable($predicate, 'predicate');
+        Assertion::isCallable($predicate, null, 'predicate');
 
         foreach ($this->telephoneNumbers as $telephoneNumber) {
             if (call_user_func($predicate, $telephoneNumber) === true) {

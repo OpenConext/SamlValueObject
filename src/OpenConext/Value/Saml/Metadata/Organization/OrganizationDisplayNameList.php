@@ -112,7 +112,7 @@ final class OrganizationDisplayNameList implements Countable, IteratorAggregate,
      */
     public function find($predicate)
     {
-        Assertion::isCallable($predicate, 'predicate');
+        Assertion::isCallable($predicate, null, 'predicate');
 
         foreach ($this->organizationDisplayNames as $organizationDisplayName) {
             if (call_user_func($predicate, $organizationDisplayName) === true) {
