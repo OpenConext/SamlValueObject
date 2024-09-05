@@ -10,7 +10,7 @@
         }
     ],
     "require": {
-        "php": ">=5.4,<8.0-dev",
+        "php": ">=7.2,<=8.2",
         "beberlei/assert": "^2.6"
     },
     "require-dev": {
@@ -29,7 +29,7 @@
     },
     "config": {
         "platform": {
-            "php": "5.3.9"
+            "php": "8.2"
         }
     }
 }
