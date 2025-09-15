@@ -8,14 +8,14 @@ use OpenConext\Value\Exception\InvalidArgumentException;
 class EntitySetTest extends \PHPUnit\Framework\TestCase
 {
     /**
-     * @test
-     * @group entity
      *
-     * @dataProvider unequalSets
      *
      * @param array $firstSet
      * @param array $secondSet
      */
+    #[\PHPUnit\Framework\Attributes\DataProvider('unequalSets')]
+    #[\PHPUnit\Framework\Attributes\Group('entity')]
+    #[\PHPUnit\Framework\Attributes\Test]
     public function set_with_different_elements_are_not_considered_equal(array $firstSet, array $secondSet)
     {
         $base  = new EntitySet($firstSet);
@@ -51,14 +51,14 @@ class EntitySetTest extends \PHPUnit\Framework\TestCase
     }
 
     /**
-     * @test
-     * @group entity
      *
-     * @dataProvider equalSets
      *
      * @param array $firstSet
      * @param array $secondSet
      */
+    #[\PHPUnit\Framework\Attributes\DataProvider('equalSets')]
+    #[\PHPUnit\Framework\Attributes\Group('entity')]
+    #[\PHPUnit\Framework\Attributes\Test]
     public function set_with_equal_elements_are_considered_equal(array $firstSet, array $secondSet)
     {
         $base  = new EntitySet($firstSet);
@@ -89,10 +89,8 @@ class EntitySetTest extends \PHPUnit\Framework\TestCase
         );
     }
 
-    /**
-     * @test
-     * @group entity
-     */
+    #[\PHPUnit\Framework\Attributes\Group('entity')]
+    #[\PHPUnit\Framework\Attributes\Test]
     public function elements_in_a_set_can_be_tested_for_presence_based_on_equality()
     {
         $entityInSetOne = new Entity(new EntityId('RUG'), EntityType::SP());
@@ -106,10 +104,8 @@ class EntitySetTest extends \PHPUnit\Framework\TestCase
         $this->assertFalse($entitySet->contains($entityNotInSet));
     }
 
-    /**
-     * @test
-     * @group entity
-     */
+    #[\PHPUnit\Framework\Attributes\Group('entity')]
+    #[\PHPUnit\Framework\Attributes\Test]
     public function entity_set_deduplicates_equal_elements()
     {
         $entity            = new Entity(new EntityId('RUG'), EntityType::SP());
@@ -120,10 +116,8 @@ class EntitySetTest extends \PHPUnit\Framework\TestCase
         $this->assertCount(1, $entitySet);
     }
 
-    /**
-     * @test
-     * @group entity
-     */
+    #[\PHPUnit\Framework\Attributes\Group('entity')]
+    #[\PHPUnit\Framework\Attributes\Test]
     public function an_entity_set_can_be_iterated_over()
     {
         $entityInSetOne = new Entity(new EntityId('RUG'), EntityType::SP());
@@ -150,10 +144,8 @@ class EntitySetTest extends \PHPUnit\Framework\TestCase
         $this->assertTrue($entityTwoSeen, 'Expected to see defined entityInSetTwo when iterating over set');
     }
 
-    /**
-     * @test
-     * @group entity
-     */
+    #[\PHPUnit\Framework\Attributes\Group('entity')]
+    #[\PHPUnit\Framework\Attributes\Test]
     public function deserializing_a_serialized_entity_set_results_in_an_equal_value_object()
     {
         $entityInSetOne = new Entity(new EntityId('RUG'), EntityType::SP());
@@ -166,23 +158,20 @@ class EntitySetTest extends \PHPUnit\Framework\TestCase
     }
 
     /**
-     * @test
-     * @group entity
-     *
-     * @dataProvider \OpenConext\Value\TestDataProvider::notArray
      *
      * @param mixed $notArray
      */
+    #[\PHPUnit\Framework\Attributes\DataProviderExternal(\OpenConext\Value\TestDataProvider::class, 'notArray')]
+    #[\PHPUnit\Framework\Attributes\Group('entity')]
+    #[\PHPUnit\Framework\Attributes\Test]
     public function deserialization_requires_an_array($notArray)
     {
         $this->expectException(\InvalidArgumentException::class);
         EntitySet::deserialize($notArray);
     }
 
-    /**
-     * @test
-     * @group entity
-     */
+    #[\PHPUnit\Framework\Attributes\Group('entity')]
+    #[\PHPUnit\Framework\Attributes\Test]
     public function an_entity_set_can_be_cast_to_a_known_format_string()
     {
         $entityOne = new Entity(new EntityId('RUG'), EntityType::SP());

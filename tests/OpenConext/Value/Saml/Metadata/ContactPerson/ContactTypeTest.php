@@ -7,11 +7,9 @@ use OpenConext\Value\Exception\InvalidArgumentException;
 
 class ContactTypeTest extends \PHPUnit\Framework\TestCase
 {
-    /**
-     * @test
-     * @group metadata
-     * @group contactperson
-     */
+    #[\PHPUnit\Framework\Attributes\Group('metadata')]
+    #[\PHPUnit\Framework\Attributes\Group('contactperson')]
+    #[\PHPUnit\Framework\Attributes\Test]
     public function contact_types_can_be_compared()
     {
         $administrative = ContactType::administrative();
@@ -24,15 +22,14 @@ class ContactTypeTest extends \PHPUnit\Framework\TestCase
     }
 
     /**
-     * @test
-     * @group metadata
-     * @group contactperson
-     *
-     * @dataProvider typeAndFactoryMethodProvider
      *
      * @param string $contactType
      * @param string $factoryMethod
      */
+    #[\PHPUnit\Framework\Attributes\DataProvider('typeAndFactoryMethodProvider')]
+    #[\PHPUnit\Framework\Attributes\Group('metadata')]
+    #[\PHPUnit\Framework\Attributes\Group('contactperson')]
+    #[\PHPUnit\Framework\Attributes\Test]
     public function a_contact_type_created_with_a_valid_type_equals_its_factory_created_version(
         $contactType,
         $factoryMethod
@@ -54,22 +51,18 @@ class ContactTypeTest extends \PHPUnit\Framework\TestCase
         );
     }
 
-    /**
-     * @test
-     * @group metadata
-     * @group contactperson
-     */
+    #[\PHPUnit\Framework\Attributes\Group('metadata')]
+    #[\PHPUnit\Framework\Attributes\Group('contactperson')]
+    #[\PHPUnit\Framework\Attributes\Test]
     public function an_invalid_type_causes_an_exception_to_be_thrown()
     {
         $this->expectException(\InvalidArgumentException::class);
         new ContactType('Nope, not a valid contacttype');
     }
 
-    /**
-     * @test
-     * @group metadata
-     * @group contactperson
-     */
+    #[\PHPUnit\Framework\Attributes\Group('metadata')]
+    #[\PHPUnit\Framework\Attributes\Group('contactperson')]
+    #[\PHPUnit\Framework\Attributes\Test]
     public function the_type_definition_can_be_retrieved()
     {
         $type = ContactType::technical();
@@ -77,11 +70,9 @@ class ContactTypeTest extends \PHPUnit\Framework\TestCase
         $this->assertEquals(ContactType::TYPE_TECHNICAL, $type->getContactType());
     }
 
-    /**
-     * @test
-     * @group metadata
-     * @group contactperson
-     */
+    #[\PHPUnit\Framework\Attributes\Group('metadata')]
+    #[\PHPUnit\Framework\Attributes\Group('contactperson')]
+    #[\PHPUnit\Framework\Attributes\Test]
     public function deserializing_a_serialized_contact_type_results_in_an_equal_value_object()
     {
         $original     = ContactType::administrative();
@@ -92,25 +83,23 @@ class ContactTypeTest extends \PHPUnit\Framework\TestCase
     }
 
     /**
-     * @test
-     * @group        metadata
-     * @group        contactperson
      *
-     * @dataProvider \OpenConext\Value\TestDataProvider::notStringOrEmptyString
      *
      * @param mixed $invalidData
      */
+    #[\PHPUnit\Framework\Attributes\DataProviderExternal(\OpenConext\Value\TestDataProvider::class, 'notStringOrEmptyString')]
+    #[\PHPUnit\Framework\Attributes\Group('metadata')]
+    #[\PHPUnit\Framework\Attributes\Group('contactperson')]
+    #[\PHPUnit\Framework\Attributes\Test]
     public function deserialization_requires_valid_data($invalidData)
     {
         $this->expectException(\InvalidArgumentException::class);
         ContactType::deserialize($invalidData);
     }
 
-    /**
-     * @test
-     * @group metadata
-     * @group contactperson
-     */
+    #[\PHPUnit\Framework\Attributes\Group('metadata')]
+    #[\PHPUnit\Framework\Attributes\Group('contactperson')]
+    #[\PHPUnit\Framework\Attributes\Test]
     public function a_contact_type_can_be_cast_to_string()
     {
         $type = ContactType::technical();

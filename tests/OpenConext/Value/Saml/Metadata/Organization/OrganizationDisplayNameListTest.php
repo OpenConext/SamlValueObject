@@ -8,11 +8,9 @@ use stdClass;
 
 class OrganizationDisplayNameListTest extends \PHPUnit\Framework\TestCase
 {
-    /**
-     * @test
-     * @group metadata
-     * @group organization
-     */
+    #[\PHPUnit\Framework\Attributes\Group('metadata')]
+    #[\PHPUnit\Framework\Attributes\Group('organization')]
+    #[\PHPUnit\Framework\Attributes\Test]
     public function all_elements_must_be_an_organization_display_name()
     {
         $this->expectException(\InvalidArgumentException::class);
@@ -25,11 +23,9 @@ class OrganizationDisplayNameListTest extends \PHPUnit\Framework\TestCase
         new OrganizationDisplayNameList($invalidElements);
     }
 
-    /**
-     * @test
-     * @group metadata
-     * @group organization
-     */
+    #[\PHPUnit\Framework\Attributes\Group('metadata')]
+    #[\PHPUnit\Framework\Attributes\Group('organization')]
+    #[\PHPUnit\Framework\Attributes\Test]
     public function adding_an_organization_display_name_returns_a_new_list_with_that_name_appended()
     {
         $initialNameOne = new OrganizationDisplayName('OpenConext', 'en');
@@ -51,11 +47,9 @@ class OrganizationDisplayNameListTest extends \PHPUnit\Framework\TestCase
         $this->assertTrue($newList->contains($additionalName));
     }
 
-    /**
-     * @test
-     * @group metadata
-     * @group organization
-     */
+    #[\PHPUnit\Framework\Attributes\Group('metadata')]
+    #[\PHPUnit\Framework\Attributes\Group('organization')]
+    #[\PHPUnit\Framework\Attributes\Test]
     public function presence_of_a_name_can_be_tested()
     {
         $displayNameOne   = new OrganizationDisplayName('OpenConext', 'en');
@@ -69,11 +63,9 @@ class OrganizationDisplayNameListTest extends \PHPUnit\Framework\TestCase
         $this->assertFalse($list->contains($notInList));
     }
 
-    /**
-     * @test
-     * @group metadata
-     * @group organization
-     */
+    #[\PHPUnit\Framework\Attributes\Group('metadata')]
+    #[\PHPUnit\Framework\Attributes\Group('organization')]
+    #[\PHPUnit\Framework\Attributes\Test]
     public function the_index_of_an_organization_display_name_can_be_retrieved()
     {
         $displayNameOne   = new OrganizationDisplayName('OpenConext', 'en');
@@ -87,11 +79,9 @@ class OrganizationDisplayNameListTest extends \PHPUnit\Framework\TestCase
         $this->assertEquals(-1, $list->indexOf($notInList), 'An element not in the list must have an index of -1');
     }
 
-    /**
-     * @test
-     * @group metadata
-     * @group organization
-     */
+    #[\PHPUnit\Framework\Attributes\Group('metadata')]
+    #[\PHPUnit\Framework\Attributes\Group('organization')]
+    #[\PHPUnit\Framework\Attributes\Test]
     public function an_organization_display_name_can_be_retrieved_by_index()
     {
         $displayNameOne = new OrganizationDisplayName('OpenConext', 'en');
@@ -104,14 +94,14 @@ class OrganizationDisplayNameListTest extends \PHPUnit\Framework\TestCase
     }
 
     /**
-     * @test
-     * @group metadata
-     * @group organization
      *
-     * @dataProvider \OpenConext\Value\TestDataProvider::notInteger
      *
      * @param mixed $invalidArgument
      */
+    #[\PHPUnit\Framework\Attributes\DataProviderExternal(\OpenConext\Value\TestDataProvider::class, 'notInteger')]
+    #[\PHPUnit\Framework\Attributes\Group('metadata')]
+    #[\PHPUnit\Framework\Attributes\Group('organization')]
+    #[\PHPUnit\Framework\Attributes\Test]
     public function index_to_retrieve_the_element_of_must_be_an_integer($invalidArgument)
     {
         $this->expectException(\InvalidArgumentException::class);
@@ -123,11 +113,9 @@ class OrganizationDisplayNameListTest extends \PHPUnit\Framework\TestCase
         $list->get($invalidArgument);
     }
 
-    /**
-     * @test
-     * @group metadata
-     * @group organization
-     */
+    #[\PHPUnit\Framework\Attributes\Group('metadata')]
+    #[\PHPUnit\Framework\Attributes\Group('organization')]
+    #[\PHPUnit\Framework\Attributes\Test]
     public function an_exception_is_thrown_when_attempting_to_get_an_element_with_a_negative_index()
     {
         $this->expectException(\OpenConext\Value\Exception\IndexOutOfBoundsException::class);
@@ -139,11 +127,9 @@ class OrganizationDisplayNameListTest extends \PHPUnit\Framework\TestCase
         $list->get(-1);
     }
 
-    /**
-     * @test
-     * @group metadata
-     * @group organization
-     */
+    #[\PHPUnit\Framework\Attributes\Group('metadata')]
+    #[\PHPUnit\Framework\Attributes\Group('organization')]
+    #[\PHPUnit\Framework\Attributes\Test]
     public function an_exception_is_thrown_when_attempting_to_get_an_element_with_an_index_larger_than_the_list_size()
     {
         $this->expectException(\OpenConext\Value\Exception\IndexOutOfBoundsException::class);
@@ -155,11 +141,9 @@ class OrganizationDisplayNameListTest extends \PHPUnit\Framework\TestCase
         $list->get(4);
     }
 
-    /**
-     * @test
-     * @group metadata
-     * @group organization
-     */
+    #[\PHPUnit\Framework\Attributes\Group('metadata')]
+    #[\PHPUnit\Framework\Attributes\Group('organization')]
+    #[\PHPUnit\Framework\Attributes\Test]
     public function an_organization_display_name_can_be_searched_for()
     {
         $predicate = function (OrganizationDisplayName $organizationDisplayName) {
@@ -174,11 +158,9 @@ class OrganizationDisplayNameListTest extends \PHPUnit\Framework\TestCase
         $this->assertSame($displayNameTwo, $list->find($predicate));
     }
 
-    /**
-     * @test
-     * @group metadata
-     * @group contactperson
-     */
+    #[\PHPUnit\Framework\Attributes\Group('metadata')]
+    #[\PHPUnit\Framework\Attributes\Group('contactperson')]
+    #[\PHPUnit\Framework\Attributes\Test]
     public function find_returns_the_first_matching_element()
     {
         $predicate = function (OrganizationDisplayName $organizationDisplayName) {
@@ -194,11 +176,9 @@ class OrganizationDisplayNameListTest extends \PHPUnit\Framework\TestCase
         $this->assertSame($displayNameTwo, $list->find($predicate));
     }
 
-    /**
-     * @test
-     * @group metadata
-     * @group contactperson
-     */
+    #[\PHPUnit\Framework\Attributes\Group('metadata')]
+    #[\PHPUnit\Framework\Attributes\Group('contactperson')]
+    #[\PHPUnit\Framework\Attributes\Test]
     public function null_is_returned_when_no_match_is_found()
     {
         $predicate = function () {
@@ -214,14 +194,14 @@ class OrganizationDisplayNameListTest extends \PHPUnit\Framework\TestCase
     }
 
     /**
-     * @test
-     * @group        metadata
-     * @group        contactperson
      *
-     * @dataProvider \OpenConext\Value\TestDataProvider::notCallable
      *
      * @param mixed $notCallable
      */
+    #[\PHPUnit\Framework\Attributes\DataProviderExternal(\OpenConext\Value\TestDataProvider::class, 'notCallable')]
+    #[\PHPUnit\Framework\Attributes\Group('metadata')]
+    #[\PHPUnit\Framework\Attributes\Group('contactperson')]
+    #[\PHPUnit\Framework\Attributes\Test]
     public function find_predicate_must_be_a_callable($notCallable)
     {
         $this->expectException(\InvalidArgumentException::class);
@@ -233,11 +213,9 @@ class OrganizationDisplayNameListTest extends \PHPUnit\Framework\TestCase
         $list->find($notCallable);
     }
 
-    /**
-     * @test
-     * @group metadata
-     * @group organization
-     */
+    #[\PHPUnit\Framework\Attributes\Group('metadata')]
+    #[\PHPUnit\Framework\Attributes\Group('organization')]
+    #[\PHPUnit\Framework\Attributes\Test]
     public function lists_are_only_equal_when_containing_the_same_elements_in_the_same_order()
     {
         $displayNameOne   = new OrganizationDisplayName('OpenConext', 'en');
@@ -256,11 +234,9 @@ class OrganizationDisplayNameListTest extends \PHPUnit\Framework\TestCase
         $this->assertFalse($base->equals($moreElements));
     }
 
-    /**
-     * @test
-     * @group metadata
-     * @group organization
-     */
+    #[\PHPUnit\Framework\Attributes\Group('metadata')]
+    #[\PHPUnit\Framework\Attributes\Group('organization')]
+    #[\PHPUnit\Framework\Attributes\Test]
     public function an_organization_display_name_list_can_be_iterated_over()
     {
         $displayNameOne = new OrganizationDisplayName('OpenConext', 'en');
@@ -295,11 +271,9 @@ class OrganizationDisplayNameListTest extends \PHPUnit\Framework\TestCase
         );
     }
 
-    /**
-     * @test
-     * @group metadata
-     * @group organization
-     */
+    #[\PHPUnit\Framework\Attributes\Group('metadata')]
+    #[\PHPUnit\Framework\Attributes\Group('organization')]
+    #[\PHPUnit\Framework\Attributes\Test]
     public function the_elements_in_an_organization_display_name_list_can_be_counted()
     {
         $numberOne   = new OrganizationDisplayName('OpenConext', 'en');
@@ -313,11 +287,9 @@ class OrganizationDisplayNameListTest extends \PHPUnit\Framework\TestCase
         $this->assertCount(3, $threeElements);
     }
 
-    /**
-     * @test
-     * @group metadata
-     * @group organization
-     */
+    #[\PHPUnit\Framework\Attributes\Group('metadata')]
+    #[\PHPUnit\Framework\Attributes\Group('organization')]
+    #[\PHPUnit\Framework\Attributes\Test]
     public function a_list_exposes_an_array_containing_its_elements()
     {
         $numberOne = new OrganizationDisplayName('OpenConext', 'en');
@@ -331,11 +303,9 @@ class OrganizationDisplayNameListTest extends \PHPUnit\Framework\TestCase
         );
     }
 
-    /**
-     * @test
-     * @group metadata
-     * @group organization
-     */
+    #[\PHPUnit\Framework\Attributes\Group('metadata')]
+    #[\PHPUnit\Framework\Attributes\Group('organization')]
+    #[\PHPUnit\Framework\Attributes\Test]
     public function deserializing_a_serialized_organization_display_name_list_results_in_an_equal_value_object()
     {
         $displayNameOne = new OrganizationDisplayName('OpenConext', 'en');
@@ -348,25 +318,23 @@ class OrganizationDisplayNameListTest extends \PHPUnit\Framework\TestCase
     }
 
     /**
-     * @test
-     * @group metadata
-     * @group organization
      *
-     * @dataProvider \OpenConext\Value\TestDataProvider::notArray
      *
      * @param mixed $notArray
      */
+    #[\PHPUnit\Framework\Attributes\DataProviderExternal(\OpenConext\Value\TestDataProvider::class, 'notArray')]
+    #[\PHPUnit\Framework\Attributes\Group('metadata')]
+    #[\PHPUnit\Framework\Attributes\Group('organization')]
+    #[\PHPUnit\Framework\Attributes\Test]
     public function deserialization_requires_an_array($notArray)
     {
         $this->expectException(\InvalidArgumentException::class);
         OrganizationDisplayNameList::deserialize($notArray);
     }
 
-    /**
-     * @test
-     * @group metadata
-     * @group organization
-     */
+    #[\PHPUnit\Framework\Attributes\Group('metadata')]
+    #[\PHPUnit\Framework\Attributes\Group('organization')]
+    #[\PHPUnit\Framework\Attributes\Test]
     public function an_organization_display_name_list_can_be_cast_to_string()
     {
         $displayNameOne = new OrganizationDisplayName('OpenConext', 'en');

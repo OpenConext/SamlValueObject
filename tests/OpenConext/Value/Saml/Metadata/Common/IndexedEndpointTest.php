@@ -8,14 +8,14 @@ use Doctrine\Instantiator\Exception\InvalidArgumentException;
 class IndexedEndpointTest extends \PHPUnit\Framework\TestCase
 {
     /**
-     * @test
-     * @group metadata
-     * @group common
      *
-     * @dataProvider \OpenConext\Value\TestDataProvider::notInteger
      *
      * @param mixed $notInteger
      */
+    #[\PHPUnit\Framework\Attributes\DataProviderExternal(\OpenConext\Value\TestDataProvider::class, 'notInteger')]
+    #[\PHPUnit\Framework\Attributes\Group('metadata')]
+    #[\PHPUnit\Framework\Attributes\Group('common')]
+    #[\PHPUnit\Framework\Attributes\Test]
     public function index_must_be_an_integer($notInteger)
     {
         $this->expectException(\InvalidArgumentException::class);
@@ -23,25 +23,23 @@ class IndexedEndpointTest extends \PHPUnit\Framework\TestCase
     }
 
     /**
-     * @test
-     * @group metadata
-     * @group common
      *
-     * @dataProvider \OpenConext\Value\TestDataProvider::notBoolean
      *
      * @param mixed $notBoolean
      */
+    #[\PHPUnit\Framework\Attributes\DataProviderExternal(\OpenConext\Value\TestDataProvider::class, 'notBoolean')]
+    #[\PHPUnit\Framework\Attributes\Group('metadata')]
+    #[\PHPUnit\Framework\Attributes\Group('common')]
+    #[\PHPUnit\Framework\Attributes\Test]
     public function is_default_must_be_a_boolean($notBoolean)
     {
         $this->expectException(\InvalidArgumentException::class);
         new IndexedEndpoint($this->getPostEndpoint(), 1, $notBoolean);
     }
 
-    /**
-     * @test
-     * @group metadata
-     * @group common
-     */
+    #[\PHPUnit\Framework\Attributes\Group('metadata')]
+    #[\PHPUnit\Framework\Attributes\Group('common')]
+    #[\PHPUnit\Framework\Attributes\Test]
     public function binding_can_be_retrieved()
     {
         $binding = Binding::soap();
@@ -51,11 +49,9 @@ class IndexedEndpointTest extends \PHPUnit\Framework\TestCase
         $this->assertEquals($binding, $indexedEndpoint->getBinding());
     }
 
-    /**
-     * @test
-     * @group metadata
-     * @group common
-     */
+    #[\PHPUnit\Framework\Attributes\Group('metadata')]
+    #[\PHPUnit\Framework\Attributes\Group('common')]
+    #[\PHPUnit\Framework\Attributes\Test]
     public function location_can_be_retrieved()
     {
         $location = 'some:uri:somewhere';
@@ -65,11 +61,9 @@ class IndexedEndpointTest extends \PHPUnit\Framework\TestCase
         $this->assertEquals($location, $indexedEndpoint->getLocation());
     }
 
-    /**
-     * @test
-     * @group metadata
-     * @group common
-     */
+    #[\PHPUnit\Framework\Attributes\Group('metadata')]
+    #[\PHPUnit\Framework\Attributes\Group('common')]
+    #[\PHPUnit\Framework\Attributes\Test]
     public function response_location_can_be_retrieved()
     {
         $responseLocation = 'some:response:location';
@@ -83,11 +77,9 @@ class IndexedEndpointTest extends \PHPUnit\Framework\TestCase
         $this->assertNull($nullResponseLocation->getResponseLocation());
     }
 
-    /**
-     * @test
-     * @group metadata
-     * @group common
-     */
+    #[\PHPUnit\Framework\Attributes\Group('metadata')]
+    #[\PHPUnit\Framework\Attributes\Group('common')]
+    #[\PHPUnit\Framework\Attributes\Test]
     public function index_can_be_retrieved()
     {
         $index = 9;
@@ -97,11 +89,9 @@ class IndexedEndpointTest extends \PHPUnit\Framework\TestCase
         $this->assertEquals($index, $indexedEndpoint->getIndex());
     }
 
-    /**
-     * @test
-     * @group metadata
-     * @group common
-     */
+    #[\PHPUnit\Framework\Attributes\Group('metadata')]
+    #[\PHPUnit\Framework\Attributes\Group('common')]
+    #[\PHPUnit\Framework\Attributes\Test]
     public function is_default_can_be_queried()
     {
         $default = new IndexedEndpoint($this->getPostEndpoint(), 1, true);
@@ -113,11 +103,9 @@ class IndexedEndpointTest extends \PHPUnit\Framework\TestCase
         $this->assertFalse($noDefault->isDefault());
     }
 
-    /**
-     * @test
-     * @group metadata
-     * @group common
-     */
+    #[\PHPUnit\Framework\Attributes\Group('metadata')]
+    #[\PHPUnit\Framework\Attributes\Group('common')]
+    #[\PHPUnit\Framework\Attributes\Test]
     public function equality_is_verified_on_endpoint_index_and_is_default()
     {
         $base = new IndexedEndpoint($this->getPostEndpoint(), 1);
@@ -132,11 +120,9 @@ class IndexedEndpointTest extends \PHPUnit\Framework\TestCase
         $this->assertFalse($base->equals($differentDefault));
     }
 
-    /**
-     * @test
-     * @group metadata
-     * @group common
-     */
+    #[\PHPUnit\Framework\Attributes\Group('metadata')]
+    #[\PHPUnit\Framework\Attributes\Group('common')]
+    #[\PHPUnit\Framework\Attributes\Test]
     public function deserializing_a_serialized_indexed_endpoint_yields_an_equal_value_object()
     {
         $original = new IndexedEndpoint($this->getPostEndpoint(), 2, false);
@@ -147,14 +133,14 @@ class IndexedEndpointTest extends \PHPUnit\Framework\TestCase
     }
 
     /**
-     * @test
-     * @group metadata
-     * @group common
      *
-     * @dataProvider \OpenConext\Value\TestDataProvider::notArray
      *
      * @param mixed $notArray
      */
+    #[\PHPUnit\Framework\Attributes\DataProviderExternal(\OpenConext\Value\TestDataProvider::class, 'notArray')]
+    #[\PHPUnit\Framework\Attributes\Group('metadata')]
+    #[\PHPUnit\Framework\Attributes\Group('common')]
+    #[\PHPUnit\Framework\Attributes\Test]
     public function deserialization_requires_data_to_be_an_array($notArray)
     {
         $this->expectException(\InvalidArgumentException::class);
@@ -162,14 +148,14 @@ class IndexedEndpointTest extends \PHPUnit\Framework\TestCase
     }
 
     /**
-     * @test
-     * @group metadata
-     * @group common
      *
-     * @dataProvider invalidDataProvider
      *
      * @param mixed $invalidData
      */
+    #[\PHPUnit\Framework\Attributes\DataProvider('invalidDataProvider')]
+    #[\PHPUnit\Framework\Attributes\Group('metadata')]
+    #[\PHPUnit\Framework\Attributes\Group('common')]
+    #[\PHPUnit\Framework\Attributes\Test]
     public function deserialization_requires_the_presence_of_all_required_keys($invalidData)
     {
         $this->expectException(\InvalidArgumentException::class);
@@ -191,11 +177,9 @@ class IndexedEndpointTest extends \PHPUnit\Framework\TestCase
         );
     }
 
-    /**
-     * @test
-     * @group metadata
-     * @group common
-     */
+    #[\PHPUnit\Framework\Attributes\Group('metadata')]
+    #[\PHPUnit\Framework\Attributes\Group('common')]
+    #[\PHPUnit\Framework\Attributes\Test]
     public function an_indexed_endpoint_can_be_cast_to_string()
     {
         $indexedEndpoint = new IndexedEndpoint($this->getPostEndpoint(), 1, true);

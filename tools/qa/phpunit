@@ -2,4 +2,4 @@
 
 cd $(dirname $0)/../../
 
-./vendor/bin/phpunit -c tools/qa/phpunit.xml $1
+./vendor/bin/phpunit -c tools/qa/phpunit.xml --display-all-issues $1

@@ -8,14 +8,14 @@ use OpenConext\Value\Exception\InvalidArgumentException;
 class OrganizationNameTest extends \PHPUnit\Framework\TestCase
 {
     /**
-     * @test
-     * @group metadata
-     * @group organization
      *
-     * @dataProvider \OpenConext\Value\TestDataProvider::notStringOrEmptyString()
      *
      * @param mixed $invalidArgument
      */
+    #[\PHPUnit\Framework\Attributes\DataProviderExternal(\OpenConext\Value\TestDataProvider::class, 'notStringOrEmptyString')]
+    #[\PHPUnit\Framework\Attributes\Group('metadata')]
+    #[\PHPUnit\Framework\Attributes\Group('organization')]
+    #[\PHPUnit\Framework\Attributes\Test]
     public function organization_name_must_be_a_non_empty_string($invalidArgument)
     {
         $this->expectException(\InvalidArgumentException::class);
@@ -23,25 +23,23 @@ class OrganizationNameTest extends \PHPUnit\Framework\TestCase
     }
 
     /**
-     * @test
-     * @group metadata
-     * @group organization
      *
-     * @dataProvider \OpenConext\Value\TestDataProvider::notStringOrEmptyString()
      *
      * @param mixed $invalidArgument
      */
+    #[\PHPUnit\Framework\Attributes\DataProviderExternal(\OpenConext\Value\TestDataProvider::class, 'notStringOrEmptyString')]
+    #[\PHPUnit\Framework\Attributes\Group('metadata')]
+    #[\PHPUnit\Framework\Attributes\Group('organization')]
+    #[\PHPUnit\Framework\Attributes\Test]
     public function language_must_be_a_non_emtpy_string($invalidArgument)
     {
         $this->expectException(\InvalidArgumentException::class);
         new OrganizationName('OpenConext', $invalidArgument);
     }
 
-    /**
-     * @test
-     * @group metadata
-     * @group organization
-     */
+    #[\PHPUnit\Framework\Attributes\Group('metadata')]
+    #[\PHPUnit\Framework\Attributes\Group('organization')]
+    #[\PHPUnit\Framework\Attributes\Test]
     public function equality_is_compared_on_name_and_language()
     {
         $base                = new OrganizationName('OpenConext', 'en');
@@ -65,11 +63,9 @@ class OrganizationNameTest extends \PHPUnit\Framework\TestCase
         );
     }
 
-    /**
-     * @test
-     * @group metadata
-     * @group organization
-     */
+    #[\PHPUnit\Framework\Attributes\Group('metadata')]
+    #[\PHPUnit\Framework\Attributes\Group('organization')]
+    #[\PHPUnit\Framework\Attributes\Test]
     public function the_name_can_be_retrieved()
     {
         $name = 'OpenConext';
@@ -79,11 +75,9 @@ class OrganizationNameTest extends \PHPUnit\Framework\TestCase
         $this->assertEquals($name, $organizationName->getName());
     }
 
-    /**
-     * @test
-     * @group metadata
-     * @group organization
-     */
+    #[\PHPUnit\Framework\Attributes\Group('metadata')]
+    #[\PHPUnit\Framework\Attributes\Group('organization')]
+    #[\PHPUnit\Framework\Attributes\Test]
     public function the_language_can_be_retrieved()
     {
         $language = 'en';
@@ -93,11 +87,9 @@ class OrganizationNameTest extends \PHPUnit\Framework\TestCase
         $this->assertEquals($language, $organizationName->getLanguage());
     }
 
-    /**
-     * @test
-     * @group metadata
-     * @group organization
-     */
+    #[\PHPUnit\Framework\Attributes\Group('metadata')]
+    #[\PHPUnit\Framework\Attributes\Group('organization')]
+    #[\PHPUnit\Framework\Attributes\Test]
     public function deserializing_a_serialized_organization_name_results_in_an_equal_value_object()
     {
         $original     = new OrganizationName('OpenConext', 'en_US');
@@ -107,14 +99,14 @@ class OrganizationNameTest extends \PHPUnit\Framework\TestCase
     }
 
     /**
-     * @test
-     * @group metadata
-     * @group organization
      *
-     * @dataProvider invalidDeserializationDataProvider
      *
      * @param mixed $invalidData
      */
+    #[\PHPUnit\Framework\Attributes\DataProvider('invalidDeserializationDataProvider')]
+    #[\PHPUnit\Framework\Attributes\Group('metadata')]
+    #[\PHPUnit\Framework\Attributes\Group('organization')]
+    #[\PHPUnit\Framework\Attributes\Test]
     public function deserialization_requires_valid_data($invalidData)
     {
         $this->expectException(\InvalidArgumentException::class);
@@ -134,11 +126,9 @@ class OrganizationNameTest extends \PHPUnit\Framework\TestCase
         );
     }
 
-    /**
-     * @test
-     * @group metadata
-     * @group organization
-     */
+    #[\PHPUnit\Framework\Attributes\Group('metadata')]
+    #[\PHPUnit\Framework\Attributes\Group('organization')]
+    #[\PHPUnit\Framework\Attributes\Test]
     public function an_organization_name_can_be_cast_to_string()
     {
         $name     = 'OpenConext';

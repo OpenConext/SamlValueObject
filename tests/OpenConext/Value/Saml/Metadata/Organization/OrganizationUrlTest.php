@@ -8,14 +8,14 @@ use OpenConext\Value\Exception\InvalidArgumentException;
 class OrganizationUrlTest extends \PHPUnit\Framework\TestCase
 {
     /**
-     * @test
-     * @group        metadata
-     * @group        organization
      *
-     * @dataProvider \OpenConext\Value\TestDataProvider::notStringOrEmptyString()
      *
      * @param mixed $invalidArgument
      */
+    #[\PHPUnit\Framework\Attributes\DataProviderExternal(\OpenConext\Value\TestDataProvider::class, 'notStringOrEmptyString')]
+    #[\PHPUnit\Framework\Attributes\Group('metadata')]
+    #[\PHPUnit\Framework\Attributes\Group('organization')]
+    #[\PHPUnit\Framework\Attributes\Test]
     public function organization_url_must_be_a_non_empty_string($invalidArgument)
     {
         $this->expectException(InvalidArgumentException::class);
@@ -23,25 +23,23 @@ class OrganizationUrlTest extends \PHPUnit\Framework\TestCase
     }
 
     /**
-     * @test
-     * @group        metadata
-     * @group        organization
      *
-     * @dataProvider \OpenConext\Value\TestDataProvider::notStringOrEmptyString()
      *
      * @param mixed $invalidArgument
      */
+    #[\PHPUnit\Framework\Attributes\DataProviderExternal(\OpenConext\Value\TestDataProvider::class, 'notStringOrEmptyString')]
+    #[\PHPUnit\Framework\Attributes\Group('metadata')]
+    #[\PHPUnit\Framework\Attributes\Group('organization')]
+    #[\PHPUnit\Framework\Attributes\Test]
     public function language_must_be_a_non_emtpy_string($invalidArgument)
     {
         $this->expectException(\InvalidArgumentException::class);
         new OrganizationUrl('https://www.openconext.org', $invalidArgument);
     }
 
-    /**
-     * @test
-     * @group metadata
-     * @group organization
-     */
+    #[\PHPUnit\Framework\Attributes\Group('metadata')]
+    #[\PHPUnit\Framework\Attributes\Group('organization')]
+    #[\PHPUnit\Framework\Attributes\Test]
     public function equality_is_compared_on_url_and_language()
     {
         $base                = new OrganizationUrl('https://www.openconext.org', 'en');
@@ -65,11 +63,9 @@ class OrganizationUrlTest extends \PHPUnit\Framework\TestCase
         );
     }
 
-    /**
-     * @test
-     * @group metadata
-     * @group organization
-     */
+    #[\PHPUnit\Framework\Attributes\Group('metadata')]
+    #[\PHPUnit\Framework\Attributes\Group('organization')]
+    #[\PHPUnit\Framework\Attributes\Test]
     public function the_url_can_be_retrieved()
     {
         $url = 'https://www.openconext.org';
@@ -79,11 +75,9 @@ class OrganizationUrlTest extends \PHPUnit\Framework\TestCase
         $this->assertEquals($url, $organizationUrl->getUrl());
     }
 
-    /**
-     * @test
-     * @group metadata
-     * @group organization
-     */
+    #[\PHPUnit\Framework\Attributes\Group('metadata')]
+    #[\PHPUnit\Framework\Attributes\Group('organization')]
+    #[\PHPUnit\Framework\Attributes\Test]
     public function the_language_can_be_retrieved()
     {
         $language = 'en';
@@ -93,11 +87,9 @@ class OrganizationUrlTest extends \PHPUnit\Framework\TestCase
         $this->assertEquals($language, $organizationUrl->getLanguage());
     }
 
-    /**
-     * @test
-     * @group metadata
-     * @group organization
-     */
+    #[\PHPUnit\Framework\Attributes\Group('metadata')]
+    #[\PHPUnit\Framework\Attributes\Group('organization')]
+    #[\PHPUnit\Framework\Attributes\Test]
     public function deserializing_a_serialized_organization_url_results_in_an_equal_value_object()
     {
         $original     = new OrganizationUrl('https://www.openconext.org', 'en_US');
@@ -107,14 +99,14 @@ class OrganizationUrlTest extends \PHPUnit\Framework\TestCase
     }
 
     /**
-     * @test
-     * @group        metadata
-     * @group        organization
      *
-     * @dataProvider invalidDeserializationDataProvider
      *
      * @param mixed $invalidData
      */
+    #[\PHPUnit\Framework\Attributes\DataProvider('invalidDeserializationDataProvider')]
+    #[\PHPUnit\Framework\Attributes\Group('metadata')]
+    #[\PHPUnit\Framework\Attributes\Group('organization')]
+    #[\PHPUnit\Framework\Attributes\Test]
     public function deserialization_requires_valid_data($invalidData)
     {
         $this->expectException(InvalidArgumentException::class);
@@ -134,11 +126,9 @@ class OrganizationUrlTest extends \PHPUnit\Framework\TestCase
         );
     }
 
-    /**
-     * @test
-     * @group metadata
-     * @group organization
-     */
+    #[\PHPUnit\Framework\Attributes\Group('metadata')]
+    #[\PHPUnit\Framework\Attributes\Group('organization')]
+    #[\PHPUnit\Framework\Attributes\Test]
     public function an_organization_url_can_be_cast_to_string()
     {
         $url      = 'https://www.openconext.org';

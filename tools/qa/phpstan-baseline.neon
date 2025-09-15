@@ -1,0 +1,3331 @@
+parameters:
+	ignoreErrors:
+		-
+			message: '#^Call to function is_string\(\) with string will always evaluate to true\.$#'
+			identifier: function.alreadyNarrowedType
+			count: 1
+			path: ../../src/OpenConext/Value/Assert/Assertion.php
+
+		-
+			message: '#^Invalid type mixed to throw\.$#'
+			identifier: throw.notThrowable
+			count: 2
+			path: ../../src/OpenConext/Value/Assert/Assertion.php
+
+		-
+			message: '#^Method OpenConext\\Value\\Assert\\Assertion\:\:keysExist\(\) has parameter \$requiredKeys with no value type specified in iterable type array\.$#'
+			identifier: missingType.iterableValue
+			count: 1
+			path: ../../src/OpenConext/Value/Assert/Assertion.php
+
+		-
+			message: '#^Method OpenConext\\Value\\Assert\\Assertion\:\:keysExist\(\) has parameter \$value with no value type specified in iterable type array\.$#'
+			identifier: missingType.iterableValue
+			count: 1
+			path: ../../src/OpenConext/Value/Assert/Assertion.php
+
+		-
+			message: '#^Method OpenConext\\Value\\Assert\\Assertion\:\:validRegularExpression\(\) has parameter \$propertyPath with no type specified\.$#'
+			identifier: missingType.parameter
+			count: 1
+			path: ../../src/OpenConext/Value/Assert/Assertion.php
+
+		-
+			message: '#^Method OpenConext\\Value\\Assert\\Assertion\:\:validRegularExpression\(\) has parameter \$regularExpression with no type specified\.$#'
+			identifier: missingType.parameter
+			count: 1
+			path: ../../src/OpenConext/Value/Assert/Assertion.php
+
+		-
+			message: '#^Parameter \#1 \$callback of function set_error_handler expects \(callable\(int, string, string, int\)\: bool\)\|null, Closure\(\)\: void given\.$#'
+			identifier: argument.type
+			count: 1
+			path: ../../src/OpenConext/Value/Assert/Assertion.php
+
+		-
+			message: '#^Parameter \#1 \$pattern of function preg_match expects string, mixed given\.$#'
+			identifier: argument.type
+			count: 1
+			path: ../../src/OpenConext/Value/Assert/Assertion.php
+
+		-
+			message: '#^Parameter \#2 \$key of static method Assert\\Assertion\:\:keyExists\(\) expects int\|string, mixed given\.$#'
+			identifier: argument.type
+			count: 1
+			path: ../../src/OpenConext/Value/Assert/Assertion.php
+
+		-
+			message: '#^Parameter \#3 \$code of static method Assert\\Assertion\:\:createException\(\) expects int, mixed given\.$#'
+			identifier: argument.type
+			count: 2
+			path: ../../src/OpenConext/Value/Assert/Assertion.php
+
+		-
+			message: '#^Deprecated in PHP 8\.0\: Required parameter \$value follows optional parameter \$propertyPath\.$#'
+			identifier: parameter.requiredAfterOptional
+			count: 1
+			path: ../../src/OpenConext/Value/Exception/InvalidArgumentException.php
+
+		-
+			message: '#^Method OpenConext\\Value\\Exception\\InvalidArgumentException\:\:__construct\(\) has parameter \$code with no type specified\.$#'
+			identifier: missingType.parameter
+			count: 1
+			path: ../../src/OpenConext/Value/Exception/InvalidArgumentException.php
+
+		-
+			message: '#^Method OpenConext\\Value\\Exception\\InvalidArgumentException\:\:__construct\(\) has parameter \$constraints with no value type specified in iterable type array\.$#'
+			identifier: missingType.iterableValue
+			count: 1
+			path: ../../src/OpenConext/Value/Exception/InvalidArgumentException.php
+
+		-
+			message: '#^Method OpenConext\\Value\\Exception\\InvalidArgumentException\:\:__construct\(\) has parameter \$message with no type specified\.$#'
+			identifier: missingType.parameter
+			count: 1
+			path: ../../src/OpenConext/Value/Exception/InvalidArgumentException.php
+
+		-
+			message: '#^Method OpenConext\\Value\\Exception\\InvalidArgumentException\:\:__construct\(\) has parameter \$propertyPath with no type specified\.$#'
+			identifier: missingType.parameter
+			count: 1
+			path: ../../src/OpenConext/Value/Exception/InvalidArgumentException.php
+
+		-
+			message: '#^Method OpenConext\\Value\\Exception\\InvalidArgumentException\:\:__construct\(\) has parameter \$value with no type specified\.$#'
+			identifier: missingType.parameter
+			count: 1
+			path: ../../src/OpenConext/Value/Exception/InvalidArgumentException.php
+
+		-
+			message: '#^Parameter \#1 \$haystack of function strpos expects string, mixed given\.$#'
+			identifier: argument.type
+			count: 1
+			path: ../../src/OpenConext/Value/Exception/InvalidArgumentException.php
+
+		-
+			message: '#^Parameter \#2 \$needle of function strpos expects string, mixed given\.$#'
+			identifier: argument.type
+			count: 1
+			path: ../../src/OpenConext/Value/Exception/InvalidArgumentException.php
+
+		-
+			message: '#^Parameter \#2 \.\.\.\$values of function sprintf expects bool\|float\|int\|string\|null, mixed given\.$#'
+			identifier: argument.type
+			count: 1
+			path: ../../src/OpenConext/Value/Exception/InvalidArgumentException.php
+
+		-
+			message: '#^Parameter \#3 \$propertyPath of method Assert\\InvalidArgumentException\:\:__construct\(\) expects string\|null, mixed given\.$#'
+			identifier: argument.type
+			count: 1
+			path: ../../src/OpenConext/Value/Exception/InvalidArgumentException.php
+
+		-
+			message: '#^Parameter \#3 \.\.\.\$values of function sprintf expects bool\|float\|int\|string\|null, mixed given\.$#'
+			identifier: argument.type
+			count: 1
+			path: ../../src/OpenConext/Value/Exception/InvalidArgumentException.php
+
+		-
+			message: '#^Method OpenConext\\Value\\RegularExpression\:\:isValidRegularExpression\(\) has parameter \$regularExpression with no type specified\.$#'
+			identifier: missingType.parameter
+			count: 1
+			path: ../../src/OpenConext/Value/RegularExpression.php
+
+		-
+			message: '#^Method OpenConext\\Value\\RegularExpression\:\:matches\(\) has parameter \$string with no type specified\.$#'
+			identifier: missingType.parameter
+			count: 1
+			path: ../../src/OpenConext/Value/RegularExpression.php
+
+		-
+			message: '#^PHPDoc tag @param has invalid value \(string\)\: Unexpected token "\\n     \* ", expected variable at offset 24 on line 2$#'
+			identifier: phpDoc.parseError
+			count: 1
+			path: ../../src/OpenConext/Value/RegularExpression.php
+
+		-
+			message: '#^Parameter \#1 \$pattern of class OpenConext\\Value\\RegularExpression constructor expects string, mixed given\.$#'
+			identifier: argument.type
+			count: 1
+			path: ../../src/OpenConext/Value/RegularExpression.php
+
+		-
+			message: '#^Method OpenConext\\Value\\Saml\\Entity\:\:fromDescriptor\(\) has parameter \$descriptor with no value type specified in iterable type array\.$#'
+			identifier: missingType.iterableValue
+			count: 1
+			path: ../../src/OpenConext/Value/Saml/Entity.php
+
+		-
+			message: '#^Parameter \#1 \$entityId of class OpenConext\\Value\\Saml\\EntityId constructor expects string, mixed given\.$#'
+			identifier: argument.type
+			count: 1
+			path: ../../src/OpenConext/Value/Saml/Entity.php
+
+		-
+			message: '#^Parameter \#1 \$entityId of class OpenConext\\Value\\Saml\\EntityId constructor expects string, mixed given\.$#'
+			identifier: argument.type
+			count: 1
+			path: ../../src/OpenConext/Value/Saml/EntityId.php
+
+		-
+			message: '#^Class OpenConext\\Value\\Saml\\EntitySet implements generic interface IteratorAggregate but does not specify its types\: TKey, TValue$#'
+			identifier: missingType.generics
+			count: 1
+			path: ../../src/OpenConext/Value/Saml/EntitySet.php
+
+		-
+			message: '#^PHPDoc tag @SuppressWarnings has invalid value \(\(PHPMD\.CamelCaseMethodName\)\)\: Unexpected token "\.CamelCaseMethodName\)", expected ''\)'' at offset 109 on line 5$#'
+			identifier: phpDoc.parseError
+			count: 1
+			path: ../../src/OpenConext/Value/Saml/EntityType.php
+
+		-
+			message: '#^PHPDoc tag @SuppressWarnings has invalid value \(\(PHPMD\.CamelCaseMethodName\)\)\: Unexpected token "\.CamelCaseMethodName\)", expected ''\)'' at offset 110 on line 5$#'
+			identifier: phpDoc.parseError
+			count: 1
+			path: ../../src/OpenConext/Value/Saml/EntityType.php
+
+		-
+			message: '#^PHPDoc tag @SuppressWarnings has invalid value \(\(PHPMD\.ShortMethodName\)\)\: Unexpected token "\.ShortMethodName\)", expected ''\)'' at offset 161 on line 6$#'
+			identifier: phpDoc.parseError
+			count: 1
+			path: ../../src/OpenConext/Value/Saml/EntityType.php
+
+		-
+			message: '#^Parameter \#1 \$type of class OpenConext\\Value\\Saml\\EntityType constructor expects string, mixed given\.$#'
+			identifier: argument.type
+			count: 1
+			path: ../../src/OpenConext/Value/Saml/EntityType.php
+
+		-
+			message: '#^Method OpenConext\\Value\\Saml\\Metadata\\Common\\Binding\:\:__construct\(\) has parameter \$binding with no type specified\.$#'
+			identifier: missingType.parameter
+			count: 1
+			path: ../../src/OpenConext/Value/Saml/Metadata/Common/Binding.php
+
+		-
+			message: '#^Method OpenConext\\Value\\Saml\\Metadata\\Common\\Binding\:\:isValidBinding\(\) has parameter \$binding with no type specified\.$#'
+			identifier: missingType.parameter
+			count: 1
+			path: ../../src/OpenConext/Value/Saml/Metadata/Common/Binding.php
+
+		-
+			message: '#^Parameter \#1 \$value of static method OpenConext\\Value\\Assert\\Assertion\:\:nonEmptyString\(\) expects string, mixed given\.$#'
+			identifier: argument.type
+			count: 1
+			path: ../../src/OpenConext/Value/Saml/Metadata/Common/Binding.php
+
+		-
+			message: '#^Parameter \#2 \$choices of static method Assert\\Assertion\:\:inArray\(\) expects array, mixed given\.$#'
+			identifier: argument.type
+			count: 2
+			path: ../../src/OpenConext/Value/Saml/Metadata/Common/Binding.php
+
+		-
+			message: '#^Parameter \#2 \$haystack of function in_array expects array, mixed given\.$#'
+			identifier: argument.type
+			count: 1
+			path: ../../src/OpenConext/Value/Saml/Metadata/Common/Binding.php
+
+		-
+			message: '#^Property OpenConext\\Value\\Saml\\Metadata\\Common\\Binding\:\:\$binding \(string\) does not accept mixed\.$#'
+			identifier: assign.propertyType
+			count: 1
+			path: ../../src/OpenConext/Value/Saml/Metadata/Common/Binding.php
+
+		-
+			message: '#^Property OpenConext\\Value\\Saml\\Metadata\\Common\\Binding\:\:\$validBindings has no type specified\.$#'
+			identifier: missingType.property
+			count: 1
+			path: ../../src/OpenConext/Value/Saml/Metadata/Common/Binding.php
+
+		-
+			message: '#^Parameter \#2 \$location of class OpenConext\\Value\\Saml\\Metadata\\Common\\Endpoint constructor expects string, mixed given\.$#'
+			identifier: argument.type
+			count: 1
+			path: ../../src/OpenConext/Value/Saml/Metadata/Common/Endpoint.php
+
+		-
+			message: '#^Parameter \#3 \$responseLocation of class OpenConext\\Value\\Saml\\Metadata\\Common\\Endpoint constructor expects string\|null, mixed given\.$#'
+			identifier: argument.type
+			count: 1
+			path: ../../src/OpenConext/Value/Saml/Metadata/Common/Endpoint.php
+
+		-
+			message: '#^Method OpenConext\\Value\\Saml\\Metadata\\Common\\IndexedEndpoint\:\:__construct\(\) has parameter \$index with no type specified\.$#'
+			identifier: missingType.parameter
+			count: 1
+			path: ../../src/OpenConext/Value/Saml/Metadata/Common/IndexedEndpoint.php
+
+		-
+			message: '#^Method OpenConext\\Value\\Saml\\Metadata\\Common\\IndexedEndpoint\:\:__construct\(\) has parameter \$isDefault with no type specified\.$#'
+			identifier: missingType.parameter
+			count: 1
+			path: ../../src/OpenConext/Value/Saml/Metadata/Common/IndexedEndpoint.php
+
+		-
+			message: '#^Parameter \#1 \$name of class OpenConext\\Value\\Saml\\Metadata\\Common\\LocalizedName constructor expects string, mixed given\.$#'
+			identifier: argument.type
+			count: 1
+			path: ../../src/OpenConext/Value/Saml/Metadata/Common/LocalizedName.php
+
+		-
+			message: '#^Parameter \#2 \$language of class OpenConext\\Value\\Saml\\Metadata\\Common\\LocalizedName constructor expects string, mixed given\.$#'
+			identifier: argument.type
+			count: 1
+			path: ../../src/OpenConext/Value/Saml/Metadata/Common/LocalizedName.php
+
+		-
+			message: '#^Parameter \#1 \$uri of class OpenConext\\Value\\Saml\\Metadata\\Common\\LocalizedUri constructor expects string, mixed given\.$#'
+			identifier: argument.type
+			count: 1
+			path: ../../src/OpenConext/Value/Saml/Metadata/Common/LocalizedUri.php
+
+		-
+			message: '#^Parameter \#2 \$language of class OpenConext\\Value\\Saml\\Metadata\\Common\\LocalizedUri constructor expects string, mixed given\.$#'
+			identifier: argument.type
+			count: 1
+			path: ../../src/OpenConext/Value/Saml/Metadata/Common/LocalizedUri.php
+
+		-
+			message: '#^Method OpenConext\\Value\\Saml\\Metadata\\ContactPerson\\Company\:\:__construct\(\) has parameter \$company with no type specified\.$#'
+			identifier: missingType.parameter
+			count: 1
+			path: ../../src/OpenConext/Value/Saml/Metadata/ContactPerson/Company.php
+
+		-
+			message: '#^Parameter \#1 \$value of static method OpenConext\\Value\\Assert\\Assertion\:\:nonEmptyString\(\) expects string, mixed given\.$#'
+			identifier: argument.type
+			count: 1
+			path: ../../src/OpenConext/Value/Saml/Metadata/ContactPerson/Company.php
+
+		-
+			message: '#^Property OpenConext\\Value\\Saml\\Metadata\\ContactPerson\\Company\:\:\$company \(string\) does not accept mixed\.$#'
+			identifier: assign.propertyType
+			count: 1
+			path: ../../src/OpenConext/Value/Saml/Metadata/ContactPerson/Company.php
+
+		-
+			message: '#^Method OpenConext\\Value\\Saml\\Metadata\\ContactPerson\\ContactType\:\:__construct\(\) has parameter \$type with no type specified\.$#'
+			identifier: missingType.parameter
+			count: 1
+			path: ../../src/OpenConext/Value/Saml/Metadata/ContactPerson/ContactType.php
+
+		-
+			message: '#^Parameter \#2 \$array of function implode expects array, mixed given\.$#'
+			identifier: argument.type
+			count: 1
+			path: ../../src/OpenConext/Value/Saml/Metadata/ContactPerson/ContactType.php
+
+		-
+			message: '#^Parameter \#2 \$choices of static method Assert\\Assertion\:\:inArray\(\) expects array, mixed given\.$#'
+			identifier: argument.type
+			count: 1
+			path: ../../src/OpenConext/Value/Saml/Metadata/ContactPerson/ContactType.php
+
+		-
+			message: '#^Property OpenConext\\Value\\Saml\\Metadata\\ContactPerson\\ContactType\:\:\$contactType \(string\) does not accept mixed\.$#'
+			identifier: assign.propertyType
+			count: 1
+			path: ../../src/OpenConext/Value/Saml/Metadata/ContactPerson/ContactType.php
+
+		-
+			message: '#^Property OpenConext\\Value\\Saml\\Metadata\\ContactPerson\\ContactType\:\:\$validTypes has no type specified\.$#'
+			identifier: missingType.property
+			count: 1
+			path: ../../src/OpenConext/Value/Saml/Metadata/ContactPerson/ContactType.php
+
+		-
+			message: '#^Parameter \#1 \$emailAddress of class OpenConext\\Value\\Saml\\Metadata\\ContactPerson\\EmailAddress constructor expects string, mixed given\.$#'
+			identifier: argument.type
+			count: 1
+			path: ../../src/OpenConext/Value/Saml/Metadata/ContactPerson/EmailAddress.php
+
+		-
+			message: '#^Class OpenConext\\Value\\Saml\\Metadata\\ContactPerson\\EmailAddressList implements generic interface IteratorAggregate but does not specify its types\: TKey, TValue$#'
+			identifier: missingType.generics
+			count: 1
+			path: ../../src/OpenConext/Value/Saml/Metadata/ContactPerson/EmailAddressList.php
+
+		-
+			message: '#^Parameter \#1 \$givenName of class OpenConext\\Value\\Saml\\Metadata\\ContactPerson\\GivenName constructor expects string, mixed given\.$#'
+			identifier: argument.type
+			count: 1
+			path: ../../src/OpenConext/Value/Saml/Metadata/ContactPerson/GivenName.php
+
+		-
+			message: '#^Parameter \#1 \$name of class OpenConext\\Value\\Saml\\Metadata\\ContactPerson\\Surname constructor expects string, mixed given\.$#'
+			identifier: argument.type
+			count: 1
+			path: ../../src/OpenConext/Value/Saml/Metadata/ContactPerson/Surname.php
+
+		-
+			message: '#^Parameter \#1 \$telephoneNumber of class OpenConext\\Value\\Saml\\Metadata\\ContactPerson\\TelephoneNumber constructor expects string, mixed given\.$#'
+			identifier: argument.type
+			count: 1
+			path: ../../src/OpenConext/Value/Saml/Metadata/ContactPerson/TelephoneNumber.php
+
+		-
+			message: '#^Class OpenConext\\Value\\Saml\\Metadata\\ContactPerson\\TelephoneNumberList implements generic interface IteratorAggregate but does not specify its types\: TKey, TValue$#'
+			identifier: missingType.generics
+			count: 1
+			path: ../../src/OpenConext/Value/Saml/Metadata/ContactPerson/TelephoneNumberList.php
+
+		-
+			message: '#^Class OpenConext\\Value\\Saml\\Metadata\\ContactPersonList implements generic interface IteratorAggregate but does not specify its types\: TKey, TValue$#'
+			identifier: missingType.generics
+			count: 1
+			path: ../../src/OpenConext/Value/Saml/Metadata/ContactPersonList.php
+
+		-
+			message: '#^Parameter \#1 \$displayName of class OpenConext\\Value\\Saml\\Metadata\\Organization\\OrganizationDisplayName constructor expects string, mixed given\.$#'
+			identifier: argument.type
+			count: 1
+			path: ../../src/OpenConext/Value/Saml/Metadata/Organization/OrganizationDisplayName.php
+
+		-
+			message: '#^Parameter \#2 \$language of class OpenConext\\Value\\Saml\\Metadata\\Organization\\OrganizationDisplayName constructor expects string, mixed given\.$#'
+			identifier: argument.type
+			count: 1
+			path: ../../src/OpenConext/Value/Saml/Metadata/Organization/OrganizationDisplayName.php
+
+		-
+			message: '#^Class OpenConext\\Value\\Saml\\Metadata\\Organization\\OrganizationDisplayNameList implements generic interface IteratorAggregate but does not specify its types\: TKey, TValue$#'
+			identifier: missingType.generics
+			count: 1
+			path: ../../src/OpenConext/Value/Saml/Metadata/Organization/OrganizationDisplayNameList.php
+
+		-
+			message: '#^Parameter \#1 \$name of class OpenConext\\Value\\Saml\\Metadata\\Organization\\OrganizationName constructor expects string, mixed given\.$#'
+			identifier: argument.type
+			count: 1
+			path: ../../src/OpenConext/Value/Saml/Metadata/Organization/OrganizationName.php
+
+		-
+			message: '#^Parameter \#2 \$language of class OpenConext\\Value\\Saml\\Metadata\\Organization\\OrganizationName constructor expects string, mixed given\.$#'
+			identifier: argument.type
+			count: 1
+			path: ../../src/OpenConext/Value/Saml/Metadata/Organization/OrganizationName.php
+
+		-
+			message: '#^Class OpenConext\\Value\\Saml\\Metadata\\Organization\\OrganizationNameList implements generic interface IteratorAggregate but does not specify its types\: TKey, TValue$#'
+			identifier: missingType.generics
+			count: 1
+			path: ../../src/OpenConext/Value/Saml/Metadata/Organization/OrganizationNameList.php
+
+		-
+			message: '#^Parameter \#1 \$url of class OpenConext\\Value\\Saml\\Metadata\\Organization\\OrganizationUrl constructor expects string, mixed given\.$#'
+			identifier: argument.type
+			count: 1
+			path: ../../src/OpenConext/Value/Saml/Metadata/Organization/OrganizationUrl.php
+
+		-
+			message: '#^Parameter \#2 \$language of class OpenConext\\Value\\Saml\\Metadata\\Organization\\OrganizationUrl constructor expects string, mixed given\.$#'
+			identifier: argument.type
+			count: 1
+			path: ../../src/OpenConext/Value/Saml/Metadata/Organization/OrganizationUrl.php
+
+		-
+			message: '#^Class OpenConext\\Value\\Saml\\Metadata\\Organization\\OrganizationUrlList implements generic interface IteratorAggregate but does not specify its types\: TKey, TValue$#'
+			identifier: missingType.generics
+			count: 1
+			path: ../../src/OpenConext/Value/Saml/Metadata/Organization/OrganizationUrlList.php
+
+		-
+			message: '#^Parameter \#1 \$scope of class OpenConext\\Value\\Saml\\Metadata\\ShibbolethMetadataScope constructor expects string, mixed given\.$#'
+			identifier: argument.type
+			count: 1
+			path: ../../src/OpenConext/Value/Saml/Metadata/ShibbolethMetadataScope.php
+
+		-
+			message: '#^Parameter \#2 \$isRegexp of class OpenConext\\Value\\Saml\\Metadata\\ShibbolethMetadataScope constructor expects bool, mixed given\.$#'
+			identifier: argument.type
+			count: 1
+			path: ../../src/OpenConext/Value/Saml/Metadata/ShibbolethMetadataScope.php
+
+		-
+			message: '#^Class OpenConext\\Value\\Saml\\Metadata\\ShibbolethMetadataScopeList implements generic interface IteratorAggregate but does not specify its types\: TKey, TValue$#'
+			identifier: missingType.generics
+			count: 1
+			path: ../../src/OpenConext/Value/Saml/Metadata/ShibbolethMetadataScopeList.php
+
+		-
+			message: '#^PHPDoc tag @SuppressWarnings has invalid value \(\(PHPMD\.TooManyPublicMethods\) consistent list interface dictates quite a few\)\: Unexpected token "\.TooManyPublicMethods\)", expected ''\)'' at offset 30 on line 2$#'
+			identifier: phpDoc.parseError
+			count: 1
+			path: ../../src/OpenConext/Value/Saml/Metadata/ShibbolethMetadataScopeList.php
+
+		-
+			message: '#^Method OpenConext\\Value\\Saml\\NameIdFormat\:\:__construct\(\) has parameter \$format with no type specified\.$#'
+			identifier: missingType.parameter
+			count: 1
+			path: ../../src/OpenConext/Value/Saml/NameIdFormat.php
+
+		-
+			message: '#^PHPDoc tag @SuppressWarnings has invalid value \(\(PHPMD\.TooManyPublicMethods\) this is due to the various named constructors\)\: Unexpected token "\.TooManyPublicMethods\)", expected ''\)'' at offset 30 on line 2$#'
+			identifier: phpDoc.parseError
+			count: 1
+			path: ../../src/OpenConext/Value/Saml/NameIdFormat.php
+
+		-
+			message: '#^Parameter \#1 \$value of static method OpenConext\\Value\\Assert\\Assertion\:\:nonEmptyString\(\) expects string, mixed given\.$#'
+			identifier: argument.type
+			count: 1
+			path: ../../src/OpenConext/Value/Saml/NameIdFormat.php
+
+		-
+			message: '#^Property OpenConext\\Value\\Saml\\NameIdFormat\:\:\$format \(string\) does not accept mixed\.$#'
+			identifier: assign.propertyType
+			count: 1
+			path: ../../src/OpenConext/Value/Saml/NameIdFormat.php
+
+		-
+			message: '#^Property OpenConext\\Value\\Saml\\NameIdFormat\:\:\$validFormats type has no value type specified in iterable type array\.$#'
+			identifier: missingType.iterableValue
+			count: 1
+			path: ../../src/OpenConext/Value/Saml/NameIdFormat.php
+
+		-
+			message: '#^Class OpenConext\\Value\\Saml\\NameIdFormatList implements generic interface IteratorAggregate but does not specify its types\: TKey, TValue$#'
+			identifier: missingType.generics
+			count: 1
+			path: ../../src/OpenConext/Value/Saml/NameIdFormatList.php
+
+		-
+			message: '#^Method OpenConext\\Value\\Assert\\AssertionTest\:\:a_missing_key_makes_the_assertion_fail\(\) has no return type specified\.$#'
+			identifier: missingType.return
+			count: 1
+			path: ../../tests/OpenConext/Value/Assert/AssertionTest.php
+
+		-
+			message: '#^Method OpenConext\\Value\\Assert\\AssertionTest\:\:an_invalid_regular_expression_does_not_pass_the_assertion\(\) has no return type specified\.$#'
+			identifier: missingType.return
+			count: 1
+			path: ../../tests/OpenConext/Value/Assert/AssertionTest.php
+
+		-
+			message: '#^Method OpenConext\\Value\\Assert\\AssertionTest\:\:keys_exists_assertion_succeeds_if_all_required_keys_are_present_\(\) has no return type specified\.$#'
+			identifier: missingType.return
+			count: 1
+			path: ../../tests/OpenConext/Value/Assert/AssertionTest.php
+
+		-
+			message: '#^Method OpenConext\\Value\\Assert\\AssertionTest\:\:non_empty_strings_are_valid\(\) has no return type specified\.$#'
+			identifier: missingType.return
+			count: 1
+			path: ../../tests/OpenConext/Value/Assert/AssertionTest.php
+
+		-
+			message: '#^Method OpenConext\\Value\\Assert\\AssertionTest\:\:not_strings_or_empty_strings_are_invalid\(\) has no return type specified\.$#'
+			identifier: missingType.return
+			count: 1
+			path: ../../tests/OpenConext/Value/Assert/AssertionTest.php
+
+		-
+			message: '#^Parameter \#1 \$value of static method OpenConext\\Value\\Assert\\Assertion\:\:nonEmptyString\(\) expects string, mixed given\.$#'
+			identifier: argument.type
+			count: 1
+			path: ../../tests/OpenConext/Value/Assert/AssertionTest.php
+
+		-
+			message: '#^Call to method PHPUnit\\Framework\\Assert\:\:assertInstanceOf\(\) with ''\\\\OpenConext\\\\Value…'' and OpenConext\\Value\\Exception\\IndexOutOfBoundsException will always evaluate to true\.$#'
+			identifier: method.alreadyNarrowedType
+			count: 2
+			path: ../../tests/OpenConext/Value/Exception/IndexOutOfBoundsExceptionTest.php
+
+		-
+			message: '#^Method OpenConext\\Value\\Exception\\IndexOutOfBoundsExceptionTest\:\:a_too_high_index_has_the_invalid_index_and_maximum_index_not_minimum_index\(\) has no return type specified\.$#'
+			identifier: missingType.return
+			count: 1
+			path: ../../tests/OpenConext/Value/Exception/IndexOutOfBoundsExceptionTest.php
+
+		-
+			message: '#^Method OpenConext\\Value\\Exception\\IndexOutOfBoundsExceptionTest\:\:a_too_low_index_has_the_invalid_index_and_minimum_index_not_maximum_index\(\) has no return type specified\.$#'
+			identifier: missingType.return
+			count: 1
+			path: ../../tests/OpenConext/Value/Exception/IndexOutOfBoundsExceptionTest.php
+
+		-
+			message: '#^Method OpenConext\\Value\\Exception\\IndexOutOfBoundsExceptionTest\:\:too_high_creates_an_exception_with_a_known_format_message\(\) has no return type specified\.$#'
+			identifier: missingType.return
+			count: 1
+			path: ../../tests/OpenConext/Value/Exception/IndexOutOfBoundsExceptionTest.php
+
+		-
+			message: '#^Method OpenConext\\Value\\Exception\\IndexOutOfBoundsExceptionTest\:\:too_low_creates_an_exception_with_a_known_format_message\(\) has no return type specified\.$#'
+			identifier: missingType.return
+			count: 1
+			path: ../../tests/OpenConext/Value/Exception/IndexOutOfBoundsExceptionTest.php
+
+		-
+			message: '#^Method OpenConext\\Value\\RegularExpressionTest\:\:a_regex_can_be_tested_for_being_valid\(\) has no return type specified\.$#'
+			identifier: missingType.return
+			count: 1
+			path: ../../tests/OpenConext/Value/RegularExpressionTest.php
+
+		-
+			message: '#^Method OpenConext\\Value\\RegularExpressionTest\:\:a_regex_can_be_tested_for_being_valid\(\) has parameter \$invalidExpression with no type specified\.$#'
+			identifier: missingType.parameter
+			count: 1
+			path: ../../tests/OpenConext/Value/RegularExpressionTest.php
+
+		-
+			message: '#^Method OpenConext\\Value\\RegularExpressionTest\:\:a_regex_cannot_be_created_with_an_invalid_regular_expression\(\) has no return type specified\.$#'
+			identifier: missingType.return
+			count: 1
+			path: ../../tests/OpenConext/Value/RegularExpressionTest.php
+
+		-
+			message: '#^Method OpenConext\\Value\\RegularExpressionTest\:\:a_regex_cannot_be_created_with_an_invalid_regular_expression\(\) has parameter \$invalidPattern with no type specified\.$#'
+			identifier: missingType.parameter
+			count: 1
+			path: ../../tests/OpenConext/Value/RegularExpressionTest.php
+
+		-
+			message: '#^Method OpenConext\\Value\\RegularExpressionTest\:\:a_regex_cannot_be_created_with_patterns_that_are_not_a_non_empty_string\(\) has no return type specified\.$#'
+			identifier: missingType.return
+			count: 1
+			path: ../../tests/OpenConext/Value/RegularExpressionTest.php
+
+		-
+			message: '#^Method OpenConext\\Value\\RegularExpressionTest\:\:a_regex_cannot_be_created_with_patterns_that_are_not_a_non_empty_string\(\) has parameter \$pattern with no type specified\.$#'
+			identifier: missingType.parameter
+			count: 1
+			path: ../../tests/OpenConext/Value/RegularExpressionTest.php
+
+		-
+			message: '#^Method OpenConext\\Value\\RegularExpressionTest\:\:a_regular_expression_can_be_cast_to_string\(\) has no return type specified\.$#'
+			identifier: missingType.return
+			count: 1
+			path: ../../tests/OpenConext/Value/RegularExpressionTest.php
+
+		-
+			message: '#^Method OpenConext\\Value\\RegularExpressionTest\:\:a_valid_regular_expression_can_be_tested_for_being_valid\(\) has no return type specified\.$#'
+			identifier: missingType.return
+			count: 1
+			path: ../../tests/OpenConext/Value/RegularExpressionTest.php
+
+		-
+			message: '#^Method OpenConext\\Value\\RegularExpressionTest\:\:deserialization_requires_valid_data\(\) has no return type specified\.$#'
+			identifier: missingType.return
+			count: 1
+			path: ../../tests/OpenConext/Value/RegularExpressionTest.php
+
+		-
+			message: '#^Method OpenConext\\Value\\RegularExpressionTest\:\:deserializing_a_serialized_regular_expression_results_in_an_equal_value_object\(\) has no return type specified\.$#'
+			identifier: missingType.return
+			count: 1
+			path: ../../tests/OpenConext/Value/RegularExpressionTest.php
+
+		-
+			message: '#^Method OpenConext\\Value\\RegularExpressionTest\:\:matches_requires_a_string_argument\(\) has no return type specified\.$#'
+			identifier: missingType.return
+			count: 1
+			path: ../../tests/OpenConext/Value/RegularExpressionTest.php
+
+		-
+			message: '#^Method OpenConext\\Value\\RegularExpressionTest\:\:matches_tests_the_regular_expression_against_the_string\(\) has no return type specified\.$#'
+			identifier: missingType.return
+			count: 1
+			path: ../../tests/OpenConext/Value/RegularExpressionTest.php
+
+		-
+			message: '#^Method OpenConext\\Value\\RegularExpressionTest\:\:regexes_with_a_different_pattern_are_not_equal\(\) has no return type specified\.$#'
+			identifier: missingType.return
+			count: 1
+			path: ../../tests/OpenConext/Value/RegularExpressionTest.php
+
+		-
+			message: '#^Method OpenConext\\Value\\RegularExpressionTest\:\:regexes_with_the_same_pattern_are_equal\(\) has no return type specified\.$#'
+			identifier: missingType.return
+			count: 1
+			path: ../../tests/OpenConext/Value/RegularExpressionTest.php
+
+		-
+			message: '#^Method OpenConext\\Value\\RegularExpressionTest\:\:the_pattern_can_be_retrieved\(\) has no return type specified\.$#'
+			identifier: missingType.return
+			count: 1
+			path: ../../tests/OpenConext/Value/RegularExpressionTest.php
+
+		-
+			message: '#^Parameter \#1 \$pattern of class OpenConext\\Value\\RegularExpression constructor expects string, mixed given\.$#'
+			identifier: argument.type
+			count: 2
+			path: ../../tests/OpenConext/Value/RegularExpressionTest.php
+
+		-
+			message: '#^Method OpenConext\\Value\\Saml\\EntityIdTest\:\:an_entity_id_can_be_cast_to_string\(\) has no return type specified\.$#'
+			identifier: missingType.return
+			count: 1
+			path: ../../tests/OpenConext/Value/Saml/EntityIdTest.php
+
+		-
+			message: '#^Method OpenConext\\Value\\Saml\\EntityIdTest\:\:deserialization_requires_valid_data\(\) has no return type specified\.$#'
+			identifier: missingType.return
+			count: 1
+			path: ../../tests/OpenConext/Value/Saml/EntityIdTest.php
+
+		-
+			message: '#^Method OpenConext\\Value\\Saml\\EntityIdTest\:\:deserializing_a_serialized_entity_id_results_in_an_equal_value_object\(\) has no return type specified\.$#'
+			identifier: missingType.return
+			count: 1
+			path: ../../tests/OpenConext/Value/Saml/EntityIdTest.php
+
+		-
+			message: '#^Method OpenConext\\Value\\Saml\\EntityIdTest\:\:only_non_empty_strings_are_valid_entity_ids\(\) has no return type specified\.$#'
+			identifier: missingType.return
+			count: 1
+			path: ../../tests/OpenConext/Value/Saml/EntityIdTest.php
+
+		-
+			message: '#^Method OpenConext\\Value\\Saml\\EntityIdTest\:\:the_given_entity_id_value_can_be_retrieved\(\) has no return type specified\.$#'
+			identifier: missingType.return
+			count: 1
+			path: ../../tests/OpenConext/Value/Saml/EntityIdTest.php
+
+		-
+			message: '#^Method OpenConext\\Value\\Saml\\EntityIdTest\:\:the_same_entity_ids_are_considered_equal\(\) has no return type specified\.$#'
+			identifier: missingType.return
+			count: 1
+			path: ../../tests/OpenConext/Value/Saml/EntityIdTest.php
+
+		-
+			message: '#^Parameter \#1 \$entityId of class OpenConext\\Value\\Saml\\EntityId constructor expects string, mixed given\.$#'
+			identifier: argument.type
+			count: 1
+			path: ../../tests/OpenConext/Value/Saml/EntityIdTest.php
+
+		-
+			message: '#^Method OpenConext\\Value\\Saml\\EntitySetTest\:\:an_entity_set_can_be_cast_to_a_known_format_string\(\) has no return type specified\.$#'
+			identifier: missingType.return
+			count: 1
+			path: ../../tests/OpenConext/Value/Saml/EntitySetTest.php
+
+		-
+			message: '#^Method OpenConext\\Value\\Saml\\EntitySetTest\:\:an_entity_set_can_be_iterated_over\(\) has no return type specified\.$#'
+			identifier: missingType.return
+			count: 1
+			path: ../../tests/OpenConext/Value/Saml/EntitySetTest.php
+
+		-
+			message: '#^Method OpenConext\\Value\\Saml\\EntitySetTest\:\:deserialization_requires_an_array\(\) has no return type specified\.$#'
+			identifier: missingType.return
+			count: 1
+			path: ../../tests/OpenConext/Value/Saml/EntitySetTest.php
+
+		-
+			message: '#^Method OpenConext\\Value\\Saml\\EntitySetTest\:\:deserializing_a_serialized_entity_set_results_in_an_equal_value_object\(\) has no return type specified\.$#'
+			identifier: missingType.return
+			count: 1
+			path: ../../tests/OpenConext/Value/Saml/EntitySetTest.php
+
+		-
+			message: '#^Method OpenConext\\Value\\Saml\\EntitySetTest\:\:elements_in_a_set_can_be_tested_for_presence_based_on_equality\(\) has no return type specified\.$#'
+			identifier: missingType.return
+			count: 1
+			path: ../../tests/OpenConext/Value/Saml/EntitySetTest.php
+
+		-
+			message: '#^Method OpenConext\\Value\\Saml\\EntitySetTest\:\:entity_set_deduplicates_equal_elements\(\) has no return type specified\.$#'
+			identifier: missingType.return
+			count: 1
+			path: ../../tests/OpenConext/Value/Saml/EntitySetTest.php
+
+		-
+			message: '#^Method OpenConext\\Value\\Saml\\EntitySetTest\:\:equalSets\(\) has no return type specified\.$#'
+			identifier: missingType.return
+			count: 1
+			path: ../../tests/OpenConext/Value/Saml/EntitySetTest.php
+
+		-
+			message: '#^Method OpenConext\\Value\\Saml\\EntitySetTest\:\:set_with_different_elements_are_not_considered_equal\(\) has no return type specified\.$#'
+			identifier: missingType.return
+			count: 1
+			path: ../../tests/OpenConext/Value/Saml/EntitySetTest.php
+
+		-
+			message: '#^Method OpenConext\\Value\\Saml\\EntitySetTest\:\:set_with_different_elements_are_not_considered_equal\(\) has parameter \$firstSet with no value type specified in iterable type array\.$#'
+			identifier: missingType.iterableValue
+			count: 1
+			path: ../../tests/OpenConext/Value/Saml/EntitySetTest.php
+
+		-
+			message: '#^Method OpenConext\\Value\\Saml\\EntitySetTest\:\:set_with_different_elements_are_not_considered_equal\(\) has parameter \$secondSet with no value type specified in iterable type array\.$#'
+			identifier: missingType.iterableValue
+			count: 1
+			path: ../../tests/OpenConext/Value/Saml/EntitySetTest.php
+
+		-
+			message: '#^Method OpenConext\\Value\\Saml\\EntitySetTest\:\:set_with_equal_elements_are_considered_equal\(\) has no return type specified\.$#'
+			identifier: missingType.return
+			count: 1
+			path: ../../tests/OpenConext/Value/Saml/EntitySetTest.php
+
+		-
+			message: '#^Method OpenConext\\Value\\Saml\\EntitySetTest\:\:set_with_equal_elements_are_considered_equal\(\) has parameter \$firstSet with no value type specified in iterable type array\.$#'
+			identifier: missingType.iterableValue
+			count: 1
+			path: ../../tests/OpenConext/Value/Saml/EntitySetTest.php
+
+		-
+			message: '#^Method OpenConext\\Value\\Saml\\EntitySetTest\:\:set_with_equal_elements_are_considered_equal\(\) has parameter \$secondSet with no value type specified in iterable type array\.$#'
+			identifier: missingType.iterableValue
+			count: 1
+			path: ../../tests/OpenConext/Value/Saml/EntitySetTest.php
+
+		-
+			message: '#^Method OpenConext\\Value\\Saml\\EntitySetTest\:\:unequalSets\(\) has no return type specified\.$#'
+			identifier: missingType.return
+			count: 1
+			path: ../../tests/OpenConext/Value/Saml/EntitySetTest.php
+
+		-
+			message: '#^Parameter \#1 \$entities of class OpenConext\\Value\\Saml\\EntitySet constructor expects array\<OpenConext\\Value\\Saml\\Entity\>, array given\.$#'
+			identifier: argument.type
+			count: 4
+			path: ../../tests/OpenConext/Value/Saml/EntitySetTest.php
+
+		-
+			message: '#^Method OpenConext\\Value\\Saml\\EntityTest\:\:a_descriptor_must_have_exactly_two_elements_with_the_second_being_sp_or_idp\(\) has no return type specified\.$#'
+			identifier: missingType.return
+			count: 1
+			path: ../../tests/OpenConext/Value/Saml/EntityTest.php
+
+		-
+			message: '#^Method OpenConext\\Value\\Saml\\EntityTest\:\:a_descriptor_must_have_exactly_two_elements_with_the_second_being_sp_or_idp\(\) has parameter \$invalidDescriptor with no type specified\.$#'
+			identifier: missingType.parameter
+			count: 1
+			path: ../../tests/OpenConext/Value/Saml/EntityTest.php
+
+		-
+			message: '#^Method OpenConext\\Value\\Saml\\EntityTest\:\:a_valid_descriptor_creates_an_entity\(\) has no return type specified\.$#'
+			identifier: missingType.return
+			count: 1
+			path: ../../tests/OpenConext/Value/Saml/EntityTest.php
+
+		-
+			message: '#^Method OpenConext\\Value\\Saml\\EntityTest\:\:an_entity_can_assert_which_type_it_is\(\) has no return type specified\.$#'
+			identifier: missingType.return
+			count: 1
+			path: ../../tests/OpenConext/Value/Saml/EntityTest.php
+
+		-
+			message: '#^Method OpenConext\\Value\\Saml\\EntityTest\:\:an_entity_can_be_cast_to_a_known_format_string\(\) has no return type specified\.$#'
+			identifier: missingType.return
+			count: 1
+			path: ../../tests/OpenConext/Value/Saml/EntityTest.php
+
+		-
+			message: '#^Method OpenConext\\Value\\Saml\\EntityTest\:\:deserialization_requires_valid_data\(\) has no return type specified\.$#'
+			identifier: missingType.return
+			count: 1
+			path: ../../tests/OpenConext/Value/Saml/EntityTest.php
+
+		-
+			message: '#^Method OpenConext\\Value\\Saml\\EntityTest\:\:deserializing_a_serialized_entity_results_in_an_equal_value_object\(\) has no return type specified\.$#'
+			identifier: missingType.return
+			count: 1
+			path: ../../tests/OpenConext/Value/Saml/EntityTest.php
+
+		-
+			message: '#^Method OpenConext\\Value\\Saml\\EntityTest\:\:invalidDescriptorProvider\(\) has no return type specified\.$#'
+			identifier: missingType.return
+			count: 1
+			path: ../../tests/OpenConext/Value/Saml/EntityTest.php
+
+		-
+			message: '#^Method OpenConext\\Value\\Saml\\EntityTest\:\:invalidDeserializationDataProvider\(\) return type has no value type specified in iterable type array\.$#'
+			identifier: missingType.iterableValue
+			count: 1
+			path: ../../tests/OpenConext/Value/Saml/EntityTest.php
+
+		-
+			message: '#^Method OpenConext\\Value\\Saml\\EntityTest\:\:the_entity_id_can_be_retrieved\(\) has no return type specified\.$#'
+			identifier: missingType.return
+			count: 1
+			path: ../../tests/OpenConext/Value/Saml/EntityTest.php
+
+		-
+			message: '#^Method OpenConext\\Value\\Saml\\EntityTest\:\:the_entity_id_of_an_entity_can_be_compared\(\) has no return type specified\.$#'
+			identifier: missingType.return
+			count: 1
+			path: ../../tests/OpenConext/Value/Saml/EntityTest.php
+
+		-
+			message: '#^Method OpenConext\\Value\\Saml\\EntityTest\:\:the_entity_type_can_be_retrieved\(\) has no return type specified\.$#'
+			identifier: missingType.return
+			count: 1
+			path: ../../tests/OpenConext/Value/Saml/EntityTest.php
+
+		-
+			message: '#^Method OpenConext\\Value\\Saml\\EntityTest\:\:two_entities_with_the_same_entity_id_and_entity_type_are_equal\(\) has no return type specified\.$#'
+			identifier: missingType.return
+			count: 1
+			path: ../../tests/OpenConext/Value/Saml/EntityTest.php
+
+		-
+			message: '#^Parameter \#1 \$descriptor of static method OpenConext\\Value\\Saml\\Entity\:\:fromDescriptor\(\) expects array, mixed given\.$#'
+			identifier: argument.type
+			count: 1
+			path: ../../tests/OpenConext/Value/Saml/EntityTest.php
+
+		-
+			message: '#^Method OpenConext\\Value\\Saml\\EntityTypeTest\:\:an_entity_type_can_be_cast_to_string\(\) has no return type specified\.$#'
+			identifier: missingType.return
+			count: 1
+			path: ../../tests/OpenConext/Value/Saml/EntityTypeTest.php
+
+		-
+			message: '#^Method OpenConext\\Value\\Saml\\EntityTypeTest\:\:an_entity_type_can_tell_what_it_is\(\) has no return type specified\.$#'
+			identifier: missingType.return
+			count: 1
+			path: ../../tests/OpenConext/Value/Saml/EntityTypeTest.php
+
+		-
+			message: '#^Method OpenConext\\Value\\Saml\\EntityTypeTest\:\:an_entity_type_cannot_be_created_with_a_non_existent_type\(\) has no return type specified\.$#'
+			identifier: missingType.return
+			count: 1
+			path: ../../tests/OpenConext/Value/Saml/EntityTypeTest.php
+
+		-
+			message: '#^Method OpenConext\\Value\\Saml\\EntityTypeTest\:\:deserialization_requires_valid_data\(\) has no return type specified\.$#'
+			identifier: missingType.return
+			count: 1
+			path: ../../tests/OpenConext/Value/Saml/EntityTypeTest.php
+
+		-
+			message: '#^Method OpenConext\\Value\\Saml\\EntityTypeTest\:\:deserializing_a_serialized_entity_type_results_in_an_equal_value_object\(\) has no return type specified\.$#'
+			identifier: missingType.return
+			count: 1
+			path: ../../tests/OpenConext/Value/Saml/EntityTypeTest.php
+
+		-
+			message: '#^Method OpenConext\\Value\\Saml\\EntityTypeTest\:\:the_same_entity_types_are_considered_equal\(\) has no return type specified\.$#'
+			identifier: missingType.return
+			count: 1
+			path: ../../tests/OpenConext/Value/Saml/EntityTypeTest.php
+
+		-
+			message: '#^Call to method PHPUnit\\Framework\\Assert\:\:assertIsString\(\) with ''urn\:oasis\:names\:tc…'' will always evaluate to true\.$#'
+			identifier: method.alreadyNarrowedType
+			count: 1
+			path: ../../tests/OpenConext/Value/Saml/Metadata/Common/BindingTest.php
+
+		-
+			message: '#^Method OpenConext\\Value\\Saml\\Metadata\\Common\\BindingTest\:\:a_binding_can_be_cast_to_string\(\) has no return type specified\.$#'
+			identifier: missingType.return
+			count: 1
+			path: ../../tests/OpenConext/Value/Saml/Metadata/Common/BindingTest.php
+
+		-
+			message: '#^Method OpenConext\\Value\\Saml\\Metadata\\Common\\BindingTest\:\:a_textual_binding_can_be_tested_for_validity\(\) has no return type specified\.$#'
+			identifier: missingType.return
+			count: 1
+			path: ../../tests/OpenConext/Value/Saml/Metadata/Common/BindingTest.php
+
+		-
+			message: '#^Method OpenConext\\Value\\Saml\\Metadata\\Common\\BindingTest\:\:bindingAndFactoryMethodProvider\(\) return type has no value type specified in iterable type array\.$#'
+			identifier: missingType.iterableValue
+			count: 1
+			path: ../../tests/OpenConext/Value/Saml/Metadata/Common/BindingTest.php
+
+		-
+			message: '#^Method OpenConext\\Value\\Saml\\Metadata\\Common\\BindingTest\:\:binding_can_be_retrieved\(\) has no return type specified\.$#'
+			identifier: missingType.return
+			count: 1
+			path: ../../tests/OpenConext/Value/Saml/Metadata/Common/BindingTest.php
+
+		-
+			message: '#^Method OpenConext\\Value\\Saml\\Metadata\\Common\\BindingTest\:\:binding_must_be_one_of_the_valid_bindings\(\) has no return type specified\.$#'
+			identifier: missingType.return
+			count: 1
+			path: ../../tests/OpenConext/Value/Saml/Metadata/Common/BindingTest.php
+
+		-
+			message: '#^Method OpenConext\\Value\\Saml\\Metadata\\Common\\BindingTest\:\:bindings_are_equal_if_they_are_of_the_same_type\(\) has no return type specified\.$#'
+			identifier: missingType.return
+			count: 1
+			path: ../../tests/OpenConext/Value/Saml/Metadata/Common/BindingTest.php
+
+		-
+			message: '#^Method OpenConext\\Value\\Saml\\Metadata\\Common\\BindingTest\:\:bindings_created_through_constructor_are_equal_to_their_factory_method_counterparts\(\) has no return type specified\.$#'
+			identifier: missingType.return
+			count: 1
+			path: ../../tests/OpenConext/Value/Saml/Metadata/Common/BindingTest.php
+
+		-
+			message: '#^Method OpenConext\\Value\\Saml\\Metadata\\Common\\BindingTest\:\:deserialization_requires_data_to_be_a_non_empty_string\(\) has no return type specified\.$#'
+			identifier: missingType.return
+			count: 1
+			path: ../../tests/OpenConext/Value/Saml/Metadata/Common/BindingTest.php
+
+		-
+			message: '#^Method OpenConext\\Value\\Saml\\Metadata\\Common\\BindingTest\:\:deserializing_a_serialized_binding_yields_an_equal_value_object\(\) has no return type specified\.$#'
+			identifier: missingType.return
+			count: 1
+			path: ../../tests/OpenConext/Value/Saml/Metadata/Common/BindingTest.php
+
+		-
+			message: '#^Method OpenConext\\Value\\Saml\\Metadata\\Common\\BindingTest\:\:the_type_of_a_binding_can_be_verified\(\) has no return type specified\.$#'
+			identifier: missingType.return
+			count: 1
+			path: ../../tests/OpenConext/Value/Saml/Metadata/Common/BindingTest.php
+
+		-
+			message: '#^Method OpenConext\\Value\\Saml\\Metadata\\Common\\BindingTest\:\:to_verify_the_type_of_a_binding_a_non_empty_string_must_be_used\(\) has no return type specified\.$#'
+			identifier: missingType.return
+			count: 1
+			path: ../../tests/OpenConext/Value/Saml/Metadata/Common/BindingTest.php
+
+		-
+			message: '#^Parameter \#1 \$binding of method OpenConext\\Value\\Saml\\Metadata\\Common\\Binding\:\:isOfType\(\) expects string, mixed given\.$#'
+			identifier: argument.type
+			count: 1
+			path: ../../tests/OpenConext/Value/Saml/Metadata/Common/BindingTest.php
+
+		-
+			message: '#^Parameter \#1 \$other of method OpenConext\\Value\\Saml\\Metadata\\Common\\Binding\:\:equals\(\) expects OpenConext\\Value\\Saml\\Metadata\\Common\\Binding, mixed given\.$#'
+			identifier: argument.type
+			count: 1
+			path: ../../tests/OpenConext/Value/Saml/Metadata/Common/BindingTest.php
+
+		-
+			message: '#^Call to method PHPUnit\\Framework\\Assert\:\:assertIsString\(\) with string will always evaluate to true\.$#'
+			identifier: method.alreadyNarrowedType
+			count: 1
+			path: ../../tests/OpenConext/Value/Saml/Metadata/Common/EndpointTest.php
+
+		-
+			message: '#^Method OpenConext\\Value\\Saml\\Metadata\\Common\\EndpointTest\:\:an_endpoint_can_be_cast_to_string\(\) has no return type specified\.$#'
+			identifier: missingType.return
+			count: 1
+			path: ../../tests/OpenConext/Value/Saml/Metadata/Common/EndpointTest.php
+
+		-
+			message: '#^Method OpenConext\\Value\\Saml\\Metadata\\Common\\EndpointTest\:\:deserialization_requires_data_to_be_an_array\(\) has no return type specified\.$#'
+			identifier: missingType.return
+			count: 1
+			path: ../../tests/OpenConext/Value/Saml/Metadata/Common/EndpointTest.php
+
+		-
+			message: '#^Method OpenConext\\Value\\Saml\\Metadata\\Common\\EndpointTest\:\:deserialization_requires_presence_of_all_required_keys\(\) has no return type specified\.$#'
+			identifier: missingType.return
+			count: 1
+			path: ../../tests/OpenConext/Value/Saml/Metadata/Common/EndpointTest.php
+
+		-
+			message: '#^Method OpenConext\\Value\\Saml\\Metadata\\Common\\EndpointTest\:\:deserialization_requires_presence_of_all_required_keys\(\) has parameter \$invalidData with no value type specified in iterable type array\.$#'
+			identifier: missingType.iterableValue
+			count: 1
+			path: ../../tests/OpenConext/Value/Saml/Metadata/Common/EndpointTest.php
+
+		-
+			message: '#^Method OpenConext\\Value\\Saml\\Metadata\\Common\\EndpointTest\:\:deserializing_a_serialized_endpoint_results_in_an_equal_value_object\(\) has no return type specified\.$#'
+			identifier: missingType.return
+			count: 1
+			path: ../../tests/OpenConext/Value/Saml/Metadata/Common/EndpointTest.php
+
+		-
+			message: '#^Method OpenConext\\Value\\Saml\\Metadata\\Common\\EndpointTest\:\:equality_is_verified_on_all_properties\(\) has no return type specified\.$#'
+			identifier: missingType.return
+			count: 1
+			path: ../../tests/OpenConext/Value/Saml/Metadata/Common/EndpointTest.php
+
+		-
+			message: '#^Method OpenConext\\Value\\Saml\\Metadata\\Common\\EndpointTest\:\:invalidDataProvider\(\) has no return type specified\.$#'
+			identifier: missingType.return
+			count: 1
+			path: ../../tests/OpenConext/Value/Saml/Metadata/Common/EndpointTest.php
+
+		-
+			message: '#^Method OpenConext\\Value\\Saml\\Metadata\\Common\\EndpointTest\:\:location_must_be_a_non_empty_string\(\) has no return type specified\.$#'
+			identifier: missingType.return
+			count: 1
+			path: ../../tests/OpenConext/Value/Saml/Metadata/Common/EndpointTest.php
+
+		-
+			message: '#^Method OpenConext\\Value\\Saml\\Metadata\\Common\\EndpointTest\:\:response_location_must_be_null_or_a_non_empty_string\(\) has no return type specified\.$#'
+			identifier: missingType.return
+			count: 1
+			path: ../../tests/OpenConext/Value/Saml/Metadata/Common/EndpointTest.php
+
+		-
+			message: '#^Method OpenConext\\Value\\Saml\\Metadata\\Common\\EndpointTest\:\:the_binding_can_be_retrieved\(\) has no return type specified\.$#'
+			identifier: missingType.return
+			count: 1
+			path: ../../tests/OpenConext/Value/Saml/Metadata/Common/EndpointTest.php
+
+		-
+			message: '#^Method OpenConext\\Value\\Saml\\Metadata\\Common\\EndpointTest\:\:the_location_can_be_retrieved\(\) has no return type specified\.$#'
+			identifier: missingType.return
+			count: 1
+			path: ../../tests/OpenConext/Value/Saml/Metadata/Common/EndpointTest.php
+
+		-
+			message: '#^Method OpenConext\\Value\\Saml\\Metadata\\Common\\EndpointTest\:\:the_response_location_can_be_retrieved\(\) has no return type specified\.$#'
+			identifier: missingType.return
+			count: 1
+			path: ../../tests/OpenConext/Value/Saml/Metadata/Common/EndpointTest.php
+
+		-
+			message: '#^Parameter \#2 \$location of class OpenConext\\Value\\Saml\\Metadata\\Common\\Endpoint constructor expects string, mixed given\.$#'
+			identifier: argument.type
+			count: 1
+			path: ../../tests/OpenConext/Value/Saml/Metadata/Common/EndpointTest.php
+
+		-
+			message: '#^Parameter \#3 \$responseLocation of class OpenConext\\Value\\Saml\\Metadata\\Common\\Endpoint constructor expects string\|null, mixed given\.$#'
+			identifier: argument.type
+			count: 1
+			path: ../../tests/OpenConext/Value/Saml/Metadata/Common/EndpointTest.php
+
+		-
+			message: '#^Call to method PHPUnit\\Framework\\Assert\:\:assertIsString\(\) with string will always evaluate to true\.$#'
+			identifier: method.alreadyNarrowedType
+			count: 1
+			path: ../../tests/OpenConext/Value/Saml/Metadata/Common/IndexedEndpointTest.php
+
+		-
+			message: '#^Method OpenConext\\Value\\Saml\\Metadata\\Common\\IndexedEndpointTest\:\:an_indexed_endpoint_can_be_cast_to_string\(\) has no return type specified\.$#'
+			identifier: missingType.return
+			count: 1
+			path: ../../tests/OpenConext/Value/Saml/Metadata/Common/IndexedEndpointTest.php
+
+		-
+			message: '#^Method OpenConext\\Value\\Saml\\Metadata\\Common\\IndexedEndpointTest\:\:binding_can_be_retrieved\(\) has no return type specified\.$#'
+			identifier: missingType.return
+			count: 1
+			path: ../../tests/OpenConext/Value/Saml/Metadata/Common/IndexedEndpointTest.php
+
+		-
+			message: '#^Method OpenConext\\Value\\Saml\\Metadata\\Common\\IndexedEndpointTest\:\:deserialization_requires_data_to_be_an_array\(\) has no return type specified\.$#'
+			identifier: missingType.return
+			count: 1
+			path: ../../tests/OpenConext/Value/Saml/Metadata/Common/IndexedEndpointTest.php
+
+		-
+			message: '#^Method OpenConext\\Value\\Saml\\Metadata\\Common\\IndexedEndpointTest\:\:deserialization_requires_the_presence_of_all_required_keys\(\) has no return type specified\.$#'
+			identifier: missingType.return
+			count: 1
+			path: ../../tests/OpenConext/Value/Saml/Metadata/Common/IndexedEndpointTest.php
+
+		-
+			message: '#^Method OpenConext\\Value\\Saml\\Metadata\\Common\\IndexedEndpointTest\:\:deserializing_a_serialized_indexed_endpoint_yields_an_equal_value_object\(\) has no return type specified\.$#'
+			identifier: missingType.return
+			count: 1
+			path: ../../tests/OpenConext/Value/Saml/Metadata/Common/IndexedEndpointTest.php
+
+		-
+			message: '#^Method OpenConext\\Value\\Saml\\Metadata\\Common\\IndexedEndpointTest\:\:equality_is_verified_on_endpoint_index_and_is_default\(\) has no return type specified\.$#'
+			identifier: missingType.return
+			count: 1
+			path: ../../tests/OpenConext/Value/Saml/Metadata/Common/IndexedEndpointTest.php
+
+		-
+			message: '#^Method OpenConext\\Value\\Saml\\Metadata\\Common\\IndexedEndpointTest\:\:index_can_be_retrieved\(\) has no return type specified\.$#'
+			identifier: missingType.return
+			count: 1
+			path: ../../tests/OpenConext/Value/Saml/Metadata/Common/IndexedEndpointTest.php
+
+		-
+			message: '#^Method OpenConext\\Value\\Saml\\Metadata\\Common\\IndexedEndpointTest\:\:index_must_be_an_integer\(\) has no return type specified\.$#'
+			identifier: missingType.return
+			count: 1
+			path: ../../tests/OpenConext/Value/Saml/Metadata/Common/IndexedEndpointTest.php
+
+		-
+			message: '#^Method OpenConext\\Value\\Saml\\Metadata\\Common\\IndexedEndpointTest\:\:invalidDataProvider\(\) return type has no value type specified in iterable type array\.$#'
+			identifier: missingType.iterableValue
+			count: 1
+			path: ../../tests/OpenConext/Value/Saml/Metadata/Common/IndexedEndpointTest.php
+
+		-
+			message: '#^Method OpenConext\\Value\\Saml\\Metadata\\Common\\IndexedEndpointTest\:\:is_default_can_be_queried\(\) has no return type specified\.$#'
+			identifier: missingType.return
+			count: 1
+			path: ../../tests/OpenConext/Value/Saml/Metadata/Common/IndexedEndpointTest.php
+
+		-
+			message: '#^Method OpenConext\\Value\\Saml\\Metadata\\Common\\IndexedEndpointTest\:\:is_default_must_be_a_boolean\(\) has no return type specified\.$#'
+			identifier: missingType.return
+			count: 1
+			path: ../../tests/OpenConext/Value/Saml/Metadata/Common/IndexedEndpointTest.php
+
+		-
+			message: '#^Method OpenConext\\Value\\Saml\\Metadata\\Common\\IndexedEndpointTest\:\:location_can_be_retrieved\(\) has no return type specified\.$#'
+			identifier: missingType.return
+			count: 1
+			path: ../../tests/OpenConext/Value/Saml/Metadata/Common/IndexedEndpointTest.php
+
+		-
+			message: '#^Method OpenConext\\Value\\Saml\\Metadata\\Common\\IndexedEndpointTest\:\:response_location_can_be_retrieved\(\) has no return type specified\.$#'
+			identifier: missingType.return
+			count: 1
+			path: ../../tests/OpenConext/Value/Saml/Metadata/Common/IndexedEndpointTest.php
+
+		-
+			message: '#^Call to method PHPUnit\\Framework\\Assert\:\:assertIsString\(\) with string will always evaluate to true\.$#'
+			identifier: method.alreadyNarrowedType
+			count: 1
+			path: ../../tests/OpenConext/Value/Saml/Metadata/Common/LocalizedNameTest.php
+
+		-
+			message: '#^Method OpenConext\\Value\\Saml\\Metadata\\Common\\LocalizedNameTest\:\:a_localized_name_can_be_cast_to_string\(\) has no return type specified\.$#'
+			identifier: missingType.return
+			count: 1
+			path: ../../tests/OpenConext/Value/Saml/Metadata/Common/LocalizedNameTest.php
+
+		-
+			message: '#^Method OpenConext\\Value\\Saml\\Metadata\\Common\\LocalizedNameTest\:\:deserialization_requires_all_required_keys_to_be_present\(\) has no return type specified\.$#'
+			identifier: missingType.return
+			count: 1
+			path: ../../tests/OpenConext/Value/Saml/Metadata/Common/LocalizedNameTest.php
+
+		-
+			message: '#^Method OpenConext\\Value\\Saml\\Metadata\\Common\\LocalizedNameTest\:\:deserialization_requires_all_required_keys_to_be_present\(\) has parameter \$invalidData with no value type specified in iterable type array\.$#'
+			identifier: missingType.iterableValue
+			count: 1
+			path: ../../tests/OpenConext/Value/Saml/Metadata/Common/LocalizedNameTest.php
+
+		-
+			message: '#^Method OpenConext\\Value\\Saml\\Metadata\\Common\\LocalizedNameTest\:\:deserialization_requires_data_to_be_an_array\(\) has no return type specified\.$#'
+			identifier: missingType.return
+			count: 1
+			path: ../../tests/OpenConext/Value/Saml/Metadata/Common/LocalizedNameTest.php
+
+		-
+			message: '#^Method OpenConext\\Value\\Saml\\Metadata\\Common\\LocalizedNameTest\:\:deserializing_a_serialized_localized_name_yields_an_equal_value_object\(\) has no return type specified\.$#'
+			identifier: missingType.return
+			count: 1
+			path: ../../tests/OpenConext/Value/Saml/Metadata/Common/LocalizedNameTest.php
+
+		-
+			message: '#^Method OpenConext\\Value\\Saml\\Metadata\\Common\\LocalizedNameTest\:\:equality_is_verified_on_name_and_language\(\) has no return type specified\.$#'
+			identifier: missingType.return
+			count: 1
+			path: ../../tests/OpenConext/Value/Saml/Metadata/Common/LocalizedNameTest.php
+
+		-
+			message: '#^Method OpenConext\\Value\\Saml\\Metadata\\Common\\LocalizedNameTest\:\:invalidDataProvider\(\) has no return type specified\.$#'
+			identifier: missingType.return
+			count: 1
+			path: ../../tests/OpenConext/Value/Saml/Metadata/Common/LocalizedNameTest.php
+
+		-
+			message: '#^Method OpenConext\\Value\\Saml\\Metadata\\Common\\LocalizedNameTest\:\:language_can_be_retrieved\(\) has no return type specified\.$#'
+			identifier: missingType.return
+			count: 1
+			path: ../../tests/OpenConext/Value/Saml/Metadata/Common/LocalizedNameTest.php
+
+		-
+			message: '#^Method OpenConext\\Value\\Saml\\Metadata\\Common\\LocalizedNameTest\:\:language_must_be_a_non_empty_string\(\) has no return type specified\.$#'
+			identifier: missingType.return
+			count: 1
+			path: ../../tests/OpenConext/Value/Saml/Metadata/Common/LocalizedNameTest.php
+
+		-
+			message: '#^Method OpenConext\\Value\\Saml\\Metadata\\Common\\LocalizedNameTest\:\:name_can_be_retrieved\(\) has no return type specified\.$#'
+			identifier: missingType.return
+			count: 1
+			path: ../../tests/OpenConext/Value/Saml/Metadata/Common/LocalizedNameTest.php
+
+		-
+			message: '#^Method OpenConext\\Value\\Saml\\Metadata\\Common\\LocalizedNameTest\:\:name_must_be_a_non_empty_string\(\) has no return type specified\.$#'
+			identifier: missingType.return
+			count: 1
+			path: ../../tests/OpenConext/Value/Saml/Metadata/Common/LocalizedNameTest.php
+
+		-
+			message: '#^Parameter \#1 \$name of class OpenConext\\Value\\Saml\\Metadata\\Common\\LocalizedName constructor expects string, mixed given\.$#'
+			identifier: argument.type
+			count: 1
+			path: ../../tests/OpenConext/Value/Saml/Metadata/Common/LocalizedNameTest.php
+
+		-
+			message: '#^Parameter \#2 \$language of class OpenConext\\Value\\Saml\\Metadata\\Common\\LocalizedName constructor expects string, mixed given\.$#'
+			identifier: argument.type
+			count: 1
+			path: ../../tests/OpenConext/Value/Saml/Metadata/Common/LocalizedNameTest.php
+
+		-
+			message: '#^Call to method PHPUnit\\Framework\\Assert\:\:assertIsString\(\) with string will always evaluate to true\.$#'
+			identifier: method.alreadyNarrowedType
+			count: 1
+			path: ../../tests/OpenConext/Value/Saml/Metadata/Common/LocalizedUriTest.php
+
+		-
+			message: '#^Method OpenConext\\Value\\Saml\\Metadata\\Common\\LocalizedUriTest\:\:a_localized_uri_can_be_cast_to_string\(\) has no return type specified\.$#'
+			identifier: missingType.return
+			count: 1
+			path: ../../tests/OpenConext/Value/Saml/Metadata/Common/LocalizedUriTest.php
+
+		-
+			message: '#^Method OpenConext\\Value\\Saml\\Metadata\\Common\\LocalizedUriTest\:\:deserialization_requires_all_required_keys_to_be_present\(\) has no return type specified\.$#'
+			identifier: missingType.return
+			count: 1
+			path: ../../tests/OpenConext/Value/Saml/Metadata/Common/LocalizedUriTest.php
+
+		-
+			message: '#^Method OpenConext\\Value\\Saml\\Metadata\\Common\\LocalizedUriTest\:\:deserialization_requires_all_required_keys_to_be_present\(\) has parameter \$invalidData with no value type specified in iterable type array\.$#'
+			identifier: missingType.iterableValue
+			count: 1
+			path: ../../tests/OpenConext/Value/Saml/Metadata/Common/LocalizedUriTest.php
+
+		-
+			message: '#^Method OpenConext\\Value\\Saml\\Metadata\\Common\\LocalizedUriTest\:\:deserialization_requires_data_to_be_an_array\(\) has no return type specified\.$#'
+			identifier: missingType.return
+			count: 1
+			path: ../../tests/OpenConext/Value/Saml/Metadata/Common/LocalizedUriTest.php
+
+		-
+			message: '#^Method OpenConext\\Value\\Saml\\Metadata\\Common\\LocalizedUriTest\:\:deserializing_a_serialized_localized_uri_yields_an_equal_value_object\(\) has no return type specified\.$#'
+			identifier: missingType.return
+			count: 1
+			path: ../../tests/OpenConext/Value/Saml/Metadata/Common/LocalizedUriTest.php
+
+		-
+			message: '#^Method OpenConext\\Value\\Saml\\Metadata\\Common\\LocalizedUriTest\:\:equality_is_verified_on_uri_and_language\(\) has no return type specified\.$#'
+			identifier: missingType.return
+			count: 1
+			path: ../../tests/OpenConext/Value/Saml/Metadata/Common/LocalizedUriTest.php
+
+		-
+			message: '#^Method OpenConext\\Value\\Saml\\Metadata\\Common\\LocalizedUriTest\:\:invalidDataProvider\(\) has no return type specified\.$#'
+			identifier: missingType.return
+			count: 1
+			path: ../../tests/OpenConext/Value/Saml/Metadata/Common/LocalizedUriTest.php
+
+		-
+			message: '#^Method OpenConext\\Value\\Saml\\Metadata\\Common\\LocalizedUriTest\:\:language_can_be_retrieved\(\) has no return type specified\.$#'
+			identifier: missingType.return
+			count: 1
+			path: ../../tests/OpenConext/Value/Saml/Metadata/Common/LocalizedUriTest.php
+
+		-
+			message: '#^Method OpenConext\\Value\\Saml\\Metadata\\Common\\LocalizedUriTest\:\:language_must_be_a_non_empty_string\(\) has no return type specified\.$#'
+			identifier: missingType.return
+			count: 1
+			path: ../../tests/OpenConext/Value/Saml/Metadata/Common/LocalizedUriTest.php
+
+		-
+			message: '#^Method OpenConext\\Value\\Saml\\Metadata\\Common\\LocalizedUriTest\:\:uri_can_be_retrieved\(\) has no return type specified\.$#'
+			identifier: missingType.return
+			count: 1
+			path: ../../tests/OpenConext/Value/Saml/Metadata/Common/LocalizedUriTest.php
+
+		-
+			message: '#^Method OpenConext\\Value\\Saml\\Metadata\\Common\\LocalizedUriTest\:\:uri_must_be_a_non_empty_string\(\) has no return type specified\.$#'
+			identifier: missingType.return
+			count: 1
+			path: ../../tests/OpenConext/Value/Saml/Metadata/Common/LocalizedUriTest.php
+
+		-
+			message: '#^Parameter \#1 \$uri of class OpenConext\\Value\\Saml\\Metadata\\Common\\LocalizedUri constructor expects string, mixed given\.$#'
+			identifier: argument.type
+			count: 1
+			path: ../../tests/OpenConext/Value/Saml/Metadata/Common/LocalizedUriTest.php
+
+		-
+			message: '#^Parameter \#2 \$language of class OpenConext\\Value\\Saml\\Metadata\\Common\\LocalizedUri constructor expects string, mixed given\.$#'
+			identifier: argument.type
+			count: 1
+			path: ../../tests/OpenConext/Value/Saml/Metadata/Common/LocalizedUriTest.php
+
+		-
+			message: '#^Method OpenConext\\Value\\Saml\\Metadata\\ContactPerson\\CompanyTest\:\:a_company_can_be_cast_to_string\(\) has no return type specified\.$#'
+			identifier: missingType.return
+			count: 1
+			path: ../../tests/OpenConext/Value/Saml/Metadata/ContactPerson/CompanyTest.php
+
+		-
+			message: '#^Method OpenConext\\Value\\Saml\\Metadata\\ContactPerson\\CompanyTest\:\:deserialization_requires_valid_data\(\) has no return type specified\.$#'
+			identifier: missingType.return
+			count: 1
+			path: ../../tests/OpenConext/Value/Saml/Metadata/ContactPerson/CompanyTest.php
+
+		-
+			message: '#^Method OpenConext\\Value\\Saml\\Metadata\\ContactPerson\\CompanyTest\:\:deserializing_a_serialized_company_results_in_an_equal_value_object\(\) has no return type specified\.$#'
+			identifier: missingType.return
+			count: 1
+			path: ../../tests/OpenConext/Value/Saml/Metadata/ContactPerson/CompanyTest.php
+
+		-
+			message: '#^Method OpenConext\\Value\\Saml\\Metadata\\ContactPerson\\CompanyTest\:\:only_non_empty_strings_are_valid_companies\(\) has no return type specified\.$#'
+			identifier: missingType.return
+			count: 1
+			path: ../../tests/OpenConext/Value/Saml/Metadata/ContactPerson/CompanyTest.php
+
+		-
+			message: '#^Method OpenConext\\Value\\Saml\\Metadata\\ContactPerson\\CompanyTest\:\:the_company_can_be_retrieved\(\) has no return type specified\.$#'
+			identifier: missingType.return
+			count: 1
+			path: ../../tests/OpenConext/Value/Saml/Metadata/ContactPerson/CompanyTest.php
+
+		-
+			message: '#^Method OpenConext\\Value\\Saml\\Metadata\\ContactPerson\\CompanyTest\:\:the_same_companies_are_considered_equal\(\) has no return type specified\.$#'
+			identifier: missingType.return
+			count: 1
+			path: ../../tests/OpenConext/Value/Saml/Metadata/ContactPerson/CompanyTest.php
+
+		-
+			message: '#^Method OpenConext\\Value\\Saml\\Metadata\\ContactPerson\\ContactTypeTest\:\:a_contact_type_can_be_cast_to_string\(\) has no return type specified\.$#'
+			identifier: missingType.return
+			count: 1
+			path: ../../tests/OpenConext/Value/Saml/Metadata/ContactPerson/ContactTypeTest.php
+
+		-
+			message: '#^Method OpenConext\\Value\\Saml\\Metadata\\ContactPerson\\ContactTypeTest\:\:a_contact_type_created_with_a_valid_type_equals_its_factory_created_version\(\) has no return type specified\.$#'
+			identifier: missingType.return
+			count: 1
+			path: ../../tests/OpenConext/Value/Saml/Metadata/ContactPerson/ContactTypeTest.php
+
+		-
+			message: '#^Method OpenConext\\Value\\Saml\\Metadata\\ContactPerson\\ContactTypeTest\:\:an_invalid_type_causes_an_exception_to_be_thrown\(\) has no return type specified\.$#'
+			identifier: missingType.return
+			count: 1
+			path: ../../tests/OpenConext/Value/Saml/Metadata/ContactPerson/ContactTypeTest.php
+
+		-
+			message: '#^Method OpenConext\\Value\\Saml\\Metadata\\ContactPerson\\ContactTypeTest\:\:contact_types_can_be_compared\(\) has no return type specified\.$#'
+			identifier: missingType.return
+			count: 1
+			path: ../../tests/OpenConext/Value/Saml/Metadata/ContactPerson/ContactTypeTest.php
+
+		-
+			message: '#^Method OpenConext\\Value\\Saml\\Metadata\\ContactPerson\\ContactTypeTest\:\:deserialization_requires_valid_data\(\) has no return type specified\.$#'
+			identifier: missingType.return
+			count: 1
+			path: ../../tests/OpenConext/Value/Saml/Metadata/ContactPerson/ContactTypeTest.php
+
+		-
+			message: '#^Method OpenConext\\Value\\Saml\\Metadata\\ContactPerson\\ContactTypeTest\:\:deserializing_a_serialized_contact_type_results_in_an_equal_value_object\(\) has no return type specified\.$#'
+			identifier: missingType.return
+			count: 1
+			path: ../../tests/OpenConext/Value/Saml/Metadata/ContactPerson/ContactTypeTest.php
+
+		-
+			message: '#^Method OpenConext\\Value\\Saml\\Metadata\\ContactPerson\\ContactTypeTest\:\:the_type_definition_can_be_retrieved\(\) has no return type specified\.$#'
+			identifier: missingType.return
+			count: 1
+			path: ../../tests/OpenConext/Value/Saml/Metadata/ContactPerson/ContactTypeTest.php
+
+		-
+			message: '#^Method OpenConext\\Value\\Saml\\Metadata\\ContactPerson\\ContactTypeTest\:\:typeAndFactoryMethodProvider\(\) has no return type specified\.$#'
+			identifier: missingType.return
+			count: 1
+			path: ../../tests/OpenConext/Value/Saml/Metadata/ContactPerson/ContactTypeTest.php
+
+		-
+			message: '#^Parameter \#1 \$other of method OpenConext\\Value\\Saml\\Metadata\\ContactPerson\\ContactType\:\:equals\(\) expects OpenConext\\Value\\Saml\\Metadata\\ContactPerson\\ContactType, mixed given\.$#'
+			identifier: argument.type
+			count: 1
+			path: ../../tests/OpenConext/Value/Saml/Metadata/ContactPerson/ContactTypeTest.php
+
+		-
+			message: '#^Method OpenConext\\Value\\Saml\\Metadata\\ContactPerson\\EmailAddressListTest\:\:a_list_exposes_an_array_containing_its_elements\(\) has no return type specified\.$#'
+			identifier: missingType.return
+			count: 1
+			path: ../../tests/OpenConext/Value/Saml/Metadata/ContactPerson/EmailAddressListTest.php
+
+		-
+			message: '#^Method OpenConext\\Value\\Saml\\Metadata\\ContactPerson\\EmailAddressListTest\:\:adding_an_email_address_returns_a_new_list_with_that_email_address_appended\(\) has no return type specified\.$#'
+			identifier: missingType.return
+			count: 1
+			path: ../../tests/OpenConext/Value/Saml/Metadata/ContactPerson/EmailAddressListTest.php
+
+		-
+			message: '#^Method OpenConext\\Value\\Saml\\Metadata\\ContactPerson\\EmailAddressListTest\:\:all_elements_must_be_an_email_address\(\) has no return type specified\.$#'
+			identifier: missingType.return
+			count: 1
+			path: ../../tests/OpenConext/Value/Saml/Metadata/ContactPerson/EmailAddressListTest.php
+
+		-
+			message: '#^Method OpenConext\\Value\\Saml\\Metadata\\ContactPerson\\EmailAddressListTest\:\:an_email_address_can_be_retrieved_by_index\(\) has no return type specified\.$#'
+			identifier: missingType.return
+			count: 1
+			path: ../../tests/OpenConext/Value/Saml/Metadata/ContactPerson/EmailAddressListTest.php
+
+		-
+			message: '#^Method OpenConext\\Value\\Saml\\Metadata\\ContactPerson\\EmailAddressListTest\:\:an_email_address_can_be_searched_for\(\) has no return type specified\.$#'
+			identifier: missingType.return
+			count: 1
+			path: ../../tests/OpenConext/Value/Saml/Metadata/ContactPerson/EmailAddressListTest.php
+
+		-
+			message: '#^Method OpenConext\\Value\\Saml\\Metadata\\ContactPerson\\EmailAddressListTest\:\:an_email_address_list_can_be_cast_to_string\(\) has no return type specified\.$#'
+			identifier: missingType.return
+			count: 1
+			path: ../../tests/OpenConext/Value/Saml/Metadata/ContactPerson/EmailAddressListTest.php
+
+		-
+			message: '#^Method OpenConext\\Value\\Saml\\Metadata\\ContactPerson\\EmailAddressListTest\:\:an_email_address_list_can_be_iterated_over\(\) has no return type specified\.$#'
+			identifier: missingType.return
+			count: 1
+			path: ../../tests/OpenConext/Value/Saml/Metadata/ContactPerson/EmailAddressListTest.php
+
+		-
+			message: '#^Method OpenConext\\Value\\Saml\\Metadata\\ContactPerson\\EmailAddressListTest\:\:an_exception_is_thrown_when_attempting_to_get_an_element_with_a_negative_index\(\) has no return type specified\.$#'
+			identifier: missingType.return
+			count: 1
+			path: ../../tests/OpenConext/Value/Saml/Metadata/ContactPerson/EmailAddressListTest.php
+
+		-
+			message: '#^Method OpenConext\\Value\\Saml\\Metadata\\ContactPerson\\EmailAddressListTest\:\:an_exception_is_thrown_when_attempting_to_get_an_element_with_an_index_larger_than_the_list_size\(\) has no return type specified\.$#'
+			identifier: missingType.return
+			count: 1
+			path: ../../tests/OpenConext/Value/Saml/Metadata/ContactPerson/EmailAddressListTest.php
+
+		-
+			message: '#^Method OpenConext\\Value\\Saml\\Metadata\\ContactPerson\\EmailAddressListTest\:\:deserialization_requires_an_array\(\) has no return type specified\.$#'
+			identifier: missingType.return
+			count: 1
+			path: ../../tests/OpenConext/Value/Saml/Metadata/ContactPerson/EmailAddressListTest.php
+
+		-
+			message: '#^Method OpenConext\\Value\\Saml\\Metadata\\ContactPerson\\EmailAddressListTest\:\:deserializing_a_serialized_email_address_list_results_in_an_equal_value_object\(\) has no return type specified\.$#'
+			identifier: missingType.return
+			count: 1
+			path: ../../tests/OpenConext/Value/Saml/Metadata/ContactPerson/EmailAddressListTest.php
+
+		-
+			message: '#^Method OpenConext\\Value\\Saml\\Metadata\\ContactPerson\\EmailAddressListTest\:\:find_predicate_must_be_a_callable\(\) has no return type specified\.$#'
+			identifier: missingType.return
+			count: 1
+			path: ../../tests/OpenConext/Value/Saml/Metadata/ContactPerson/EmailAddressListTest.php
+
+		-
+			message: '#^Method OpenConext\\Value\\Saml\\Metadata\\ContactPerson\\EmailAddressListTest\:\:find_returns_the_first_matching_element\(\) has no return type specified\.$#'
+			identifier: missingType.return
+			count: 1
+			path: ../../tests/OpenConext/Value/Saml/Metadata/ContactPerson/EmailAddressListTest.php
+
+		-
+			message: '#^Method OpenConext\\Value\\Saml\\Metadata\\ContactPerson\\EmailAddressListTest\:\:index_to_retrieve_the_element_of_must_be_an_integer\(\) has no return type specified\.$#'
+			identifier: missingType.return
+			count: 1
+			path: ../../tests/OpenConext/Value/Saml/Metadata/ContactPerson/EmailAddressListTest.php
+
+		-
+			message: '#^Method OpenConext\\Value\\Saml\\Metadata\\ContactPerson\\EmailAddressListTest\:\:index_to_retrieve_the_element_of_must_be_an_integer\(\) has parameter \$invalidArgument with no type specified\.$#'
+			identifier: missingType.parameter
+			count: 1
+			path: ../../tests/OpenConext/Value/Saml/Metadata/ContactPerson/EmailAddressListTest.php
+
+		-
+			message: '#^Method OpenConext\\Value\\Saml\\Metadata\\ContactPerson\\EmailAddressListTest\:\:lists_are_only_equal_when_containing_the_same_elements_in_the_same_order\(\) has no return type specified\.$#'
+			identifier: missingType.return
+			count: 1
+			path: ../../tests/OpenConext/Value/Saml/Metadata/ContactPerson/EmailAddressListTest.php
+
+		-
+			message: '#^Method OpenConext\\Value\\Saml\\Metadata\\ContactPerson\\EmailAddressListTest\:\:null_is_returned_when_no_match_is_found\(\) has no return type specified\.$#'
+			identifier: missingType.return
+			count: 1
+			path: ../../tests/OpenConext/Value/Saml/Metadata/ContactPerson/EmailAddressListTest.php
+
+		-
+			message: '#^Method OpenConext\\Value\\Saml\\Metadata\\ContactPerson\\EmailAddressListTest\:\:presence_of_an_email_address_can_be_tested\(\) has no return type specified\.$#'
+			identifier: missingType.return
+			count: 1
+			path: ../../tests/OpenConext/Value/Saml/Metadata/ContactPerson/EmailAddressListTest.php
+
+		-
+			message: '#^Method OpenConext\\Value\\Saml\\Metadata\\ContactPerson\\EmailAddressListTest\:\:the_elements_in_an_email_address_list_can_be_counted\(\) has no return type specified\.$#'
+			identifier: missingType.return
+			count: 1
+			path: ../../tests/OpenConext/Value/Saml/Metadata/ContactPerson/EmailAddressListTest.php
+
+		-
+			message: '#^Method OpenConext\\Value\\Saml\\Metadata\\ContactPerson\\EmailAddressListTest\:\:the_index_of_an_email_address_can_be_retrieved\(\) has no return type specified\.$#'
+			identifier: missingType.return
+			count: 1
+			path: ../../tests/OpenConext/Value/Saml/Metadata/ContactPerson/EmailAddressListTest.php
+
+		-
+			message: '#^Parameter \#1 \$emailAddresses of class OpenConext\\Value\\Saml\\Metadata\\ContactPerson\\EmailAddressList constructor expects array\<OpenConext\\Value\\Saml\\Metadata\\ContactPerson\\EmailAddress\>, array\<int, OpenConext\\Value\\Saml\\Metadata\\ContactPerson\\EmailAddress\|stdClass\> given\.$#'
+			identifier: argument.type
+			count: 1
+			path: ../../tests/OpenConext/Value/Saml/Metadata/ContactPerson/EmailAddressListTest.php
+
+		-
+			message: '#^Parameter \#1 \$index of method OpenConext\\Value\\Saml\\Metadata\\ContactPerson\\EmailAddressList\:\:get\(\) expects int, mixed given\.$#'
+			identifier: argument.type
+			count: 1
+			path: ../../tests/OpenConext/Value/Saml/Metadata/ContactPerson/EmailAddressListTest.php
+
+		-
+			message: '#^Parameter \#1 \$predicate of method OpenConext\\Value\\Saml\\Metadata\\ContactPerson\\EmailAddressList\:\:find\(\) expects callable\(\)\: mixed, mixed given\.$#'
+			identifier: argument.type
+			count: 1
+			path: ../../tests/OpenConext/Value/Saml/Metadata/ContactPerson/EmailAddressListTest.php
+
+		-
+			message: '#^Method OpenConext\\Value\\Saml\\Metadata\\ContactPerson\\EmailAddressTest\:\:an_rfc_822_compliant_email_address_is_required\(\) has no return type specified\.$#'
+			identifier: missingType.return
+			count: 1
+			path: ../../tests/OpenConext/Value/Saml/Metadata/ContactPerson/EmailAddressTest.php
+
+		-
+			message: '#^Method OpenConext\\Value\\Saml\\Metadata\\ContactPerson\\EmailAddressTest\:\:deserialization_requires_valid_data\(\) has no return type specified\.$#'
+			identifier: missingType.return
+			count: 1
+			path: ../../tests/OpenConext/Value/Saml/Metadata/ContactPerson/EmailAddressTest.php
+
+		-
+			message: '#^Method OpenConext\\Value\\Saml\\Metadata\\ContactPerson\\EmailAddressTest\:\:deserializing_an_email_address_results_in_an_equal_value_object\(\) has no return type specified\.$#'
+			identifier: missingType.return
+			count: 1
+			path: ../../tests/OpenConext/Value/Saml/Metadata/ContactPerson/EmailAddressTest.php
+
+		-
+			message: '#^Method OpenConext\\Value\\Saml\\Metadata\\ContactPerson\\EmailAddressTest\:\:email_address_can_be_cast_to_string\(\) has no return type specified\.$#'
+			identifier: missingType.return
+			count: 1
+			path: ../../tests/OpenConext/Value/Saml/Metadata/ContactPerson/EmailAddressTest.php
+
+		-
+			message: '#^Method OpenConext\\Value\\Saml\\Metadata\\ContactPerson\\EmailAddressTest\:\:equality_can_be_verified\(\) has no return type specified\.$#'
+			identifier: missingType.return
+			count: 1
+			path: ../../tests/OpenConext/Value/Saml/Metadata/ContactPerson/EmailAddressTest.php
+
+		-
+			message: '#^Method OpenConext\\Value\\Saml\\Metadata\\ContactPerson\\EmailAddressTest\:\:the_email_address_can_be_retrieved\(\) has no return type specified\.$#'
+			identifier: missingType.return
+			count: 1
+			path: ../../tests/OpenConext/Value/Saml/Metadata/ContactPerson/EmailAddressTest.php
+
+		-
+			message: '#^Parameter \#1 \$emailAddress of class OpenConext\\Value\\Saml\\Metadata\\ContactPerson\\EmailAddress constructor expects string, mixed given\.$#'
+			identifier: argument.type
+			count: 1
+			path: ../../tests/OpenConext/Value/Saml/Metadata/ContactPerson/EmailAddressTest.php
+
+		-
+			message: '#^Method OpenConext\\Value\\Saml\\Metadata\\ContactPerson\\GivenNameTest\:\:a_given_name_can_be_cast_to_string\(\) has no return type specified\.$#'
+			identifier: missingType.return
+			count: 1
+			path: ../../tests/OpenConext/Value/Saml/Metadata/ContactPerson/GivenNameTest.php
+
+		-
+			message: '#^Method OpenConext\\Value\\Saml\\Metadata\\ContactPerson\\GivenNameTest\:\:deserialization_requires_the_presence_of_the_correct_data\(\) has no return type specified\.$#'
+			identifier: missingType.return
+			count: 1
+			path: ../../tests/OpenConext/Value/Saml/Metadata/ContactPerson/GivenNameTest.php
+
+		-
+			message: '#^Method OpenConext\\Value\\Saml\\Metadata\\ContactPerson\\GivenNameTest\:\:deserializing_a_serialized_given_name_results_in_an_equal_value_object\(\) has no return type specified\.$#'
+			identifier: missingType.return
+			count: 1
+			path: ../../tests/OpenConext/Value/Saml/Metadata/ContactPerson/GivenNameTest.php
+
+		-
+			message: '#^Method OpenConext\\Value\\Saml\\Metadata\\ContactPerson\\GivenNameTest\:\:equality_can_be_verified\(\) has no return type specified\.$#'
+			identifier: missingType.return
+			count: 1
+			path: ../../tests/OpenConext/Value/Saml/Metadata/ContactPerson/GivenNameTest.php
+
+		-
+			message: '#^Method OpenConext\\Value\\Saml\\Metadata\\ContactPerson\\GivenNameTest\:\:only_non_empty_strings_are_valid_given_names\(\) has no return type specified\.$#'
+			identifier: missingType.return
+			count: 1
+			path: ../../tests/OpenConext/Value/Saml/Metadata/ContactPerson/GivenNameTest.php
+
+		-
+			message: '#^Method OpenConext\\Value\\Saml\\Metadata\\ContactPerson\\GivenNameTest\:\:the_given_name_can_be_retrieved\(\) has no return type specified\.$#'
+			identifier: missingType.return
+			count: 1
+			path: ../../tests/OpenConext/Value/Saml/Metadata/ContactPerson/GivenNameTest.php
+
+		-
+			message: '#^Parameter \#1 \$givenName of class OpenConext\\Value\\Saml\\Metadata\\ContactPerson\\GivenName constructor expects string, mixed given\.$#'
+			identifier: argument.type
+			count: 1
+			path: ../../tests/OpenConext/Value/Saml/Metadata/ContactPerson/GivenNameTest.php
+
+		-
+			message: '#^Method OpenConext\\Value\\Saml\\Metadata\\ContactPerson\\SurnameTest\:\:a_surname_can_be_cast_to_string\(\) has no return type specified\.$#'
+			identifier: missingType.return
+			count: 1
+			path: ../../tests/OpenConext/Value/Saml/Metadata/ContactPerson/SurnameTest.php
+
+		-
+			message: '#^Method OpenConext\\Value\\Saml\\Metadata\\ContactPerson\\SurnameTest\:\:deserialization_requires_the_presence_of_the_correct_data\(\) has no return type specified\.$#'
+			identifier: missingType.return
+			count: 1
+			path: ../../tests/OpenConext/Value/Saml/Metadata/ContactPerson/SurnameTest.php
+
+		-
+			message: '#^Method OpenConext\\Value\\Saml\\Metadata\\ContactPerson\\SurnameTest\:\:deserializing_a_serialized_surname_results_in_an_equal_value_object\(\) has no return type specified\.$#'
+			identifier: missingType.return
+			count: 1
+			path: ../../tests/OpenConext/Value/Saml/Metadata/ContactPerson/SurnameTest.php
+
+		-
+			message: '#^Method OpenConext\\Value\\Saml\\Metadata\\ContactPerson\\SurnameTest\:\:equality_can_be_verified\(\) has no return type specified\.$#'
+			identifier: missingType.return
+			count: 1
+			path: ../../tests/OpenConext/Value/Saml/Metadata/ContactPerson/SurnameTest.php
+
+		-
+			message: '#^Method OpenConext\\Value\\Saml\\Metadata\\ContactPerson\\SurnameTest\:\:only_non_empty_strings_are_valid_surnames\(\) has no return type specified\.$#'
+			identifier: missingType.return
+			count: 1
+			path: ../../tests/OpenConext/Value/Saml/Metadata/ContactPerson/SurnameTest.php
+
+		-
+			message: '#^Method OpenConext\\Value\\Saml\\Metadata\\ContactPerson\\SurnameTest\:\:the_surname_can_be_retrieved\(\) has no return type specified\.$#'
+			identifier: missingType.return
+			count: 1
+			path: ../../tests/OpenConext/Value/Saml/Metadata/ContactPerson/SurnameTest.php
+
+		-
+			message: '#^Parameter \#1 \$name of class OpenConext\\Value\\Saml\\Metadata\\ContactPerson\\Surname constructor expects string, mixed given\.$#'
+			identifier: argument.type
+			count: 1
+			path: ../../tests/OpenConext/Value/Saml/Metadata/ContactPerson/SurnameTest.php
+
+		-
+			message: '#^Method OpenConext\\Value\\Saml\\Metadata\\ContactPerson\\TelephoneNumberListTest\:\:a_list_exposes_an_array_containing_its_elements\(\) has no return type specified\.$#'
+			identifier: missingType.return
+			count: 1
+			path: ../../tests/OpenConext/Value/Saml/Metadata/ContactPerson/TelephoneNumberListTest.php
+
+		-
+			message: '#^Method OpenConext\\Value\\Saml\\Metadata\\ContactPerson\\TelephoneNumberListTest\:\:a_telephone_number_can_be_retrieved_by_index\(\) has no return type specified\.$#'
+			identifier: missingType.return
+			count: 1
+			path: ../../tests/OpenConext/Value/Saml/Metadata/ContactPerson/TelephoneNumberListTest.php
+
+		-
+			message: '#^Method OpenConext\\Value\\Saml\\Metadata\\ContactPerson\\TelephoneNumberListTest\:\:a_telephone_number_can_be_searched_for\(\) has no return type specified\.$#'
+			identifier: missingType.return
+			count: 1
+			path: ../../tests/OpenConext/Value/Saml/Metadata/ContactPerson/TelephoneNumberListTest.php
+
+		-
+			message: '#^Method OpenConext\\Value\\Saml\\Metadata\\ContactPerson\\TelephoneNumberListTest\:\:a_telephone_number_list_can_be_cast_to_string\(\) has no return type specified\.$#'
+			identifier: missingType.return
+			count: 1
+			path: ../../tests/OpenConext/Value/Saml/Metadata/ContactPerson/TelephoneNumberListTest.php
+
+		-
+			message: '#^Method OpenConext\\Value\\Saml\\Metadata\\ContactPerson\\TelephoneNumberListTest\:\:a_telephone_number_list_can_be_iterated_over\(\) has no return type specified\.$#'
+			identifier: missingType.return
+			count: 1
+			path: ../../tests/OpenConext/Value/Saml/Metadata/ContactPerson/TelephoneNumberListTest.php
+
+		-
+			message: '#^Method OpenConext\\Value\\Saml\\Metadata\\ContactPerson\\TelephoneNumberListTest\:\:adding_a_telephone_number_returns_a_new_list_with_that_number_appended\(\) has no return type specified\.$#'
+			identifier: missingType.return
+			count: 1
+			path: ../../tests/OpenConext/Value/Saml/Metadata/ContactPerson/TelephoneNumberListTest.php
+
+		-
+			message: '#^Method OpenConext\\Value\\Saml\\Metadata\\ContactPerson\\TelephoneNumberListTest\:\:all_elements_must_be_a_telephone_number\(\) has no return type specified\.$#'
+			identifier: missingType.return
+			count: 1
+			path: ../../tests/OpenConext/Value/Saml/Metadata/ContactPerson/TelephoneNumberListTest.php
+
+		-
+			message: '#^Method OpenConext\\Value\\Saml\\Metadata\\ContactPerson\\TelephoneNumberListTest\:\:an_exception_is_thrown_when_attempting_to_get_an_element_with_a_negative_index\(\) has no return type specified\.$#'
+			identifier: missingType.return
+			count: 1
+			path: ../../tests/OpenConext/Value/Saml/Metadata/ContactPerson/TelephoneNumberListTest.php
+
+		-
+			message: '#^Method OpenConext\\Value\\Saml\\Metadata\\ContactPerson\\TelephoneNumberListTest\:\:an_exception_is_thrown_when_attempting_to_get_an_element_with_an_index_larger_than_the_list_size\(\) has no return type specified\.$#'
+			identifier: missingType.return
+			count: 1
+			path: ../../tests/OpenConext/Value/Saml/Metadata/ContactPerson/TelephoneNumberListTest.php
+
+		-
+			message: '#^Method OpenConext\\Value\\Saml\\Metadata\\ContactPerson\\TelephoneNumberListTest\:\:deserialization_requires_an_array\(\) has no return type specified\.$#'
+			identifier: missingType.return
+			count: 1
+			path: ../../tests/OpenConext/Value/Saml/Metadata/ContactPerson/TelephoneNumberListTest.php
+
+		-
+			message: '#^Method OpenConext\\Value\\Saml\\Metadata\\ContactPerson\\TelephoneNumberListTest\:\:deserializing_a_serialized_telephone_number_list_results_in_an_equal_value_object\(\) has no return type specified\.$#'
+			identifier: missingType.return
+			count: 1
+			path: ../../tests/OpenConext/Value/Saml/Metadata/ContactPerson/TelephoneNumberListTest.php
+
+		-
+			message: '#^Method OpenConext\\Value\\Saml\\Metadata\\ContactPerson\\TelephoneNumberListTest\:\:find_predicate_must_be_a_callable\(\) has no return type specified\.$#'
+			identifier: missingType.return
+			count: 1
+			path: ../../tests/OpenConext/Value/Saml/Metadata/ContactPerson/TelephoneNumberListTest.php
+
+		-
+			message: '#^Method OpenConext\\Value\\Saml\\Metadata\\ContactPerson\\TelephoneNumberListTest\:\:find_returns_the_first_matching_element\(\) has no return type specified\.$#'
+			identifier: missingType.return
+			count: 1
+			path: ../../tests/OpenConext/Value/Saml/Metadata/ContactPerson/TelephoneNumberListTest.php
+
+		-
+			message: '#^Method OpenConext\\Value\\Saml\\Metadata\\ContactPerson\\TelephoneNumberListTest\:\:index_to_retrieve_the_element_of_must_be_an_integer\(\) has no return type specified\.$#'
+			identifier: missingType.return
+			count: 1
+			path: ../../tests/OpenConext/Value/Saml/Metadata/ContactPerson/TelephoneNumberListTest.php
+
+		-
+			message: '#^Method OpenConext\\Value\\Saml\\Metadata\\ContactPerson\\TelephoneNumberListTest\:\:index_to_retrieve_the_element_of_must_be_an_integer\(\) has parameter \$invalidArgument with no type specified\.$#'
+			identifier: missingType.parameter
+			count: 1
+			path: ../../tests/OpenConext/Value/Saml/Metadata/ContactPerson/TelephoneNumberListTest.php
+
+		-
+			message: '#^Method OpenConext\\Value\\Saml\\Metadata\\ContactPerson\\TelephoneNumberListTest\:\:lists_are_only_equal_when_containing_the_same_elements_in_the_same_order\(\) has no return type specified\.$#'
+			identifier: missingType.return
+			count: 1
+			path: ../../tests/OpenConext/Value/Saml/Metadata/ContactPerson/TelephoneNumberListTest.php
+
+		-
+			message: '#^Method OpenConext\\Value\\Saml\\Metadata\\ContactPerson\\TelephoneNumberListTest\:\:null_is_returned_when_no_match_is_found\(\) has no return type specified\.$#'
+			identifier: missingType.return
+			count: 1
+			path: ../../tests/OpenConext/Value/Saml/Metadata/ContactPerson/TelephoneNumberListTest.php
+
+		-
+			message: '#^Method OpenConext\\Value\\Saml\\Metadata\\ContactPerson\\TelephoneNumberListTest\:\:presence_of_a_telephone_number_can_be_tested\(\) has no return type specified\.$#'
+			identifier: missingType.return
+			count: 1
+			path: ../../tests/OpenConext/Value/Saml/Metadata/ContactPerson/TelephoneNumberListTest.php
+
+		-
+			message: '#^Method OpenConext\\Value\\Saml\\Metadata\\ContactPerson\\TelephoneNumberListTest\:\:the_elements_in_a_telephone_number_list_can_be_counted\(\) has no return type specified\.$#'
+			identifier: missingType.return
+			count: 1
+			path: ../../tests/OpenConext/Value/Saml/Metadata/ContactPerson/TelephoneNumberListTest.php
+
+		-
+			message: '#^Method OpenConext\\Value\\Saml\\Metadata\\ContactPerson\\TelephoneNumberListTest\:\:the_index_of_a_telephone_number_can_be_retrieved\(\) has no return type specified\.$#'
+			identifier: missingType.return
+			count: 1
+			path: ../../tests/OpenConext/Value/Saml/Metadata/ContactPerson/TelephoneNumberListTest.php
+
+		-
+			message: '#^Parameter \#1 \$index of method OpenConext\\Value\\Saml\\Metadata\\ContactPerson\\TelephoneNumberList\:\:get\(\) expects int, mixed given\.$#'
+			identifier: argument.type
+			count: 1
+			path: ../../tests/OpenConext/Value/Saml/Metadata/ContactPerson/TelephoneNumberListTest.php
+
+		-
+			message: '#^Parameter \#1 \$predicate of method OpenConext\\Value\\Saml\\Metadata\\ContactPerson\\TelephoneNumberList\:\:find\(\) expects callable\(\)\: mixed, mixed given\.$#'
+			identifier: argument.type
+			count: 1
+			path: ../../tests/OpenConext/Value/Saml/Metadata/ContactPerson/TelephoneNumberListTest.php
+
+		-
+			message: '#^Parameter \#1 \$telephoneNumbers of class OpenConext\\Value\\Saml\\Metadata\\ContactPerson\\TelephoneNumberList constructor expects array\<OpenConext\\Value\\Saml\\Metadata\\ContactPerson\\TelephoneNumber\>, array\<int, OpenConext\\Value\\Saml\\Metadata\\ContactPerson\\TelephoneNumber\|stdClass\> given\.$#'
+			identifier: argument.type
+			count: 1
+			path: ../../tests/OpenConext/Value/Saml/Metadata/ContactPerson/TelephoneNumberListTest.php
+
+		-
+			message: '#^Method OpenConext\\Value\\Saml\\Metadata\\ContactPerson\\TelephoneNumberTest\:\:a_telephone_number_can_be_cast_to_string\(\) has no return type specified\.$#'
+			identifier: missingType.return
+			count: 1
+			path: ../../tests/OpenConext/Value/Saml/Metadata/ContactPerson/TelephoneNumberTest.php
+
+		-
+			message: '#^Method OpenConext\\Value\\Saml\\Metadata\\ContactPerson\\TelephoneNumberTest\:\:deserialization_requires_the_presence_of_the_correct_data\(\) has no return type specified\.$#'
+			identifier: missingType.return
+			count: 1
+			path: ../../tests/OpenConext/Value/Saml/Metadata/ContactPerson/TelephoneNumberTest.php
+
+		-
+			message: '#^Method OpenConext\\Value\\Saml\\Metadata\\ContactPerson\\TelephoneNumberTest\:\:deserializing_a_serialized_telephone_number_results_in_an_equal_value_object\(\) has no return type specified\.$#'
+			identifier: missingType.return
+			count: 1
+			path: ../../tests/OpenConext/Value/Saml/Metadata/ContactPerson/TelephoneNumberTest.php
+
+		-
+			message: '#^Method OpenConext\\Value\\Saml\\Metadata\\ContactPerson\\TelephoneNumberTest\:\:equality_can_be_verified\(\) has no return type specified\.$#'
+			identifier: missingType.return
+			count: 1
+			path: ../../tests/OpenConext/Value/Saml/Metadata/ContactPerson/TelephoneNumberTest.php
+
+		-
+			message: '#^Method OpenConext\\Value\\Saml\\Metadata\\ContactPerson\\TelephoneNumberTest\:\:only_non_empty_strings_are_valid_telphone_numbers\(\) has no return type specified\.$#'
+			identifier: missingType.return
+			count: 1
+			path: ../../tests/OpenConext/Value/Saml/Metadata/ContactPerson/TelephoneNumberTest.php
+
+		-
+			message: '#^Method OpenConext\\Value\\Saml\\Metadata\\ContactPerson\\TelephoneNumberTest\:\:the_telephone_number_can_be_retrieved\(\) has no return type specified\.$#'
+			identifier: missingType.return
+			count: 1
+			path: ../../tests/OpenConext/Value/Saml/Metadata/ContactPerson/TelephoneNumberTest.php
+
+		-
+			message: '#^Parameter \#1 \$telephoneNumber of class OpenConext\\Value\\Saml\\Metadata\\ContactPerson\\TelephoneNumber constructor expects string, mixed given\.$#'
+			identifier: argument.type
+			count: 1
+			path: ../../tests/OpenConext/Value/Saml/Metadata/ContactPerson/TelephoneNumberTest.php
+
+		-
+			message: '#^Call to function is_string\(\) with string will always evaluate to true\.$#'
+			identifier: function.alreadyNarrowedType
+			count: 1
+			path: ../../tests/OpenConext/Value/Saml/Metadata/ContactPersonListTest.php
+
+		-
+			message: '#^Call to method PHPUnit\\Framework\\Assert\:\:assertTrue\(\) with true will always evaluate to true\.$#'
+			identifier: method.alreadyNarrowedType
+			count: 1
+			path: ../../tests/OpenConext/Value/Saml/Metadata/ContactPersonListTest.php
+
+		-
+			message: '#^Method OpenConext\\Value\\Saml\\Metadata\\ContactPersonListTest\:\:a_contact_person_can_be_retrieved_by_index\(\) has no return type specified\.$#'
+			identifier: missingType.return
+			count: 1
+			path: ../../tests/OpenConext/Value/Saml/Metadata/ContactPersonListTest.php
+
+		-
+			message: '#^Method OpenConext\\Value\\Saml\\Metadata\\ContactPersonListTest\:\:a_contact_person_can_be_searched_for\(\) has no return type specified\.$#'
+			identifier: missingType.return
+			count: 1
+			path: ../../tests/OpenConext/Value/Saml/Metadata/ContactPersonListTest.php
+
+		-
+			message: '#^Method OpenConext\\Value\\Saml\\Metadata\\ContactPersonListTest\:\:a_contact_person_list_can_be_cast_to_string\(\) has no return type specified\.$#'
+			identifier: missingType.return
+			count: 1
+			path: ../../tests/OpenConext/Value/Saml/Metadata/ContactPersonListTest.php
+
+		-
+			message: '#^Method OpenConext\\Value\\Saml\\Metadata\\ContactPersonListTest\:\:a_contact_person_list_can_be_iterated_over\(\) has no return type specified\.$#'
+			identifier: missingType.return
+			count: 1
+			path: ../../tests/OpenConext/Value/Saml/Metadata/ContactPersonListTest.php
+
+		-
+			message: '#^Method OpenConext\\Value\\Saml\\Metadata\\ContactPersonListTest\:\:a_list_exposes_a_array_containing_its_elements\(\) has no return type specified\.$#'
+			identifier: missingType.return
+			count: 1
+			path: ../../tests/OpenConext/Value/Saml/Metadata/ContactPersonListTest.php
+
+		-
+			message: '#^Method OpenConext\\Value\\Saml\\Metadata\\ContactPersonListTest\:\:adding_a_contact_person_returns_a_new_list_with_that_contact_person_appended\(\) has no return type specified\.$#'
+			identifier: missingType.return
+			count: 1
+			path: ../../tests/OpenConext/Value/Saml/Metadata/ContactPersonListTest.php
+
+		-
+			message: '#^Method OpenConext\\Value\\Saml\\Metadata\\ContactPersonListTest\:\:all_elements_must_be_a_contact_person\(\) has no return type specified\.$#'
+			identifier: missingType.return
+			count: 1
+			path: ../../tests/OpenConext/Value/Saml/Metadata/ContactPersonListTest.php
+
+		-
+			message: '#^Method OpenConext\\Value\\Saml\\Metadata\\ContactPersonListTest\:\:an_exception_is_thrown_when_attempting_to_get_a_element_with_a_index_larger_than_the_list_size\(\) has no return type specified\.$#'
+			identifier: missingType.return
+			count: 1
+			path: ../../tests/OpenConext/Value/Saml/Metadata/ContactPersonListTest.php
+
+		-
+			message: '#^Method OpenConext\\Value\\Saml\\Metadata\\ContactPersonListTest\:\:an_exception_is_thrown_when_attempting_to_get_a_element_with_a_negative_index\(\) has no return type specified\.$#'
+			identifier: missingType.return
+			count: 1
+			path: ../../tests/OpenConext/Value/Saml/Metadata/ContactPersonListTest.php
+
+		-
+			message: '#^Method OpenConext\\Value\\Saml\\Metadata\\ContactPersonListTest\:\:deserialization_requires_a_array\(\) has no return type specified\.$#'
+			identifier: missingType.return
+			count: 1
+			path: ../../tests/OpenConext/Value/Saml/Metadata/ContactPersonListTest.php
+
+		-
+			message: '#^Method OpenConext\\Value\\Saml\\Metadata\\ContactPersonListTest\:\:deserializing_a_serialized_contact_person_list_results_in_a_equal_value_object\(\) has no return type specified\.$#'
+			identifier: missingType.return
+			count: 1
+			path: ../../tests/OpenConext/Value/Saml/Metadata/ContactPersonListTest.php
+
+		-
+			message: '#^Method OpenConext\\Value\\Saml\\Metadata\\ContactPersonListTest\:\:find_predicate_must_be_a_callable\(\) has no return type specified\.$#'
+			identifier: missingType.return
+			count: 1
+			path: ../../tests/OpenConext/Value/Saml/Metadata/ContactPersonListTest.php
+
+		-
+			message: '#^Method OpenConext\\Value\\Saml\\Metadata\\ContactPersonListTest\:\:find_returns_the_first_matching_element\(\) has no return type specified\.$#'
+			identifier: missingType.return
+			count: 1
+			path: ../../tests/OpenConext/Value/Saml/Metadata/ContactPersonListTest.php
+
+		-
+			message: '#^Method OpenConext\\Value\\Saml\\Metadata\\ContactPersonListTest\:\:index_to_retrieve_the_element_of_must_be_a_integer\(\) has no return type specified\.$#'
+			identifier: missingType.return
+			count: 1
+			path: ../../tests/OpenConext/Value/Saml/Metadata/ContactPersonListTest.php
+
+		-
+			message: '#^Method OpenConext\\Value\\Saml\\Metadata\\ContactPersonListTest\:\:index_to_retrieve_the_element_of_must_be_a_integer\(\) has parameter \$invalidArgument with no type specified\.$#'
+			identifier: missingType.parameter
+			count: 1
+			path: ../../tests/OpenConext/Value/Saml/Metadata/ContactPersonListTest.php
+
+		-
+			message: '#^Method OpenConext\\Value\\Saml\\Metadata\\ContactPersonListTest\:\:lists_are_only_equal_when_containing_the_same_elements_in_the_same_order\(\) has no return type specified\.$#'
+			identifier: missingType.return
+			count: 1
+			path: ../../tests/OpenConext/Value/Saml/Metadata/ContactPersonListTest.php
+
+		-
+			message: '#^Method OpenConext\\Value\\Saml\\Metadata\\ContactPersonListTest\:\:null_is_returned_when_no_match_is_found\(\) has no return type specified\.$#'
+			identifier: missingType.return
+			count: 1
+			path: ../../tests/OpenConext/Value/Saml/Metadata/ContactPersonListTest.php
+
+		-
+			message: '#^Method OpenConext\\Value\\Saml\\Metadata\\ContactPersonListTest\:\:presence_of_a_contact_person_can_be_tested\(\) has no return type specified\.$#'
+			identifier: missingType.return
+			count: 1
+			path: ../../tests/OpenConext/Value/Saml/Metadata/ContactPersonListTest.php
+
+		-
+			message: '#^Method OpenConext\\Value\\Saml\\Metadata\\ContactPersonListTest\:\:the_elements_in_a_contact_person_list_can_be_counted\(\) has no return type specified\.$#'
+			identifier: missingType.return
+			count: 1
+			path: ../../tests/OpenConext/Value/Saml/Metadata/ContactPersonListTest.php
+
+		-
+			message: '#^Method OpenConext\\Value\\Saml\\Metadata\\ContactPersonListTest\:\:the_index_of_a_contact_person_can_be_retrieved\(\) has no return type specified\.$#'
+			identifier: missingType.return
+			count: 1
+			path: ../../tests/OpenConext/Value/Saml/Metadata/ContactPersonListTest.php
+
+		-
+			message: '#^Parameter \#1 \$contactPersons of class OpenConext\\Value\\Saml\\Metadata\\ContactPersonList constructor expects array\<OpenConext\\Value\\Saml\\Metadata\\ContactPerson\>, array\<int, OpenConext\\Value\\Saml\\Metadata\\ContactPerson\|stdClass\> given\.$#'
+			identifier: argument.type
+			count: 1
+			path: ../../tests/OpenConext/Value/Saml/Metadata/ContactPersonListTest.php
+
+		-
+			message: '#^Parameter \#1 \$index of method OpenConext\\Value\\Saml\\Metadata\\ContactPersonList\:\:get\(\) expects int, mixed given\.$#'
+			identifier: argument.type
+			count: 1
+			path: ../../tests/OpenConext/Value/Saml/Metadata/ContactPersonListTest.php
+
+		-
+			message: '#^Parameter \#1 \$predicate of method OpenConext\\Value\\Saml\\Metadata\\ContactPersonList\:\:find\(\) expects callable\(\)\: mixed, mixed given\.$#'
+			identifier: argument.type
+			count: 1
+			path: ../../tests/OpenConext/Value/Saml/Metadata/ContactPersonListTest.php
+
+		-
+			message: '#^Method OpenConext\\Value\\Saml\\Metadata\\ContactPersonTest\:\:a_contact_person_can_be_cast_to_string\(\) has no return type specified\.$#'
+			identifier: missingType.return
+			count: 1
+			path: ../../tests/OpenConext/Value/Saml/Metadata/ContactPersonTest.php
+
+		-
+			message: '#^Method OpenConext\\Value\\Saml\\Metadata\\ContactPersonTest\:\:company_can_be_retrieved\(\) has no return type specified\.$#'
+			identifier: missingType.return
+			count: 1
+			path: ../../tests/OpenConext/Value/Saml/Metadata/ContactPersonTest.php
+
+		-
+			message: '#^Method OpenConext\\Value\\Saml\\Metadata\\ContactPersonTest\:\:contact_persons_are_compared_for_equality_on_all_properties\(\) has no return type specified\.$#'
+			identifier: missingType.return
+			count: 1
+			path: ../../tests/OpenConext/Value/Saml/Metadata/ContactPersonTest.php
+
+		-
+			message: '#^Method OpenConext\\Value\\Saml\\Metadata\\ContactPersonTest\:\:contact_type_can_be_retrieved\(\) has no return type specified\.$#'
+			identifier: missingType.return
+			count: 1
+			path: ../../tests/OpenConext/Value/Saml/Metadata/ContactPersonTest.php
+
+		-
+			message: '#^Method OpenConext\\Value\\Saml\\Metadata\\ContactPersonTest\:\:deserialization_requires_an_array_as_data\(\) has no return type specified\.$#'
+			identifier: missingType.return
+			count: 1
+			path: ../../tests/OpenConext/Value/Saml/Metadata/ContactPersonTest.php
+
+		-
+			message: '#^Method OpenConext\\Value\\Saml\\Metadata\\ContactPersonTest\:\:deserialization_requires_data_with_expected_keys\(\) has no return type specified\.$#'
+			identifier: missingType.return
+			count: 1
+			path: ../../tests/OpenConext/Value/Saml/Metadata/ContactPersonTest.php
+
+		-
+			message: '#^Method OpenConext\\Value\\Saml\\Metadata\\ContactPersonTest\:\:deserialization_requires_data_with_expected_keys\(\) has parameter \$invalidData with no value type specified in iterable type array\.$#'
+			identifier: missingType.iterableValue
+			count: 1
+			path: ../../tests/OpenConext/Value/Saml/Metadata/ContactPersonTest.php
+
+		-
+			message: '#^Method OpenConext\\Value\\Saml\\Metadata\\ContactPersonTest\:\:deserializing_a_serialized_contact_person_results_in_an_equal_value_object\(\) has no return type specified\.$#'
+			identifier: missingType.return
+			count: 1
+			path: ../../tests/OpenConext/Value/Saml/Metadata/ContactPersonTest.php
+
+		-
+			message: '#^Method OpenConext\\Value\\Saml\\Metadata\\ContactPersonTest\:\:differentContactPersonProvider\(\) return type has no value type specified in iterable type array\.$#'
+			identifier: missingType.iterableValue
+			count: 1
+			path: ../../tests/OpenConext/Value/Saml/Metadata/ContactPersonTest.php
+
+		-
+			message: '#^Method OpenConext\\Value\\Saml\\Metadata\\ContactPersonTest\:\:email_address_list_can_be_retrieved\(\) has no return type specified\.$#'
+			identifier: missingType.return
+			count: 1
+			path: ../../tests/OpenConext/Value/Saml/Metadata/ContactPersonTest.php
+
+		-
+			message: '#^Method OpenConext\\Value\\Saml\\Metadata\\ContactPersonTest\:\:given_name_can_be_retrieved\(\) has no return type specified\.$#'
+			identifier: missingType.return
+			count: 1
+			path: ../../tests/OpenConext/Value/Saml/Metadata/ContactPersonTest.php
+
+		-
+			message: '#^Method OpenConext\\Value\\Saml\\Metadata\\ContactPersonTest\:\:invalidDeserializationDataProvider\(\) return type has no value type specified in iterable type array\.$#'
+			identifier: missingType.iterableValue
+			count: 1
+			path: ../../tests/OpenConext/Value/Saml/Metadata/ContactPersonTest.php
+
+		-
+			message: '#^Method OpenConext\\Value\\Saml\\Metadata\\ContactPersonTest\:\:surname_can_be_retrieved\(\) has no return type specified\.$#'
+			identifier: missingType.return
+			count: 1
+			path: ../../tests/OpenConext/Value/Saml/Metadata/ContactPersonTest.php
+
+		-
+			message: '#^Method OpenConext\\Value\\Saml\\Metadata\\ContactPersonTest\:\:telephone_number_list_can_be_retrieved\(\) has no return type specified\.$#'
+			identifier: missingType.return
+			count: 1
+			path: ../../tests/OpenConext/Value/Saml/Metadata/ContactPersonTest.php
+
+		-
+			message: '#^Method OpenConext\\Value\\Saml\\Metadata\\Organization\\OrganizationDisplayNameListTest\:\:a_list_exposes_an_array_containing_its_elements\(\) has no return type specified\.$#'
+			identifier: missingType.return
+			count: 1
+			path: ../../tests/OpenConext/Value/Saml/Metadata/Organization/OrganizationDisplayNameListTest.php
+
+		-
+			message: '#^Method OpenConext\\Value\\Saml\\Metadata\\Organization\\OrganizationDisplayNameListTest\:\:adding_an_organization_display_name_returns_a_new_list_with_that_name_appended\(\) has no return type specified\.$#'
+			identifier: missingType.return
+			count: 1
+			path: ../../tests/OpenConext/Value/Saml/Metadata/Organization/OrganizationDisplayNameListTest.php
+
+		-
+			message: '#^Method OpenConext\\Value\\Saml\\Metadata\\Organization\\OrganizationDisplayNameListTest\:\:all_elements_must_be_an_organization_display_name\(\) has no return type specified\.$#'
+			identifier: missingType.return
+			count: 1
+			path: ../../tests/OpenConext/Value/Saml/Metadata/Organization/OrganizationDisplayNameListTest.php
+
+		-
+			message: '#^Method OpenConext\\Value\\Saml\\Metadata\\Organization\\OrganizationDisplayNameListTest\:\:an_exception_is_thrown_when_attempting_to_get_an_element_with_a_negative_index\(\) has no return type specified\.$#'
+			identifier: missingType.return
+			count: 1
+			path: ../../tests/OpenConext/Value/Saml/Metadata/Organization/OrganizationDisplayNameListTest.php
+
+		-
+			message: '#^Method OpenConext\\Value\\Saml\\Metadata\\Organization\\OrganizationDisplayNameListTest\:\:an_exception_is_thrown_when_attempting_to_get_an_element_with_an_index_larger_than_the_list_size\(\) has no return type specified\.$#'
+			identifier: missingType.return
+			count: 1
+			path: ../../tests/OpenConext/Value/Saml/Metadata/Organization/OrganizationDisplayNameListTest.php
+
+		-
+			message: '#^Method OpenConext\\Value\\Saml\\Metadata\\Organization\\OrganizationDisplayNameListTest\:\:an_organization_display_name_can_be_retrieved_by_index\(\) has no return type specified\.$#'
+			identifier: missingType.return
+			count: 1
+			path: ../../tests/OpenConext/Value/Saml/Metadata/Organization/OrganizationDisplayNameListTest.php
+
+		-
+			message: '#^Method OpenConext\\Value\\Saml\\Metadata\\Organization\\OrganizationDisplayNameListTest\:\:an_organization_display_name_can_be_searched_for\(\) has no return type specified\.$#'
+			identifier: missingType.return
+			count: 1
+			path: ../../tests/OpenConext/Value/Saml/Metadata/Organization/OrganizationDisplayNameListTest.php
+
+		-
+			message: '#^Method OpenConext\\Value\\Saml\\Metadata\\Organization\\OrganizationDisplayNameListTest\:\:an_organization_display_name_list_can_be_cast_to_string\(\) has no return type specified\.$#'
+			identifier: missingType.return
+			count: 1
+			path: ../../tests/OpenConext/Value/Saml/Metadata/Organization/OrganizationDisplayNameListTest.php
+
+		-
+			message: '#^Method OpenConext\\Value\\Saml\\Metadata\\Organization\\OrganizationDisplayNameListTest\:\:an_organization_display_name_list_can_be_iterated_over\(\) has no return type specified\.$#'
+			identifier: missingType.return
+			count: 1
+			path: ../../tests/OpenConext/Value/Saml/Metadata/Organization/OrganizationDisplayNameListTest.php
+
+		-
+			message: '#^Method OpenConext\\Value\\Saml\\Metadata\\Organization\\OrganizationDisplayNameListTest\:\:deserialization_requires_an_array\(\) has no return type specified\.$#'
+			identifier: missingType.return
+			count: 1
+			path: ../../tests/OpenConext/Value/Saml/Metadata/Organization/OrganizationDisplayNameListTest.php
+
+		-
+			message: '#^Method OpenConext\\Value\\Saml\\Metadata\\Organization\\OrganizationDisplayNameListTest\:\:deserializing_a_serialized_organization_display_name_list_results_in_an_equal_value_object\(\) has no return type specified\.$#'
+			identifier: missingType.return
+			count: 1
+			path: ../../tests/OpenConext/Value/Saml/Metadata/Organization/OrganizationDisplayNameListTest.php
+
+		-
+			message: '#^Method OpenConext\\Value\\Saml\\Metadata\\Organization\\OrganizationDisplayNameListTest\:\:find_predicate_must_be_a_callable\(\) has no return type specified\.$#'
+			identifier: missingType.return
+			count: 1
+			path: ../../tests/OpenConext/Value/Saml/Metadata/Organization/OrganizationDisplayNameListTest.php
+
+		-
+			message: '#^Method OpenConext\\Value\\Saml\\Metadata\\Organization\\OrganizationDisplayNameListTest\:\:find_returns_the_first_matching_element\(\) has no return type specified\.$#'
+			identifier: missingType.return
+			count: 1
+			path: ../../tests/OpenConext/Value/Saml/Metadata/Organization/OrganizationDisplayNameListTest.php
+
+		-
+			message: '#^Method OpenConext\\Value\\Saml\\Metadata\\Organization\\OrganizationDisplayNameListTest\:\:index_to_retrieve_the_element_of_must_be_an_integer\(\) has no return type specified\.$#'
+			identifier: missingType.return
+			count: 1
+			path: ../../tests/OpenConext/Value/Saml/Metadata/Organization/OrganizationDisplayNameListTest.php
+
+		-
+			message: '#^Method OpenConext\\Value\\Saml\\Metadata\\Organization\\OrganizationDisplayNameListTest\:\:lists_are_only_equal_when_containing_the_same_elements_in_the_same_order\(\) has no return type specified\.$#'
+			identifier: missingType.return
+			count: 1
+			path: ../../tests/OpenConext/Value/Saml/Metadata/Organization/OrganizationDisplayNameListTest.php
+
+		-
+			message: '#^Method OpenConext\\Value\\Saml\\Metadata\\Organization\\OrganizationDisplayNameListTest\:\:null_is_returned_when_no_match_is_found\(\) has no return type specified\.$#'
+			identifier: missingType.return
+			count: 1
+			path: ../../tests/OpenConext/Value/Saml/Metadata/Organization/OrganizationDisplayNameListTest.php
+
+		-
+			message: '#^Method OpenConext\\Value\\Saml\\Metadata\\Organization\\OrganizationDisplayNameListTest\:\:presence_of_a_name_can_be_tested\(\) has no return type specified\.$#'
+			identifier: missingType.return
+			count: 1
+			path: ../../tests/OpenConext/Value/Saml/Metadata/Organization/OrganizationDisplayNameListTest.php
+
+		-
+			message: '#^Method OpenConext\\Value\\Saml\\Metadata\\Organization\\OrganizationDisplayNameListTest\:\:the_elements_in_an_organization_display_name_list_can_be_counted\(\) has no return type specified\.$#'
+			identifier: missingType.return
+			count: 1
+			path: ../../tests/OpenConext/Value/Saml/Metadata/Organization/OrganizationDisplayNameListTest.php
+
+		-
+			message: '#^Method OpenConext\\Value\\Saml\\Metadata\\Organization\\OrganizationDisplayNameListTest\:\:the_index_of_an_organization_display_name_can_be_retrieved\(\) has no return type specified\.$#'
+			identifier: missingType.return
+			count: 1
+			path: ../../tests/OpenConext/Value/Saml/Metadata/Organization/OrganizationDisplayNameListTest.php
+
+		-
+			message: '#^Parameter \#1 \$index of method OpenConext\\Value\\Saml\\Metadata\\Organization\\OrganizationDisplayNameList\:\:get\(\) expects int, mixed given\.$#'
+			identifier: argument.type
+			count: 1
+			path: ../../tests/OpenConext/Value/Saml/Metadata/Organization/OrganizationDisplayNameListTest.php
+
+		-
+			message: '#^Parameter \#1 \$organizationDisplayNames of class OpenConext\\Value\\Saml\\Metadata\\Organization\\OrganizationDisplayNameList constructor expects array\<OpenConext\\Value\\Saml\\Metadata\\Organization\\OrganizationDisplayName\>, array\<int, OpenConext\\Value\\Saml\\Metadata\\Organization\\OrganizationDisplayName\|stdClass\> given\.$#'
+			identifier: argument.type
+			count: 1
+			path: ../../tests/OpenConext/Value/Saml/Metadata/Organization/OrganizationDisplayNameListTest.php
+
+		-
+			message: '#^Parameter \#1 \$predicate of method OpenConext\\Value\\Saml\\Metadata\\Organization\\OrganizationDisplayNameList\:\:find\(\) expects callable\(\)\: mixed, mixed given\.$#'
+			identifier: argument.type
+			count: 1
+			path: ../../tests/OpenConext/Value/Saml/Metadata/Organization/OrganizationDisplayNameListTest.php
+
+		-
+			message: '#^Method OpenConext\\Value\\Saml\\Metadata\\Organization\\OrganizationDisplayNameTest\:\:an_organization_display_name_can_be_cast_to_string\(\) has no return type specified\.$#'
+			identifier: missingType.return
+			count: 1
+			path: ../../tests/OpenConext/Value/Saml/Metadata/Organization/OrganizationDisplayNameTest.php
+
+		-
+			message: '#^Method OpenConext\\Value\\Saml\\Metadata\\Organization\\OrganizationDisplayNameTest\:\:deserialization_requires_valid_data\(\) has no return type specified\.$#'
+			identifier: missingType.return
+			count: 1
+			path: ../../tests/OpenConext/Value/Saml/Metadata/Organization/OrganizationDisplayNameTest.php
+
+		-
+			message: '#^Method OpenConext\\Value\\Saml\\Metadata\\Organization\\OrganizationDisplayNameTest\:\:deserializing_a_serialized_organization_display_name_results_in_an_equal_value_object\(\) has no return type specified\.$#'
+			identifier: missingType.return
+			count: 1
+			path: ../../tests/OpenConext/Value/Saml/Metadata/Organization/OrganizationDisplayNameTest.php
+
+		-
+			message: '#^Method OpenConext\\Value\\Saml\\Metadata\\Organization\\OrganizationDisplayNameTest\:\:display_name_must_be_a_non_empty_string\(\) has no return type specified\.$#'
+			identifier: missingType.return
+			count: 1
+			path: ../../tests/OpenConext/Value/Saml/Metadata/Organization/OrganizationDisplayNameTest.php
+
+		-
+			message: '#^Method OpenConext\\Value\\Saml\\Metadata\\Organization\\OrganizationDisplayNameTest\:\:equality_is_compared_on_display_name_and_language\(\) has no return type specified\.$#'
+			identifier: missingType.return
+			count: 1
+			path: ../../tests/OpenConext/Value/Saml/Metadata/Organization/OrganizationDisplayNameTest.php
+
+		-
+			message: '#^Method OpenConext\\Value\\Saml\\Metadata\\Organization\\OrganizationDisplayNameTest\:\:invalidDeserializationDataProvider\(\) return type has no value type specified in iterable type array\.$#'
+			identifier: missingType.iterableValue
+			count: 1
+			path: ../../tests/OpenConext/Value/Saml/Metadata/Organization/OrganizationDisplayNameTest.php
+
+		-
+			message: '#^Method OpenConext\\Value\\Saml\\Metadata\\Organization\\OrganizationDisplayNameTest\:\:language_must_be_a_non_emtpy_string\(\) has no return type specified\.$#'
+			identifier: missingType.return
+			count: 1
+			path: ../../tests/OpenConext/Value/Saml/Metadata/Organization/OrganizationDisplayNameTest.php
+
+		-
+			message: '#^Method OpenConext\\Value\\Saml\\Metadata\\Organization\\OrganizationDisplayNameTest\:\:the_display_name_can_be_retrieved\(\) has no return type specified\.$#'
+			identifier: missingType.return
+			count: 1
+			path: ../../tests/OpenConext/Value/Saml/Metadata/Organization/OrganizationDisplayNameTest.php
+
+		-
+			message: '#^Method OpenConext\\Value\\Saml\\Metadata\\Organization\\OrganizationDisplayNameTest\:\:the_language_can_be_retrieved\(\) has no return type specified\.$#'
+			identifier: missingType.return
+			count: 1
+			path: ../../tests/OpenConext/Value/Saml/Metadata/Organization/OrganizationDisplayNameTest.php
+
+		-
+			message: '#^Parameter \#1 \$displayName of class OpenConext\\Value\\Saml\\Metadata\\Organization\\OrganizationDisplayName constructor expects string, mixed given\.$#'
+			identifier: argument.type
+			count: 1
+			path: ../../tests/OpenConext/Value/Saml/Metadata/Organization/OrganizationDisplayNameTest.php
+
+		-
+			message: '#^Parameter \#2 \$language of class OpenConext\\Value\\Saml\\Metadata\\Organization\\OrganizationDisplayName constructor expects string, mixed given\.$#'
+			identifier: argument.type
+			count: 1
+			path: ../../tests/OpenConext/Value/Saml/Metadata/Organization/OrganizationDisplayNameTest.php
+
+		-
+			message: '#^Method OpenConext\\Value\\Saml\\Metadata\\Organization\\OrganizationNameListTest\:\:a_list_exposes_an_array_containing_its_elements\(\) has no return type specified\.$#'
+			identifier: missingType.return
+			count: 1
+			path: ../../tests/OpenConext/Value/Saml/Metadata/Organization/OrganizationNameListTest.php
+
+		-
+			message: '#^Method OpenConext\\Value\\Saml\\Metadata\\Organization\\OrganizationNameListTest\:\:adding_an_organization_name_returns_a_new_list_with_that_name_appended\(\) has no return type specified\.$#'
+			identifier: missingType.return
+			count: 1
+			path: ../../tests/OpenConext/Value/Saml/Metadata/Organization/OrganizationNameListTest.php
+
+		-
+			message: '#^Method OpenConext\\Value\\Saml\\Metadata\\Organization\\OrganizationNameListTest\:\:all_elements_must_be_an_organization_name\(\) has no return type specified\.$#'
+			identifier: missingType.return
+			count: 1
+			path: ../../tests/OpenConext/Value/Saml/Metadata/Organization/OrganizationNameListTest.php
+
+		-
+			message: '#^Method OpenConext\\Value\\Saml\\Metadata\\Organization\\OrganizationNameListTest\:\:an_exception_is_thrown_when_attempting_to_get_an_element_with_a_negative_index\(\) has no return type specified\.$#'
+			identifier: missingType.return
+			count: 1
+			path: ../../tests/OpenConext/Value/Saml/Metadata/Organization/OrganizationNameListTest.php
+
+		-
+			message: '#^Method OpenConext\\Value\\Saml\\Metadata\\Organization\\OrganizationNameListTest\:\:an_exception_is_thrown_when_attempting_to_get_an_element_with_an_index_larger_than_the_list_size\(\) has no return type specified\.$#'
+			identifier: missingType.return
+			count: 1
+			path: ../../tests/OpenConext/Value/Saml/Metadata/Organization/OrganizationNameListTest.php
+
+		-
+			message: '#^Method OpenConext\\Value\\Saml\\Metadata\\Organization\\OrganizationNameListTest\:\:an_organization_name_can_be_retrieved_by_index\(\) has no return type specified\.$#'
+			identifier: missingType.return
+			count: 1
+			path: ../../tests/OpenConext/Value/Saml/Metadata/Organization/OrganizationNameListTest.php
+
+		-
+			message: '#^Method OpenConext\\Value\\Saml\\Metadata\\Organization\\OrganizationNameListTest\:\:an_organization_name_can_be_searched_for\(\) has no return type specified\.$#'
+			identifier: missingType.return
+			count: 1
+			path: ../../tests/OpenConext/Value/Saml/Metadata/Organization/OrganizationNameListTest.php
+
+		-
+			message: '#^Method OpenConext\\Value\\Saml\\Metadata\\Organization\\OrganizationNameListTest\:\:an_organization_name_list_can_be_cast_to_string\(\) has no return type specified\.$#'
+			identifier: missingType.return
+			count: 1
+			path: ../../tests/OpenConext/Value/Saml/Metadata/Organization/OrganizationNameListTest.php
+
+		-
+			message: '#^Method OpenConext\\Value\\Saml\\Metadata\\Organization\\OrganizationNameListTest\:\:an_organization_name_list_can_be_iterated_over\(\) has no return type specified\.$#'
+			identifier: missingType.return
+			count: 1
+			path: ../../tests/OpenConext/Value/Saml/Metadata/Organization/OrganizationNameListTest.php
+
+		-
+			message: '#^Method OpenConext\\Value\\Saml\\Metadata\\Organization\\OrganizationNameListTest\:\:deserialization_requires_an_array\(\) has no return type specified\.$#'
+			identifier: missingType.return
+			count: 1
+			path: ../../tests/OpenConext/Value/Saml/Metadata/Organization/OrganizationNameListTest.php
+
+		-
+			message: '#^Method OpenConext\\Value\\Saml\\Metadata\\Organization\\OrganizationNameListTest\:\:deserializing_a_serialized_organization_name_list_results_in_an_equal_value_object\(\) has no return type specified\.$#'
+			identifier: missingType.return
+			count: 1
+			path: ../../tests/OpenConext/Value/Saml/Metadata/Organization/OrganizationNameListTest.php
+
+		-
+			message: '#^Method OpenConext\\Value\\Saml\\Metadata\\Organization\\OrganizationNameListTest\:\:find_predicate_must_be_a_callable\(\) has no return type specified\.$#'
+			identifier: missingType.return
+			count: 1
+			path: ../../tests/OpenConext/Value/Saml/Metadata/Organization/OrganizationNameListTest.php
+
+		-
+			message: '#^Method OpenConext\\Value\\Saml\\Metadata\\Organization\\OrganizationNameListTest\:\:find_returns_the_first_matching_element\(\) has no return type specified\.$#'
+			identifier: missingType.return
+			count: 1
+			path: ../../tests/OpenConext/Value/Saml/Metadata/Organization/OrganizationNameListTest.php
+
+		-
+			message: '#^Method OpenConext\\Value\\Saml\\Metadata\\Organization\\OrganizationNameListTest\:\:index_to_retrieve_the_element_of_must_be_an_integer\(\) has no return type specified\.$#'
+			identifier: missingType.return
+			count: 1
+			path: ../../tests/OpenConext/Value/Saml/Metadata/Organization/OrganizationNameListTest.php
+
+		-
+			message: '#^Method OpenConext\\Value\\Saml\\Metadata\\Organization\\OrganizationNameListTest\:\:lists_are_only_equal_when_containing_the_same_elements_in_the_same_order\(\) has no return type specified\.$#'
+			identifier: missingType.return
+			count: 1
+			path: ../../tests/OpenConext/Value/Saml/Metadata/Organization/OrganizationNameListTest.php
+
+		-
+			message: '#^Method OpenConext\\Value\\Saml\\Metadata\\Organization\\OrganizationNameListTest\:\:null_is_returned_when_no_match_is_found\(\) has no return type specified\.$#'
+			identifier: missingType.return
+			count: 1
+			path: ../../tests/OpenConext/Value/Saml/Metadata/Organization/OrganizationNameListTest.php
+
+		-
+			message: '#^Method OpenConext\\Value\\Saml\\Metadata\\Organization\\OrganizationNameListTest\:\:presence_of_a_name_can_be_tested\(\) has no return type specified\.$#'
+			identifier: missingType.return
+			count: 1
+			path: ../../tests/OpenConext/Value/Saml/Metadata/Organization/OrganizationNameListTest.php
+
+		-
+			message: '#^Method OpenConext\\Value\\Saml\\Metadata\\Organization\\OrganizationNameListTest\:\:the_elements_in_an_organization_name_list_can_be_counted\(\) has no return type specified\.$#'
+			identifier: missingType.return
+			count: 1
+			path: ../../tests/OpenConext/Value/Saml/Metadata/Organization/OrganizationNameListTest.php
+
+		-
+			message: '#^Method OpenConext\\Value\\Saml\\Metadata\\Organization\\OrganizationNameListTest\:\:the_index_of_an_organization_name_can_be_retrieved\(\) has no return type specified\.$#'
+			identifier: missingType.return
+			count: 1
+			path: ../../tests/OpenConext/Value/Saml/Metadata/Organization/OrganizationNameListTest.php
+
+		-
+			message: '#^Parameter \#1 \$index of method OpenConext\\Value\\Saml\\Metadata\\Organization\\OrganizationNameList\:\:get\(\) expects int, mixed given\.$#'
+			identifier: argument.type
+			count: 1
+			path: ../../tests/OpenConext/Value/Saml/Metadata/Organization/OrganizationNameListTest.php
+
+		-
+			message: '#^Parameter \#1 \$organizationNames of class OpenConext\\Value\\Saml\\Metadata\\Organization\\OrganizationNameList constructor expects array\<OpenConext\\Value\\Saml\\Metadata\\Organization\\OrganizationName\>, array\<int, OpenConext\\Value\\Saml\\Metadata\\Organization\\OrganizationName\|stdClass\> given\.$#'
+			identifier: argument.type
+			count: 1
+			path: ../../tests/OpenConext/Value/Saml/Metadata/Organization/OrganizationNameListTest.php
+
+		-
+			message: '#^Parameter \#1 \$predicate of method OpenConext\\Value\\Saml\\Metadata\\Organization\\OrganizationNameList\:\:find\(\) expects callable\(\)\: mixed, mixed given\.$#'
+			identifier: argument.type
+			count: 1
+			path: ../../tests/OpenConext/Value/Saml/Metadata/Organization/OrganizationNameListTest.php
+
+		-
+			message: '#^Method OpenConext\\Value\\Saml\\Metadata\\Organization\\OrganizationNameTest\:\:an_organization_name_can_be_cast_to_string\(\) has no return type specified\.$#'
+			identifier: missingType.return
+			count: 1
+			path: ../../tests/OpenConext/Value/Saml/Metadata/Organization/OrganizationNameTest.php
+
+		-
+			message: '#^Method OpenConext\\Value\\Saml\\Metadata\\Organization\\OrganizationNameTest\:\:deserialization_requires_valid_data\(\) has no return type specified\.$#'
+			identifier: missingType.return
+			count: 1
+			path: ../../tests/OpenConext/Value/Saml/Metadata/Organization/OrganizationNameTest.php
+
+		-
+			message: '#^Method OpenConext\\Value\\Saml\\Metadata\\Organization\\OrganizationNameTest\:\:deserializing_a_serialized_organization_name_results_in_an_equal_value_object\(\) has no return type specified\.$#'
+			identifier: missingType.return
+			count: 1
+			path: ../../tests/OpenConext/Value/Saml/Metadata/Organization/OrganizationNameTest.php
+
+		-
+			message: '#^Method OpenConext\\Value\\Saml\\Metadata\\Organization\\OrganizationNameTest\:\:equality_is_compared_on_name_and_language\(\) has no return type specified\.$#'
+			identifier: missingType.return
+			count: 1
+			path: ../../tests/OpenConext/Value/Saml/Metadata/Organization/OrganizationNameTest.php
+
+		-
+			message: '#^Method OpenConext\\Value\\Saml\\Metadata\\Organization\\OrganizationNameTest\:\:invalidDeserializationDataProvider\(\) return type has no value type specified in iterable type array\.$#'
+			identifier: missingType.iterableValue
+			count: 1
+			path: ../../tests/OpenConext/Value/Saml/Metadata/Organization/OrganizationNameTest.php
+
+		-
+			message: '#^Method OpenConext\\Value\\Saml\\Metadata\\Organization\\OrganizationNameTest\:\:language_must_be_a_non_emtpy_string\(\) has no return type specified\.$#'
+			identifier: missingType.return
+			count: 1
+			path: ../../tests/OpenConext/Value/Saml/Metadata/Organization/OrganizationNameTest.php
+
+		-
+			message: '#^Method OpenConext\\Value\\Saml\\Metadata\\Organization\\OrganizationNameTest\:\:organization_name_must_be_a_non_empty_string\(\) has no return type specified\.$#'
+			identifier: missingType.return
+			count: 1
+			path: ../../tests/OpenConext/Value/Saml/Metadata/Organization/OrganizationNameTest.php
+
+		-
+			message: '#^Method OpenConext\\Value\\Saml\\Metadata\\Organization\\OrganizationNameTest\:\:the_language_can_be_retrieved\(\) has no return type specified\.$#'
+			identifier: missingType.return
+			count: 1
+			path: ../../tests/OpenConext/Value/Saml/Metadata/Organization/OrganizationNameTest.php
+
+		-
+			message: '#^Method OpenConext\\Value\\Saml\\Metadata\\Organization\\OrganizationNameTest\:\:the_name_can_be_retrieved\(\) has no return type specified\.$#'
+			identifier: missingType.return
+			count: 1
+			path: ../../tests/OpenConext/Value/Saml/Metadata/Organization/OrganizationNameTest.php
+
+		-
+			message: '#^Parameter \#1 \$name of class OpenConext\\Value\\Saml\\Metadata\\Organization\\OrganizationName constructor expects string, mixed given\.$#'
+			identifier: argument.type
+			count: 1
+			path: ../../tests/OpenConext/Value/Saml/Metadata/Organization/OrganizationNameTest.php
+
+		-
+			message: '#^Parameter \#2 \$language of class OpenConext\\Value\\Saml\\Metadata\\Organization\\OrganizationName constructor expects string, mixed given\.$#'
+			identifier: argument.type
+			count: 1
+			path: ../../tests/OpenConext/Value/Saml/Metadata/Organization/OrganizationNameTest.php
+
+		-
+			message: '#^Method OpenConext\\Value\\Saml\\Metadata\\Organization\\OrganizationUrlListTest\:\:a_list_exposes_an_array_containing_its_elements\(\) has no return type specified\.$#'
+			identifier: missingType.return
+			count: 1
+			path: ../../tests/OpenConext/Value/Saml/Metadata/Organization/OrganizationUrlListTest.php
+
+		-
+			message: '#^Method OpenConext\\Value\\Saml\\Metadata\\Organization\\OrganizationUrlListTest\:\:adding_an_organization_url_returns_a_new_list_with_that_name_appended\(\) has no return type specified\.$#'
+			identifier: missingType.return
+			count: 1
+			path: ../../tests/OpenConext/Value/Saml/Metadata/Organization/OrganizationUrlListTest.php
+
+		-
+			message: '#^Method OpenConext\\Value\\Saml\\Metadata\\Organization\\OrganizationUrlListTest\:\:all_elements_must_be_an_organization_irl\(\) has no return type specified\.$#'
+			identifier: missingType.return
+			count: 1
+			path: ../../tests/OpenConext/Value/Saml/Metadata/Organization/OrganizationUrlListTest.php
+
+		-
+			message: '#^Method OpenConext\\Value\\Saml\\Metadata\\Organization\\OrganizationUrlListTest\:\:an_exception_is_thrown_when_attempting_to_get_an_element_with_a_negative_index\(\) has no return type specified\.$#'
+			identifier: missingType.return
+			count: 1
+			path: ../../tests/OpenConext/Value/Saml/Metadata/Organization/OrganizationUrlListTest.php
+
+		-
+			message: '#^Method OpenConext\\Value\\Saml\\Metadata\\Organization\\OrganizationUrlListTest\:\:an_exception_is_thrown_when_attempting_to_get_an_element_with_an_index_larger_than_the_list_size\(\) has no return type specified\.$#'
+			identifier: missingType.return
+			count: 1
+			path: ../../tests/OpenConext/Value/Saml/Metadata/Organization/OrganizationUrlListTest.php
+
+		-
+			message: '#^Method OpenConext\\Value\\Saml\\Metadata\\Organization\\OrganizationUrlListTest\:\:an_organization_url_can_be_retrieved_by_index\(\) has no return type specified\.$#'
+			identifier: missingType.return
+			count: 1
+			path: ../../tests/OpenConext/Value/Saml/Metadata/Organization/OrganizationUrlListTest.php
+
+		-
+			message: '#^Method OpenConext\\Value\\Saml\\Metadata\\Organization\\OrganizationUrlListTest\:\:an_organization_url_can_be_searched_for\(\) has no return type specified\.$#'
+			identifier: missingType.return
+			count: 1
+			path: ../../tests/OpenConext/Value/Saml/Metadata/Organization/OrganizationUrlListTest.php
+
+		-
+			message: '#^Method OpenConext\\Value\\Saml\\Metadata\\Organization\\OrganizationUrlListTest\:\:an_organization_url_list_can_be_cast_to_string\(\) has no return type specified\.$#'
+			identifier: missingType.return
+			count: 1
+			path: ../../tests/OpenConext/Value/Saml/Metadata/Organization/OrganizationUrlListTest.php
+
+		-
+			message: '#^Method OpenConext\\Value\\Saml\\Metadata\\Organization\\OrganizationUrlListTest\:\:an_organization_url_list_can_be_iterated_over\(\) has no return type specified\.$#'
+			identifier: missingType.return
+			count: 1
+			path: ../../tests/OpenConext/Value/Saml/Metadata/Organization/OrganizationUrlListTest.php
+
+		-
+			message: '#^Method OpenConext\\Value\\Saml\\Metadata\\Organization\\OrganizationUrlListTest\:\:deserialization_requires_an_array\(\) has no return type specified\.$#'
+			identifier: missingType.return
+			count: 1
+			path: ../../tests/OpenConext/Value/Saml/Metadata/Organization/OrganizationUrlListTest.php
+
+		-
+			message: '#^Method OpenConext\\Value\\Saml\\Metadata\\Organization\\OrganizationUrlListTest\:\:deserializing_a_serialized_organization_url_list_results_in_an_equal_value_object\(\) has no return type specified\.$#'
+			identifier: missingType.return
+			count: 1
+			path: ../../tests/OpenConext/Value/Saml/Metadata/Organization/OrganizationUrlListTest.php
+
+		-
+			message: '#^Method OpenConext\\Value\\Saml\\Metadata\\Organization\\OrganizationUrlListTest\:\:find_predicate_must_be_a_callable\(\) has no return type specified\.$#'
+			identifier: missingType.return
+			count: 1
+			path: ../../tests/OpenConext/Value/Saml/Metadata/Organization/OrganizationUrlListTest.php
+
+		-
+			message: '#^Method OpenConext\\Value\\Saml\\Metadata\\Organization\\OrganizationUrlListTest\:\:find_returns_the_first_matching_element\(\) has no return type specified\.$#'
+			identifier: missingType.return
+			count: 1
+			path: ../../tests/OpenConext/Value/Saml/Metadata/Organization/OrganizationUrlListTest.php
+
+		-
+			message: '#^Method OpenConext\\Value\\Saml\\Metadata\\Organization\\OrganizationUrlListTest\:\:index_to_retrieve_the_element_of_must_be_an_integer\(\) has no return type specified\.$#'
+			identifier: missingType.return
+			count: 1
+			path: ../../tests/OpenConext/Value/Saml/Metadata/Organization/OrganizationUrlListTest.php
+
+		-
+			message: '#^Method OpenConext\\Value\\Saml\\Metadata\\Organization\\OrganizationUrlListTest\:\:lists_are_only_equal_when_containing_the_same_elements_in_the_same_order\(\) has no return type specified\.$#'
+			identifier: missingType.return
+			count: 1
+			path: ../../tests/OpenConext/Value/Saml/Metadata/Organization/OrganizationUrlListTest.php
+
+		-
+			message: '#^Method OpenConext\\Value\\Saml\\Metadata\\Organization\\OrganizationUrlListTest\:\:null_is_returned_when_no_match_is_found\(\) has no return type specified\.$#'
+			identifier: missingType.return
+			count: 1
+			path: ../../tests/OpenConext/Value/Saml/Metadata/Organization/OrganizationUrlListTest.php
+
+		-
+			message: '#^Method OpenConext\\Value\\Saml\\Metadata\\Organization\\OrganizationUrlListTest\:\:presence_of_an_organization_url_can_be_tested\(\) has no return type specified\.$#'
+			identifier: missingType.return
+			count: 1
+			path: ../../tests/OpenConext/Value/Saml/Metadata/Organization/OrganizationUrlListTest.php
+
+		-
+			message: '#^Method OpenConext\\Value\\Saml\\Metadata\\Organization\\OrganizationUrlListTest\:\:the_elements_in_an_organization_url_list_can_be_counted\(\) has no return type specified\.$#'
+			identifier: missingType.return
+			count: 1
+			path: ../../tests/OpenConext/Value/Saml/Metadata/Organization/OrganizationUrlListTest.php
+
+		-
+			message: '#^Method OpenConext\\Value\\Saml\\Metadata\\Organization\\OrganizationUrlListTest\:\:the_index_of_an_organization_url_can_be_retrieved\(\) has no return type specified\.$#'
+			identifier: missingType.return
+			count: 1
+			path: ../../tests/OpenConext/Value/Saml/Metadata/Organization/OrganizationUrlListTest.php
+
+		-
+			message: '#^Parameter \#1 \$index of method OpenConext\\Value\\Saml\\Metadata\\Organization\\OrganizationUrlList\:\:get\(\) expects int, mixed given\.$#'
+			identifier: argument.type
+			count: 1
+			path: ../../tests/OpenConext/Value/Saml/Metadata/Organization/OrganizationUrlListTest.php
+
+		-
+			message: '#^Parameter \#1 \$organizationUrls of class OpenConext\\Value\\Saml\\Metadata\\Organization\\OrganizationUrlList constructor expects array\<OpenConext\\Value\\Saml\\Metadata\\Organization\\OrganizationUrl\>, array\<int, OpenConext\\Value\\Saml\\Metadata\\Organization\\OrganizationUrl\|stdClass\> given\.$#'
+			identifier: argument.type
+			count: 1
+			path: ../../tests/OpenConext/Value/Saml/Metadata/Organization/OrganizationUrlListTest.php
+
+		-
+			message: '#^Parameter \#1 \$predicate of method OpenConext\\Value\\Saml\\Metadata\\Organization\\OrganizationUrlList\:\:find\(\) expects callable\(\)\: mixed, mixed given\.$#'
+			identifier: argument.type
+			count: 1
+			path: ../../tests/OpenConext/Value/Saml/Metadata/Organization/OrganizationUrlListTest.php
+
+		-
+			message: '#^Method OpenConext\\Value\\Saml\\Metadata\\Organization\\OrganizationUrlTest\:\:an_organization_url_can_be_cast_to_string\(\) has no return type specified\.$#'
+			identifier: missingType.return
+			count: 1
+			path: ../../tests/OpenConext/Value/Saml/Metadata/Organization/OrganizationUrlTest.php
+
+		-
+			message: '#^Method OpenConext\\Value\\Saml\\Metadata\\Organization\\OrganizationUrlTest\:\:deserialization_requires_valid_data\(\) has no return type specified\.$#'
+			identifier: missingType.return
+			count: 1
+			path: ../../tests/OpenConext/Value/Saml/Metadata/Organization/OrganizationUrlTest.php
+
+		-
+			message: '#^Method OpenConext\\Value\\Saml\\Metadata\\Organization\\OrganizationUrlTest\:\:deserializing_a_serialized_organization_url_results_in_an_equal_value_object\(\) has no return type specified\.$#'
+			identifier: missingType.return
+			count: 1
+			path: ../../tests/OpenConext/Value/Saml/Metadata/Organization/OrganizationUrlTest.php
+
+		-
+			message: '#^Method OpenConext\\Value\\Saml\\Metadata\\Organization\\OrganizationUrlTest\:\:equality_is_compared_on_url_and_language\(\) has no return type specified\.$#'
+			identifier: missingType.return
+			count: 1
+			path: ../../tests/OpenConext/Value/Saml/Metadata/Organization/OrganizationUrlTest.php
+
+		-
+			message: '#^Method OpenConext\\Value\\Saml\\Metadata\\Organization\\OrganizationUrlTest\:\:invalidDeserializationDataProvider\(\) return type has no value type specified in iterable type array\.$#'
+			identifier: missingType.iterableValue
+			count: 1
+			path: ../../tests/OpenConext/Value/Saml/Metadata/Organization/OrganizationUrlTest.php
+
+		-
+			message: '#^Method OpenConext\\Value\\Saml\\Metadata\\Organization\\OrganizationUrlTest\:\:language_must_be_a_non_emtpy_string\(\) has no return type specified\.$#'
+			identifier: missingType.return
+			count: 1
+			path: ../../tests/OpenConext/Value/Saml/Metadata/Organization/OrganizationUrlTest.php
+
+		-
+			message: '#^Method OpenConext\\Value\\Saml\\Metadata\\Organization\\OrganizationUrlTest\:\:organization_url_must_be_a_non_empty_string\(\) has no return type specified\.$#'
+			identifier: missingType.return
+			count: 1
+			path: ../../tests/OpenConext/Value/Saml/Metadata/Organization/OrganizationUrlTest.php
+
+		-
+			message: '#^Method OpenConext\\Value\\Saml\\Metadata\\Organization\\OrganizationUrlTest\:\:the_language_can_be_retrieved\(\) has no return type specified\.$#'
+			identifier: missingType.return
+			count: 1
+			path: ../../tests/OpenConext/Value/Saml/Metadata/Organization/OrganizationUrlTest.php
+
+		-
+			message: '#^Method OpenConext\\Value\\Saml\\Metadata\\Organization\\OrganizationUrlTest\:\:the_url_can_be_retrieved\(\) has no return type specified\.$#'
+			identifier: missingType.return
+			count: 1
+			path: ../../tests/OpenConext/Value/Saml/Metadata/Organization/OrganizationUrlTest.php
+
+		-
+			message: '#^Parameter \#1 \$url of class OpenConext\\Value\\Saml\\Metadata\\Organization\\OrganizationUrl constructor expects string, mixed given\.$#'
+			identifier: argument.type
+			count: 1
+			path: ../../tests/OpenConext/Value/Saml/Metadata/Organization/OrganizationUrlTest.php
+
+		-
+			message: '#^Parameter \#2 \$language of class OpenConext\\Value\\Saml\\Metadata\\Organization\\OrganizationUrl constructor expects string, mixed given\.$#'
+			identifier: argument.type
+			count: 1
+			path: ../../tests/OpenConext/Value/Saml/Metadata/Organization/OrganizationUrlTest.php
+
+		-
+			message: '#^Call to function is_string\(\) with string will always evaluate to true\.$#'
+			identifier: function.alreadyNarrowedType
+			count: 1
+			path: ../../tests/OpenConext/Value/Saml/Metadata/OrganizationTest.php
+
+		-
+			message: '#^Call to method PHPUnit\\Framework\\Assert\:\:assertTrue\(\) with true will always evaluate to true\.$#'
+			identifier: method.alreadyNarrowedType
+			count: 1
+			path: ../../tests/OpenConext/Value/Saml/Metadata/OrganizationTest.php
+
+		-
+			message: '#^Method OpenConext\\Value\\Saml\\Metadata\\OrganizationTest\:\:an_organization_can_be_cast_to_string\(\) has no return type specified\.$#'
+			identifier: missingType.return
+			count: 1
+			path: ../../tests/OpenConext/Value/Saml/Metadata/OrganizationTest.php
+
+		-
+			message: '#^Method OpenConext\\Value\\Saml\\Metadata\\OrganizationTest\:\:deserialization_requires_data_to_be_an_array\(\) has no return type specified\.$#'
+			identifier: missingType.return
+			count: 1
+			path: ../../tests/OpenConext/Value/Saml/Metadata/OrganizationTest.php
+
+		-
+			message: '#^Method OpenConext\\Value\\Saml\\Metadata\\OrganizationTest\:\:deserialization_requires_the_presence_of_requried_keys\(\) has no return type specified\.$#'
+			identifier: missingType.return
+			count: 1
+			path: ../../tests/OpenConext/Value/Saml/Metadata/OrganizationTest.php
+
+		-
+			message: '#^Method OpenConext\\Value\\Saml\\Metadata\\OrganizationTest\:\:deserializing_a_serialized_organisation_results_in_an_equal_value_object\(\) has no return type specified\.$#'
+			identifier: missingType.return
+			count: 1
+			path: ../../tests/OpenConext/Value/Saml/Metadata/OrganizationTest.php
+
+		-
+			message: '#^Method OpenConext\\Value\\Saml\\Metadata\\OrganizationTest\:\:equality_is_verified_on_all_properties\(\) has no return type specified\.$#'
+			identifier: missingType.return
+			count: 1
+			path: ../../tests/OpenConext/Value/Saml/Metadata/OrganizationTest.php
+
+		-
+			message: '#^Method OpenConext\\Value\\Saml\\Metadata\\OrganizationTest\:\:invalidDeserializationDataProvider\(\) has no return type specified\.$#'
+			identifier: missingType.return
+			count: 1
+			path: ../../tests/OpenConext/Value/Saml/Metadata/OrganizationTest.php
+
+		-
+			message: '#^Method OpenConext\\Value\\Saml\\Metadata\\OrganizationTest\:\:organization_display_names_can_be_retrieved\(\) has no return type specified\.$#'
+			identifier: missingType.return
+			count: 1
+			path: ../../tests/OpenConext/Value/Saml/Metadata/OrganizationTest.php
+
+		-
+			message: '#^Method OpenConext\\Value\\Saml\\Metadata\\OrganizationTest\:\:organization_names_can_be_retrieved\(\) has no return type specified\.$#'
+			identifier: missingType.return
+			count: 1
+			path: ../../tests/OpenConext/Value/Saml/Metadata/OrganizationTest.php
+
+		-
+			message: '#^Method OpenConext\\Value\\Saml\\Metadata\\OrganizationTest\:\:organization_requires_at_least_one_organization_display_name\(\) has no return type specified\.$#'
+			identifier: missingType.return
+			count: 1
+			path: ../../tests/OpenConext/Value/Saml/Metadata/OrganizationTest.php
+
+		-
+			message: '#^Method OpenConext\\Value\\Saml\\Metadata\\OrganizationTest\:\:organization_requires_at_least_one_organization_name\(\) has no return type specified\.$#'
+			identifier: missingType.return
+			count: 1
+			path: ../../tests/OpenConext/Value/Saml/Metadata/OrganizationTest.php
+
+		-
+			message: '#^Method OpenConext\\Value\\Saml\\Metadata\\OrganizationTest\:\:organization_requires_at_least_one_organization_url\(\) has no return type specified\.$#'
+			identifier: missingType.return
+			count: 1
+			path: ../../tests/OpenConext/Value/Saml/Metadata/OrganizationTest.php
+
+		-
+			message: '#^Method OpenConext\\Value\\Saml\\Metadata\\OrganizationTest\:\:organization_urls_can_be_retrieved\(\) has no return type specified\.$#'
+			identifier: missingType.return
+			count: 1
+			path: ../../tests/OpenConext/Value/Saml/Metadata/OrganizationTest.php
+
+		-
+			message: '#^Cannot call method inScope\(\) on mixed\.$#'
+			identifier: method.nonObject
+			count: 1
+			path: ../../tests/OpenConext/Value/Saml/Metadata/ShibbolethMetadataScopeListTest.php
+
+		-
+			message: '#^Method OpenConext\\Value\\Saml\\Metadata\\ShibbolethMetadataScopeListTest\:\:a_list_can_be_cast_to_string\(\) has no return type specified\.$#'
+			identifier: missingType.return
+			count: 1
+			path: ../../tests/OpenConext/Value/Saml/Metadata/ShibbolethMetadataScopeListTest.php
+
+		-
+			message: '#^Method OpenConext\\Value\\Saml\\Metadata\\ShibbolethMetadataScopeListTest\:\:a_list_can_be_counted\(\) has no return type specified\.$#'
+			identifier: missingType.return
+			count: 1
+			path: ../../tests/OpenConext/Value/Saml/Metadata/ShibbolethMetadataScopeListTest.php
+
+		-
+			message: '#^Method OpenConext\\Value\\Saml\\Metadata\\ShibbolethMetadataScopeListTest\:\:a_list_can_be_iterated_over\(\) has no return type specified\.$#'
+			identifier: missingType.return
+			count: 1
+			path: ../../tests/OpenConext/Value/Saml/Metadata/ShibbolethMetadataScopeListTest.php
+
+		-
+			message: '#^Method OpenConext\\Value\\Saml\\Metadata\\ShibbolethMetadataScopeListTest\:\:a_list_can_only_determine_if_strings_are_in_scope\(\) has no return type specified\.$#'
+			identifier: missingType.return
+			count: 1
+			path: ../../tests/OpenConext/Value/Saml/Metadata/ShibbolethMetadataScopeListTest.php
+
+		-
+			message: '#^Method OpenConext\\Value\\Saml\\Metadata\\ShibbolethMetadataScopeListTest\:\:a_list_exposes_an_array_containing_its_elements\(\) has no return type specified\.$#'
+			identifier: missingType.return
+			count: 1
+			path: ../../tests/OpenConext/Value/Saml/Metadata/ShibbolethMetadataScopeListTest.php
+
+		-
+			message: '#^Method OpenConext\\Value\\Saml\\Metadata\\ShibbolethMetadataScopeListTest\:\:a_scope_can_be_retrieved_by_index\(\) has no return type specified\.$#'
+			identifier: missingType.return
+			count: 1
+			path: ../../tests/OpenConext/Value/Saml/Metadata/ShibbolethMetadataScopeListTest.php
+
+		-
+			message: '#^Method OpenConext\\Value\\Saml\\Metadata\\ShibbolethMetadataScopeListTest\:\:a_scope_can_be_searched_for\(\) has no return type specified\.$#'
+			identifier: missingType.return
+			count: 1
+			path: ../../tests/OpenConext/Value/Saml/Metadata/ShibbolethMetadataScopeListTest.php
+
+		-
+			message: '#^Method OpenConext\\Value\\Saml\\Metadata\\ShibbolethMetadataScopeListTest\:\:a_string_is_in_scope_if_it_matches_at_least_one_scope_in_the_list\(\) has no return type specified\.$#'
+			identifier: missingType.return
+			count: 1
+			path: ../../tests/OpenConext/Value/Saml/Metadata/ShibbolethMetadataScopeListTest.php
+
+		-
+			message: '#^Method OpenConext\\Value\\Saml\\Metadata\\ShibbolethMetadataScopeListTest\:\:adding_scope_to_a_list_creates_a_new_list\(\) has no return type specified\.$#'
+			identifier: missingType.return
+			count: 1
+			path: ../../tests/OpenConext/Value/Saml/Metadata/ShibbolethMetadataScopeListTest.php
+
+		-
+			message: '#^Method OpenConext\\Value\\Saml\\Metadata\\ShibbolethMetadataScopeListTest\:\:all_elements_must_be_a_shibboleth_metadata_scope\(\) has no return type specified\.$#'
+			identifier: missingType.return
+			count: 1
+			path: ../../tests/OpenConext/Value/Saml/Metadata/ShibbolethMetadataScopeListTest.php
+
+		-
+			message: '#^Method OpenConext\\Value\\Saml\\Metadata\\ShibbolethMetadataScopeListTest\:\:an_exception_is_thrown_when_attempting_to_get_an_element_with_a_negative_index\(\) has no return type specified\.$#'
+			identifier: missingType.return
+			count: 1
+			path: ../../tests/OpenConext/Value/Saml/Metadata/ShibbolethMetadataScopeListTest.php
+
+		-
+			message: '#^Method OpenConext\\Value\\Saml\\Metadata\\ShibbolethMetadataScopeListTest\:\:an_exception_is_thrown_when_attempting_to_get_an_element_with_an_index_larger_than_the_list_size\(\) has no return type specified\.$#'
+			identifier: missingType.return
+			count: 1
+			path: ../../tests/OpenConext/Value/Saml/Metadata/ShibbolethMetadataScopeListTest.php
+
+		-
+			message: '#^Method OpenConext\\Value\\Saml\\Metadata\\ShibbolethMetadataScopeListTest\:\:deserialization_requires_an_array\(\) has no return type specified\.$#'
+			identifier: missingType.return
+			count: 1
+			path: ../../tests/OpenConext/Value/Saml/Metadata/ShibbolethMetadataScopeListTest.php
+
+		-
+			message: '#^Method OpenConext\\Value\\Saml\\Metadata\\ShibbolethMetadataScopeListTest\:\:deserializing_a_serialized_shibboleth_metadata_scope_list_results_in_an_equal_value_object\(\) has no return type specified\.$#'
+			identifier: missingType.return
+			count: 1
+			path: ../../tests/OpenConext/Value/Saml/Metadata/ShibbolethMetadataScopeListTest.php
+
+		-
+			message: '#^Method OpenConext\\Value\\Saml\\Metadata\\ShibbolethMetadataScopeListTest\:\:find_predicate_must_be_a_callable\(\) has no return type specified\.$#'
+			identifier: missingType.return
+			count: 1
+			path: ../../tests/OpenConext/Value/Saml/Metadata/ShibbolethMetadataScopeListTest.php
+
+		-
+			message: '#^Method OpenConext\\Value\\Saml\\Metadata\\ShibbolethMetadataScopeListTest\:\:find_returns_the_first_matching_element\(\) has no return type specified\.$#'
+			identifier: missingType.return
+			count: 1
+			path: ../../tests/OpenConext/Value/Saml/Metadata/ShibbolethMetadataScopeListTest.php
+
+		-
+			message: '#^Method OpenConext\\Value\\Saml\\Metadata\\ShibbolethMetadataScopeListTest\:\:index_to_retrieve_the_element_of_must_be_an_integer\(\) has no return type specified\.$#'
+			identifier: missingType.return
+			count: 1
+			path: ../../tests/OpenConext/Value/Saml/Metadata/ShibbolethMetadataScopeListTest.php
+
+		-
+			message: '#^Method OpenConext\\Value\\Saml\\Metadata\\ShibbolethMetadataScopeListTest\:\:index_to_retrieve_the_element_of_must_be_an_integer\(\) has parameter \$invalidArgument with no type specified\.$#'
+			identifier: missingType.parameter
+			count: 1
+			path: ../../tests/OpenConext/Value/Saml/Metadata/ShibbolethMetadataScopeListTest.php
+
+		-
+			message: '#^Method OpenConext\\Value\\Saml\\Metadata\\ShibbolethMetadataScopeListTest\:\:lists_are_only_equal_when_containing_the_same_elements_in_the_same_order\(\) has no return type specified\.$#'
+			identifier: missingType.return
+			count: 1
+			path: ../../tests/OpenConext/Value/Saml/Metadata/ShibbolethMetadataScopeListTest.php
+
+		-
+			message: '#^Method OpenConext\\Value\\Saml\\Metadata\\ShibbolethMetadataScopeListTest\:\:null_is_returned_when_no_match_is_found\(\) has no return type specified\.$#'
+			identifier: missingType.return
+			count: 1
+			path: ../../tests/OpenConext/Value/Saml/Metadata/ShibbolethMetadataScopeListTest.php
+
+		-
+			message: '#^Method OpenConext\\Value\\Saml\\Metadata\\ShibbolethMetadataScopeListTest\:\:presence_of_a_scope_can_be_tested\(\) has no return type specified\.$#'
+			identifier: missingType.return
+			count: 1
+			path: ../../tests/OpenConext/Value/Saml/Metadata/ShibbolethMetadataScopeListTest.php
+
+		-
+			message: '#^Method OpenConext\\Value\\Saml\\Metadata\\ShibbolethMetadataScopeListTest\:\:the_index_of_a_scope_can_be_retrieved\(\) has no return type specified\.$#'
+			identifier: missingType.return
+			count: 1
+			path: ../../tests/OpenConext/Value/Saml/Metadata/ShibbolethMetadataScopeListTest.php
+
+		-
+			message: '#^Parameter \#1 \$index of method OpenConext\\Value\\Saml\\Metadata\\ShibbolethMetadataScopeList\:\:get\(\) expects int, mixed given\.$#'
+			identifier: argument.type
+			count: 1
+			path: ../../tests/OpenConext/Value/Saml/Metadata/ShibbolethMetadataScopeListTest.php
+
+		-
+			message: '#^Parameter \#1 \$predicate of method OpenConext\\Value\\Saml\\Metadata\\ShibbolethMetadataScopeList\:\:find\(\) expects callable\(\)\: mixed, mixed given\.$#'
+			identifier: argument.type
+			count: 1
+			path: ../../tests/OpenConext/Value/Saml/Metadata/ShibbolethMetadataScopeListTest.php
+
+		-
+			message: '#^Parameter \#1 \$scopes of class OpenConext\\Value\\Saml\\Metadata\\ShibbolethMetadataScopeList constructor expects array\<OpenConext\\Value\\Saml\\Metadata\\ShibbolethMetadataScope\>, array\<int, OpenConext\\Value\\Saml\\Metadata\\ShibbolethMetadataScope\|stdClass\> given\.$#'
+			identifier: argument.type
+			count: 1
+			path: ../../tests/OpenConext/Value/Saml/Metadata/ShibbolethMetadataScopeListTest.php
+
+		-
+			message: '#^Method OpenConext\\Value\\Saml\\Metadata\\ShibbolethMetadataScopeTest\:\:a_literal_scope_factory_method_only_accepts_a_non_empty_string\(\) has no return type specified\.$#'
+			identifier: missingType.return
+			count: 1
+			path: ../../tests/OpenConext/Value/Saml/Metadata/ShibbolethMetadataScopeTest.php
+
+		-
+			message: '#^Method OpenConext\\Value\\Saml\\Metadata\\ShibbolethMetadataScopeTest\:\:a_literal_scope_is_not_equal_to_a_regexp_scope\(\) has no return type specified\.$#'
+			identifier: missingType.return
+			count: 1
+			path: ../../tests/OpenConext/Value/Saml/Metadata/ShibbolethMetadataScopeTest.php
+
+		-
+			message: '#^Method OpenConext\\Value\\Saml\\Metadata\\ShibbolethMetadataScopeTest\:\:a_literal_scopes_allows_case_insensitive_matches\(\) has no return type specified\.$#'
+			identifier: missingType.return
+			count: 1
+			path: ../../tests/OpenConext/Value/Saml/Metadata/ShibbolethMetadataScopeTest.php
+
+		-
+			message: '#^Method OpenConext\\Value\\Saml\\Metadata\\ShibbolethMetadataScopeTest\:\:a_literal_scopes_allows_only_exact_matches\(\) has no return type specified\.$#'
+			identifier: missingType.return
+			count: 1
+			path: ../../tests/OpenConext/Value/Saml/Metadata/ShibbolethMetadataScopeTest.php
+
+		-
+			message: '#^Method OpenConext\\Value\\Saml\\Metadata\\ShibbolethMetadataScopeTest\:\:a_regex_scope_allows_matches\(\) has no return type specified\.$#'
+			identifier: missingType.return
+			count: 1
+			path: ../../tests/OpenConext/Value/Saml/Metadata/ShibbolethMetadataScopeTest.php
+
+		-
+			message: '#^Method OpenConext\\Value\\Saml\\Metadata\\ShibbolethMetadataScopeTest\:\:a_regexp_scope_can_only_be_created_with_a_boolean_argument\(\) has no return type specified\.$#'
+			identifier: missingType.return
+			count: 1
+			path: ../../tests/OpenConext/Value/Saml/Metadata/ShibbolethMetadataScopeTest.php
+
+		-
+			message: '#^Method OpenConext\\Value\\Saml\\Metadata\\ShibbolethMetadataScopeTest\:\:a_scope_can_be_cast_to_a_known_format_string\(\) has no return type specified\.$#'
+			identifier: missingType.return
+			count: 1
+			path: ../../tests/OpenConext/Value/Saml/Metadata/ShibbolethMetadataScopeTest.php
+
+		-
+			message: '#^Method OpenConext\\Value\\Saml\\Metadata\\ShibbolethMetadataScopeTest\:\:a_scope_can_only_be_created_using_a_non_empty_string\(\) has no return type specified\.$#'
+			identifier: missingType.return
+			count: 1
+			path: ../../tests/OpenConext/Value/Saml/Metadata/ShibbolethMetadataScopeTest.php
+
+		-
+			message: '#^Method OpenConext\\Value\\Saml\\Metadata\\ShibbolethMetadataScopeTest\:\:deserialization_requires_valid_data\(\) has no return type specified\.$#'
+			identifier: missingType.return
+			count: 1
+			path: ../../tests/OpenConext/Value/Saml/Metadata/ShibbolethMetadataScopeTest.php
+
+		-
+			message: '#^Method OpenConext\\Value\\Saml\\Metadata\\ShibbolethMetadataScopeTest\:\:deserializing_a_serialized_shibmd_scope_results_in_an_equal_value_object\(\) has no return type specified\.$#'
+			identifier: missingType.return
+			count: 1
+			path: ../../tests/OpenConext/Value/Saml/Metadata/ShibbolethMetadataScopeTest.php
+
+		-
+			message: '#^Method OpenConext\\Value\\Saml\\Metadata\\ShibbolethMetadataScopeTest\:\:invalidDeserializationDataProvider\(\) return type has no value type specified in iterable type array\.$#'
+			identifier: missingType.iterableValue
+			count: 1
+			path: ../../tests/OpenConext/Value/Saml/Metadata/ShibbolethMetadataScopeTest.php
+
+		-
+			message: '#^Method OpenConext\\Value\\Saml\\Metadata\\ShibbolethMetadataScopeTest\:\:literal_scopes_are_compared_based_on_the_literal\(\) has no return type specified\.$#'
+			identifier: missingType.return
+			count: 1
+			path: ../../tests/OpenConext/Value/Saml/Metadata/ShibbolethMetadataScopeTest.php
+
+		-
+			message: '#^Method OpenConext\\Value\\Saml\\Metadata\\ShibbolethMetadataScopeTest\:\:regex_scopes_are_compared_based_on_the_regexp_given\(\) has no return type specified\.$#'
+			identifier: missingType.return
+			count: 1
+			path: ../../tests/OpenConext/Value/Saml/Metadata/ShibbolethMetadataScopeTest.php
+
+		-
+			message: '#^Method OpenConext\\Value\\Saml\\Metadata\\ShibbolethMetadataScopeTest\:\:the_regexp_scope_factory_method_only_accepts_a_non_empty_string\(\) has no return type specified\.$#'
+			identifier: missingType.return
+			count: 1
+			path: ../../tests/OpenConext/Value/Saml/Metadata/ShibbolethMetadataScopeTest.php
+
+		-
+			message: '#^Method OpenConext\\Value\\Saml\\Metadata\\ShibbolethMetadataScopeTest\:\:the_value_to_verify_if_allowed_must_be_a_string\(\) has no return type specified\.$#'
+			identifier: missingType.return
+			count: 1
+			path: ../../tests/OpenConext/Value/Saml/Metadata/ShibbolethMetadataScopeTest.php
+
+		-
+			message: '#^Parameter \#1 \$literal of static method OpenConext\\Value\\Saml\\Metadata\\ShibbolethMetadataScope\:\:literal\(\) expects string, mixed given\.$#'
+			identifier: argument.type
+			count: 1
+			path: ../../tests/OpenConext/Value/Saml/Metadata/ShibbolethMetadataScopeTest.php
+
+		-
+			message: '#^Parameter \#1 \$regexp of static method OpenConext\\Value\\Saml\\Metadata\\ShibbolethMetadataScope\:\:regexp\(\) expects string, mixed given\.$#'
+			identifier: argument.type
+			count: 1
+			path: ../../tests/OpenConext/Value/Saml/Metadata/ShibbolethMetadataScopeTest.php
+
+		-
+			message: '#^Parameter \#1 \$scope of class OpenConext\\Value\\Saml\\Metadata\\ShibbolethMetadataScope constructor expects string, mixed given\.$#'
+			identifier: argument.type
+			count: 1
+			path: ../../tests/OpenConext/Value/Saml/Metadata/ShibbolethMetadataScopeTest.php
+
+		-
+			message: '#^Parameter \#1 \$string of method OpenConext\\Value\\Saml\\Metadata\\ShibbolethMetadataScope\:\:allows\(\) expects string, mixed given\.$#'
+			identifier: argument.type
+			count: 1
+			path: ../../tests/OpenConext/Value/Saml/Metadata/ShibbolethMetadataScopeTest.php
+
+		-
+			message: '#^Parameter \#2 \$isRegexp of class OpenConext\\Value\\Saml\\Metadata\\ShibbolethMetadataScope constructor expects bool, mixed given\.$#'
+			identifier: argument.type
+			count: 1
+			path: ../../tests/OpenConext/Value/Saml/Metadata/ShibbolethMetadataScopeTest.php
+
+		-
+			message: '#^Method OpenConext\\Value\\Saml\\NameIdFormatListTest\:\:a_list_exposes_an_array_containing_its_elements\(\) has no return type specified\.$#'
+			identifier: missingType.return
+			count: 1
+			path: ../../tests/OpenConext/Value/Saml/NameIdFormatListTest.php
+
+		-
+			message: '#^Method OpenConext\\Value\\Saml\\NameIdFormatListTest\:\:a_name_id_format_can_be_retrieved_by_index\(\) has no return type specified\.$#'
+			identifier: missingType.return
+			count: 1
+			path: ../../tests/OpenConext/Value/Saml/NameIdFormatListTest.php
+
+		-
+			message: '#^Method OpenConext\\Value\\Saml\\NameIdFormatListTest\:\:a_name_id_format_can_be_searched_for\(\) has no return type specified\.$#'
+			identifier: missingType.return
+			count: 1
+			path: ../../tests/OpenConext/Value/Saml/NameIdFormatListTest.php
+
+		-
+			message: '#^Method OpenConext\\Value\\Saml\\NameIdFormatListTest\:\:a_name_id_format_list_can_be_cast_to_string\(\) has no return type specified\.$#'
+			identifier: missingType.return
+			count: 1
+			path: ../../tests/OpenConext/Value/Saml/NameIdFormatListTest.php
+
+		-
+			message: '#^Method OpenConext\\Value\\Saml\\NameIdFormatListTest\:\:a_name_id_format_list_can_be_iterated_over\(\) has no return type specified\.$#'
+			identifier: missingType.return
+			count: 1
+			path: ../../tests/OpenConext/Value/Saml/NameIdFormatListTest.php
+
+		-
+			message: '#^Method OpenConext\\Value\\Saml\\NameIdFormatListTest\:\:adding_a_name_id_format_returns_a_new_list_with_that_name_id_format_appended\(\) has no return type specified\.$#'
+			identifier: missingType.return
+			count: 1
+			path: ../../tests/OpenConext/Value/Saml/NameIdFormatListTest.php
+
+		-
+			message: '#^Method OpenConext\\Value\\Saml\\NameIdFormatListTest\:\:all_elements_must_be_a_name_id_format\(\) has no return type specified\.$#'
+			identifier: missingType.return
+			count: 1
+			path: ../../tests/OpenConext/Value/Saml/NameIdFormatListTest.php
+
+		-
+			message: '#^Method OpenConext\\Value\\Saml\\NameIdFormatListTest\:\:an_exception_is_thrown_when_attempting_to_get_an_element_with_a_negative_index\(\) has no return type specified\.$#'
+			identifier: missingType.return
+			count: 1
+			path: ../../tests/OpenConext/Value/Saml/NameIdFormatListTest.php
+
+		-
+			message: '#^Method OpenConext\\Value\\Saml\\NameIdFormatListTest\:\:an_exception_is_thrown_when_attempting_to_get_an_element_with_an_index_larger_than_the_list_size\(\) has no return type specified\.$#'
+			identifier: missingType.return
+			count: 1
+			path: ../../tests/OpenConext/Value/Saml/NameIdFormatListTest.php
+
+		-
+			message: '#^Method OpenConext\\Value\\Saml\\NameIdFormatListTest\:\:deserialization_requires_an_array\(\) has no return type specified\.$#'
+			identifier: missingType.return
+			count: 1
+			path: ../../tests/OpenConext/Value/Saml/NameIdFormatListTest.php
+
+		-
+			message: '#^Method OpenConext\\Value\\Saml\\NameIdFormatListTest\:\:deserializing_a_serialized_name_id_format_list_results_in_an_equal_value_object\(\) has no return type specified\.$#'
+			identifier: missingType.return
+			count: 1
+			path: ../../tests/OpenConext/Value/Saml/NameIdFormatListTest.php
+
+		-
+			message: '#^Method OpenConext\\Value\\Saml\\NameIdFormatListTest\:\:find_predicate_must_be_a_callable\(\) has no return type specified\.$#'
+			identifier: missingType.return
+			count: 1
+			path: ../../tests/OpenConext/Value/Saml/NameIdFormatListTest.php
+
+		-
+			message: '#^Method OpenConext\\Value\\Saml\\NameIdFormatListTest\:\:find_returns_the_first_matching_element\(\) has no return type specified\.$#'
+			identifier: missingType.return
+			count: 1
+			path: ../../tests/OpenConext/Value/Saml/NameIdFormatListTest.php
+
+		-
+			message: '#^Method OpenConext\\Value\\Saml\\NameIdFormatListTest\:\:index_to_retrieve_the_element_of_must_be_an_integer\(\) has no return type specified\.$#'
+			identifier: missingType.return
+			count: 1
+			path: ../../tests/OpenConext/Value/Saml/NameIdFormatListTest.php
+
+		-
+			message: '#^Method OpenConext\\Value\\Saml\\NameIdFormatListTest\:\:lists_are_only_equal_when_containing_the_same_elements_in_the_same_order\(\) has no return type specified\.$#'
+			identifier: missingType.return
+			count: 1
+			path: ../../tests/OpenConext/Value/Saml/NameIdFormatListTest.php
+
+		-
+			message: '#^Method OpenConext\\Value\\Saml\\NameIdFormatListTest\:\:null_is_returned_when_no_match_is_found\(\) has no return type specified\.$#'
+			identifier: missingType.return
+			count: 1
+			path: ../../tests/OpenConext/Value/Saml/NameIdFormatListTest.php
+
+		-
+			message: '#^Method OpenConext\\Value\\Saml\\NameIdFormatListTest\:\:presence_of_a_name_id_format_can_be_tested\(\) has no return type specified\.$#'
+			identifier: missingType.return
+			count: 1
+			path: ../../tests/OpenConext/Value/Saml/NameIdFormatListTest.php
+
+		-
+			message: '#^Method OpenConext\\Value\\Saml\\NameIdFormatListTest\:\:the_elements_in_a_name_id_format_list_can_be_counted\(\) has no return type specified\.$#'
+			identifier: missingType.return
+			count: 1
+			path: ../../tests/OpenConext/Value/Saml/NameIdFormatListTest.php
+
+		-
+			message: '#^Method OpenConext\\Value\\Saml\\NameIdFormatListTest\:\:the_index_of_a_name_id_format_can_be_retrieved\(\) has no return type specified\.$#'
+			identifier: missingType.return
+			count: 1
+			path: ../../tests/OpenConext/Value/Saml/NameIdFormatListTest.php
+
+		-
+			message: '#^Parameter \#1 \$index of method OpenConext\\Value\\Saml\\NameIdFormatList\:\:get\(\) expects int, mixed given\.$#'
+			identifier: argument.type
+			count: 1
+			path: ../../tests/OpenConext/Value/Saml/NameIdFormatListTest.php
+
+		-
+			message: '#^Parameter \#1 \$nameIdFormats of class OpenConext\\Value\\Saml\\NameIdFormatList constructor expects array\<OpenConext\\Value\\Saml\\NameIdFormat\>, array\<int, OpenConext\\Value\\Saml\\NameIdFormat\|stdClass\> given\.$#'
+			identifier: argument.type
+			count: 1
+			path: ../../tests/OpenConext/Value/Saml/NameIdFormatListTest.php
+
+		-
+			message: '#^Parameter \#1 \$predicate of method OpenConext\\Value\\Saml\\NameIdFormatList\:\:find\(\) expects callable\(\)\: mixed, mixed given\.$#'
+			identifier: argument.type
+			count: 1
+			path: ../../tests/OpenConext/Value/Saml/NameIdFormatListTest.php
+
+		-
+			message: '#^Method OpenConext\\Value\\Saml\\NameIdFormatTest\:\:a_name_id_format_can_be_cast_to_string\(\) has no return type specified\.$#'
+			identifier: missingType.return
+			count: 1
+			path: ../../tests/OpenConext/Value/Saml/NameIdFormatTest.php
+
+		-
+			message: '#^Method OpenConext\\Value\\Saml\\NameIdFormatTest\:\:a_name_id_format_created_with_a_valid_format_equals_its_factory_created_version\(\) has no return type specified\.$#'
+			identifier: missingType.return
+			count: 1
+			path: ../../tests/OpenConext/Value/Saml/NameIdFormatTest.php
+
+		-
+			message: '#^Method OpenConext\\Value\\Saml\\NameIdFormatTest\:\:an_invalid_format_causes_an_exception_to_be_thrown\(\) has no return type specified\.$#'
+			identifier: missingType.return
+			count: 1
+			path: ../../tests/OpenConext/Value/Saml/NameIdFormatTest.php
+
+		-
+			message: '#^Method OpenConext\\Value\\Saml\\NameIdFormatTest\:\:deserialization_requires_valid_data\(\) has no return type specified\.$#'
+			identifier: missingType.return
+			count: 1
+			path: ../../tests/OpenConext/Value/Saml/NameIdFormatTest.php
+
+		-
+			message: '#^Method OpenConext\\Value\\Saml\\NameIdFormatTest\:\:deserializing_a_serialized_name_id_format_results_in_an_equal_value_object\(\) has no return type specified\.$#'
+			identifier: missingType.return
+			count: 1
+			path: ../../tests/OpenConext/Value/Saml/NameIdFormatTest.php
+
+		-
+			message: '#^Method OpenConext\\Value\\Saml\\NameIdFormatTest\:\:name_id_formats_can_be_compared\(\) has no return type specified\.$#'
+			identifier: missingType.return
+			count: 1
+			path: ../../tests/OpenConext/Value/Saml/NameIdFormatTest.php
+
+		-
+			message: '#^Method OpenConext\\Value\\Saml\\NameIdFormatTest\:\:the_format_can_be_retrieved\(\) has no return type specified\.$#'
+			identifier: missingType.return
+			count: 1
+			path: ../../tests/OpenConext/Value/Saml/NameIdFormatTest.php
+
+		-
+			message: '#^Method OpenConext\\Value\\Saml\\NameIdFormatTest\:\:typeAndFactoryMethodProvider\(\) has no return type specified\.$#'
+			identifier: missingType.return
+			count: 1
+			path: ../../tests/OpenConext/Value/Saml/NameIdFormatTest.php
+
+		-
+			message: '#^Parameter \#1 \$other of method OpenConext\\Value\\Saml\\NameIdFormat\:\:equals\(\) expects OpenConext\\Value\\Saml\\NameIdFormat, mixed given\.$#'
+			identifier: argument.type
+			count: 1
+			path: ../../tests/OpenConext/Value/Saml/NameIdFormatTest.php
+
+		-
+			message: '#^Method OpenConext\\Value\\TestDataProvider\:\:emtpyString\(\) has no return type specified\.$#'
+			identifier: missingType.return
+			count: 1
+			path: ../../tests/OpenConext/Value/TestDataProvider.php
+
+		-
+			message: '#^Method OpenConext\\Value\\TestDataProvider\:\:invalidRegularExpressionProvider\(\) has no return type specified\.$#'
+			identifier: missingType.return
+			count: 1
+			path: ../../tests/OpenConext/Value/TestDataProvider.php
+
+		-
+			message: '#^Method OpenConext\\Value\\TestDataProvider\:\:notArray\(\) has no return type specified\.$#'
+			identifier: missingType.return
+			count: 1
+			path: ../../tests/OpenConext/Value/TestDataProvider.php
+
+		-
+			message: '#^Method OpenConext\\Value\\TestDataProvider\:\:notBoolean\(\) has no return type specified\.$#'
+			identifier: missingType.return
+			count: 1
+			path: ../../tests/OpenConext/Value/TestDataProvider.php
+
+		-
+			message: '#^Method OpenConext\\Value\\TestDataProvider\:\:notCallable\(\) has no return type specified\.$#'
+			identifier: missingType.return
+			count: 1
+			path: ../../tests/OpenConext/Value/TestDataProvider.php
+
+		-
+			message: '#^Method OpenConext\\Value\\TestDataProvider\:\:notInteger\(\) has no return type specified\.$#'
+			identifier: missingType.return
+			count: 1
+			path: ../../tests/OpenConext/Value/TestDataProvider.php
+
+		-
+			message: '#^Method OpenConext\\Value\\TestDataProvider\:\:notNullAndNotStringOrEmptyString\(\) has no return type specified\.$#'
+			identifier: missingType.return
+			count: 1
+			path: ../../tests/OpenConext/Value/TestDataProvider.php
+
+		-
+			message: '#^Method OpenConext\\Value\\TestDataProvider\:\:notRfc822CompliantEmail\(\) has no return type specified\.$#'
+			identifier: missingType.return
+			count: 1
+			path: ../../tests/OpenConext/Value/TestDataProvider.php
+
+		-
+			message: '#^Method OpenConext\\Value\\TestDataProvider\:\:notSingleCharacter\(\) has no return type specified\.$#'
+			identifier: missingType.return
+			count: 1
+			path: ../../tests/OpenConext/Value/TestDataProvider.php
+
+		-
+			message: '#^Method OpenConext\\Value\\TestDataProvider\:\:notString\(\) has no return type specified\.$#'
+			identifier: missingType.return
+			count: 1
+			path: ../../tests/OpenConext/Value/TestDataProvider.php
+
+		-
+			message: '#^Method OpenConext\\Value\\TestDataProvider\:\:notStringOrEmptyString\(\) has no return type specified\.$#'
+			identifier: missingType.return
+			count: 1
+			path: ../../tests/OpenConext/Value/TestDataProvider.php
+
+		-
+			message: '#^Parameter \#1 \$array of function array_filter expects array, mixed given\.$#'
+			identifier: argument.type
+			count: 1
+			path: ../../tests/OpenConext/Value/TestDataProvider.php
+
+		-
+			message: '#^Parameter \#1 \$array of function reset expects array\|object, mixed given\.$#'
+			identifier: argument.type
+			count: 1
+			path: ../../tests/OpenConext/Value/TestDataProvider.php
+
+		-
+			message: '#^Parameter \#1 \.\.\.\$arrays of function array_merge expects array, mixed given\.$#'
+			identifier: argument.type
+			count: 7
+			path: ../../tests/OpenConext/Value/TestDataProvider.php
+
+		-
+			message: '#^Parameter \#2 \.\.\.\$arrays of function array_merge expects array, mixed given\.$#'
+			identifier: argument.type
+			count: 1
+			path: ../../tests/OpenConext/Value/TestDataProvider.php

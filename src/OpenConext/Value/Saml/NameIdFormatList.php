@@ -128,12 +128,12 @@ final class NameIdFormatList implements Countable, IteratorAggregate, Serializab
         return $this->nameIdFormats;
     }
 
-    public function getIterator()
+    public function getIterator(): \Traversable
     {
         return new ArrayIterator($this->nameIdFormats);
     }
 
-    public function count()
+    public function count(): int
     {
         return count($this->nameIdFormats);
     }

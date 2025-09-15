@@ -24,7 +24,9 @@
             <directory>../../tests</directory>
         </testsuite>
     </testsuites>
-
+    <logging>
+      <junit outputFile="../../var/qa/junit.xml"/>
+    </logging>
     <source ignoreSuppressionOfDeprecations="true"
             ignoreIndirectDeprecations="true"
             restrictNotices="true"
@@ -38,6 +40,4 @@
             <function>trigger_deprecation</function>
         </deprecationTrigger>
     </source>
-
-<!--  @TODO Reinstate code coverage  -->
 </phpunit>

@@ -128,12 +128,12 @@ final class OrganizationNameList implements Countable, IteratorAggregate, Serial
         return $this->organizationNames;
     }
 
-    public function getIterator()
+    public function getIterator(): \Traversable
     {
         return new ArrayIterator($this->organizationNames);
     }
 
-    public function count()
+    public function count(): int
     {
         return count($this->organizationNames);
     }

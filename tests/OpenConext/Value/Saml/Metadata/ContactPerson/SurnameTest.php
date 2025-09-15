@@ -8,25 +8,23 @@ use OpenConext\Value\Exception\InvalidArgumentException;
 class SurnameTest extends \PHPUnit\Framework\TestCase
 {
     /**
-     * @test
-     * @group        metadata
-     * @group        contactperson
      *
-     * @dataProvider \OpenConext\Value\TestDataProvider::notStringOrEmptyString
      *
      * @param mixed $invalidValue
      */
+    #[\PHPUnit\Framework\Attributes\DataProviderExternal(\OpenConext\Value\TestDataProvider::class, 'notStringOrEmptyString')]
+    #[\PHPUnit\Framework\Attributes\Group('metadata')]
+    #[\PHPUnit\Framework\Attributes\Group('contactperson')]
+    #[\PHPUnit\Framework\Attributes\Test]
     public function only_non_empty_strings_are_valid_surnames($invalidValue)
     {
         $this->expectException(\InvalidArgumentException::class);
         new Surname($invalidValue);
     }
 
-    /**
-     * @test
-     * @group metadata
-     * @group contactperson
-     */
+    #[\PHPUnit\Framework\Attributes\Group('metadata')]
+    #[\PHPUnit\Framework\Attributes\Group('contactperson')]
+    #[\PHPUnit\Framework\Attributes\Test]
     public function equality_can_be_verified()
     {
         $base      = new Surname('Simpson');
@@ -37,11 +35,9 @@ class SurnameTest extends \PHPUnit\Framework\TestCase
         $this->assertFalse($base->equals($different));
     }
 
-    /**
-     * @test
-     * @group metadata
-     * @group contactperson
-     */
+    #[\PHPUnit\Framework\Attributes\Group('metadata')]
+    #[\PHPUnit\Framework\Attributes\Group('contactperson')]
+    #[\PHPUnit\Framework\Attributes\Test]
     public function the_surname_can_be_retrieved()
     {
         $name = 'Simpson';
@@ -51,11 +47,9 @@ class SurnameTest extends \PHPUnit\Framework\TestCase
         $this->assertEquals($name, $surname->getSurname());
     }
 
-    /**
-     * @test
-     * @group metadata
-     * @group contactperson
-     */
+    #[\PHPUnit\Framework\Attributes\Group('metadata')]
+    #[\PHPUnit\Framework\Attributes\Group('contactperson')]
+    #[\PHPUnit\Framework\Attributes\Test]
     public function deserializing_a_serialized_surname_results_in_an_equal_value_object()
     {
         $surname = 'Simpson';
@@ -68,25 +62,23 @@ class SurnameTest extends \PHPUnit\Framework\TestCase
     }
 
     /**
-     * @test
-     * @group        metadata
-     * @group        contactperson
      *
-     * @dataProvider \OpenConext\Value\TestDataProvider::notStringOrEmptyString
      *
      * @param mixed $invalidData
      */
+    #[\PHPUnit\Framework\Attributes\DataProviderExternal(\OpenConext\Value\TestDataProvider::class, 'notStringOrEmptyString')]
+    #[\PHPUnit\Framework\Attributes\Group('metadata')]
+    #[\PHPUnit\Framework\Attributes\Group('contactperson')]
+    #[\PHPUnit\Framework\Attributes\Test]
     public function deserialization_requires_the_presence_of_the_correct_data($invalidData)
     {
         $this->expectException(\InvalidArgumentException::class);
         Surname::deserialize($invalidData);
     }
 
-    /**
-     * @test
-     * @group metadata
-     * @group contactperson
-     */
+    #[\PHPUnit\Framework\Attributes\Group('metadata')]
+    #[\PHPUnit\Framework\Attributes\Group('contactperson')]
+    #[\PHPUnit\Framework\Attributes\Test]
     public function a_surname_can_be_cast_to_string()
     {
         $name = 'Simpson';

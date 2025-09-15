@@ -131,12 +131,12 @@ final class OrganizationDisplayNameList implements Countable, IteratorAggregate,
         return $this->organizationDisplayNames;
     }
 
-    public function getIterator()
+    public function getIterator(): \Traversable
     {
         return new ArrayIterator($this->organizationDisplayNames);
     }
 
-    public function count()
+    public function count(): int
     {
         return count($this->organizationDisplayNames);
     }

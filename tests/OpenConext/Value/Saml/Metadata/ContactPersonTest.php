@@ -16,14 +16,14 @@ use OpenConext\Value\Saml\Metadata\ContactPerson\TelephoneNumberList;
 class ContactPersonTest extends \PHPUnit\Framework\TestCase
 {
     /**
-     * @test
-     * @group metadata
-     * @group contactperson
      *
-     * @dataProvider differentContactPersonProvider
      *
      * @param ContactPerson $differentContactPerson
      */
+    #[\PHPUnit\Framework\Attributes\DataProvider('differentContactPersonProvider')]
+    #[\PHPUnit\Framework\Attributes\Group('metadata')]
+    #[\PHPUnit\Framework\Attributes\Group('contactperson')]
+    #[\PHPUnit\Framework\Attributes\Test]
     public function contact_persons_are_compared_for_equality_on_all_properties($differentContactPerson)
     {
         $base = new ContactPerson(
@@ -63,11 +63,9 @@ class ContactPersonTest extends \PHPUnit\Framework\TestCase
         );
     }
 
-    /**
-     * @test
-     * @group metadata
-     * @group contactperson
-     */
+    #[\PHPUnit\Framework\Attributes\Group('metadata')]
+    #[\PHPUnit\Framework\Attributes\Group('contactperson')]
+    #[\PHPUnit\Framework\Attributes\Test]
     public function contact_type_can_be_retrieved()
     {
         $type = ContactType::technical();
@@ -80,11 +78,9 @@ class ContactPersonTest extends \PHPUnit\Framework\TestCase
         $this->assertSame($type, $contactPerson->getContactType());
     }
 
-    /**
-     * @test
-     * @group metadata
-     * @group contactperson
-     */
+    #[\PHPUnit\Framework\Attributes\Group('metadata')]
+    #[\PHPUnit\Framework\Attributes\Group('contactperson')]
+    #[\PHPUnit\Framework\Attributes\Test]
     public function email_address_list_can_be_retrieved()
     {
         $emailAddressList = new EmailAddressList(array(new EmailAddress('homer@domain.invalid')));
@@ -97,11 +93,9 @@ class ContactPersonTest extends \PHPUnit\Framework\TestCase
         $this->assertSame($emailAddressList, $contactPerson->getEmailAddressList());
     }
 
-    /**
-     * @test
-     * @group metadata
-     * @group contactperson
-     */
+    #[\PHPUnit\Framework\Attributes\Group('metadata')]
+    #[\PHPUnit\Framework\Attributes\Group('contactperson')]
+    #[\PHPUnit\Framework\Attributes\Test]
     public function telephone_number_list_can_be_retrieved()
     {
         $telephoneNumberList = new TelephoneNumberList(array(new TelephoneNumber('123456')));
@@ -114,11 +108,9 @@ class ContactPersonTest extends \PHPUnit\Framework\TestCase
         $this->assertSame($telephoneNumberList, $contactPerson->getTelephoneNumberList());
     }
 
-    /**
-     * @test
-     * @group metadata
-     * @group contactperson
-     */
+    #[\PHPUnit\Framework\Attributes\Group('metadata')]
+    #[\PHPUnit\Framework\Attributes\Group('contactperson')]
+    #[\PHPUnit\Framework\Attributes\Test]
     public function given_name_can_be_retrieved()
     {
         $givenName = new GivenName('Homer');
@@ -134,11 +126,9 @@ class ContactPersonTest extends \PHPUnit\Framework\TestCase
         $this->assertSame($givenName, $contactPerson->getGivenName());
     }
 
-    /**
-     * @test
-     * @group metadata
-     * @group contactperson
-     */
+    #[\PHPUnit\Framework\Attributes\Group('metadata')]
+    #[\PHPUnit\Framework\Attributes\Group('contactperson')]
+    #[\PHPUnit\Framework\Attributes\Test]
     public function surname_can_be_retrieved()
     {
         $surname = new Surname('Simpson');
@@ -154,11 +144,9 @@ class ContactPersonTest extends \PHPUnit\Framework\TestCase
         $this->assertSame($surname, $contactPerson->getSurname());
     }
 
-    /**
-     * @test
-     * @group metadata
-     * @group contactperson
-     */
+    #[\PHPUnit\Framework\Attributes\Group('metadata')]
+    #[\PHPUnit\Framework\Attributes\Group('contactperson')]
+    #[\PHPUnit\Framework\Attributes\Test]
     public function company_can_be_retrieved()
     {
         $company = new Company('OpenConext.org');
@@ -174,11 +162,9 @@ class ContactPersonTest extends \PHPUnit\Framework\TestCase
         $this->assertSame($company, $contactPerson->getCompany());
     }
 
-    /**
-     * @test
-     * @group metadata
-     * @group contactperson
-     */
+    #[\PHPUnit\Framework\Attributes\Group('metadata')]
+    #[\PHPUnit\Framework\Attributes\Group('contactperson')]
+    #[\PHPUnit\Framework\Attributes\Test]
     public function deserializing_a_serialized_contact_person_results_in_an_equal_value_object()
     {
         $original = new ContactPerson(
@@ -195,14 +181,14 @@ class ContactPersonTest extends \PHPUnit\Framework\TestCase
     }
 
     /**
-     * @test
-     * @group metadata
-     * @group contactperson
      *
-     * @dataProvider \OpenConext\Value\TestDataProvider::notArray
      *
      * @param mixed $notArray
      */
+    #[\PHPUnit\Framework\Attributes\DataProviderExternal(\OpenConext\Value\TestDataProvider::class, 'notArray')]
+    #[\PHPUnit\Framework\Attributes\Group('metadata')]
+    #[\PHPUnit\Framework\Attributes\Group('contactperson')]
+    #[\PHPUnit\Framework\Attributes\Test]
     public function deserialization_requires_an_array_as_data($notArray)
     {
         $this->expectException(\InvalidArgumentException::class);
@@ -210,14 +196,14 @@ class ContactPersonTest extends \PHPUnit\Framework\TestCase
     }
 
     /**
-     * @test
-     * @group        metadata
-     * @group        contactperson
      *
-     * @dataProvider invalidDeserializationDataProvider
      *
      * @param array $invalidData
      */
+    #[\PHPUnit\Framework\Attributes\DataProvider('invalidDeserializationDataProvider')]
+    #[\PHPUnit\Framework\Attributes\Group('metadata')]
+    #[\PHPUnit\Framework\Attributes\Group('contactperson')]
+    #[\PHPUnit\Framework\Attributes\Test]
     public function deserialization_requires_data_with_expected_keys($invalidData)
     {
         $this->expectException(\InvalidArgumentException::class);
@@ -239,11 +225,9 @@ class ContactPersonTest extends \PHPUnit\Framework\TestCase
         );
     }
 
-    /**
-     * @test
-     * @group metadata
-     * @group contactperson
-     */
+    #[\PHPUnit\Framework\Attributes\Group('metadata')]
+    #[\PHPUnit\Framework\Attributes\Group('contactperson')]
+    #[\PHPUnit\Framework\Attributes\Test]
     public function a_contact_person_can_be_cast_to_string()
     {
         $contactPerson = new ContactPerson(

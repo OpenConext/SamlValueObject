@@ -7,11 +7,9 @@ use OpenConext\Value\Exception\InvalidArgumentException;
 
 class BindingTest extends \PHPUnit\Framework\TestCase
 {
-    /**
-     * @test
-     * @group metadata
-     * @group common
-     */
+    #[\PHPUnit\Framework\Attributes\Group('metadata')]
+    #[\PHPUnit\Framework\Attributes\Group('common')]
+    #[\PHPUnit\Framework\Attributes\Test]
     public function binding_must_be_one_of_the_valid_bindings()
     {
         $this->expectException(\InvalidArgumentException::class);
@@ -19,15 +17,14 @@ class BindingTest extends \PHPUnit\Framework\TestCase
     }
 
     /**
-     * @test
-     * @group metadata
-     * @group common
-     *
-     * @dataProvider bindingAndFactoryMethodProvider
      *
      * @param string $binding
      * @param string $factoryMethod
      */
+    #[\PHPUnit\Framework\Attributes\DataProvider('bindingAndFactoryMethodProvider')]
+    #[\PHPUnit\Framework\Attributes\Group('metadata')]
+    #[\PHPUnit\Framework\Attributes\Group('common')]
+    #[\PHPUnit\Framework\Attributes\Test]
     public function bindings_created_through_constructor_are_equal_to_their_factory_method_counterparts(
         $binding,
         $factoryMethod
@@ -52,11 +49,9 @@ class BindingTest extends \PHPUnit\Framework\TestCase
         );
     }
 
-    /**
-     * @test
-     * @group metadata
-     * @group common
-     */
+    #[\PHPUnit\Framework\Attributes\Group('metadata')]
+    #[\PHPUnit\Framework\Attributes\Group('common')]
+    #[\PHPUnit\Framework\Attributes\Test]
     public function a_textual_binding_can_be_tested_for_validity()
     {
         $this->assertFalse(Binding::isValidBinding('not a valid binding'));
@@ -67,11 +62,9 @@ class BindingTest extends \PHPUnit\Framework\TestCase
         $this->assertTrue(Binding::isValidBinding(Binding::HOK_SSO));
     }
 
-    /**
-     * @test
-     * @group metadata
-     * @group common
-     */
+    #[\PHPUnit\Framework\Attributes\Group('metadata')]
+    #[\PHPUnit\Framework\Attributes\Group('common')]
+    #[\PHPUnit\Framework\Attributes\Test]
     public function the_type_of_a_binding_can_be_verified()
     {
         $binding = Binding::holderOfKey();
@@ -81,14 +74,14 @@ class BindingTest extends \PHPUnit\Framework\TestCase
     }
 
     /**
-     * @test
-     * @group        metadata
-     * @group        common
      *
-     * @dataProvider \OpenConext\Value\TestDataProvider::notStringOrEmptyString
      *
      * @param mixed $notStringOrEmptyString
      */
+    #[\PHPUnit\Framework\Attributes\DataProviderExternal(\OpenConext\Value\TestDataProvider::class, 'notStringOrEmptyString')]
+    #[\PHPUnit\Framework\Attributes\Group('metadata')]
+    #[\PHPUnit\Framework\Attributes\Group('common')]
+    #[\PHPUnit\Framework\Attributes\Test]
     public function to_verify_the_type_of_a_binding_a_non_empty_string_must_be_used($notStringOrEmptyString)
     {
         $this->expectException(\InvalidArgumentException::class);
@@ -96,11 +89,9 @@ class BindingTest extends \PHPUnit\Framework\TestCase
         $binding->isOfType($notStringOrEmptyString);
     }
 
-    /**
-     * @test
-     * @group metadata
-     * @group common
-     */
+    #[\PHPUnit\Framework\Attributes\Group('metadata')]
+    #[\PHPUnit\Framework\Attributes\Group('common')]
+    #[\PHPUnit\Framework\Attributes\Test]
     public function binding_can_be_retrieved()
     {
         $byConstructor = new Binding(Binding::HTTP_POST);
@@ -110,11 +101,9 @@ class BindingTest extends \PHPUnit\Framework\TestCase
         $this->assertEquals(Binding::HTTP_POST, $byFactory->getBinding());
     }
 
-    /**
-     * @test
-     * @group metadata
-     * @group common
-     */
+    #[\PHPUnit\Framework\Attributes\Group('metadata')]
+    #[\PHPUnit\Framework\Attributes\Group('common')]
+    #[\PHPUnit\Framework\Attributes\Test]
     public function bindings_are_equal_if_they_are_of_the_same_type()
     {
         $base = Binding::httpPost();
@@ -125,11 +114,9 @@ class BindingTest extends \PHPUnit\Framework\TestCase
         $this->assertFalse($base->equals($different));
     }
 
-    /**
-     * @test
-     * @group metadata
-     * @group common
-     */
+    #[\PHPUnit\Framework\Attributes\Group('metadata')]
+    #[\PHPUnit\Framework\Attributes\Group('common')]
+    #[\PHPUnit\Framework\Attributes\Test]
     public function deserializing_a_serialized_binding_yields_an_equal_value_object()
     {
         $original = Binding::httpPost();
@@ -140,25 +127,23 @@ class BindingTest extends \PHPUnit\Framework\TestCase
     }
 
     /**
-     * @test
-     * @group metadata
-     * @group common
      *
-     * @dataProvider \OpenConext\Value\TestDataProvider::notStringOrEmptyString
      *
      * @param mixed $notStringOrEmtpyString
      */
+    #[\PHPUnit\Framework\Attributes\DataProviderExternal(\OpenConext\Value\TestDataProvider::class, 'notStringOrEmptyString')]
+    #[\PHPUnit\Framework\Attributes\Group('metadata')]
+    #[\PHPUnit\Framework\Attributes\Group('common')]
+    #[\PHPUnit\Framework\Attributes\Test]
     public function deserialization_requires_data_to_be_a_non_empty_string($notStringOrEmtpyString)
     {
         $this->expectException(\InvalidArgumentException::class);
         Binding::deserialize($notStringOrEmtpyString);
     }
 
-    /**
-     * @test
-     * @group metadata
-     * @group common
-     */
+    #[\PHPUnit\Framework\Attributes\Group('metadata')]
+    #[\PHPUnit\Framework\Attributes\Group('common')]
+    #[\PHPUnit\Framework\Attributes\Test]
     public function a_binding_can_be_cast_to_string()
     {
         $this->assertIsString((string) Binding::HTTP_ARTIFACT);

@@ -8,10 +8,8 @@ use stdClass;
 
 class ShibbolethMetadataScopeListTest extends \PHPUnit\Framework\TestCase
 {
-    /**
-     * @test
-     * @group metadata
-     */
+    #[\PHPUnit\Framework\Attributes\Group('metadata')]
+    #[\PHPUnit\Framework\Attributes\Test]
     public function all_elements_must_be_a_shibboleth_metadata_scope()
     {
         $this->expectException(\InvalidArgumentException::class);
@@ -24,10 +22,8 @@ class ShibbolethMetadataScopeListTest extends \PHPUnit\Framework\TestCase
         new ShibbolethMetadataScopeList($elements);
     }
 
-    /**
-     * @test
-     * @group metadata
-     */
+    #[\PHPUnit\Framework\Attributes\Group('metadata')]
+    #[\PHPUnit\Framework\Attributes\Test]
     public function a_string_is_in_scope_if_it_matches_at_least_one_scope_in_the_list()
     {
         $list = new ShibbolethMetadataScopeList(array(
@@ -41,13 +37,12 @@ class ShibbolethMetadataScopeListTest extends \PHPUnit\Framework\TestCase
     }
 
     /**
-     * @test
-     * @group metadata
-     *
-     * @dataProvider \OpenConext\Value\TestDataProvider::notString
      *
      * @param mixed $invalidScope
      */
+    #[\PHPUnit\Framework\Attributes\DataProviderExternal(\OpenConext\Value\TestDataProvider::class, 'notString')]
+    #[\PHPUnit\Framework\Attributes\Group('metadata')]
+    #[\PHPUnit\Framework\Attributes\Test]
     public function a_list_can_only_determine_if_strings_are_in_scope($invalidScope)
     {
         $this->expectException(\OpenConext\Value\Exception\InvalidArgumentException::class);
@@ -63,10 +58,8 @@ class ShibbolethMetadataScopeListTest extends \PHPUnit\Framework\TestCase
         $list->inScope($invalidScope);
     }
 
-    /**
-     * @test
-     * @group metadata
-     */
+    #[\PHPUnit\Framework\Attributes\Group('metadata')]
+    #[\PHPUnit\Framework\Attributes\Test]
     public function adding_scope_to_a_list_creates_a_new_list()
     {
         $firstScope = ShibbolethMetadataScope::literal('first');
@@ -84,10 +77,8 @@ class ShibbolethMetadataScopeListTest extends \PHPUnit\Framework\TestCase
         $this->assertTrue($newList->contains($secondScope));
     }
 
-    /**
-     * @test
-     * @group metadata
-     */
+    #[\PHPUnit\Framework\Attributes\Group('metadata')]
+    #[\PHPUnit\Framework\Attributes\Test]
     public function presence_of_a_scope_can_be_tested()
     {
         $firstScope  = ShibbolethMetadataScope::literal('in scope');
@@ -101,10 +92,8 @@ class ShibbolethMetadataScopeListTest extends \PHPUnit\Framework\TestCase
         $this->assertFalse($list->contains($notInList));
     }
 
-    /**
-     * @test
-     * @group metadata
-     */
+    #[\PHPUnit\Framework\Attributes\Group('metadata')]
+    #[\PHPUnit\Framework\Attributes\Test]
     public function the_index_of_a_scope_can_be_retrieved()
     {
         $firstScope  = ShibbolethMetadataScope::literal('in scope');
@@ -118,10 +107,8 @@ class ShibbolethMetadataScopeListTest extends \PHPUnit\Framework\TestCase
         $this->assertEquals(-1, $list->indexOf($notInList), 'An element not in the list has an index of -1');
     }
 
-    /**
-     * @test
-     * @group metadata
-     */
+    #[\PHPUnit\Framework\Attributes\Group('metadata')]
+    #[\PHPUnit\Framework\Attributes\Test]
     public function a_scope_can_be_retrieved_by_index()
     {
         $firstScope  = ShibbolethMetadataScope::literal('in scope');
@@ -133,12 +120,9 @@ class ShibbolethMetadataScopeListTest extends \PHPUnit\Framework\TestCase
         $this->assertSame($secondScope, $list->get(1));
     }
 
-    /**
-     * @test
-     * @group metadata
-     *
-     * @dataProvider \OpenConext\Value\TestDataProvider::notInteger
-     */
+    #[\PHPUnit\Framework\Attributes\DataProviderExternal(\OpenConext\Value\TestDataProvider::class, 'notInteger')]
+    #[\PHPUnit\Framework\Attributes\Group('metadata')]
+    #[\PHPUnit\Framework\Attributes\Test]
     public function index_to_retrieve_the_element_of_must_be_an_integer($invalidArgument)
     {
         $this->expectException(\InvalidArgumentException::class);
@@ -150,10 +134,8 @@ class ShibbolethMetadataScopeListTest extends \PHPUnit\Framework\TestCase
         $list->get($invalidArgument);
     }
 
-    /**
-     * @test
-     * @group metadata
-     */
+    #[\PHPUnit\Framework\Attributes\Group('metadata')]
+    #[\PHPUnit\Framework\Attributes\Test]
     public function an_exception_is_thrown_when_attempting_to_get_an_element_with_a_negative_index()
     {
         $this->expectException(\OpenConext\Value\Exception\IndexOutOfBoundsException::class);
@@ -165,10 +147,8 @@ class ShibbolethMetadataScopeListTest extends \PHPUnit\Framework\TestCase
         $list->get(-1);
     }
 
-    /**
-     * @test
-     * @group metadata
-     */
+    #[\PHPUnit\Framework\Attributes\Group('metadata')]
+    #[\PHPUnit\Framework\Attributes\Test]
     public function an_exception_is_thrown_when_attempting_to_get_an_element_with_an_index_larger_than_the_list_size()
     {
         $this->expectException(\OpenConext\Value\Exception\IndexOutOfBoundsException::class);
@@ -180,10 +160,8 @@ class ShibbolethMetadataScopeListTest extends \PHPUnit\Framework\TestCase
         $list->get(2);
     }
 
-    /**
-     * @test
-     * @group metadata
-     */
+    #[\PHPUnit\Framework\Attributes\Group('metadata')]
+    #[\PHPUnit\Framework\Attributes\Test]
     public function a_scope_can_be_searched_for()
     {
         $predicate = function (ShibbolethMetadataScope $scope) {
@@ -198,10 +176,8 @@ class ShibbolethMetadataScopeListTest extends \PHPUnit\Framework\TestCase
         $this->assertSame($secondScope, $list->find($predicate));
     }
 
-    /**
-     * @test
-     * @group metadata
-     */
+    #[\PHPUnit\Framework\Attributes\Group('metadata')]
+    #[\PHPUnit\Framework\Attributes\Test]
     public function find_returns_the_first_matching_element()
     {
         $predicate = function (ShibbolethMetadataScope $scope) {
@@ -217,10 +193,8 @@ class ShibbolethMetadataScopeListTest extends \PHPUnit\Framework\TestCase
         $this->assertSame($secondScope, $list->find($predicate));
     }
 
-    /**
-     * @test
-     * @group metadata
-     */
+    #[\PHPUnit\Framework\Attributes\Group('metadata')]
+    #[\PHPUnit\Framework\Attributes\Test]
     public function null_is_returned_when_no_match_is_found()
     {
         $predicate = function () {
@@ -236,13 +210,12 @@ class ShibbolethMetadataScopeListTest extends \PHPUnit\Framework\TestCase
     }
 
     /**
-     * @test
-     * @group metadata
-     *
-     * @dataProvider \OpenConext\Value\TestDataProvider::notCallable
      *
      * @param mixed $notCallable
      */
+    #[\PHPUnit\Framework\Attributes\DataProviderExternal(\OpenConext\Value\TestDataProvider::class, 'notCallable')]
+    #[\PHPUnit\Framework\Attributes\Group('metadata')]
+    #[\PHPUnit\Framework\Attributes\Test]
     public function find_predicate_must_be_a_callable($notCallable)
     {
         $this->expectException(\InvalidArgumentException::class);
@@ -254,10 +227,8 @@ class ShibbolethMetadataScopeListTest extends \PHPUnit\Framework\TestCase
         $list->find($notCallable);
     }
 
-    /**
-     * @test
-     * @group metadata
-     */
+    #[\PHPUnit\Framework\Attributes\Group('metadata')]
+    #[\PHPUnit\Framework\Attributes\Test]
     public function lists_are_only_equal_when_containing_the_same_elements_in_the_same_order()
     {
         $firstScope  = ShibbolethMetadataScope::literal('in scope');
@@ -276,10 +247,8 @@ class ShibbolethMetadataScopeListTest extends \PHPUnit\Framework\TestCase
         $this->assertFalse($base->equals($moreElements));
     }
 
-    /**
-     * @test
-     * @group metadata
-     */
+    #[\PHPUnit\Framework\Attributes\Group('metadata')]
+    #[\PHPUnit\Framework\Attributes\Test]
     public function a_list_can_be_iterated_over()
     {
         $literal = ShibbolethMetadataScope::literal('foo');
@@ -305,10 +274,8 @@ class ShibbolethMetadataScopeListTest extends \PHPUnit\Framework\TestCase
         $this->assertTrue($regexpSeen, 'Missing regexp scope when iterating over ScopeList with regexp scope');
     }
 
-    /**
-     * @test
-     * @group metadata
-     */
+    #[\PHPUnit\Framework\Attributes\Group('metadata')]
+    #[\PHPUnit\Framework\Attributes\Test]
     public function a_list_can_be_counted()
     {
         $literal = ShibbolethMetadataScope::literal('foo');
@@ -319,10 +286,8 @@ class ShibbolethMetadataScopeListTest extends \PHPUnit\Framework\TestCase
         $this->assertEquals(2, count($list));
     }
 
-    /**
-     * @test
-     * @group metadata
-     */
+    #[\PHPUnit\Framework\Attributes\Group('metadata')]
+    #[\PHPUnit\Framework\Attributes\Test]
     public function a_list_exposes_an_array_containing_its_elements()
     {
         $literal = ShibbolethMetadataScope::literal('foo');
@@ -336,11 +301,9 @@ class ShibbolethMetadataScopeListTest extends \PHPUnit\Framework\TestCase
         );
     }
 
-    /**
-     * @test
-     * @group metadata
-     * @group contactperson
-     */
+    #[\PHPUnit\Framework\Attributes\Group('metadata')]
+    #[\PHPUnit\Framework\Attributes\Group('contactperson')]
+    #[\PHPUnit\Framework\Attributes\Test]
     public function deserializing_a_serialized_shibboleth_metadata_scope_list_results_in_an_equal_value_object()
     {
         $literal = ShibbolethMetadataScope::literal('foo');
@@ -353,24 +316,22 @@ class ShibbolethMetadataScopeListTest extends \PHPUnit\Framework\TestCase
     }
 
     /**
-     * @test
-     * @group        metadata
-     * @group        contactperson
      *
-     * @dataProvider \OpenConext\Value\TestDataProvider::notArray
      *
      * @param mixed $notArray
      */
+    #[\PHPUnit\Framework\Attributes\DataProviderExternal(\OpenConext\Value\TestDataProvider::class, 'notArray')]
+    #[\PHPUnit\Framework\Attributes\Group('metadata')]
+    #[\PHPUnit\Framework\Attributes\Group('contactperson')]
+    #[\PHPUnit\Framework\Attributes\Test]
     public function deserialization_requires_an_array($notArray)
     {
         $this->expectException(\InvalidArgumentException::class);
         ShibbolethMetadataScopeList::deserialize($notArray);
     }
 
-    /**
-     * @test
-     * @group metadata
-     */
+    #[\PHPUnit\Framework\Attributes\Group('metadata')]
+    #[\PHPUnit\Framework\Attributes\Test]
     public function a_list_can_be_cast_to_string()
     {
         $literal = ShibbolethMetadataScope::literal('foo');
