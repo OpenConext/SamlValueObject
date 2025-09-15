@@ -1,18 +1,43 @@
 # OpenConext Saml Value Object
 
-| Branch  |     |
-| ------- | --- |
-| master  | [![Build Status](https://travis-ci.org/OpenConext/SamlValueObject.svg?branch=master)](https://travis-ci.org/OpenConext/SamlValueObject) [![Scrutinizer Code Quality](https://scrutinizer-ci.com/g/OpenConext/SamlValueObject/badges/quality-score.png?b=master)](https://scrutinizer-ci.com/g/OpenConext/SamlValueObject/?branch=master) |
-| develop | [![Build Status](https://travis-ci.org/OpenConext/SamlValueObject.svg?branch=develop)](https://travis-ci.org/OpenConext/SamlValueObject) [![Scrutinizer Code Quality](https://scrutinizer-ci.com/g/OpenConext/SamlValueObject/badges/quality-score.png?b=master)](https://scrutinizer-ci.com/g/OpenConext/SamlValueObject/?branch=develop) |
-
 A set of value objects to be used within the SAML2 domain.
 
 ## Installation
 
 ```sh
-composer require openconext/saml-value-object:dev-master
+composer require openconext/saml-value-object
 ```
 
-# License
+## Local development (Docker)
+A simple Compose file (compose.yaml) is provided with a single php (PHP 8.2 CLI) service.
+
+### Start container
+```sh
+docker compose up -d
+```
+
+### Open a shell
+```sh
+docker compose exec php bash
+```
+
+### Install dependencies
+```sh
+composer install
+```
+
+### Run full quality check suite
+Equivalent to CI:
+```sh
+composer check
+```
+
+## Releases
+
+- **3.0** - Improved PHP 8.2 support and replaced abandoned dev tooling
+- **2.0** - Basic php 8.2 support
+- **1.0** - Initial release
+
+## License
 
 See the LICENSE file
