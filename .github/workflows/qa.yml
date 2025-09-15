@@ -57,14 +57,6 @@ jobs:
       - name: Run checks (composer check)
         run: composer check --ansi
 
-      - name: Upload PHPUnit JUnit report
-        if: always() && matrix.php == '8.2' && exists('var/qa/junit.xml')
-        uses: actions/upload-artifact@v4
-        with:
-            name: phpunit-junit
-            path: var/qa/junit.xml
-            if-no-files-found: ignore
-
       - name: Composer outdated (informational)
         if: always() && matrix.php == '8.2'
         run: composer outdated --direct || true
