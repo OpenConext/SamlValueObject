@@ -2,7 +2,6 @@
 
 namespace OpenConext\Value\Assert;
 
-use OpenConext\Value\Assert\Stub\CallMe;
 use OpenConext\Value\Exception\InvalidArgumentException;
 
 

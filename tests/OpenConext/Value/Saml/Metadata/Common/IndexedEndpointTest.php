@@ -2,9 +2,6 @@
 
 namespace OpenConext\Value\Saml\Metadata\Common;
 
-use Doctrine\Instantiator\Exception\InvalidArgumentException;
-
-
 class IndexedEndpointTest extends \PHPUnit\Framework\TestCase
 {
     /**
