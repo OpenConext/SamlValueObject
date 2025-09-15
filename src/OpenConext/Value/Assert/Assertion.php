@@ -46,7 +46,7 @@ class Assertion extends BaseAssertion
     {
         $pregMatchErrored = false;
         set_error_handler(
-            function () use (&$pregMatchErrored) {
+            function () use (&$pregMatchErrored): void {
                 $pregMatchErrored = true;
             }
         );

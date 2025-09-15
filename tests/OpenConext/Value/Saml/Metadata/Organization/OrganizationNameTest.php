@@ -3,9 +3,9 @@
 namespace OpenConext\Value\Saml\Metadata\Organization;
 
 use OpenConext\Value\Exception\InvalidArgumentException;
-use PHPUnit_Framework_TestCase as UnitTest;
 
-class OrganizationNameTest extends UnitTest
+
+class OrganizationNameTest extends \PHPUnit\Framework\TestCase
 {
     /**
      * @test
@@ -13,12 +13,12 @@ class OrganizationNameTest extends UnitTest
      * @group organization
      *
      * @dataProvider \OpenConext\Value\TestDataProvider::notStringOrEmptyString()
-     * @expectedException InvalidArgumentException
      *
      * @param mixed $invalidArgument
      */
     public function organization_name_must_be_a_non_empty_string($invalidArgument)
     {
+        $this->expectException(\InvalidArgumentException::class);
         new OrganizationName($invalidArgument, 'en');
     }
 
@@ -28,12 +28,12 @@ class OrganizationNameTest extends UnitTest
      * @group organization
      *
      * @dataProvider \OpenConext\Value\TestDataProvider::notStringOrEmptyString()
-     * @expectedException InvalidArgumentException
      *
      * @param mixed $invalidArgument
      */
     public function language_must_be_a_non_emtpy_string($invalidArgument)
     {
+        $this->expectException(\InvalidArgumentException::class);
         new OrganizationName('OpenConext', $invalidArgument);
     }
 
@@ -112,19 +112,19 @@ class OrganizationNameTest extends UnitTest
      * @group organization
      *
      * @dataProvider invalidDeserializationDataProvider
-     * @expectedException InvalidArgumentException
      *
      * @param mixed $invalidData
      */
     public function deserialization_requires_valid_data($invalidData)
     {
+        $this->expectException(\InvalidArgumentException::class);
         OrganizationName::deserialize($invalidData);
     }
 
     /**
      * @return array
      */
-    public function invalidDeserializationDataProvider()
+    public static function invalidDeserializationDataProvider()
     {
         return array(
             'data is not an array' => array('foobar'),

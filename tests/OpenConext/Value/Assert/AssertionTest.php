@@ -4,12 +4,13 @@ namespace OpenConext\Value\Assert;
 
 use OpenConext\Value\Assert\Stub\CallMe;
 use OpenConext\Value\Exception\InvalidArgumentException;
-use PHPUnit_Framework_TestCase as UnitTest;
 
-class AssertionTest extends UnitTest
+
+class AssertionTest extends \PHPUnit\Framework\TestCase
 {
     /**
      * @test
+     * @doesNotPerformAssertions
      */
     public function non_empty_strings_are_valid()
     {
@@ -22,12 +23,12 @@ class AssertionTest extends UnitTest
      * @test
      *
      * @dataProvider \OpenConext\Value\TestDataProvider::notStringOrEmptyString()
-     * @expectedException InvalidArgumentException
      *
      * @param mixed $value
      */
     public function not_strings_or_empty_strings_are_invalid($value)
     {
+        $this->expectException(\InvalidArgumentException::class);
         Assertion::nonEmptyString($value, 'value');
     }
 
@@ -35,22 +36,21 @@ class AssertionTest extends UnitTest
      * @test
      *
      * @dataProvider \OpenConext\Value\TestDataProvider::invalidRegularExpressionProvider
-     * @expectedException InvalidArgumentException
      *
      * @param string $invalidPattern
      */
     public function an_invalid_regular_expression_does_not_pass_the_assertion($invalidPattern)
     {
+        $this->expectException(\InvalidArgumentException::class);
         Assertion::validRegularExpression($invalidPattern, 'invalidPattern');
     }
 
     /**
      * @test
-     *
-     * @expectedException InvalidArgumentException
      */
     public function a_missing_key_makes_the_assertion_fail()
     {
+        $this->expectException(\InvalidArgumentException::class);
         $requiredKeys = array('a', 'b');
         $actualData   = array('a' => 1, 'c' => 2);
 

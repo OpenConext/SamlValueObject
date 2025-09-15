@@ -3,19 +3,18 @@
 namespace OpenConext\Value\Saml\Metadata\Common;
 
 use OpenConext\Value\Exception\InvalidArgumentException;
-use PHPUnit_Framework_TestCase as UnitTest;
 
-class BindingTest extends UnitTest
+
+class BindingTest extends \PHPUnit\Framework\TestCase
 {
     /**
      * @test
      * @group metadata
      * @group common
-     *
-     * @expectedException InvalidArgumentException
      */
     public function binding_must_be_one_of_the_valid_bindings()
     {
+        $this->expectException(\InvalidArgumentException::class);
         new Binding('not a valid binding :(');
     }
 
@@ -42,7 +41,7 @@ class BindingTest extends UnitTest
     /**
      * @return array
      */
-    public function bindingAndFactoryMethodProvider()
+    public static function bindingAndFactoryMethodProvider()
     {
         return array(
             'HTTP_POST'     => array(Binding::HTTP_POST, 'httpPost'),
@@ -87,12 +86,12 @@ class BindingTest extends UnitTest
      * @group        common
      *
      * @dataProvider \OpenConext\Value\TestDataProvider::notStringOrEmptyString
-     * @expectedException InvalidArgumentException
      *
      * @param mixed $notStringOrEmptyString
      */
     public function to_verify_the_type_of_a_binding_a_non_empty_string_must_be_used($notStringOrEmptyString)
     {
+        $this->expectException(\InvalidArgumentException::class);
         $binding = Binding::httpPost();
         $binding->isOfType($notStringOrEmptyString);
     }
@@ -146,12 +145,12 @@ class BindingTest extends UnitTest
      * @group common
      *
      * @dataProvider \OpenConext\Value\TestDataProvider::notStringOrEmptyString
-     * @expectedException InvalidArgumentException
      *
      * @param mixed $notStringOrEmtpyString
      */
     public function deserialization_requires_data_to_be_a_non_empty_string($notStringOrEmtpyString)
     {
+        $this->expectException(\InvalidArgumentException::class);
         Binding::deserialize($notStringOrEmtpyString);
     }
 
@@ -162,6 +161,6 @@ class BindingTest extends UnitTest
      */
     public function a_binding_can_be_cast_to_string()
     {
-        $this->assertInternalType('string', (string) Binding::HTTP_ARTIFACT);
+        $this->assertIsString((string) Binding::HTTP_ARTIFACT);
     }
 }

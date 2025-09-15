@@ -3,9 +3,9 @@
 namespace OpenConext\Value\Saml;
 
 use OpenConext\Value\Exception\InvalidArgumentException;
-use PHPUnit_Framework_TestCase as UnitTest;
 
-class ContactTypeTest extends UnitTest
+
+class NameIdFormatTest extends \PHPUnit\Framework\TestCase
 {
     /**
      * @test
@@ -38,10 +38,10 @@ class ContactTypeTest extends UnitTest
         $nameIdFormatByType = new NameIdFormat($nameIdFormat);
         $nameIdFormatByFactory = NameIdFormat::$factoryMethod();
 
-        $nameIdFormatByType->equals($nameIdFormatByFactory);
+        $this->assertTrue($nameIdFormatByType->equals($nameIdFormatByFactory));
     }
 
-    public function typeAndFactoryMethodProvider()
+    public static function typeAndFactoryMethodProvider()
     {
         return array(
             'unspecified'                   => array(NameIdFormat::UNSPECIFIED, 'unspecified'),
@@ -61,11 +61,10 @@ class ContactTypeTest extends UnitTest
     /**
      * @test
      * @group nameid
-     *
-     * @expectedException InvalidArgumentException
      */
     public function an_invalid_format_causes_an_exception_to_be_thrown()
     {
+        $this->expectException(\InvalidArgumentException::class);
         new NameIdFormat('This is very much not valid');
     }
 
@@ -97,12 +96,12 @@ class ContactTypeTest extends UnitTest
      * @group nameid
      *
      * @dataProvider \OpenConext\Value\TestDataProvider::notStringOrEmptyString
-     * @expectedException InvalidArgumentException
      *
      * @param mixed $invalidData
      */
     public function deserialization_requires_valid_data($invalidData)
     {
+        $this->expectException(\InvalidArgumentException::class);
         NameIdFormat::deserialize($invalidData);
     }
 

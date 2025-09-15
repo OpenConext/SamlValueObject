@@ -3,9 +3,9 @@
 namespace OpenConext\Value\Saml\Metadata\ContactPerson;
 
 use OpenConext\Value\Exception\InvalidArgumentException;
-use PHPUnit_Framework_TestCase as UnitTest;
 
-class EmailAddressTest extends UnitTest
+
+class EmailAddressTest extends \PHPUnit\Framework\TestCase
 {
     /**
      * @test
@@ -13,12 +13,12 @@ class EmailAddressTest extends UnitTest
      * @group contactperson
      *
      * @dataProvider \OpenConext\Value\TestDataProvider::notRfc822CompliantEmail()
-     * @expectedException InvalidArgumentException
      *
      * @param mixed $invalidAddress
      */
     public function an_rfc_822_compliant_email_address_is_required($invalidAddress)
     {
+        $this->expectException(\InvalidArgumentException::class);
         new EmailAddress($invalidAddress);
     }
 
@@ -73,12 +73,12 @@ class EmailAddressTest extends UnitTest
      * @group        contactperson
      *
      * @dataProvider \OpenConext\Value\TestDataProvider::notRfc822CompliantEmail()
-     * @expectedException InvalidArgumentException
      *
      * @param mixed $invalidData
      */
     public function deserialization_requires_valid_data($invalidData)
     {
+        $this->expectException(\InvalidArgumentException::class);
         EmailAddress::deserialize($invalidData);
     }
 

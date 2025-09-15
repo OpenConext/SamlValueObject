@@ -9,19 +9,18 @@ use OpenConext\Value\Saml\Metadata\Organization\OrganizationName;
 use OpenConext\Value\Saml\Metadata\Organization\OrganizationNameList;
 use OpenConext\Value\Saml\Metadata\Organization\OrganizationUrl;
 use OpenConext\Value\Saml\Metadata\Organization\OrganizationUrlList;
-use PHPUnit_Framework_TestCase as UnitTest;
 
-class OrganizationTest extends UnitTest
+
+class OrganizationTest extends \PHPUnit\Framework\TestCase
 {
     /**
      * @test
      * @group metadata
      * @group organization
-     *
-     * @expectedException InvalidArgumentException
      */
     public function organization_requires_at_least_one_organization_name()
     {
+        $this->expectException(\InvalidArgumentException::class);
         new Organization(
             new OrganizationNameList(array()),
             new OrganizationDisplayNameList(array(new OrganizationDisplayName('OpenConext', 'en'))),
@@ -33,11 +32,10 @@ class OrganizationTest extends UnitTest
      * @test
      * @group metadata
      * @group organization
-     *
-     * @expectedException InvalidArgumentException
      */
     public function organization_requires_at_least_one_organization_display_name()
     {
+        $this->expectException(\InvalidArgumentException::class);
         new Organization(
             new OrganizationNameList(array(new OrganizationName('OpenConext', 'en'))),
             new OrganizationDisplayNameList(array()),
@@ -49,11 +47,10 @@ class OrganizationTest extends UnitTest
      * @test
      * @group metadata
      * @group organization
-     *
-     * @expectedException InvalidArgumentException
      */
     public function organization_requires_at_least_one_organization_url()
     {
+        $this->expectException(\InvalidArgumentException::class);
         new Organization(
             new OrganizationNameList(array(new OrganizationName('OpenConext', 'en'))),
             new OrganizationDisplayNameList(array(new OrganizationDisplayName('OpenConext', 'en'))),
@@ -178,12 +175,12 @@ class OrganizationTest extends UnitTest
      * @group organization
      *
      * @dataProvider \OpenConext\Value\TestDataProvider::notArray
-     * @expectedException InvalidArgumentException
      *
      * @param mixed $notArray
      */
     public function deserialization_requires_data_to_be_an_array($notArray)
     {
+        $this->expectException(\InvalidArgumentException::class);
         Organization::deserialize($notArray);
     }
 
@@ -193,16 +190,16 @@ class OrganizationTest extends UnitTest
      * @group        organization
      *
      * @dataProvider invalidDeserializationDataProvider
-     * @expectedException InvalidArgumentException
      *
      * @param mixed $invalidData
      */
     public function deserialization_requires_the_presence_of_requried_keys($invalidData)
     {
+        $this->expectException(\InvalidArgumentException::class);
         Organization::deserialize($invalidData);
     }
 
-    public function invalidDeserializationDataProvider()
+    public static function invalidDeserializationDataProvider()
     {
         return array(
             'missing names key' => array(array_flip(array('a', 'organization_display_names', 'organization_urls'))),

@@ -3,20 +3,19 @@
 namespace OpenConext\Value;
 
 use OpenConext\Value\Exception\InvalidArgumentException;
-use PHPUnit_Framework_TestCase as UnitTest;
 
-class RegularExpressionTest extends UnitTest
+
+class RegularExpressionTest extends \PHPUnit\Framework\TestCase
 {
     /**
      * @test
      * @group value
      *
      * @dataProvider \OpenConext\Value\TestDataProvider::notStringOrEmptyString
-     *
-     * @expectedException InvalidArgumentException
      */
     public function a_regex_cannot_be_created_with_patterns_that_are_not_a_non_empty_string($pattern)
     {
+        $this->expectException(\InvalidArgumentException::class);
         new RegularExpression($pattern);
     }
 
@@ -45,11 +44,10 @@ class RegularExpressionTest extends UnitTest
      * @group value
      *
      * @dataProvider \OpenConext\Value\TestDataProvider::invalidRegularExpressionProvider
-     *
-     * @expectedException InvalidArgumentException
      */
     public function a_regex_cannot_be_created_with_an_invalid_regular_expression($invalidPattern)
     {
+        $this->expectException(\InvalidArgumentException::class);
         new RegularExpression($invalidPattern);
     }
 
@@ -58,12 +56,12 @@ class RegularExpressionTest extends UnitTest
      * @group value
      *
      * @dataProvider \OpenConext\Value\TestDataProvider::notString
-     * @expectedException InvalidArgumentException
      *
      * @param mixed $invalidArgument
      */
     public function matches_requires_a_string_argument($invalidArgument)
     {
+        $this->expectException(\InvalidArgumentException::class);
         $regularExpression = new RegularExpression('/abc/i');
         $regularExpression->matches($invalidArgument);
     }
@@ -148,12 +146,12 @@ class RegularExpressionTest extends UnitTest
      * @group        contactperson
      *
      * @dataProvider \OpenConext\Value\TestDataProvider::invalidRegularExpressionProvider
-     * @expectedException InvalidArgumentException
      *
      * @param string $invalidPattern
      */
     public function deserialization_requires_valid_data($invalidPattern)
     {
+        $this->expectException(\InvalidArgumentException::class);
         RegularExpression::deserialize($invalidPattern);
     }
 

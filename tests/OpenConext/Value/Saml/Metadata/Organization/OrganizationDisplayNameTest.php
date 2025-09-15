@@ -3,9 +3,8 @@
 namespace OpenConext\Value\Saml\Metadata\Organization;
 
 use OpenConext\Value\Exception\InvalidArgumentException;
-use PHPUnit_Framework_TestCase as UnitTest;
 
-class OrganizationDisplayNameTest extends UnitTest
+class OrganizationDisplayNameTest extends \PHPUnit\Framework\TestCase
 {
     /**
      * @test
@@ -13,12 +12,12 @@ class OrganizationDisplayNameTest extends UnitTest
      * @group organization
      *
      * @dataProvider \OpenConext\Value\TestDataProvider::notStringOrEmptyString()
-     * @expectedException InvalidArgumentException
      *
      * @param mixed $invalidArgument
      */
     public function display_name_must_be_a_non_empty_string($invalidArgument)
     {
+        $this->expectException(InvalidArgumentException::class);
         new OrganizationDisplayName($invalidArgument, 'en');
     }
 
@@ -28,12 +27,12 @@ class OrganizationDisplayNameTest extends UnitTest
      * @group organization
      *
      * @dataProvider \OpenConext\Value\TestDataProvider::notStringOrEmptyString()
-     * @expectedException InvalidArgumentException
      *
      * @param mixed $invalidArgument
      */
     public function language_must_be_a_non_emtpy_string($invalidArgument)
     {
+        $this->expectException(\OpenConext\Value\Exception\InvalidArgumentException::class);
         new OrganizationDisplayName('OpenConext', $invalidArgument);
     }
 
@@ -115,19 +114,19 @@ class OrganizationDisplayNameTest extends UnitTest
      * @group        organization
      *
      * @dataProvider invalidDeserializationDataProvider
-     * @expectedException InvalidArgumentException
      *
      * @param mixed $invalidData
      */
     public function deserialization_requires_valid_data($invalidData)
     {
-        OrganizationDisplayName::deserialize($invalidData);
+        $this->expectException(InvalidArgumentException::class);
+            OrganizationDisplayName::deserialize($invalidData);
     }
 
     /**
      * @return array
      */
-    public function invalidDeserializationDataProvider()
+    public static function invalidDeserializationDataProvider()
     {
         return array(
             'data is not an array'     => array('foobar'),

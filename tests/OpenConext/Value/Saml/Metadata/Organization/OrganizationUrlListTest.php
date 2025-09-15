@@ -3,20 +3,19 @@
 namespace OpenConext\Value\Saml\Metadata\Organization;
 
 use OpenConext\Value\Exception\InvalidArgumentException;
-use PHPUnit_Framework_TestCase as UnitTest;
+
 use stdClass;
 
-class OrganizationUrlListTest extends UnitTest
+class OrganizationUrlListTest extends \PHPUnit\Framework\TestCase
 {
     /**
      * @test
      * @group metadata
      * @group organization
-     *
-     * @expectedException InvalidArgumentException
      */
     public function all_elements_must_be_an_organization_irl()
     {
+        $this->expectException(\InvalidArgumentException::class);
         $invalidElements = array(
             new OrganizationUrl('https://www.openconext.org', 'en'),
             new OrganizationUrl('https://www.domain.invalid', 'en'),
@@ -109,12 +108,12 @@ class OrganizationUrlListTest extends UnitTest
      * @group organization
      *
      * @dataProvider \OpenConext\Value\TestDataProvider::notInteger
-     * @expectedException InvalidArgumentException
      *
      * @param mixed $invalidArgument
      */
     public function index_to_retrieve_the_element_of_must_be_an_integer($invalidArgument)
     {
+        $this->expectException(\InvalidArgumentException::class);
         $urlOne = new OrganizationUrl('https://www.openconext.org', 'en');
         $urlTwo = new OrganizationUrl('https://www.domain.invalid', 'en');
 
@@ -127,11 +126,10 @@ class OrganizationUrlListTest extends UnitTest
      * @test
      * @group metadata
      * @group organization
-     *
-     * @expectedException \OpenConext\Value\Exception\IndexOutOfBoundsException
      */
     public function an_exception_is_thrown_when_attempting_to_get_an_element_with_a_negative_index()
     {
+        $this->expectException(\OpenConext\Value\Exception\IndexOutOfBoundsException::class);
         $urlOne = new OrganizationUrl('https://www.openconext.org', 'en');
         $urlTwo = new OrganizationUrl('https://www.domain.invalid', 'en');
 
@@ -144,11 +142,10 @@ class OrganizationUrlListTest extends UnitTest
      * @test
      * @group metadata
      * @group organization
-     *
-     * @expectedException \OpenConext\Value\Exception\IndexOutOfBoundsException
      */
     public function an_exception_is_thrown_when_attempting_to_get_an_element_with_an_index_larger_than_the_list_size()
     {
+        $this->expectException(\OpenConext\Value\Exception\IndexOutOfBoundsException::class);
         $urlOne = new OrganizationUrl('https://www.openconext.org', 'en');
         $urlTwo = new OrganizationUrl('https://www.domain.invalid', 'en');
 
@@ -221,12 +218,12 @@ class OrganizationUrlListTest extends UnitTest
      * @group organization
      *
      * @dataProvider \OpenConext\Value\TestDataProvider::notCallable
-     * @expectedException InvalidArgumentException
      *
      * @param mixed $notCallable
      */
     public function find_predicate_must_be_a_callable($notCallable)
     {
+        $this->expectException(\InvalidArgumentException::class);
         $urlOne = new OrganizationUrl('OpenConext', 'en_US');
         $urlTwo = new OrganizationUrl('OpenConext', 'en_GB');
 
@@ -343,12 +340,12 @@ class OrganizationUrlListTest extends UnitTest
      * @group organization
      *
      * @dataProvider \OpenConext\Value\TestDataProvider::notArray
-     * @expectedException InvalidArgumentException
      *
      * @param mixed $notArray
      */
     public function deserialization_requires_an_array($notArray)
     {
+        $this->expectException(\InvalidArgumentException::class);
         OrganizationUrlList::deserialize($notArray);
     }
 

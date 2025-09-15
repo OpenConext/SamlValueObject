@@ -178,6 +178,6 @@ final class ShibbolethMetadataScopeList implements Countable, IteratorAggregate,
 
     public function __toString()
     {
-        return sprintf('ShibbolethMetadataScopeList(%s)', join(', ', array_map('strval', $this->scopes)));
+        return sprintf('ShibbolethMetadataScopeList(%s)', implode(', ', array_map('strval', $this->scopes)));
     }
 }

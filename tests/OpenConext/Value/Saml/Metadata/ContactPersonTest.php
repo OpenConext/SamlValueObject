@@ -11,9 +11,9 @@ use OpenConext\Value\Saml\Metadata\ContactPerson\GivenName;
 use OpenConext\Value\Saml\Metadata\ContactPerson\Surname;
 use OpenConext\Value\Saml\Metadata\ContactPerson\TelephoneNumber;
 use OpenConext\Value\Saml\Metadata\ContactPerson\TelephoneNumberList;
-use PHPUnit_Framework_TestCase as UnitTest;
 
-class ContactPersonTest extends UnitTest
+
+class ContactPersonTest extends \PHPUnit\Framework\TestCase
 {
     /**
      * @test
@@ -41,7 +41,7 @@ class ContactPersonTest extends UnitTest
     /**
      * @return array
      */
-    public function differentContactPersonProvider()
+    public static function differentContactPersonProvider()
     {
         $type      = ContactType::technical();
         $email     = new EmailAddressList(array(new EmailAddress('homer@domain.invalid')));
@@ -200,12 +200,12 @@ class ContactPersonTest extends UnitTest
      * @group contactperson
      *
      * @dataProvider \OpenConext\Value\TestDataProvider::notArray
-     * @expectedException InvalidArgumentException
      *
      * @param mixed $notArray
      */
     public function deserialization_requires_an_array_as_data($notArray)
     {
+        $this->expectException(\InvalidArgumentException::class);
         ContactPerson::deserialize($notArray);
     }
 
@@ -215,19 +215,19 @@ class ContactPersonTest extends UnitTest
      * @group        contactperson
      *
      * @dataProvider invalidDeserializationDataProvider
-     * @expectedException InvalidArgumentException
      *
      * @param array $invalidData
      */
     public function deserialization_requires_data_with_expected_keys($invalidData)
     {
+        $this->expectException(\InvalidArgumentException::class);
         ContactPerson::deserialize($invalidData);
     }
 
     /**
      * @return array
      */
-    public function invalidDeserializationDataProvider()
+    public static function invalidDeserializationDataProvider()
     {
         return array(
             'missing contact_type' => array(array_flip(array('email_address_list', 'telephone_number_list', 'given_name', 'surname', 'company'))),

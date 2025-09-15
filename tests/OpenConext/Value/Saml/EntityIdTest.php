@@ -3,21 +3,21 @@
 namespace OpenConext\Value\Saml;
 
 use OpenConext\Value\Exception\InvalidArgumentException;
-use PHPUnit_Framework_TestCase as UnitTest;
 
-class EntityIdTest extends UnitTest
+
+class EntityIdTest extends \PHPUnit\Framework\TestCase
 {
     /**
      * @test
      * @group entity
      *
      * @dataProvider \OpenConext\Value\TestDataProvider::notStringOrEmptyString
-     * @expectedException InvalidArgumentException
      *
      * @param mixed $invalidValue
      */
     public function only_non_empty_strings_are_valid_entity_ids($invalidValue)
     {
+        $this->expectException(\InvalidArgumentException::class);
         new EntityId($invalidValue);
     }
 
@@ -67,12 +67,12 @@ class EntityIdTest extends UnitTest
      * @group entity
      *
      * @dataProvider \OpenConext\Value\TestDataProvider::notStringOrEmptyString
-     * @expectedException InvalidArgumentException
      *
      * @param mixed $invalidData
      */
     public function deserialization_requires_valid_data($invalidData)
     {
+        $this->expectException(\InvalidArgumentException::class);
         EntityId::deserialize($invalidData);
     }
 

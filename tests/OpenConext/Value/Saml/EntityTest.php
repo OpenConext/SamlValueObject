@@ -3,9 +3,9 @@
 namespace OpenConext\Value\Saml;
 
 use OpenConext\Value\Exception\InvalidArgumentException;
-use PHPUnit_Framework_TestCase as UnitTest;
 
-class EntityTest extends UnitTest
+
+class EntityTest extends \PHPUnit\Framework\TestCase
 {
     /**
      * @test
@@ -36,16 +36,16 @@ class EntityTest extends UnitTest
      * @group entity
      *
      * @dataProvider invalidDescriptorProvider
-     * @expectedException \OpenConext\Value\Exception\InvalidArgumentException
      *
      * @param $invalidDescriptor
      */
     public function a_descriptor_must_have_exactly_two_elements_with_the_second_being_sp_or_idp($invalidDescriptor)
     {
+        $this->expectException(InvalidArgumentException::class);
         Entity::fromDescriptor($invalidDescriptor);
     }
 
-    public function invalidDescriptorProvider()
+    public static function invalidDescriptorProvider()
     {
         return array (
             'no elements'           => array(array()),
@@ -145,19 +145,19 @@ class EntityTest extends UnitTest
      * @group        metadata
      *
      * @dataProvider invalidDeserializationDataProvider
-     * @expectedException InvalidArgumentException
      *
      * @param mixed $invalidData
      */
     public function deserialization_requires_valid_data($invalidData)
     {
+        $this->expectException(\InvalidArgumentException::class);
         Entity::deserialize($invalidData);
     }
 
     /**
      * @return array
      */
-    public function invalidDeserializationDataProvider()
+    public static function invalidDeserializationDataProvider()
     {
         return array(
             'data is not an array'      => array('foobar'),

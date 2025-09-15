@@ -3,20 +3,19 @@
 namespace OpenConext\Value\Saml\Metadata\Organization;
 
 use OpenConext\Value\Exception\InvalidArgumentException;
-use PHPUnit_Framework_TestCase as UnitTest;
+
 use stdClass;
 
-class OrganizationDisplayNameListTest extends UnitTest
+class OrganizationDisplayNameListTest extends \PHPUnit\Framework\TestCase
 {
     /**
      * @test
      * @group metadata
      * @group organization
-     *
-     * @expectedException InvalidArgumentException
      */
     public function all_elements_must_be_an_organization_display_name()
     {
+        $this->expectException(\InvalidArgumentException::class);
         $invalidElements = array(
             new OrganizationDisplayName('OpenConext', 'en'),
             new OrganizationDisplayName('Different', 'en'),
@@ -110,12 +109,12 @@ class OrganizationDisplayNameListTest extends UnitTest
      * @group organization
      *
      * @dataProvider \OpenConext\Value\TestDataProvider::notInteger
-     * @expectedException InvalidArgumentException
      *
      * @param mixed $invalidArgument
      */
     public function index_to_retrieve_the_element_of_must_be_an_integer($invalidArgument)
     {
+        $this->expectException(\InvalidArgumentException::class);
         $displayNameOne = new OrganizationDisplayName('OpenConext', 'en');
         $displayNameTwo = new OrganizationDisplayName('Different', 'en');
 
@@ -128,11 +127,10 @@ class OrganizationDisplayNameListTest extends UnitTest
      * @test
      * @group metadata
      * @group organization
-     *
-     * @expectedException \OpenConext\Value\Exception\IndexOutOfBoundsException
      */
     public function an_exception_is_thrown_when_attempting_to_get_an_element_with_a_negative_index()
     {
+        $this->expectException(\OpenConext\Value\Exception\IndexOutOfBoundsException::class);
         $displayNameOne = new OrganizationDisplayName('OpenConext', 'en');
         $displayNameTwo = new OrganizationDisplayName('Different', 'en');
 
@@ -145,11 +143,10 @@ class OrganizationDisplayNameListTest extends UnitTest
      * @test
      * @group metadata
      * @group organization
-     *
-     * @expectedException \OpenConext\Value\Exception\IndexOutOfBoundsException
      */
     public function an_exception_is_thrown_when_attempting_to_get_an_element_with_an_index_larger_than_the_list_size()
     {
+        $this->expectException(\OpenConext\Value\Exception\IndexOutOfBoundsException::class);
         $displayNameOne = new OrganizationDisplayName('OpenConext', 'en');
         $displayNameTwo = new OrganizationDisplayName('OpenConext', 'nl');
 
@@ -222,12 +219,12 @@ class OrganizationDisplayNameListTest extends UnitTest
      * @group        contactperson
      *
      * @dataProvider \OpenConext\Value\TestDataProvider::notCallable
-     * @expectedException InvalidArgumentException
      *
      * @param mixed $notCallable
      */
     public function find_predicate_must_be_a_callable($notCallable)
     {
+        $this->expectException(\InvalidArgumentException::class);
         $displayNameOne = new OrganizationDisplayName('OpenConext', 'en_US');
         $displayNameTwo = new OrganizationDisplayName('OpenConext', 'en_GB');
 
@@ -356,12 +353,12 @@ class OrganizationDisplayNameListTest extends UnitTest
      * @group organization
      *
      * @dataProvider \OpenConext\Value\TestDataProvider::notArray
-     * @expectedException InvalidArgumentException
      *
      * @param mixed $notArray
      */
     public function deserialization_requires_an_array($notArray)
     {
+        $this->expectException(\InvalidArgumentException::class);
         OrganizationDisplayNameList::deserialize($notArray);
     }
 

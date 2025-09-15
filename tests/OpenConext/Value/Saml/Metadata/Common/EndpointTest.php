@@ -3,9 +3,9 @@
 namespace OpenConext\Value\Saml\Metadata\Common;
 
 use OpenConext\Value\Exception\InvalidArgumentException;
-use PHPUnit_Framework_TestCase as UnitTest;
 
-class EndpointTest extends UnitTest
+
+class EndpointTest extends \PHPUnit\Framework\TestCase
 {
     /**
      * @test
@@ -13,12 +13,12 @@ class EndpointTest extends UnitTest
      * @group common
      *
      * @dataProvider \OpenConext\Value\TestDataProvider::notStringOrEmptyString
-     * @expectedException InvalidArgumentException
      *
      * @param mixed $notStringOrEmptyString
      */
     public function location_must_be_a_non_empty_string($notStringOrEmptyString)
     {
+        $this->expectException(\InvalidArgumentException::class);
         new Endpoint(Binding::httpPost(), $notStringOrEmptyString);
     }
 
@@ -28,12 +28,12 @@ class EndpointTest extends UnitTest
      * @group common
      *
      * @dataProvider \OpenConext\Value\TestDataProvider::notNullAndNotStringOrEmptyString
-     * @expectedException InvalidArgumentException
      *
      * @param mixed $notNullAndNotStringOrEmptyString
      */
     public function response_location_must_be_null_or_a_non_empty_string($notNullAndNotStringOrEmptyString)
     {
+        $this->expectException(\InvalidArgumentException::class);
         new Endpoint(Binding::httpPost(), 'some:uri', $notNullAndNotStringOrEmptyString);
     }
 
@@ -132,12 +132,12 @@ class EndpointTest extends UnitTest
      * @group common
      *
      * @dataProvider \OpenConext\Value\TestDataProvider::notarray
-     * @expectedException InvalidArgumentException
      *
      * @param mixed $notArray
      */
     public function deserialization_requires_data_to_be_an_array($notArray)
     {
+        $this->expectException(\InvalidArgumentException::class);
         Endpoint::deserialize($notArray);
     }
 
@@ -147,16 +147,16 @@ class EndpointTest extends UnitTest
      * @group common
      *
      * @dataProvider invalidDataProvider
-     * @expectedException InvalidArgumentException
      *
      * @param array $invalidData
      */
     public function deserialization_requires_presence_of_all_required_keys($invalidData)
     {
+        $this->expectException(\InvalidArgumentException::class);
         Endpoint::deserialize($invalidData);
     }
 
-    public function invalidDataProvider()
+    public static function invalidDataProvider()
     {
         return array(
             'no matching keys'     => array(
@@ -189,6 +189,6 @@ class EndpointTest extends UnitTest
      */
     public function an_endpoint_can_be_cast_to_string()
     {
-        $this->assertInternalType('string', (string) new Endpoint(Binding::httpPost(), 'some:uri'));
+        $this->assertIsString((string) new Endpoint(Binding::httpPost(), 'some:uri'));
     }
 }

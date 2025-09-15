@@ -3,19 +3,18 @@
 namespace OpenConext\Value\Saml\Metadata;
 
 use OpenConext\Value\Exception\InvalidArgumentException;
-use PHPUnit_Framework_TestCase as UnitTest;
+
 use stdClass;
 
-class ShibbolethMetadataScopeListTest extends UnitTest
+class ShibbolethMetadataScopeListTest extends \PHPUnit\Framework\TestCase
 {
     /**
      * @test
      * @group metadata
-     *
-     * @expectedException InvalidArgumentException
      */
     public function all_elements_must_be_a_shibboleth_metadata_scope()
     {
+        $this->expectException(\InvalidArgumentException::class);
         $elements = array(
             ShibbolethMetadataScope::literal('foobar'),
             ShibbolethMetadataScope::regexp('abc'),
@@ -46,12 +45,12 @@ class ShibbolethMetadataScopeListTest extends UnitTest
      * @group metadata
      *
      * @dataProvider \OpenConext\Value\TestDataProvider::notString
-     * @expectedException \OpenConext\Value\Exception\InvalidArgumentException
      *
      * @param mixed $invalidScope
      */
     public function a_list_can_only_determine_if_strings_are_in_scope($invalidScope)
     {
+        $this->expectException(\OpenConext\Value\Exception\InvalidArgumentException::class);
         static $list = null;
 
         if (!$list) {
@@ -139,10 +138,10 @@ class ShibbolethMetadataScopeListTest extends UnitTest
      * @group metadata
      *
      * @dataProvider \OpenConext\Value\TestDataProvider::notInteger
-     * @expectedException InvalidArgumentException
      */
     public function index_to_retrieve_the_element_of_must_be_an_integer($invalidArgument)
     {
+        $this->expectException(\InvalidArgumentException::class);
         $firstScope  = ShibbolethMetadataScope::literal('in scope');
         $secondScope = ShibbolethMetadataScope::regexp('abc');
 
@@ -154,11 +153,10 @@ class ShibbolethMetadataScopeListTest extends UnitTest
     /**
      * @test
      * @group metadata
-     *
-     * @expectedException \OpenConext\Value\Exception\IndexOutOfBoundsException
      */
     public function an_exception_is_thrown_when_attempting_to_get_an_element_with_a_negative_index()
     {
+        $this->expectException(\OpenConext\Value\Exception\IndexOutOfBoundsException::class);
         $firstScope  = ShibbolethMetadataScope::literal('in scope');
         $secondScope = ShibbolethMetadataScope::regexp('abc');
 
@@ -170,11 +168,10 @@ class ShibbolethMetadataScopeListTest extends UnitTest
     /**
      * @test
      * @group metadata
-     *
-     * @expectedException \OpenConext\Value\Exception\IndexOutOfBoundsException
      */
     public function an_exception_is_thrown_when_attempting_to_get_an_element_with_an_index_larger_than_the_list_size()
     {
+        $this->expectException(\OpenConext\Value\Exception\IndexOutOfBoundsException::class);
         $firstScope  = ShibbolethMetadataScope::literal('in scope');
         $secondScope = ShibbolethMetadataScope::regexp('abc');
 
@@ -243,12 +240,12 @@ class ShibbolethMetadataScopeListTest extends UnitTest
      * @group metadata
      *
      * @dataProvider \OpenConext\Value\TestDataProvider::notCallable
-     * @expectedException InvalidArgumentException
      *
      * @param mixed $notCallable
      */
     public function find_predicate_must_be_a_callable($notCallable)
     {
+        $this->expectException(\InvalidArgumentException::class);
         $firstScope  = ShibbolethMetadataScope::literal('in scope');
         $secondScope = ShibbolethMetadataScope::regexp('abc');
 
@@ -361,12 +358,12 @@ class ShibbolethMetadataScopeListTest extends UnitTest
      * @group        contactperson
      *
      * @dataProvider \OpenConext\Value\TestDataProvider::notArray
-     * @expectedException InvalidArgumentException
      *
      * @param mixed $notArray
      */
     public function deserialization_requires_an_array($notArray)
     {
+        $this->expectException(\InvalidArgumentException::class);
         ShibbolethMetadataScopeList::deserialize($notArray);
     }
 

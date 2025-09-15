@@ -3,9 +3,9 @@
 namespace OpenConext\Value\Saml\Metadata\ContactPerson;
 
 use OpenConext\Value\Exception\InvalidArgumentException;
-use PHPUnit_Framework_TestCase as UnitTest;
 
-class TelephoneNumberTest extends UnitTest
+
+class TelephoneNumberTest extends \PHPUnit\Framework\TestCase
 {
     /**
      * @test
@@ -13,12 +13,12 @@ class TelephoneNumberTest extends UnitTest
      * @group        contactperson
      *
      * @dataProvider \OpenConext\Value\TestDataProvider::notStringOrEmptyString
-     * @expectedException InvalidArgumentException
      *
      * @param mixed $invalidValue
      */
     public function only_non_empty_strings_are_valid_telphone_numbers($invalidValue)
     {
+        $this->expectException(\InvalidArgumentException::class);
         new TelephoneNumber($invalidValue);
     }
 
@@ -73,12 +73,12 @@ class TelephoneNumberTest extends UnitTest
      * @group        contactperson
      *
      * @dataProvider \OpenConext\Value\TestDataProvider::notStringOrEmptyString
-     * @expectedException InvalidArgumentException
      *
      * @param mixed $invalidData
      */
     public function deserialization_requires_the_presence_of_the_correct_data($invalidData)
     {
+        $this->expectException(\InvalidArgumentException::class);
         TelephoneNumber::deserialize($invalidData);
     }
 

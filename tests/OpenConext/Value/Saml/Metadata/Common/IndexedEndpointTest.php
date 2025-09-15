@@ -3,9 +3,9 @@
 namespace OpenConext\Value\Saml\Metadata\Common;
 
 use Doctrine\Instantiator\Exception\InvalidArgumentException;
-use PHPUnit_Framework_TestCase as UnitTest;
 
-class IndexedEndpointTest extends UnitTest
+
+class IndexedEndpointTest extends \PHPUnit\Framework\TestCase
 {
     /**
      * @test
@@ -13,12 +13,12 @@ class IndexedEndpointTest extends UnitTest
      * @group common
      *
      * @dataProvider \OpenConext\Value\TestDataProvider::notInteger
-     * @expectedException InvalidArgumentException
      *
      * @param mixed $notInteger
      */
     public function index_must_be_an_integer($notInteger)
     {
+        $this->expectException(\InvalidArgumentException::class);
         new IndexedEndpoint($this->getPostEndpoint(), $notInteger);
     }
 
@@ -28,12 +28,12 @@ class IndexedEndpointTest extends UnitTest
      * @group common
      *
      * @dataProvider \OpenConext\Value\TestDataProvider::notBoolean
-     * @expectedException InvalidArgumentException
      *
      * @param mixed $notBoolean
      */
     public function is_default_must_be_a_boolean($notBoolean)
     {
+        $this->expectException(\InvalidArgumentException::class);
         new IndexedEndpoint($this->getPostEndpoint(), 1, $notBoolean);
     }
 
@@ -152,12 +152,12 @@ class IndexedEndpointTest extends UnitTest
      * @group common
      *
      * @dataProvider \OpenConext\Value\TestDataProvider::notArray
-     * @expectedException InvalidArgumentException
      *
      * @param mixed $notArray
      */
     public function deserialization_requires_data_to_be_an_array($notArray)
     {
+        $this->expectException(\InvalidArgumentException::class);
         IndexedEndpoint::deserialize($notArray);
     }
 
@@ -167,19 +167,19 @@ class IndexedEndpointTest extends UnitTest
      * @group common
      *
      * @dataProvider invalidDataProvider
-     * @expectedException InvalidArgumentException
      *
      * @param mixed $invalidData
      */
     public function deserialization_requires_the_presence_of_all_required_keys($invalidData)
     {
+        $this->expectException(\InvalidArgumentException::class);
         IndexedEndpoint::deserialize($invalidData);
     }
 
     /**
      * @return array
      */
-    public function invalidDataProvider()
+    public static function invalidDataProvider()
     {
         $endpoint = new Endpoint(Binding::httpPost(), 'some:uri', 'some:response:location');
 
@@ -200,7 +200,7 @@ class IndexedEndpointTest extends UnitTest
     {
         $indexedEndpoint = new IndexedEndpoint($this->getPostEndpoint(), 1, true);
 
-        $this->assertInternalType('string', (string) $indexedEndpoint);
+        $this->assertIsString((string) $indexedEndpoint);
     }
 
     /**

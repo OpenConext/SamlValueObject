@@ -2,9 +2,9 @@
 
 namespace OpenConext\Value\Exception;
 
-use PHPUnit_Framework_TestCase as UnitTest;
 
-class IndexOutOfBoundsExceptionTest extends UnitTest
+
+class IndexOutOfBoundsExceptionTest extends \PHPUnit\Framework\TestCase
 {
     /**
      * @test

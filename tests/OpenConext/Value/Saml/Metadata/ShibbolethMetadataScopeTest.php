@@ -3,21 +3,20 @@
 namespace OpenConext\Value\Saml\Metadata;
 
 use OpenConext\Value\Exception\InvalidArgumentException;
-use PHPUnit_Framework_TestCase as UnitTest;
 
-class ShibbolethMetadataScopeTest extends UnitTest
+
+class ShibbolethMetadataScopeTest extends \PHPUnit\Framework\TestCase
 {
     /**
      * @test
      * @group metadata
      *
-     * @expectedException \OpenConext\Value\Exception\InvalidArgumentException
      * @dataProvider \OpenConext\Value\TestDataProvider::notStringOrEmptyString
-     *
      * @param mixed $literal
      */
     public function a_literal_scope_factory_method_only_accepts_a_non_empty_string($literal)
     {
+        $this->expectException(\OpenConext\Value\Exception\InvalidArgumentException::class);
         ShibbolethMetadataScope::literal($literal);
     }
 
@@ -25,13 +24,12 @@ class ShibbolethMetadataScopeTest extends UnitTest
      * @test
      * @group metadata
      *
-     * @expectedException \OpenConext\Value\Exception\InvalidArgumentException
      * @dataProvider \OpenConext\Value\TestDataProvider::notStringOrEmptyString
-     *
      * @param mixed $regexp
      */
     public function the_regexp_scope_factory_method_only_accepts_a_non_empty_string($regexp)
     {
+        $this->expectException(\OpenConext\Value\Exception\InvalidArgumentException::class);
         ShibbolethMetadataScope::regexp($regexp);
     }
 
@@ -40,12 +38,12 @@ class ShibbolethMetadataScopeTest extends UnitTest
      * @group metadata
      *
      * @dataProvider \OpenConext\Value\TestDataProvider::notStringOrEmptyString
-     * @expectedException InvalidArgumentException
      *
      * @param mixed $invalidValue
      */
     public function a_scope_can_only_be_created_using_a_non_empty_string($invalidValue)
     {
+        $this->expectException(\InvalidArgumentException::class);
         new ShibbolethMetadataScope($invalidValue);
     }
 
@@ -54,12 +52,12 @@ class ShibbolethMetadataScopeTest extends UnitTest
      * @group metadata
      *
      * @dataProvider \OpenConext\Value\TestDataProvider::notBoolean
-     * @expectedException InvalidArgumentException
      *
      * @param mixed $notBoolean
      */
     public function a_regexp_scope_can_only_be_created_with_a_boolean_argument($notBoolean)
     {
+        $this->expectException(\InvalidArgumentException::class);
         new ShibbolethMetadataScope('scope', $notBoolean);
     }
 
@@ -68,12 +66,12 @@ class ShibbolethMetadataScopeTest extends UnitTest
      * @group        metadata
      *
      * @dataProvider \OpenConext\Value\TestDataProvider::notString
-     * @expectedException InvalidArgumentException
      *
      * @param mixed $notString
      */
     public function the_value_to_verify_if_allowed_must_be_a_string($notString)
     {
+        $this->expectException(\InvalidArgumentException::class);
         $scope = new ShibbolethMetadataScope('foo');
         $scope->allows($notString);
     }
@@ -199,19 +197,19 @@ class ShibbolethMetadataScopeTest extends UnitTest
      * @group        metadata
      *
      * @dataProvider invalidDeserializationDataProvider
-     * @expectedException InvalidArgumentException
      *
      * @param mixed $invalidData
      */
     public function deserialization_requires_valid_data($invalidData)
     {
+        $this->expectException(\InvalidArgumentException::class);
         ShibbolethMetadataScope::deserialize($invalidData);
     }
 
     /**
      * @return array
      */
-    public function invalidDeserializationDataProvider()
+    public static function invalidDeserializationDataProvider()
     {
         return array(
             'data is not an array' => array('foobar'),

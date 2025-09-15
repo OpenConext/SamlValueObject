@@ -3,9 +3,9 @@
 namespace OpenConext\Value\Saml\Metadata\ContactPerson;
 
 use OpenConext\Value\Exception\InvalidArgumentException;
-use PHPUnit_Framework_TestCase as UnitTest;
 
-class ContactTypeTest extends UnitTest
+
+class ContactTypeTest extends \PHPUnit\Framework\TestCase
 {
     /**
      * @test
@@ -40,10 +40,10 @@ class ContactTypeTest extends UnitTest
         $contactByType = new ContactType($contactType);
         $contactByFactory = ContactType::$factoryMethod();
 
-        $contactByType->equals($contactByFactory);
+        $this->assertTrue($contactByType->equals($contactByFactory));
     }
 
-    public function typeAndFactoryMethodProvider()
+    public static function typeAndFactoryMethodProvider()
     {
         return array(
             'administrative' => array(ContactType::TYPE_ADMINISTRATIVE, 'administrative'),
@@ -58,11 +58,10 @@ class ContactTypeTest extends UnitTest
      * @test
      * @group metadata
      * @group contactperson
-     *
-     * @expectedException InvalidArgumentException
      */
     public function an_invalid_type_causes_an_exception_to_be_thrown()
     {
+        $this->expectException(\InvalidArgumentException::class);
         new ContactType('Nope, not a valid contacttype');
     }
 
@@ -98,12 +97,12 @@ class ContactTypeTest extends UnitTest
      * @group        contactperson
      *
      * @dataProvider \OpenConext\Value\TestDataProvider::notStringOrEmptyString
-     * @expectedException InvalidArgumentException
      *
      * @param mixed $invalidData
      */
     public function deserialization_requires_valid_data($invalidData)
     {
+        $this->expectException(\InvalidArgumentException::class);
         ContactType::deserialize($invalidData);
     }
 

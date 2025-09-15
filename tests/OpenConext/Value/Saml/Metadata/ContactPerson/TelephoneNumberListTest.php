@@ -3,19 +3,18 @@
 namespace OpenConext\Value\Saml\Metadata\ContactPerson;
 
 use OpenConext\Value\Exception\InvalidArgumentException;
-use PHPUnit_Framework_TestCase as UnitTest;
 
-class TelephoneNumberListTest extends UnitTest
+
+class TelephoneNumberListTest extends \PHPUnit\Framework\TestCase
 {
     /**
      * @test
      * @group metadata
      * @group contactperson
-     *
-     * @expectedException InvalidArgumentException
      */
     public function all_elements_must_be_a_telephone_number()
     {
+        $this->expectException(\InvalidArgumentException::class);
         $invalidElements = array(new TelephoneNumber('123'), new TelephoneNumber('456'), new \stdClass());
 
         new TelephoneNumberList($invalidElements);
@@ -105,10 +104,10 @@ class TelephoneNumberListTest extends UnitTest
      * @group contactperson
      *
      * @dataProvider \OpenConext\Value\TestDataProvider::notInteger
-     * @expectedException InvalidArgumentException
      */
     public function index_to_retrieve_the_element_of_must_be_an_integer($invalidArgument)
     {
+        $this->expectException(\InvalidArgumentException::class);
         $numberOne = new TelephoneNumber('123');
         $numberTwo = new TelephoneNumber('456');
 
@@ -121,11 +120,10 @@ class TelephoneNumberListTest extends UnitTest
      * @test
      * @group metadata
      * @group contactperson
-     *
-     * @expectedException \OpenConext\Value\Exception\IndexOutOfBoundsException
      */
     public function an_exception_is_thrown_when_attempting_to_get_an_element_with_a_negative_index()
     {
+        $this->expectException(\OpenConext\Value\Exception\IndexOutOfBoundsException::class);
         $numberOne = new TelephoneNumber('123');
         $numberTwo = new TelephoneNumber('456');
 
@@ -138,11 +136,10 @@ class TelephoneNumberListTest extends UnitTest
      * @test
      * @group metadata
      * @group contactperson
-     *
-     * @expectedException \OpenConext\Value\Exception\IndexOutOfBoundsException
      */
     public function an_exception_is_thrown_when_attempting_to_get_an_element_with_an_index_larger_than_the_list_size()
     {
+        $this->expectException(\OpenConext\Value\Exception\IndexOutOfBoundsException::class);
         $numberOne = new TelephoneNumber('123');
         $numberTwo = new TelephoneNumber('456');
 
@@ -215,12 +212,12 @@ class TelephoneNumberListTest extends UnitTest
      * @group        contactperson
      *
      * @dataProvider \OpenConext\Value\TestDataProvider::notCallable
-     * @expectedException InvalidArgumentException
      *
      * @param mixed $notCallable
      */
     public function find_predicate_must_be_a_callable($notCallable)
     {
+        $this->expectException(\InvalidArgumentException::class);
         $numberOne = new TelephoneNumber('123');
         $numberTwo = new TelephoneNumber('456');
 
@@ -340,12 +337,12 @@ class TelephoneNumberListTest extends UnitTest
      * @group        contactperson
      *
      * @dataProvider \OpenConext\Value\TestDataProvider::notArray
-     * @expectedException InvalidArgumentException
      *
      * @param mixed $notArray
      */
     public function deserialization_requires_an_array($notArray)
     {
+        $this->expectException(\InvalidArgumentException::class);
         TelephoneNumberList::deserialize($notArray);
     }
 

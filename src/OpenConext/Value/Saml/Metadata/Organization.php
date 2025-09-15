@@ -98,7 +98,7 @@ final class Organization implements Serializable
     public function __toString()
     {
         return sprintf(
-            'Organization(OrganizationNames=%s, OrganizationDisplayNames=%, OrganizationULRs=%s',
+            'Organization(OrganizationNames=%s, OrganizationDisplayNames=%s, OrganizationULRs=%s',
             $this->organizationNames,
             $this->organizationDisplayNames,
             $this->organizationUrls

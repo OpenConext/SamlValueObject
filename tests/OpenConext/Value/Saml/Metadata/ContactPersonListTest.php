@@ -11,20 +11,19 @@ use OpenConext\Value\Saml\Metadata\ContactPerson\GivenName;
 use OpenConext\Value\Saml\Metadata\ContactPerson\Surname;
 use OpenConext\Value\Saml\Metadata\ContactPerson\TelephoneNumber;
 use OpenConext\Value\Saml\Metadata\ContactPerson\TelephoneNumberList;
-use PHPUnit_Framework_TestCase as UnitTest;
+
 use stdClass;
 
-class ContactPersonListTest extends UnitTest
+class ContactPersonListTest extends \PHPUnit\Framework\TestCase
 {
     /**
      * @test
      * @group metadata
      * @group contactperson
-     *
-     * @expectedException InvalidArgumentException
      */
     public function all_elements_must_be_a_contact_person()
     {
+        $this->expectException(\InvalidArgumentException::class);
         $invalidElements = array(
             $this->getHomerContact(),
             $this->getMargeContact(),
@@ -118,10 +117,10 @@ class ContactPersonListTest extends UnitTest
      * @group contactperson
      *
      * @dataProvider \OpenConext\Value\TestDataProvider::notInteger
-     * @expectedException InvalidArgumentException
      */
     public function index_to_retrieve_the_element_of_must_be_a_integer($invalidArgument)
     {
+        $this->expectException(\InvalidArgumentException::class);
         $personOne = $this->getHomerContact();
         $personTwo = $this->getMargeContact();
 
@@ -134,11 +133,10 @@ class ContactPersonListTest extends UnitTest
      * @test
      * @group metadata
      * @group contactperson
-     *
-     * @expectedException \OpenConext\Value\Exception\IndexOutOfBoundsException
      */
     public function an_exception_is_thrown_when_attempting_to_get_a_element_with_a_negative_index()
     {
+        $this->expectException(\OpenConext\Value\Exception\IndexOutOfBoundsException::class);
         $personOne = $this->getHomerContact();
         $personTwo = $this->getMargeContact();
 
@@ -151,11 +149,10 @@ class ContactPersonListTest extends UnitTest
      * @test
      * @group metadata
      * @group contactperson
-     *
-     * @expectedException \OpenConext\Value\Exception\IndexOutOfBoundsException
      */
     public function an_exception_is_thrown_when_attempting_to_get_a_element_with_a_index_larger_than_the_list_size()
     {
+        $this->expectException(\OpenConext\Value\Exception\IndexOutOfBoundsException::class);
         $personOne = $this->getHomerContact();
         $personTwo = $this->getMargeContact();
 
@@ -230,12 +227,12 @@ class ContactPersonListTest extends UnitTest
      * @group        organization
      *
      * @dataProvider \OpenConext\Value\TestDataProvider::notCallable
-     * @expectedException InvalidArgumentException
      *
      * @param mixed $notCallable
      */
     public function find_predicate_must_be_a_callable($notCallable)
     {
+        $this->expectException(\InvalidArgumentException::class);
         $personOne = $this->getHomerContact();
         $personTwo = $this->getMargeContact();
 
@@ -355,12 +352,12 @@ class ContactPersonListTest extends UnitTest
      * @group        contactperson
      *
      * @dataProvider \OpenConext\Value\TestDataProvider::notArray
-     * @expectedException InvalidArgumentException
      *
      * @param mixed $notArray
      */
     public function deserialization_requires_a_array($notArray)
     {
+        $this->expectException(\InvalidArgumentException::class);
         ContactPersonList::deserialize($notArray);
     }
 

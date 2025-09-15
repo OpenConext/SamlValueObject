@@ -3,19 +3,18 @@
 namespace OpenConext\Value\Saml;
 
 use OpenConext\Value\Exception\InvalidArgumentException;
-use PHPUnit_Framework_TestCase as UnitTest;
+
 use stdClass;
 
-class NameIdFormatListTest extends UnitTest
+class NameIdFormatListTest extends \PHPUnit\Framework\TestCase
 {
     /**
      * @test
      * @group nameid
-     *
-     * @expectedException InvalidArgumentException
      */
     public function all_elements_must_be_a_name_id_format()
     {
+        $this->expectException(\InvalidArgumentException::class);
         $invalidElements = array(
             NameIdFormat::transient(),
             NameIdFormat::persistent(),
@@ -104,12 +103,12 @@ class NameIdFormatListTest extends UnitTest
      * @group nameid
      *
      * @dataProvider \OpenConext\Value\TestDataProvider::notInteger
-     * @expectedException InvalidArgumentException
      *
      * @param mixed $invalidArgument
      */
     public function index_to_retrieve_the_element_of_must_be_an_integer($invalidArgument)
     {
+        $this->expectException(\InvalidArgumentException::class);
         $formatOne = NameIdFormat::kerberosPrincipalName();
         $formatTwo = NameIdFormat::emailAddress();
 
@@ -121,11 +120,10 @@ class NameIdFormatListTest extends UnitTest
     /**
      * @test
      * @group nameid
-     *
-     * @expectedException \OpenConext\Value\Exception\IndexOutOfBoundsException
      */
     public function an_exception_is_thrown_when_attempting_to_get_an_element_with_a_negative_index()
     {
+        $this->expectException(\OpenConext\Value\Exception\IndexOutOfBoundsException::class);
         $formatOne = NameIdFormat::unspecified();
         $formatTwo = NameIdFormat::transient();
 
@@ -137,11 +135,10 @@ class NameIdFormatListTest extends UnitTest
     /**
      * @test
      * @group nameid
-     *
-     * @expectedException \OpenConext\Value\Exception\IndexOutOfBoundsException
      */
     public function an_exception_is_thrown_when_attempting_to_get_an_element_with_an_index_larger_than_the_list_size()
     {
+        $this->expectException(\OpenConext\Value\Exception\IndexOutOfBoundsException::class);
         $formatOne = NameIdFormat::unspecified();
         $formatTwo = NameIdFormat::transient();
 
@@ -232,12 +229,12 @@ class NameIdFormatListTest extends UnitTest
      * @group nameid
      *
      * @dataProvider \OpenConext\Value\TestDataProvider::notCallable
-     * @expectedException InvalidArgumentException
      *
      * @param mixed $notCallable
      */
     public function find_predicate_must_be_a_callable($notCallable)
     {
+        $this->expectException(\InvalidArgumentException::class);
         $firstFormat  = NameIdFormat::kerberosPrincipalName();
         $secondFormat = NameIdFormat::emailAddress();
 
@@ -329,12 +326,12 @@ class NameIdFormatListTest extends UnitTest
      * @group nameid
      *
      * @dataProvider \OpenConext\Value\TestDataProvider::notArray
-     * @expectedException InvalidArgumentException
      *
      * @param mixed $notArray
      */
     public function deserialization_requires_an_array($notArray)
     {
+        $this->expectException(\InvalidArgumentException::class);
         NameIdFormatList::deserialize($notArray);
     }
 

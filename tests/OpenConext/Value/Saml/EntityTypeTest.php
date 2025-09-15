@@ -3,9 +3,9 @@
 namespace OpenConext\Value\Saml;
 
 use OpenConext\Value\Exception\InvalidArgumentException;
-use PHPUnit_Framework_TestCase as UnitTest;
 
-class EntityTypeTest extends UnitTest
+
+class EntityTypeTest extends \PHPUnit\Framework\TestCase
 {
     /**
      * @test
@@ -24,11 +24,10 @@ class EntityTypeTest extends UnitTest
     /**
      * @test
      * @group entity
-     *
-     * @expectedException InvalidArgumentException
      */
     public function an_entity_type_cannot_be_created_with_a_non_existent_type()
     {
+        $this->expectException(\InvalidArgumentException::class);
         new EntityType('This is not a valid EntityType');
     }
 
@@ -66,11 +65,10 @@ class EntityTypeTest extends UnitTest
      * @test
      * @group metadata
      * @group entity
-     *
-     * @expectedException InvalidArgumentException
      */
     public function deserialization_requires_valid_data()
     {
+        $this->expectException(\InvalidArgumentException::class);
         EntityType::deserialize('not_a_valid_type');
     }
 

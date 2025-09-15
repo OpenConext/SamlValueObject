@@ -3,9 +3,9 @@
 namespace OpenConext\Value\Saml\Metadata\Common;
 
 use OpenConext\Value\Exception\InvalidArgumentException;
-use PHPUnit_Framework_TestCase as UnitTest;
 
-class LocalizedNameTest extends UnitTest
+
+class LocalizedNameTest extends \PHPUnit\Framework\TestCase
 {
     /**
      * @test
@@ -13,12 +13,12 @@ class LocalizedNameTest extends UnitTest
      * @group common
      *
      * @dataProvider \OpenConext\Value\TestDataProvider::notStringOrEmptyString
-     * @expectedException InvalidArgumentException
      *
      * @param mixed $notStringOrEmtpyString
      */
     public function name_must_be_a_non_empty_string($notStringOrEmtpyString)
     {
+        $this->expectException(\InvalidArgumentException::class);
         new LocalizedName($notStringOrEmtpyString, 'en');
     }
 
@@ -28,12 +28,12 @@ class LocalizedNameTest extends UnitTest
      * @group common
      *
      * @dataProvider \OpenConext\Value\TestDataProvider::notStringOrEmptyString
-     * @expectedException InvalidArgumentException
      *
      * @param mixed $notStringOrEmtpyString
      */
     public function language_must_be_a_non_empty_string($notStringOrEmtpyString)
     {
+        $this->expectException(\InvalidArgumentException::class);
         new LocalizedName('OpenConext', $notStringOrEmtpyString);
     }
 
@@ -102,12 +102,12 @@ class LocalizedNameTest extends UnitTest
      * @group common
      *
      * @dataProvider \OpenConext\Value\TestDataProvider::notArray
-     * @expectedException InvalidArgumentException
      *
      * @param mixed $notArray
      */
     public function deserialization_requires_data_to_be_an_array($notArray)
     {
+        $this->expectException(\InvalidArgumentException::class);
         LocalizedName::deserialize($notArray);
     }
 
@@ -117,16 +117,16 @@ class LocalizedNameTest extends UnitTest
      * @group common
      *
      * @dataProvider invalidDataProvider
-     * @expectedException InvalidArgumentException
      *
      * @param array $invalidData
      */
     public function deserialization_requires_all_required_keys_to_be_present($invalidData)
     {
+        $this->expectException(\InvalidArgumentException::class);
         LocalizedName::deserialize($invalidData);
     }
 
-    public function invalidDataProvider()
+    public static function invalidDataProvider()
     {
         return array(
             'no matching keys' => array(array('foo' => 'OpenConext', 'bar' => 'en_US')),
@@ -142,6 +142,6 @@ class LocalizedNameTest extends UnitTest
      */
     public function a_localized_name_can_be_cast_to_string()
     {
-        $this->assertInternalType('string', (string) new LocalizedName('OpenConext', 'en'));
+        $this->assertIsString((string) new LocalizedName('OpenConext', 'en'));
     }
 }

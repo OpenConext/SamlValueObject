@@ -3,9 +3,9 @@
 namespace OpenConext\Value\Saml;
 
 use OpenConext\Value\Exception\InvalidArgumentException;
-use PHPUnit_Framework_TestCase as TestCase;
 
-class EntitySetTest extends TestCase
+
+class EntitySetTest extends \PHPUnit\Framework\TestCase
 {
     /**
      * @test
@@ -24,7 +24,7 @@ class EntitySetTest extends TestCase
         $this->assertFalse($base->equals($other));
     }
 
-    public function unequalSets()
+    public static function unequalSets()
     {
         return array(
             'Different elements' => array(
@@ -67,7 +67,7 @@ class EntitySetTest extends TestCase
         $this->assertTrue($base->equals($other));
     }
 
-    public function equalSets()
+    public static function equalSets()
     {
         return array(
             'Same Entities' => array(
@@ -170,12 +170,12 @@ class EntitySetTest extends TestCase
      * @group entity
      *
      * @dataProvider \OpenConext\Value\TestDataProvider::notArray
-     * @expectedException InvalidArgumentException
      *
      * @param mixed $notArray
      */
     public function deserialization_requires_an_array($notArray)
     {
+        $this->expectException(\InvalidArgumentException::class);
         EntitySet::deserialize($notArray);
     }
 

@@ -1,3 +1,5 @@
 cache.properties
 build/
 vendor/
+var/
+.idea
