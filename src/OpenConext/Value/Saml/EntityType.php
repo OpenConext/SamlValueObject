@@ -41,18 +41,17 @@ final class EntityType implements Serializable
         return new EntityType(self::TYPE_SP);
     }
 
-    // @codingStandardsIgnoreStart
     /**
      * Creates a new IdentityProvider Type
      * @return EntityType
      *
      * @SuppressWarnings(PHPMD.CamelCaseMethodName)
      */
+    // phpcs:ignore PSR1.Methods.CamelCapsMethodName.NotCamelCaps
     public static function IdP()
     {
         return new EntityType(self::TYPE_IDP);
     }
-    // @codingStandardsIgnoreEnd
 
     /**
      * @return bool
