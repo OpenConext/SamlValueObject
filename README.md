@@ -34,7 +34,7 @@ composer check
 
 ## Releases
 
-- **3.0** - Improved PHP 8.2 support and replaced abandoned dev tooling
+- **3.0** - Improved PHP 8.2 support and replaced abandoned dev tooling. Drop support for PHP 7.
 - **2.0** - Basic php 8.2 support
 - **1.0** - Initial release
 
