@@ -15,7 +15,6 @@
     },
     "require-dev": {
         "ergebnis/composer-normalize": "^2.48.2",
-        "liip/rmt": "^1.2",
         "overtrue/phplint": "^9.6.2",
         "phpmd/phpmd": "^2.15",
         "phpstan/phpstan-deprecation-rules": "^2.0.3",
