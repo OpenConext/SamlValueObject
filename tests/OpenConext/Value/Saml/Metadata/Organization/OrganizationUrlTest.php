@@ -118,11 +118,7 @@ class OrganizationUrlTest extends \PHPUnit\Framework\TestCase
     public function deserialization_requires_valid_data($invalidData)
     {
         $this->expectException(InvalidArgumentException::class);
-        try {
-            OrganizationUrl::deserialize($invalidData);
-        }catch (\Throwable $e){
-            var_dump(get_debug_type($e));
-        }
+        OrganizationUrl::deserialize($invalidData);
     }
 
     /**
@@ -133,8 +129,8 @@ class OrganizationUrlTest extends \PHPUnit\Framework\TestCase
         return array(
             'data is not an array' => array('foobar'),
             'missing both keys'    => array(array('a')),
-            'missing url key'      => array('a' => 'https://www.openconext.org', 'language' => 'en_US'),
-            'missing language key' => array('url' => 'https://www.openconext.org')
+            'missing url key'      => array(array('a' => 'https://www.openconext.org', 'language' => 'en_US')),
+            'missing language key' => array(array('url' => 'https://www.openconext.org'))
         );
     }
 

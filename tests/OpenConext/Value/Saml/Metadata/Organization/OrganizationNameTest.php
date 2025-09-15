@@ -129,8 +129,8 @@ class OrganizationNameTest extends \PHPUnit\Framework\TestCase
         return array(
             'data is not an array' => array('foobar'),
             'missing both keys'    => array(array('a')),
-            'missing name key'     => array('a' => 'foobar', 'language' => 'en_US'),
-            'missing language key' => array('name' => 'OpenConext')
+            'missing name key'     => array(array('a' => 'foobar', 'language' => 'en_US')),
+            'missing language key' => array(array('name' => 'OpenConext'))
         );
     }
 

@@ -214,8 +214,8 @@ class ShibbolethMetadataScopeTest extends \PHPUnit\Framework\TestCase
         return array(
             'data is not an array' => array('foobar'),
             'missing both keys'    => array(array('a')),
-            'missing scope key'    => array('regexp' => false),
-            'missing regexp key'   => array('a' => 'foobar', 'scope' => 'foobar'),
+            'missing scope key'    => array(array('regexp' => false)),
+            'missing regexp key'   => array(array('a' => 'foobar', 'scope' => 'foobar')),
         );
     }
 

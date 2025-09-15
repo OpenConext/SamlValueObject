@@ -162,9 +162,9 @@ class EntityTest extends \PHPUnit\Framework\TestCase
         return array(
             'data is not an array'      => array('foobar'),
             'missing both keys'         => array(array('a')),
-            'missing entity_id key'     => array('a' => 'foobar', 'entity_type' => 'saml20-sp'),
-            'missing entity_type key'   => array('entity_id' => 'OpenConext.org'),
-            'unknown entity_type value' => array('entity_id' => 'OpenConext.org', 'entity_type' => 'invalid'),
+            'missing entity_id key'     => array(array('a' => 'foobar', 'entity_type' => 'saml20-sp')),
+            'missing entity_type key'   => array(array('entity_id' => 'OpenConext.org')),
+            'unknown entity_type value' => array(array('entity_id' => 'OpenConext.org', 'entity_type' => 'invalid')),
         );
     }
 

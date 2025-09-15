@@ -11,7 +11,7 @@
     ],
     "require": {
         "php": ">=8.2",
-        "beberlei/assert": "v2.9.9"
+        "beberlei/assert": "^3.3.3"
     },
     "require-dev": {
         "ergebnis/composer-normalize": "^2.48.2",

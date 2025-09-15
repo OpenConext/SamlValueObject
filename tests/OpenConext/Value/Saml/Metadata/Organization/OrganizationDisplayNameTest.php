@@ -131,8 +131,8 @@ class OrganizationDisplayNameTest extends \PHPUnit\Framework\TestCase
         return array(
             'data is not an array'     => array('foobar'),
             'missing both keys'        => array(array('a')),
-            'missing display_name key' => array('a' => 'foobar', 'language' => 'en_US'),
-            'missing language key'     => array('display_name' => 'OpenConext.org')
+            'missing display_name key' => array(array('a' => 'foobar', 'language' => 'en_US')),
+            'missing language key'     => array(array('display_name' => 'OpenConext.org'))
         );
     }
 
