@@ -2,14 +2,12 @@
 
 namespace OpenConext\Value\Exception;
 
-use PHPUnit_Framework_TestCase as UnitTest;
 
-class IndexOutOfBoundsExceptionTest extends UnitTest
+
+class IndexOutOfBoundsExceptionTest extends \PHPUnit\Framework\TestCase
 {
-    /**
-     * @test
-     * @group exception
-     */
+    #[\PHPUnit\Framework\Attributes\Group('exception')]
+    #[\PHPUnit\Framework\Attributes\Test]
     public function too_low_creates_an_exception_with_a_known_format_message()
     {
         $invalidIndex = -1;
@@ -24,10 +22,8 @@ class IndexOutOfBoundsExceptionTest extends UnitTest
         );
     }
 
-    /**
-     * @test
-     * @group exception
-     */
+    #[\PHPUnit\Framework\Attributes\Group('exception')]
+    #[\PHPUnit\Framework\Attributes\Test]
     public function a_too_low_index_has_the_invalid_index_and_minimum_index_not_maximum_index()
     {
         $invalidIndex = -1;
@@ -40,10 +36,8 @@ class IndexOutOfBoundsExceptionTest extends UnitTest
         $this->assertNull($exception->getMaximumIndex());
     }
 
-    /**
-     * @test
-     * @group exception
-     */
+    #[\PHPUnit\Framework\Attributes\Group('exception')]
+    #[\PHPUnit\Framework\Attributes\Test]
     public function too_high_creates_an_exception_with_a_known_format_message()
     {
         $invalidIndex = 5;
@@ -58,10 +52,8 @@ class IndexOutOfBoundsExceptionTest extends UnitTest
         );
     }
 
-    /**
-     * @test
-     * @group exception
-     */
+    #[\PHPUnit\Framework\Attributes\Group('exception')]
+    #[\PHPUnit\Framework\Attributes\Test]
     public function a_too_high_index_has_the_invalid_index_and_maximum_index_not_minimum_index()
     {
         $invalidIndex = 5;

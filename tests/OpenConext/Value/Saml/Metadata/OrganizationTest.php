@@ -9,19 +9,16 @@ use OpenConext\Value\Saml\Metadata\Organization\OrganizationName;
 use OpenConext\Value\Saml\Metadata\Organization\OrganizationNameList;
 use OpenConext\Value\Saml\Metadata\Organization\OrganizationUrl;
 use OpenConext\Value\Saml\Metadata\Organization\OrganizationUrlList;
-use PHPUnit_Framework_TestCase as UnitTest;
 
-class OrganizationTest extends UnitTest
+
+class OrganizationTest extends \PHPUnit\Framework\TestCase
 {
-    /**
-     * @test
-     * @group metadata
-     * @group organization
-     *
-     * @expectedException InvalidArgumentException
-     */
+    #[\PHPUnit\Framework\Attributes\Group('metadata')]
+    #[\PHPUnit\Framework\Attributes\Group('organization')]
+    #[\PHPUnit\Framework\Attributes\Test]
     public function organization_requires_at_least_one_organization_name()
     {
+        $this->expectException(\InvalidArgumentException::class);
         new Organization(
             new OrganizationNameList(array()),
             new OrganizationDisplayNameList(array(new OrganizationDisplayName('OpenConext', 'en'))),
@@ -29,15 +26,12 @@ class OrganizationTest extends UnitTest
         );
     }
 
-    /**
-     * @test
-     * @group metadata
-     * @group organization
-     *
-     * @expectedException InvalidArgumentException
-     */
+    #[\PHPUnit\Framework\Attributes\Group('metadata')]
+    #[\PHPUnit\Framework\Attributes\Group('organization')]
+    #[\PHPUnit\Framework\Attributes\Test]
     public function organization_requires_at_least_one_organization_display_name()
     {
+        $this->expectException(\InvalidArgumentException::class);
         new Organization(
             new OrganizationNameList(array(new OrganizationName('OpenConext', 'en'))),
             new OrganizationDisplayNameList(array()),
@@ -45,15 +39,12 @@ class OrganizationTest extends UnitTest
         );
     }
 
-    /**
-     * @test
-     * @group metadata
-     * @group organization
-     *
-     * @expectedException InvalidArgumentException
-     */
+    #[\PHPUnit\Framework\Attributes\Group('metadata')]
+    #[\PHPUnit\Framework\Attributes\Group('organization')]
+    #[\PHPUnit\Framework\Attributes\Test]
     public function organization_requires_at_least_one_organization_url()
     {
+        $this->expectException(\InvalidArgumentException::class);
         new Organization(
             new OrganizationNameList(array(new OrganizationName('OpenConext', 'en'))),
             new OrganizationDisplayNameList(array(new OrganizationDisplayName('OpenConext', 'en'))),
@@ -61,11 +52,9 @@ class OrganizationTest extends UnitTest
         );
     }
 
-    /**
-     * @test
-     * @group metadata
-     * @group organization
-     */
+    #[\PHPUnit\Framework\Attributes\Group('metadata')]
+    #[\PHPUnit\Framework\Attributes\Group('organization')]
+    #[\PHPUnit\Framework\Attributes\Test]
     public function equality_is_verified_on_all_properties()
     {
         $names = new OrganizationNameList(array(new OrganizationName('OpenConext', 'en')));
@@ -102,11 +91,9 @@ class OrganizationTest extends UnitTest
         $this->assertFalse($base->equals($allDifferent));
     }
 
-    /**
-     * @test
-     * @group metadata
-     * @group organization
-     */
+    #[\PHPUnit\Framework\Attributes\Group('metadata')]
+    #[\PHPUnit\Framework\Attributes\Group('organization')]
+    #[\PHPUnit\Framework\Attributes\Test]
     public function organization_names_can_be_retrieved()
     {
         $organizationNames = new OrganizationNameList(array(new OrganizationName('OpenConext', 'en')));
@@ -119,11 +106,9 @@ class OrganizationTest extends UnitTest
         $this->assertSame($organizationNames, $organization->getOrganizationNames());
     }
 
-    /**
-     * @test
-     * @group metadata
-     * @group organization
-     */
+    #[\PHPUnit\Framework\Attributes\Group('metadata')]
+    #[\PHPUnit\Framework\Attributes\Group('organization')]
+    #[\PHPUnit\Framework\Attributes\Test]
     public function organization_display_names_can_be_retrieved()
     {
         $organizationDisplayNames = new OrganizationDisplayNameList(
@@ -138,11 +123,9 @@ class OrganizationTest extends UnitTest
         $this->assertSame($organizationDisplayNames, $organization->getOrganizationDisplayNames());
     }
 
-    /**
-     * @test
-     * @group metadata
-     * @group organization
-     */
+    #[\PHPUnit\Framework\Attributes\Group('metadata')]
+    #[\PHPUnit\Framework\Attributes\Group('organization')]
+    #[\PHPUnit\Framework\Attributes\Test]
     public function organization_urls_can_be_retrieved()
     {
         $organizationUrls = new OrganizationUrlList(array(new OrganizationUrl('https://www.opencontext.org', 'en')));
@@ -155,11 +138,9 @@ class OrganizationTest extends UnitTest
         $this->assertSame($organizationUrls, $organization->getOrganizationUrls());
     }
 
-    /**
-     * @test
-     * @group metadata
-     * @group organization
-     */
+    #[\PHPUnit\Framework\Attributes\Group('metadata')]
+    #[\PHPUnit\Framework\Attributes\Group('organization')]
+    #[\PHPUnit\Framework\Attributes\Test]
     public function deserializing_a_serialized_organisation_results_in_an_equal_value_object()
     {
         $original = new Organization(
@@ -173,36 +154,36 @@ class OrganizationTest extends UnitTest
     }
 
     /**
-     * @test
-     * @group metadata
-     * @group organization
      *
-     * @dataProvider \OpenConext\Value\TestDataProvider::notArray
-     * @expectedException InvalidArgumentException
      *
      * @param mixed $notArray
      */
+    #[\PHPUnit\Framework\Attributes\DataProviderExternal(\OpenConext\Value\TestDataProvider::class, 'notArray')]
+    #[\PHPUnit\Framework\Attributes\Group('metadata')]
+    #[\PHPUnit\Framework\Attributes\Group('organization')]
+    #[\PHPUnit\Framework\Attributes\Test]
     public function deserialization_requires_data_to_be_an_array($notArray)
     {
+        $this->expectException(\InvalidArgumentException::class);
         Organization::deserialize($notArray);
     }
 
     /**
-     * @test
-     * @group        metadata
-     * @group        organization
      *
-     * @dataProvider invalidDeserializationDataProvider
-     * @expectedException InvalidArgumentException
      *
      * @param mixed $invalidData
      */
+    #[\PHPUnit\Framework\Attributes\DataProvider('invalidDeserializationDataProvider')]
+    #[\PHPUnit\Framework\Attributes\Group('metadata')]
+    #[\PHPUnit\Framework\Attributes\Group('organization')]
+    #[\PHPUnit\Framework\Attributes\Test]
     public function deserialization_requires_the_presence_of_requried_keys($invalidData)
     {
+        $this->expectException(\InvalidArgumentException::class);
         Organization::deserialize($invalidData);
     }
 
-    public function invalidDeserializationDataProvider()
+    public static function invalidDeserializationDataProvider()
     {
         return array(
             'missing names key' => array(array_flip(array('a', 'organization_display_names', 'organization_urls'))),
@@ -211,11 +192,9 @@ class OrganizationTest extends UnitTest
         );
     }
 
-    /**
-     * @test
-     * @group metadata
-     * @group organization
-     */
+    #[\PHPUnit\Framework\Attributes\Group('metadata')]
+    #[\PHPUnit\Framework\Attributes\Group('organization')]
+    #[\PHPUnit\Framework\Attributes\Test]
     public function an_organization_can_be_cast_to_string()
     {
         $organization = new Organization(

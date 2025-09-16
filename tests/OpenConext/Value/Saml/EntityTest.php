@@ -3,14 +3,12 @@
 namespace OpenConext\Value\Saml;
 
 use OpenConext\Value\Exception\InvalidArgumentException;
-use PHPUnit_Framework_TestCase as UnitTest;
 
-class EntityTest extends UnitTest
+
+class EntityTest extends \PHPUnit\Framework\TestCase
 {
-    /**
-     * @test
-     * @group entity
-     */
+    #[\PHPUnit\Framework\Attributes\Group('entity')]
+    #[\PHPUnit\Framework\Attributes\Test]
     public function two_entities_with_the_same_entity_id_and_entity_type_are_equal()
     {
         $entityIdOne = new EntityId('one');
@@ -32,20 +30,19 @@ class EntityTest extends UnitTest
     }
 
     /**
-     * @test
-     * @group entity
-     *
-     * @dataProvider invalidDescriptorProvider
-     * @expectedException \OpenConext\Value\Exception\InvalidArgumentException
      *
      * @param $invalidDescriptor
      */
+    #[\PHPUnit\Framework\Attributes\DataProvider('invalidDescriptorProvider')]
+    #[\PHPUnit\Framework\Attributes\Group('entity')]
+    #[\PHPUnit\Framework\Attributes\Test]
     public function a_descriptor_must_have_exactly_two_elements_with_the_second_being_sp_or_idp($invalidDescriptor)
     {
+        $this->expectException(InvalidArgumentException::class);
         Entity::fromDescriptor($invalidDescriptor);
     }
 
-    public function invalidDescriptorProvider()
+    public static function invalidDescriptorProvider()
     {
         return array (
             'no elements'           => array(array()),
@@ -57,10 +54,8 @@ class EntityTest extends UnitTest
         );
     }
 
-    /**
-     * @test
-     * @group entity
-     */
+    #[\PHPUnit\Framework\Attributes\Group('entity')]
+    #[\PHPUnit\Framework\Attributes\Test]
     public function a_valid_descriptor_creates_an_entity()
     {
         $entity    = Entity::fromDescriptor(array('UM', 'sp'));
@@ -72,10 +67,8 @@ class EntityTest extends UnitTest
         $this->assertFalse($entity->equals($otherType));
     }
 
-    /**
-     * @test
-     * @group entity
-     */
+    #[\PHPUnit\Framework\Attributes\Group('entity')]
+    #[\PHPUnit\Framework\Attributes\Test]
     public function the_entity_id_of_an_entity_can_be_compared()
     {
         $entityId = new EntityId('OpenConext');
@@ -88,10 +81,8 @@ class EntityTest extends UnitTest
         $this->assertFalse($entity->hasEntityId($otherEntityId));
     }
 
-    /**
-     * @test
-     * @group entity
-     */
+    #[\PHPUnit\Framework\Attributes\Group('entity')]
+    #[\PHPUnit\Framework\Attributes\Test]
     public function an_entity_can_assert_which_type_it_is()
     {
         $sp = new Entity(new EntityId('OpenConext'), EntityType::SP());
@@ -104,10 +95,8 @@ class EntityTest extends UnitTest
         $this->assertFalse($idp->isServiceProvider());
     }
 
-    /**
-     * @test
-     * @group entity
-     */
+    #[\PHPUnit\Framework\Attributes\Group('entity')]
+    #[\PHPUnit\Framework\Attributes\Test]
     public function the_entity_id_can_be_retrieved()
     {
         $entityId = new EntityId('OpenConext');
@@ -116,10 +105,8 @@ class EntityTest extends UnitTest
         $this->assertTrue($entity->getEntityId()->equals($entityId));
     }
 
-    /**
-     * @test
-     * @group entity
-     */
+    #[\PHPUnit\Framework\Attributes\Group('entity')]
+    #[\PHPUnit\Framework\Attributes\Test]
     public function the_entity_type_can_be_retrieved()
     {
         $entityType = EntityType::SP();
@@ -128,10 +115,8 @@ class EntityTest extends UnitTest
         $this->assertTrue($entity->getEntityType()->equals($entityType));
     }
 
-    /**
-     * @test
-     * @group entity
-     */
+    #[\PHPUnit\Framework\Attributes\Group('entity')]
+    #[\PHPUnit\Framework\Attributes\Test]
     public function deserializing_a_serialized_entity_results_in_an_equal_value_object()
     {
         $original     = new Entity(new EntityId('OpenConext.org'), EntityType::IdP());
@@ -141,37 +126,34 @@ class EntityTest extends UnitTest
     }
 
     /**
-     * @test
-     * @group        metadata
-     *
-     * @dataProvider invalidDeserializationDataProvider
-     * @expectedException InvalidArgumentException
      *
      * @param mixed $invalidData
      */
+    #[\PHPUnit\Framework\Attributes\DataProvider('invalidDeserializationDataProvider')]
+    #[\PHPUnit\Framework\Attributes\Group('metadata')]
+    #[\PHPUnit\Framework\Attributes\Test]
     public function deserialization_requires_valid_data($invalidData)
     {
+        $this->expectException(\InvalidArgumentException::class);
         Entity::deserialize($invalidData);
     }
 
     /**
      * @return array
      */
-    public function invalidDeserializationDataProvider()
+    public static function invalidDeserializationDataProvider()
     {
         return array(
             'data is not an array'      => array('foobar'),
             'missing both keys'         => array(array('a')),
-            'missing entity_id key'     => array('a' => 'foobar', 'entity_type' => 'saml20-sp'),
-            'missing entity_type key'   => array('entity_id' => 'OpenConext.org'),
-            'unknown entity_type value' => array('entity_id' => 'OpenConext.org', 'entity_type' => 'invalid'),
+            'missing entity_id key'     => array(array('a' => 'foobar', 'entity_type' => 'saml20-sp')),
+            'missing entity_type key'   => array(array('entity_id' => 'OpenConext.org')),
+            'unknown entity_type value' => array(array('entity_id' => 'OpenConext.org', 'entity_type' => 'invalid')),
         );
     }
 
-    /**
-     * @test
-     * @group entity
-     */
+    #[\PHPUnit\Framework\Attributes\Group('entity')]
+    #[\PHPUnit\Framework\Attributes\Test]
     public function an_entity_can_be_cast_to_a_known_format_string()
     {
         $entityId = new EntityId('OpenConext');

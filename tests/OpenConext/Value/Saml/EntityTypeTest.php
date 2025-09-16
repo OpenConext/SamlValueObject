@@ -3,14 +3,12 @@
 namespace OpenConext\Value\Saml;
 
 use OpenConext\Value\Exception\InvalidArgumentException;
-use PHPUnit_Framework_TestCase as UnitTest;
 
-class EntityTypeTest extends UnitTest
+
+class EntityTypeTest extends \PHPUnit\Framework\TestCase
 {
-    /**
-     * @test
-     * @group entity
-     */
+    #[\PHPUnit\Framework\Attributes\Group('entity')]
+    #[\PHPUnit\Framework\Attributes\Test]
     public function the_same_entity_types_are_considered_equal()
     {
         $base      = EntityType::SP();
@@ -21,21 +19,16 @@ class EntityTypeTest extends UnitTest
         $this->assertFalse($base->equals($different));
     }
 
-    /**
-     * @test
-     * @group entity
-     *
-     * @expectedException InvalidArgumentException
-     */
+    #[\PHPUnit\Framework\Attributes\Group('entity')]
+    #[\PHPUnit\Framework\Attributes\Test]
     public function an_entity_type_cannot_be_created_with_a_non_existent_type()
     {
+        $this->expectException(\InvalidArgumentException::class);
         new EntityType('This is not a valid EntityType');
     }
 
-    /**
-     * @test
-     * @group entity
-     */
+    #[\PHPUnit\Framework\Attributes\Group('entity')]
+    #[\PHPUnit\Framework\Attributes\Test]
     public function an_entity_type_can_tell_what_it_is()
     {
         $sp = EntityType::SP();
@@ -48,11 +41,9 @@ class EntityTypeTest extends UnitTest
         $this->assertFalse($idp->isServiceProvider());
     }
 
-    /**
-     * @test
-     * @group metadata
-     * @group entity
-     */
+    #[\PHPUnit\Framework\Attributes\Group('metadata')]
+    #[\PHPUnit\Framework\Attributes\Group('entity')]
+    #[\PHPUnit\Framework\Attributes\Test]
     public function deserializing_a_serialized_entity_type_results_in_an_equal_value_object()
     {
         $original     = EntityType::SP();
@@ -62,22 +53,17 @@ class EntityTypeTest extends UnitTest
         $this->assertTrue($deserialized->isServiceProvider());
     }
 
-    /**
-     * @test
-     * @group metadata
-     * @group entity
-     *
-     * @expectedException InvalidArgumentException
-     */
+    #[\PHPUnit\Framework\Attributes\Group('metadata')]
+    #[\PHPUnit\Framework\Attributes\Group('entity')]
+    #[\PHPUnit\Framework\Attributes\Test]
     public function deserialization_requires_valid_data()
     {
+        $this->expectException(\InvalidArgumentException::class);
         EntityType::deserialize('not_a_valid_type');
     }
 
-    /**
-     * @test
-     * @group entity
-     */
+    #[\PHPUnit\Framework\Attributes\Group('entity')]
+    #[\PHPUnit\Framework\Attributes\Test]
     public function an_entity_type_can_be_cast_to_string()
     {
         $spAsString = (string) EntityType::SP();

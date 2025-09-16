@@ -3,14 +3,12 @@
 namespace OpenConext\Value\Saml;
 
 use OpenConext\Value\Exception\InvalidArgumentException;
-use PHPUnit_Framework_TestCase as UnitTest;
 
-class ContactTypeTest extends UnitTest
+
+class NameIdFormatTest extends \PHPUnit\Framework\TestCase
 {
-    /**
-     * @test
-     * @group nameid
-     */
+    #[\PHPUnit\Framework\Attributes\Group('nameid')]
+    #[\PHPUnit\Framework\Attributes\Test]
     public function name_id_formats_can_be_compared()
     {
         $transient  = NameIdFormat::transient();
@@ -23,14 +21,14 @@ class ContactTypeTest extends UnitTest
     }
 
     /**
-     * @test
-     * @group nameid
      *
-     * @dataProvider typeAndFactoryMethodProvider
      *
      * @param string $nameIdFormat
      * @param string $factoryMethod
      */
+    #[\PHPUnit\Framework\Attributes\DataProvider('typeAndFactoryMethodProvider')]
+    #[\PHPUnit\Framework\Attributes\Group('nameid')]
+    #[\PHPUnit\Framework\Attributes\Test]
     public function a_name_id_format_created_with_a_valid_format_equals_its_factory_created_version(
         $nameIdFormat,
         $factoryMethod
@@ -38,10 +36,10 @@ class ContactTypeTest extends UnitTest
         $nameIdFormatByType = new NameIdFormat($nameIdFormat);
         $nameIdFormatByFactory = NameIdFormat::$factoryMethod();
 
-        $nameIdFormatByType->equals($nameIdFormatByFactory);
+        $this->assertTrue($nameIdFormatByType->equals($nameIdFormatByFactory));
     }
 
-    public function typeAndFactoryMethodProvider()
+    public static function typeAndFactoryMethodProvider()
     {
         return array(
             'unspecified'                   => array(NameIdFormat::UNSPECIFIED, 'unspecified'),
@@ -58,21 +56,16 @@ class ContactTypeTest extends UnitTest
         );
     }
 
-    /**
-     * @test
-     * @group nameid
-     *
-     * @expectedException InvalidArgumentException
-     */
+    #[\PHPUnit\Framework\Attributes\Group('nameid')]
+    #[\PHPUnit\Framework\Attributes\Test]
     public function an_invalid_format_causes_an_exception_to_be_thrown()
     {
+        $this->expectException(\InvalidArgumentException::class);
         new NameIdFormat('This is very much not valid');
     }
 
-    /**
-     * @test
-     * @group nameid
-     */
+    #[\PHPUnit\Framework\Attributes\Group('nameid')]
+    #[\PHPUnit\Framework\Attributes\Test]
     public function the_format_can_be_retrieved()
     {
         $nameIdFormat = NameIdFormat::unspecified();
@@ -80,10 +73,8 @@ class ContactTypeTest extends UnitTest
         $this->assertEquals(NameIdFormat::UNSPECIFIED, $nameIdFormat->getFormat());
     }
 
-    /**
-     * @test
-     * @group nameid
-     */
+    #[\PHPUnit\Framework\Attributes\Group('nameid')]
+    #[\PHPUnit\Framework\Attributes\Test]
     public function deserializing_a_serialized_name_id_format_results_in_an_equal_value_object()
     {
         $original     = NameIdFormat::x509SubjectName();
@@ -93,23 +84,20 @@ class ContactTypeTest extends UnitTest
     }
 
     /**
-     * @test
-     * @group nameid
-     *
-     * @dataProvider \OpenConext\Value\TestDataProvider::notStringOrEmptyString
-     * @expectedException InvalidArgumentException
      *
      * @param mixed $invalidData
      */
+    #[\PHPUnit\Framework\Attributes\DataProviderExternal(\OpenConext\Value\TestDataProvider::class, 'notStringOrEmptyString')]
+    #[\PHPUnit\Framework\Attributes\Group('nameid')]
+    #[\PHPUnit\Framework\Attributes\Test]
     public function deserialization_requires_valid_data($invalidData)
     {
+        $this->expectException(\InvalidArgumentException::class);
         NameIdFormat::deserialize($invalidData);
     }
 
-    /**
-     * @test
-     * @group nameid
-     */
+    #[\PHPUnit\Framework\Attributes\Group('nameid')]
+    #[\PHPUnit\Framework\Attributes\Test]
     public function a_name_id_format_can_be_cast_to_string()
     {
         $nameIdFormat = NameIdFormat::transient();

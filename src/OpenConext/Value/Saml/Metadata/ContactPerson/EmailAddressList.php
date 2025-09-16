@@ -128,12 +128,12 @@ final class EmailAddressList implements Countable, IteratorAggregate, Serializab
         return $this->emailAddresses;
     }
 
-    public function getIterator()
+    public function getIterator(): \Traversable
     {
         return new ArrayIterator($this->emailAddresses);
     }
 
-    public function count()
+    public function count(): int
     {
         return count($this->emailAddresses);
     }

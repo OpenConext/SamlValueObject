@@ -31,11 +31,7 @@ final class Entity implements Serializable
         );
         Assertion::inArray($descriptor[1], array('sp', 'idp'), 'Entity descriptor type is neither "sp" nor "idp"');
 
-        if ($descriptor[1] === 'sp') {
-            $entityType = EntityType::SP();
-        } else {
-            $entityType = EntityType::IdP();
-        }
+        $entityType = ($descriptor[1] === 'sp') ? EntityType::SP() : EntityType::IdP();
 
         return new Entity(new EntityId($descriptor[0]), $entityType);
     }

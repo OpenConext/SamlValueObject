@@ -148,12 +148,12 @@ final class ShibbolethMetadataScopeList implements Countable, IteratorAggregate,
         return $this->scopes;
     }
 
-    public function getIterator()
+    public function getIterator(): \Traversable
     {
         return new ArrayIterator($this->scopes);
     }
 
-    public function count()
+    public function count(): int
     {
         return count($this->scopes);
     }
@@ -178,6 +178,6 @@ final class ShibbolethMetadataScopeList implements Countable, IteratorAggregate,
 
     public function __toString()
     {
-        return sprintf('ShibbolethMetadataScopeList(%s)', join(', ', array_map('strval', $this->scopes)));
+        return sprintf('ShibbolethMetadataScopeList(%s)', implode(', ', array_map('strval', $this->scopes)));
     }
 }

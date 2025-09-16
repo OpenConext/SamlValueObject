@@ -7,6 +7,7 @@ use Assert\Assertion;
 use Countable;
 use IteratorAggregate;
 use OpenConext\Value\Serializable;
+use Traversable;
 
 final class EntitySet implements Countable, IteratorAggregate, Serializable
 {
@@ -65,12 +66,12 @@ final class EntitySet implements Countable, IteratorAggregate, Serializable
         return true;
     }
 
-    public function getIterator()
+    public function getIterator(): Traversable
     {
         return new ArrayIterator($this->entities);
     }
 
-    public function count()
+    public function count(): int
     {
         return count($this->entities);
     }

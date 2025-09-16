@@ -73,6 +73,6 @@ final class LocalizedUri implements Serializable
 
     public function __toString()
     {
-        return sprintf('LocalizedUri(uri=%, language=%s)', $this->uri, $this->language);
+        return sprintf('LocalizedUri(uri=%s, language=%s)', $this->uri, $this->language);
     }
 }

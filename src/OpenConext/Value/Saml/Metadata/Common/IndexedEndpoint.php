@@ -74,7 +74,7 @@ final class IndexedEndpoint implements Serializable
 
     /**
      * @param IndexedEndpoint $other
-     * @return bool 
+     * @return bool
      */
     public function equals(IndexedEndpoint $other)
     {

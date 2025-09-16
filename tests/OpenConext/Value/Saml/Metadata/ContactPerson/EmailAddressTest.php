@@ -3,30 +3,28 @@
 namespace OpenConext\Value\Saml\Metadata\ContactPerson;
 
 use OpenConext\Value\Exception\InvalidArgumentException;
-use PHPUnit_Framework_TestCase as UnitTest;
 
-class EmailAddressTest extends UnitTest
+
+class EmailAddressTest extends \PHPUnit\Framework\TestCase
 {
     /**
-     * @test
-     * @group metadata
-     * @group contactperson
      *
-     * @dataProvider \OpenConext\Value\TestDataProvider::notRfc822CompliantEmail()
-     * @expectedException InvalidArgumentException
      *
      * @param mixed $invalidAddress
      */
+    #[\PHPUnit\Framework\Attributes\DataProviderExternal(\OpenConext\Value\TestDataProvider::class, 'notRfc822CompliantEmail')]
+    #[\PHPUnit\Framework\Attributes\Group('metadata')]
+    #[\PHPUnit\Framework\Attributes\Group('contactperson')]
+    #[\PHPUnit\Framework\Attributes\Test]
     public function an_rfc_822_compliant_email_address_is_required($invalidAddress)
     {
+        $this->expectException(\InvalidArgumentException::class);
         new EmailAddress($invalidAddress);
     }
 
-    /**
-     * @test
-     * @group metadata
-     * @group contactperson
-     */
+    #[\PHPUnit\Framework\Attributes\Group('metadata')]
+    #[\PHPUnit\Framework\Attributes\Group('contactperson')]
+    #[\PHPUnit\Framework\Attributes\Test]
     public function equality_can_be_verified()
     {
         $base      = new EmailAddress('OpenConext@domain.invalid');
@@ -37,11 +35,9 @@ class EmailAddressTest extends UnitTest
         $this->assertFalse($base->equals($different));
     }
 
-    /**
-     * @test
-     * @group metadata
-     * @group contactperson
-     */
+    #[\PHPUnit\Framework\Attributes\Group('metadata')]
+    #[\PHPUnit\Framework\Attributes\Group('contactperson')]
+    #[\PHPUnit\Framework\Attributes\Test]
     public function the_email_address_can_be_retrieved()
     {
         $email = 'OpenConext@domain.invalid';
@@ -51,11 +47,9 @@ class EmailAddressTest extends UnitTest
         $this->assertEquals($email, $emailAddress->getEmailAddress());
     }
 
-    /**
-     * @test
-     * @group metadata
-     * @group contactperson
-     */
+    #[\PHPUnit\Framework\Attributes\Group('metadata')]
+    #[\PHPUnit\Framework\Attributes\Group('contactperson')]
+    #[\PHPUnit\Framework\Attributes\Test]
     public function deserializing_an_email_address_results_in_an_equal_value_object()
     {
         $emailAddress = 'homer@domain.invalid';
@@ -68,25 +62,23 @@ class EmailAddressTest extends UnitTest
     }
 
     /**
-     * @test
-     * @group        metadata
-     * @group        contactperson
      *
-     * @dataProvider \OpenConext\Value\TestDataProvider::notRfc822CompliantEmail()
-     * @expectedException InvalidArgumentException
      *
      * @param mixed $invalidData
      */
+    #[\PHPUnit\Framework\Attributes\DataProviderExternal(\OpenConext\Value\TestDataProvider::class, 'notRfc822CompliantEmail')]
+    #[\PHPUnit\Framework\Attributes\Group('metadata')]
+    #[\PHPUnit\Framework\Attributes\Group('contactperson')]
+    #[\PHPUnit\Framework\Attributes\Test]
     public function deserialization_requires_valid_data($invalidData)
     {
+        $this->expectException(\InvalidArgumentException::class);
         EmailAddress::deserialize($invalidData);
     }
 
-    /**
-     * @test
-     * @group metadata
-     * @group contactperson
-     */
+    #[\PHPUnit\Framework\Attributes\Group('metadata')]
+    #[\PHPUnit\Framework\Attributes\Group('contactperson')]
+    #[\PHPUnit\Framework\Attributes\Test]
     public function email_address_can_be_cast_to_string()
     {
         $email = 'OpenConext@domain.invalid';

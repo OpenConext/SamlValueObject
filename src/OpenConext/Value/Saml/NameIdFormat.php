@@ -99,7 +99,7 @@ final class NameIdFormat implements Serializable
      */
     public static function entity()
     {
-        return new self(self::PERSISTENT_IDENTIFIER);
+        return new self(self::ENTITY_IDENTIFIER);
     }
 
     /**

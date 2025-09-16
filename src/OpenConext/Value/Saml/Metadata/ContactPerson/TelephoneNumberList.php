@@ -128,12 +128,12 @@ final class TelephoneNumberList implements Countable, IteratorAggregate, Seriali
         return $this->telephoneNumbers;
     }
 
-    public function getIterator()
+    public function getIterator(): \Traversable
     {
         return new ArrayIterator($this->telephoneNumbers);
     }
 
-    public function count()
+    public function count(): int
     {
         return count($this->telephoneNumbers);
     }

@@ -3,28 +3,25 @@
 namespace OpenConext\Value\Saml;
 
 use OpenConext\Value\Exception\InvalidArgumentException;
-use PHPUnit_Framework_TestCase as UnitTest;
 
-class EntityIdTest extends UnitTest
+
+class EntityIdTest extends \PHPUnit\Framework\TestCase
 {
     /**
-     * @test
-     * @group entity
-     *
-     * @dataProvider \OpenConext\Value\TestDataProvider::notStringOrEmptyString
-     * @expectedException InvalidArgumentException
      *
      * @param mixed $invalidValue
      */
+    #[\PHPUnit\Framework\Attributes\DataProviderExternal(\OpenConext\Value\TestDataProvider::class, 'notStringOrEmptyString')]
+    #[\PHPUnit\Framework\Attributes\Group('entity')]
+    #[\PHPUnit\Framework\Attributes\Test]
     public function only_non_empty_strings_are_valid_entity_ids($invalidValue)
     {
+        $this->expectException(\InvalidArgumentException::class);
         new EntityId($invalidValue);
     }
 
-    /**
-     * @test
-     * @group entity
-     */
+    #[\PHPUnit\Framework\Attributes\Group('entity')]
+    #[\PHPUnit\Framework\Attributes\Test]
     public function the_same_entity_ids_are_considered_equal()
     {
         $base      = new EntityId('a');
@@ -35,10 +32,8 @@ class EntityIdTest extends UnitTest
         $this->assertFalse($base->equals($different));
     }
 
-    /**
-     * @test
-     * @group entity
-     */
+    #[\PHPUnit\Framework\Attributes\Group('entity')]
+    #[\PHPUnit\Framework\Attributes\Test]
     public function the_given_entity_id_value_can_be_retrieved()
     {
         $entityIdValue = 'A';
@@ -48,11 +43,9 @@ class EntityIdTest extends UnitTest
         $this->assertSame($entityIdValue, $entityId->getEntityId());
     }
 
-    /**
-     * @test
-     * @group metadata
-     * @group entity
-     */
+    #[\PHPUnit\Framework\Attributes\Group('metadata')]
+    #[\PHPUnit\Framework\Attributes\Group('entity')]
+    #[\PHPUnit\Framework\Attributes\Test]
     public function deserializing_a_serialized_entity_id_results_in_an_equal_value_object()
     {
         $original     = new EntityId('OpenConext.org');
@@ -62,24 +55,22 @@ class EntityIdTest extends UnitTest
     }
 
     /**
-     * @test
-     * @group metadata
-     * @group entity
      *
-     * @dataProvider \OpenConext\Value\TestDataProvider::notStringOrEmptyString
-     * @expectedException InvalidArgumentException
      *
      * @param mixed $invalidData
      */
+    #[\PHPUnit\Framework\Attributes\DataProviderExternal(\OpenConext\Value\TestDataProvider::class, 'notStringOrEmptyString')]
+    #[\PHPUnit\Framework\Attributes\Group('metadata')]
+    #[\PHPUnit\Framework\Attributes\Group('entity')]
+    #[\PHPUnit\Framework\Attributes\Test]
     public function deserialization_requires_valid_data($invalidData)
     {
+        $this->expectException(\InvalidArgumentException::class);
         EntityId::deserialize($invalidData);
     }
 
-    /**
-     * @test
-     * @group entity
-     */
+    #[\PHPUnit\Framework\Attributes\Group('entity')]
+    #[\PHPUnit\Framework\Attributes\Test]
     public function an_entity_id_can_be_cast_to_string()
     {
         $entityIdValue = 'OpenContextEntityID';

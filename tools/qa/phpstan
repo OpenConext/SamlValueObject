@@ -1,0 +1,5 @@
+#!/usr/bin/env sh
+
+cd $(dirname $0)/../../
+
+./vendor/bin/phpstan analyse -c tools/qa/phpstan.neon --memory-limit=-1 $1

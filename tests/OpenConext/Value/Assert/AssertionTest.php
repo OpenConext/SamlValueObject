@@ -2,15 +2,13 @@
 
 namespace OpenConext\Value\Assert;
 
-use OpenConext\Value\Assert\Stub\CallMe;
 use OpenConext\Value\Exception\InvalidArgumentException;
-use PHPUnit_Framework_TestCase as UnitTest;
 
-class AssertionTest extends UnitTest
+
+class AssertionTest extends \PHPUnit\Framework\TestCase
 {
-    /**
-     * @test
-     */
+    #[\PHPUnit\Framework\Attributes\Test]
+    #[\PHPUnit\Framework\Attributes\DoesNotPerformAssertions]
     public function non_empty_strings_are_valid()
     {
         Assertion::nonEmptyString('0', 'test');
@@ -19,47 +17,42 @@ class AssertionTest extends UnitTest
     }
 
     /**
-     * @test
      *
-     * @dataProvider \OpenConext\Value\TestDataProvider::notStringOrEmptyString()
-     * @expectedException InvalidArgumentException
      *
      * @param mixed $value
      */
+    #[\PHPUnit\Framework\Attributes\DataProviderExternal(\OpenConext\Value\TestDataProvider::class, 'notStringOrEmptyString')]
+    #[\PHPUnit\Framework\Attributes\Test]
     public function not_strings_or_empty_strings_are_invalid($value)
     {
+        $this->expectException(\InvalidArgumentException::class);
         Assertion::nonEmptyString($value, 'value');
     }
 
     /**
-     * @test
      *
-     * @dataProvider \OpenConext\Value\TestDataProvider::invalidRegularExpressionProvider
-     * @expectedException InvalidArgumentException
      *
      * @param string $invalidPattern
      */
+    #[\PHPUnit\Framework\Attributes\DataProviderExternal(\OpenConext\Value\TestDataProvider::class, 'invalidRegularExpressionProvider')]
+    #[\PHPUnit\Framework\Attributes\Test]
     public function an_invalid_regular_expression_does_not_pass_the_assertion($invalidPattern)
     {
+        $this->expectException(\InvalidArgumentException::class);
         Assertion::validRegularExpression($invalidPattern, 'invalidPattern');
     }
 
-    /**
-     * @test
-     *
-     * @expectedException InvalidArgumentException
-     */
+    #[\PHPUnit\Framework\Attributes\Test]
     public function a_missing_key_makes_the_assertion_fail()
     {
+        $this->expectException(\InvalidArgumentException::class);
         $requiredKeys = array('a', 'b');
         $actualData   = array('a' => 1, 'c' => 2);
 
         Assertion::keysExist($actualData, $requiredKeys);
     }
 
-    /**
-     * @test
-     */
+    #[\PHPUnit\Framework\Attributes\Test]
     public function keys_exists_assertion_succeeds_if_all_required_keys_are_present_()
     {
         $requiredKeys = array('a', 'b', 'c');

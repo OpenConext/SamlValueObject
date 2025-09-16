@@ -3,45 +3,42 @@
 namespace OpenConext\Value\Saml\Metadata\Organization;
 
 use OpenConext\Value\Exception\InvalidArgumentException;
-use PHPUnit_Framework_TestCase as UnitTest;
 
-class OrganizationDisplayNameTest extends UnitTest
+class OrganizationDisplayNameTest extends \PHPUnit\Framework\TestCase
 {
     /**
-     * @test
-     * @group metadata
-     * @group organization
      *
-     * @dataProvider \OpenConext\Value\TestDataProvider::notStringOrEmptyString()
-     * @expectedException InvalidArgumentException
      *
      * @param mixed $invalidArgument
      */
+    #[\PHPUnit\Framework\Attributes\DataProviderExternal(\OpenConext\Value\TestDataProvider::class, 'notStringOrEmptyString')]
+    #[\PHPUnit\Framework\Attributes\Group('metadata')]
+    #[\PHPUnit\Framework\Attributes\Group('organization')]
+    #[\PHPUnit\Framework\Attributes\Test]
     public function display_name_must_be_a_non_empty_string($invalidArgument)
     {
+        $this->expectException(InvalidArgumentException::class);
         new OrganizationDisplayName($invalidArgument, 'en');
     }
 
     /**
-     * @test
-     * @group metadata
-     * @group organization
      *
-     * @dataProvider \OpenConext\Value\TestDataProvider::notStringOrEmptyString()
-     * @expectedException InvalidArgumentException
      *
      * @param mixed $invalidArgument
      */
+    #[\PHPUnit\Framework\Attributes\DataProviderExternal(\OpenConext\Value\TestDataProvider::class, 'notStringOrEmptyString')]
+    #[\PHPUnit\Framework\Attributes\Group('metadata')]
+    #[\PHPUnit\Framework\Attributes\Group('organization')]
+    #[\PHPUnit\Framework\Attributes\Test]
     public function language_must_be_a_non_emtpy_string($invalidArgument)
     {
+        $this->expectException(\OpenConext\Value\Exception\InvalidArgumentException::class);
         new OrganizationDisplayName('OpenConext', $invalidArgument);
     }
 
-    /**
-     * @test
-     * @group metadata
-     * @group organization
-     */
+    #[\PHPUnit\Framework\Attributes\Group('metadata')]
+    #[\PHPUnit\Framework\Attributes\Group('organization')]
+    #[\PHPUnit\Framework\Attributes\Test]
     public function equality_is_compared_on_display_name_and_language()
     {
         $base = new OrganizationDisplayName('OpenConext', 'en');
@@ -65,11 +62,9 @@ class OrganizationDisplayNameTest extends UnitTest
         );
     }
 
-    /**
-     * @test
-     * @group metadata
-     * @group organization
-     */
+    #[\PHPUnit\Framework\Attributes\Group('metadata')]
+    #[\PHPUnit\Framework\Attributes\Group('organization')]
+    #[\PHPUnit\Framework\Attributes\Test]
     public function the_display_name_can_be_retrieved()
     {
         $displayName = 'OpenConext';
@@ -79,11 +74,9 @@ class OrganizationDisplayNameTest extends UnitTest
         $this->assertEquals($displayName, $organizationDisplayName->getDisplayName());
     }
 
-    /**
-     * @test
-     * @group metadata
-     * @group organization
-     */
+    #[\PHPUnit\Framework\Attributes\Group('metadata')]
+    #[\PHPUnit\Framework\Attributes\Group('organization')]
+    #[\PHPUnit\Framework\Attributes\Test]
     public function the_language_can_be_retrieved()
     {
         $language = 'en';
@@ -93,11 +86,9 @@ class OrganizationDisplayNameTest extends UnitTest
         $this->assertEquals($language, $organizationDisplayName->getLanguage());
     }
 
-    /**
-     * @test
-     * @group metadata
-     * @group organization
-     */
+    #[\PHPUnit\Framework\Attributes\Group('metadata')]
+    #[\PHPUnit\Framework\Attributes\Group('organization')]
+    #[\PHPUnit\Framework\Attributes\Test]
     public function deserializing_a_serialized_organization_display_name_results_in_an_equal_value_object()
     {
         $displayName = 'OpenConext.org';
@@ -110,38 +101,36 @@ class OrganizationDisplayNameTest extends UnitTest
     }
 
     /**
-     * @test
-     * @group        metadata
-     * @group        organization
      *
-     * @dataProvider invalidDeserializationDataProvider
-     * @expectedException InvalidArgumentException
      *
      * @param mixed $invalidData
      */
+    #[\PHPUnit\Framework\Attributes\DataProvider('invalidDeserializationDataProvider')]
+    #[\PHPUnit\Framework\Attributes\Group('metadata')]
+    #[\PHPUnit\Framework\Attributes\Group('organization')]
+    #[\PHPUnit\Framework\Attributes\Test]
     public function deserialization_requires_valid_data($invalidData)
     {
-        OrganizationDisplayName::deserialize($invalidData);
+        $this->expectException(InvalidArgumentException::class);
+            OrganizationDisplayName::deserialize($invalidData);
     }
 
     /**
      * @return array
      */
-    public function invalidDeserializationDataProvider()
+    public static function invalidDeserializationDataProvider()
     {
         return array(
             'data is not an array'     => array('foobar'),
             'missing both keys'        => array(array('a')),
-            'missing display_name key' => array('a' => 'foobar', 'language' => 'en_US'),
-            'missing language key'     => array('display_name' => 'OpenConext.org')
+            'missing display_name key' => array(array('a' => 'foobar', 'language' => 'en_US')),
+            'missing language key'     => array(array('display_name' => 'OpenConext.org'))
         );
     }
 
-    /**
-     * @test
-     * @group metadata
-     * @group organization
-     */
+    #[\PHPUnit\Framework\Attributes\Group('metadata')]
+    #[\PHPUnit\Framework\Attributes\Group('organization')]
+    #[\PHPUnit\Framework\Attributes\Test]
     public function an_organization_display_name_can_be_cast_to_string()
     {
         $displayName = 'OpenConext';

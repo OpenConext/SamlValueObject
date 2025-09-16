@@ -3,19 +3,16 @@
 namespace OpenConext\Value\Saml;
 
 use OpenConext\Value\Exception\InvalidArgumentException;
-use PHPUnit_Framework_TestCase as UnitTest;
+
 use stdClass;
 
-class NameIdFormatListTest extends UnitTest
+class NameIdFormatListTest extends \PHPUnit\Framework\TestCase
 {
-    /**
-     * @test
-     * @group nameid
-     *
-     * @expectedException InvalidArgumentException
-     */
+    #[\PHPUnit\Framework\Attributes\Group('nameid')]
+    #[\PHPUnit\Framework\Attributes\Test]
     public function all_elements_must_be_a_name_id_format()
     {
+        $this->expectException(\InvalidArgumentException::class);
         $invalidElements = array(
             NameIdFormat::transient(),
             NameIdFormat::persistent(),
@@ -25,10 +22,8 @@ class NameIdFormatListTest extends UnitTest
         new NameIdFormatList($invalidElements);
     }
 
-    /**
-     * @test
-     * @group nameid
-     */
+    #[\PHPUnit\Framework\Attributes\Group('nameid')]
+    #[\PHPUnit\Framework\Attributes\Test]
     public function adding_a_name_id_format_returns_a_new_list_with_that_name_id_format_appended()
     {
         $initialFormatOne = NameIdFormat::windowsDomainQualifiedName();
@@ -50,10 +45,8 @@ class NameIdFormatListTest extends UnitTest
         $this->assertTrue($newList->contains($additionalFormat));
     }
 
-    /**
-     * @test
-     * @group nameid
-     */
+    #[\PHPUnit\Framework\Attributes\Group('nameid')]
+    #[\PHPUnit\Framework\Attributes\Test]
     public function presence_of_a_name_id_format_can_be_tested()
     {
         $formatOne = NameIdFormat::transient();
@@ -67,10 +60,8 @@ class NameIdFormatListTest extends UnitTest
         $this->assertFalse($list->contains($notInList));
     }
 
-    /**
-     * @test
-     * @group nameid
-     */
+    #[\PHPUnit\Framework\Attributes\Group('nameid')]
+    #[\PHPUnit\Framework\Attributes\Test]
     public function the_index_of_a_name_id_format_can_be_retrieved()
     {
         $formatOne = NameIdFormat::transient();
@@ -84,10 +75,8 @@ class NameIdFormatListTest extends UnitTest
         $this->assertEquals(-1, $list->indexOf($notInList), 'An element not in the list must have an index of -1');
     }
 
-    /**
-     * @test
-     * @group nameid
-     */
+    #[\PHPUnit\Framework\Attributes\Group('nameid')]
+    #[\PHPUnit\Framework\Attributes\Test]
     public function a_name_id_format_can_be_retrieved_by_index()
     {
         $formatOne = NameIdFormat::transient();
@@ -100,16 +89,15 @@ class NameIdFormatListTest extends UnitTest
     }
 
     /**
-     * @test
-     * @group nameid
-     *
-     * @dataProvider \OpenConext\Value\TestDataProvider::notInteger
-     * @expectedException InvalidArgumentException
      *
      * @param mixed $invalidArgument
      */
+    #[\PHPUnit\Framework\Attributes\DataProviderExternal(\OpenConext\Value\TestDataProvider::class, 'notInteger')]
+    #[\PHPUnit\Framework\Attributes\Group('nameid')]
+    #[\PHPUnit\Framework\Attributes\Test]
     public function index_to_retrieve_the_element_of_must_be_an_integer($invalidArgument)
     {
+        $this->expectException(\InvalidArgumentException::class);
         $formatOne = NameIdFormat::kerberosPrincipalName();
         $formatTwo = NameIdFormat::emailAddress();
 
@@ -118,14 +106,11 @@ class NameIdFormatListTest extends UnitTest
         $list->get($invalidArgument);
     }
 
-    /**
-     * @test
-     * @group nameid
-     *
-     * @expectedException \OpenConext\Value\Exception\IndexOutOfBoundsException
-     */
+    #[\PHPUnit\Framework\Attributes\Group('nameid')]
+    #[\PHPUnit\Framework\Attributes\Test]
     public function an_exception_is_thrown_when_attempting_to_get_an_element_with_a_negative_index()
     {
+        $this->expectException(\OpenConext\Value\Exception\IndexOutOfBoundsException::class);
         $formatOne = NameIdFormat::unspecified();
         $formatTwo = NameIdFormat::transient();
 
@@ -134,14 +119,11 @@ class NameIdFormatListTest extends UnitTest
         $list->get(-1);
     }
 
-    /**
-     * @test
-     * @group nameid
-     *
-     * @expectedException \OpenConext\Value\Exception\IndexOutOfBoundsException
-     */
+    #[\PHPUnit\Framework\Attributes\Group('nameid')]
+    #[\PHPUnit\Framework\Attributes\Test]
     public function an_exception_is_thrown_when_attempting_to_get_an_element_with_an_index_larger_than_the_list_size()
     {
+        $this->expectException(\OpenConext\Value\Exception\IndexOutOfBoundsException::class);
         $formatOne = NameIdFormat::unspecified();
         $formatTwo = NameIdFormat::transient();
 
@@ -150,10 +132,8 @@ class NameIdFormatListTest extends UnitTest
         $list->get(4);
     }
 
-    /**
-     * @test
-     * @group nameid
-     */
+    #[\PHPUnit\Framework\Attributes\Group('nameid')]
+    #[\PHPUnit\Framework\Attributes\Test]
     public function lists_are_only_equal_when_containing_the_same_elements_in_the_same_order()
     {
         $formatOne   = NameIdFormat::transient();
@@ -172,10 +152,8 @@ class NameIdFormatListTest extends UnitTest
         $this->assertFalse($base->equals($moreElements));
     }
 
-    /**
-     * @test
-     * @group nameid
-     */
+    #[\PHPUnit\Framework\Attributes\Group('nameid')]
+    #[\PHPUnit\Framework\Attributes\Test]
     public function a_name_id_format_can_be_searched_for()
     {
         $predicate = function (NameIdFormat $format) {
@@ -190,10 +168,8 @@ class NameIdFormatListTest extends UnitTest
         $this->assertSame($secondFormat, $list->find($predicate));
     }
 
-    /**
-     * @test
-     * @group nameid
-     */
+    #[\PHPUnit\Framework\Attributes\Group('nameid')]
+    #[\PHPUnit\Framework\Attributes\Test]
     public function find_returns_the_first_matching_element()
     {
         $predicate = function (NameIdFormat $scope) {
@@ -209,10 +185,8 @@ class NameIdFormatListTest extends UnitTest
         $this->assertSame($secondFormat, $list->find($predicate));
     }
 
-    /**
-     * @test
-     * @group metadata
-     */
+    #[\PHPUnit\Framework\Attributes\Group('metadata')]
+    #[\PHPUnit\Framework\Attributes\Test]
     public function null_is_returned_when_no_match_is_found()
     {
         $predicate = function () {
@@ -228,16 +202,15 @@ class NameIdFormatListTest extends UnitTest
     }
 
     /**
-     * @test
-     * @group nameid
-     *
-     * @dataProvider \OpenConext\Value\TestDataProvider::notCallable
-     * @expectedException InvalidArgumentException
      *
      * @param mixed $notCallable
      */
+    #[\PHPUnit\Framework\Attributes\DataProviderExternal(\OpenConext\Value\TestDataProvider::class, 'notCallable')]
+    #[\PHPUnit\Framework\Attributes\Group('nameid')]
+    #[\PHPUnit\Framework\Attributes\Test]
     public function find_predicate_must_be_a_callable($notCallable)
     {
+        $this->expectException(\InvalidArgumentException::class);
         $firstFormat  = NameIdFormat::kerberosPrincipalName();
         $secondFormat = NameIdFormat::emailAddress();
 
@@ -246,10 +219,8 @@ class NameIdFormatListTest extends UnitTest
         $list->find($notCallable);
     }
 
-    /**
-     * @test
-     * @group nameid
-     */
+    #[\PHPUnit\Framework\Attributes\Group('nameid')]
+    #[\PHPUnit\Framework\Attributes\Test]
     public function a_name_id_format_list_can_be_iterated_over()
     {
         $formatOne = NameIdFormat::transient();
@@ -275,10 +246,8 @@ class NameIdFormatListTest extends UnitTest
         $this->assertTrue($formatTwoSeen, 'Missing expected element formatTwo when iterating over NameIdFormatList');
     }
 
-    /**
-     * @test
-     * @group nameid
-     */
+    #[\PHPUnit\Framework\Attributes\Group('nameid')]
+    #[\PHPUnit\Framework\Attributes\Test]
     public function the_elements_in_a_name_id_format_list_can_be_counted()
     {
         $numberOne   = NameIdFormat::emailAddress();
@@ -292,10 +261,8 @@ class NameIdFormatListTest extends UnitTest
         $this->assertCount(3, $threeElements);
     }
 
-    /**
-     * @test
-     * @group nameid
-     */
+    #[\PHPUnit\Framework\Attributes\Group('nameid')]
+    #[\PHPUnit\Framework\Attributes\Test]
     public function a_list_exposes_an_array_containing_its_elements()
     {
         $numberOne = NameIdFormat::emailAddress();
@@ -309,10 +276,8 @@ class NameIdFormatListTest extends UnitTest
         );
     }
 
-    /**
-     * @test
-     * @group nameid
-     */
+    #[\PHPUnit\Framework\Attributes\Group('nameid')]
+    #[\PHPUnit\Framework\Attributes\Test]
     public function deserializing_a_serialized_name_id_format_list_results_in_an_equal_value_object()
     {
         $formatOne = NameIdFormat::transient();
@@ -325,23 +290,20 @@ class NameIdFormatListTest extends UnitTest
     }
 
     /**
-     * @test
-     * @group nameid
-     *
-     * @dataProvider \OpenConext\Value\TestDataProvider::notArray
-     * @expectedException InvalidArgumentException
      *
      * @param mixed $notArray
      */
+    #[\PHPUnit\Framework\Attributes\DataProviderExternal(\OpenConext\Value\TestDataProvider::class, 'notArray')]
+    #[\PHPUnit\Framework\Attributes\Group('nameid')]
+    #[\PHPUnit\Framework\Attributes\Test]
     public function deserialization_requires_an_array($notArray)
     {
+        $this->expectException(\InvalidArgumentException::class);
         NameIdFormatList::deserialize($notArray);
     }
 
-    /**
-     * @test
-     * @group nameid
-     */
+    #[\PHPUnit\Framework\Attributes\Group('nameid')]
+    #[\PHPUnit\Framework\Attributes\Test]
     public function a_name_id_format_list_can_be_cast_to_string()
     {
         $numberOne = NameIdFormat::emailAddress();

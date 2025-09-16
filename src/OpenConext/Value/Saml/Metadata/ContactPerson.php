@@ -47,9 +47,9 @@ final class ContactPerson implements Serializable
         ContactType $contactType,
         EmailAddressList $emailAddressList,
         TelephoneNumberList $telephoneNumberList,
-        GivenName $givenName = null,
-        Surname $surname = null,
-        Company $company = null
+        ?GivenName $givenName = null,
+        ?Surname $surname = null,
+        ?Company $company = null
     ) {
         $this->contactType         = $contactType;
         $this->emailAddressList    = $emailAddressList;

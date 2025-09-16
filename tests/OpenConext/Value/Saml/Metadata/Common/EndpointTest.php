@@ -3,45 +3,43 @@
 namespace OpenConext\Value\Saml\Metadata\Common;
 
 use OpenConext\Value\Exception\InvalidArgumentException;
-use PHPUnit_Framework_TestCase as UnitTest;
 
-class EndpointTest extends UnitTest
+
+class EndpointTest extends \PHPUnit\Framework\TestCase
 {
     /**
-     * @test
-     * @group metadata
-     * @group common
      *
-     * @dataProvider \OpenConext\Value\TestDataProvider::notStringOrEmptyString
-     * @expectedException InvalidArgumentException
      *
      * @param mixed $notStringOrEmptyString
      */
+    #[\PHPUnit\Framework\Attributes\DataProviderExternal(\OpenConext\Value\TestDataProvider::class, 'notStringOrEmptyString')]
+    #[\PHPUnit\Framework\Attributes\Group('metadata')]
+    #[\PHPUnit\Framework\Attributes\Group('common')]
+    #[\PHPUnit\Framework\Attributes\Test]
     public function location_must_be_a_non_empty_string($notStringOrEmptyString)
     {
+        $this->expectException(\InvalidArgumentException::class);
         new Endpoint(Binding::httpPost(), $notStringOrEmptyString);
     }
 
     /**
-     * @test
-     * @group metadata
-     * @group common
      *
-     * @dataProvider \OpenConext\Value\TestDataProvider::notNullAndNotStringOrEmptyString
-     * @expectedException InvalidArgumentException
      *
      * @param mixed $notNullAndNotStringOrEmptyString
      */
+    #[\PHPUnit\Framework\Attributes\DataProviderExternal(\OpenConext\Value\TestDataProvider::class, 'notNullAndNotStringOrEmptyString')]
+    #[\PHPUnit\Framework\Attributes\Group('metadata')]
+    #[\PHPUnit\Framework\Attributes\Group('common')]
+    #[\PHPUnit\Framework\Attributes\Test]
     public function response_location_must_be_null_or_a_non_empty_string($notNullAndNotStringOrEmptyString)
     {
+        $this->expectException(\InvalidArgumentException::class);
         new Endpoint(Binding::httpPost(), 'some:uri', $notNullAndNotStringOrEmptyString);
     }
 
-    /**
-     * @test
-     * @group metadata
-     * @group common
-     */
+    #[\PHPUnit\Framework\Attributes\Group('metadata')]
+    #[\PHPUnit\Framework\Attributes\Group('common')]
+    #[\PHPUnit\Framework\Attributes\Test]
     public function the_binding_can_be_retrieved()
     {
         $binding = Binding::httpPost();
@@ -51,11 +49,9 @@ class EndpointTest extends UnitTest
         $this->assertEquals($binding, $endpoint->getBinding());
     }
 
-    /**
-     * @test
-     * @group metadata
-     * @group common
-     */
+    #[\PHPUnit\Framework\Attributes\Group('metadata')]
+    #[\PHPUnit\Framework\Attributes\Group('common')]
+    #[\PHPUnit\Framework\Attributes\Test]
     public function the_location_can_be_retrieved()
     {
         $location = 'some:uri';
@@ -65,11 +61,9 @@ class EndpointTest extends UnitTest
         $this->assertEquals($location, $endpoint->getLocation());
     }
 
-    /**
-     * @test
-     * @group metadata
-     * @group common
-     */
+    #[\PHPUnit\Framework\Attributes\Group('metadata')]
+    #[\PHPUnit\Framework\Attributes\Group('common')]
+    #[\PHPUnit\Framework\Attributes\Test]
     public function the_response_location_can_be_retrieved()
     {
         $responseLocation = 'some:response:location';
@@ -83,11 +77,9 @@ class EndpointTest extends UnitTest
         $this->assertNull($nullReponseLocation->getResponseLocation());
     }
 
-    /**
-     * @test
-     * @group metadata
-     * @group common
-     */
+    #[\PHPUnit\Framework\Attributes\Group('metadata')]
+    #[\PHPUnit\Framework\Attributes\Group('common')]
+    #[\PHPUnit\Framework\Attributes\Test]
     public function equality_is_verified_on_all_properties()
     {
         $base                      = new Endpoint(Binding::httpPost(), 'some:uri', 'some:response:location');
@@ -112,11 +104,9 @@ class EndpointTest extends UnitTest
         $this->assertFalse($base->equals($differentResponseLocation));
     }
 
-    /**
-     * @test
-     * @group metadata
-     * @group common
-     */
+    #[\PHPUnit\Framework\Attributes\Group('metadata')]
+    #[\PHPUnit\Framework\Attributes\Group('common')]
+    #[\PHPUnit\Framework\Attributes\Test]
     public function deserializing_a_serialized_endpoint_results_in_an_equal_value_object()
     {
         $original = new Endpoint(Binding::httpPost(), 'some:uri', 'some:response:location');
@@ -127,36 +117,36 @@ class EndpointTest extends UnitTest
     }
 
     /**
-     * @test
-     * @group metadata
-     * @group common
      *
-     * @dataProvider \OpenConext\Value\TestDataProvider::notarray
-     * @expectedException InvalidArgumentException
      *
      * @param mixed $notArray
      */
+    #[\PHPUnit\Framework\Attributes\DataProviderExternal(\OpenConext\Value\TestDataProvider::class, 'notarray')]
+    #[\PHPUnit\Framework\Attributes\Group('metadata')]
+    #[\PHPUnit\Framework\Attributes\Group('common')]
+    #[\PHPUnit\Framework\Attributes\Test]
     public function deserialization_requires_data_to_be_an_array($notArray)
     {
+        $this->expectException(\InvalidArgumentException::class);
         Endpoint::deserialize($notArray);
     }
 
     /**
-     * @test
-     * @group metadata
-     * @group common
      *
-     * @dataProvider invalidDataProvider
-     * @expectedException InvalidArgumentException
      *
      * @param array $invalidData
      */
+    #[\PHPUnit\Framework\Attributes\DataProvider('invalidDataProvider')]
+    #[\PHPUnit\Framework\Attributes\Group('metadata')]
+    #[\PHPUnit\Framework\Attributes\Group('common')]
+    #[\PHPUnit\Framework\Attributes\Test]
     public function deserialization_requires_presence_of_all_required_keys($invalidData)
     {
+        $this->expectException(\InvalidArgumentException::class);
         Endpoint::deserialize($invalidData);
     }
 
-    public function invalidDataProvider()
+    public static function invalidDataProvider()
     {
         return array(
             'no matching keys'     => array(
@@ -182,13 +172,11 @@ class EndpointTest extends UnitTest
         );
     }
 
-    /**
-     * @test
-     * @group metadata
-     * @group common
-     */
+    #[\PHPUnit\Framework\Attributes\Group('metadata')]
+    #[\PHPUnit\Framework\Attributes\Group('common')]
+    #[\PHPUnit\Framework\Attributes\Test]
     public function an_endpoint_can_be_cast_to_string()
     {
-        $this->assertInternalType('string', (string) new Endpoint(Binding::httpPost(), 'some:uri'));
+        $this->assertIsString((string) new Endpoint(Binding::httpPost(), 'some:uri'));
     }
 }

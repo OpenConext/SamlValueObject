@@ -1,0 +1,62 @@
+name: qa
+
+on:
+  push:
+    branches: [ main, develop ]
+  pull_request:
+  schedule:
+    - cron: "0 6 * * *"  # 06:00 UTC daily
+  workflow_dispatch:
+
+concurrency:
+  group: qa-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  quality:
+    name: PHP ${{ matrix.php }} checks
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    strategy:
+      fail-fast: false
+      matrix:
+        php: [ '8.2', '8.3', '8.4' ]
+    env:
+      PROD_PHP: 8.2
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Set up PHP
+        uses: shivammathur/setup-php@v2
+        with:
+          php-version: ${{ matrix.php }}
+          coverage: none
+          tools: composer:v2
+          ini-values: memory_limit=-1
+
+      - name: Get Composer cache directory
+        id: composer-cache
+        run: echo "dir=$(composer config cache-files-dir)" >> $GITHUB_OUTPUT
+
+      - name: Cache Composer dependencies
+        uses: actions/cache@v4
+        with:
+          path: ${{ steps.composer-cache.outputs.dir }}
+          key: composer-${{ matrix.php }}-${{ hashFiles('**/composer.lock') }}
+          restore-keys: |
+            composer-${{ matrix.php }}-
+
+      - name: Validate composer.json
+        run: composer validate --strict
+
+      - name: Install dependencies
+        run: composer install --no-interaction --no-progress --prefer-dist --ansi
+
+      - name: Run checks (composer check)
+        run: composer check --ansi
+
+      - name: Composer outdated (informational)
+        if: always() && matrix.php == '8.2'
+        run: composer outdated --direct || true
